@@ -9,7 +9,7 @@ const SignUp = () => {
     const [userPassword, setUserPassword] = useState('');
     const [userPassword2, setUserPassword2] = useState('');
     const [passwordMismatch, setPasswordMismatch] = useState(false);
-    const [accountRegistered, setAccountRegistered] = useState(false);
+    const [accountRegistered, setAccountRegistered] = useState(null);
 
     const HandleSignUp = (e) => {
         e.preventDefault();
@@ -25,13 +25,14 @@ const SignUp = () => {
                 username: user.userName,
                 password: user.userPassword,
             }).then((response) => {
-                if(response.data.message){
-                    setAccountRegistered(response.data.message);
-                }else{
+                if (response.data.message === "Email already exists") {
+                    // Display an error message that the email already exists
+                    setAccountRegistered("Email already exists");
+                } else if (response.data.message === "Account registered") {
+                    // Registration was successful
                     setAccountRegistered("Account registered");
-                    // history.push('/'); // Redirect to login page
                 }
-            })
+            });
         } else {
             setPasswordMismatch(true); // Passwords don't match, set to true
           }
@@ -76,8 +77,11 @@ const SignUp = () => {
                      {passwordMismatch ? (
                         <p className="text-red-500">Passwords do not match. Please try again.</p>
                      ) : null}
-                     {accountRegistered ? (
-                        <p>Account registered</p>
+                     {accountRegistered === "Email already exists" ? ( 
+                        <p className="text-red-500">Email already exists. Please use a different email.</p>
+                     ) : null}
+                     {accountRegistered === "Account registered" ? (
+                        <p className="text-green-500">Account registered. Please login.</p>
                      ) : null}
                     <br></br> <br></br>
                     <button class = 'text-center rounded-full bg-red-500 px-5'> Sign Up </button> <br></br>

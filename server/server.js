@@ -19,16 +19,27 @@ app.post('/register', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    con.query("INSERT INTO users (email, username, password) VALUES (?, ?, ?)", [email, username, password], 
-        (err, result) => {
-            if(result){
-                res.send(result);
-            }else{
-                res.send({message: "ENTER CORRECT ASKED DETAILS!"})
-            }
+    // Check if the email already exists in the database
+    con.query("SELECT * FROM users WHERE email = ?", [email], (err, result) => {
+        if (err) {
+            res.send({ error: err });
+        } else if (result.length > 0) {
+            // Email already exists, send an error message
+            res.send({ message: "Email already exists" });
+            return;
+        } else {
+            // Email doesn't exist, proceed to insert the new user
+            con.query("INSERT INTO users (email, username, password) VALUES (?, ?, ?)", [email, username, password], (err, result) => {
+                if (err) {
+                    res.send({ error: err });
+                } else {
+                    res.send({ message: "Account registered" });
+                }
+            });
         }
-    )
-})
+    });
+});
+
 
 app.post('/login', (req, res) => {
     const email = req.body.email;
