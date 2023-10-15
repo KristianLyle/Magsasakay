@@ -31,9 +31,9 @@ app.post('/register', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
-    con.query("SELECT * FROM users WHERE username = ? AND password = ?", [username, password], 
+    con.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], 
         (err, result) => {
             if(err){
                 res.send({error: err});
@@ -41,7 +41,7 @@ app.post('/login', (req, res) => {
                 if(result.length > 0){
                     res.send(result);
                 } else {
-                    res.send({message: "WRONG USERNAME OR PASSWORD!"});
+                    res.send({message: "WRONG EMAIL OR PASSWORD!"});
                 }
             }
         }
