@@ -7,7 +7,8 @@ const SignUp = () => {
     const [userEmail,setUserEmail]= useState('');
     const [userPassword, setUserPassword] = useState('');
     const [userPassword2, setUserPassword2] = useState('');
-    const [passwordMismatch, setPasswordMismatch] = useState(true);
+    const [passwordMismatch, setPasswordMismatch] = useState(false);
+    const [accountRegistered, setAccountRegistered] = useState(false);
 
     const HandleSignUp = (e) => {
         e.preventDefault();
@@ -16,6 +17,7 @@ const SignUp = () => {
             setPasswordMismatch(false); // Passwords match, set to false
             const user = { userName, userEmail, userPassword };
             console.log(user);
+            setAccountRegistered(true);
         } else {
             setPasswordMismatch(true); // Passwords don't match, set to true
           }
@@ -57,11 +59,12 @@ const SignUp = () => {
                         value = {userPassword2}
                         onChange = {(e) => setUserPassword2(e.target.value)}
                     /> <br></br> <br></br>
-                    {passwordMismatch ? (
+                     {passwordMismatch ? (
                         <p className="text-red-500">Passwords do not match. Please try again.</p>
-                    ) : (
+                     ) : null}
+                     {accountRegistered ? (
                         <p>Account registered</p>
-                    )}
+                     ) : null}
                     <br></br> <br></br>
                     <button class = 'text-center rounded-full bg-red-500 px-5'> Sign Up </button> <br></br>
                     <div className="createAccount">
