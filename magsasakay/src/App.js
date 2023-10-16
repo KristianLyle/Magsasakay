@@ -1,4 +1,5 @@
 import React from 'react';
+import Maps from './Maps'; // Import your map component
 import { BrowserRouter as Router, Route, Switch } from  'react-router-dom';
 import './index.css';
 import Login from './Login'
@@ -10,6 +11,7 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <Login/>
+          <Maps />
         </Route>
         <Route exact path='/signUp'>
           <SignUp/>
