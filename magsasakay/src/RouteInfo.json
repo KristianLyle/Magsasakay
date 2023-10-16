@@ -17,6 +17,60 @@
       ],
       "establishments": [
         {
+          "name": "Iloilo - Guimaras Ferry Wharf",
+          "type": "Pier",
+          "lon": 122.578595,
+          "lat": 10.701233
+        },
+        {
+          "name": "National Statistics Office - Iloilo",
+          "type": "Establishment",
+          "lon": 122.569264,
+          "lat": 10.698869
+        },
+        {
+          "name": "Hua Siong College of Iloilo",
+          "type": "College",
+          "lon": 122.568986,
+          "lat": 10.696941
+        },
+        {
+          "name": "Calle Real and Old Iloilo Business District",
+          "type": "Establishment",
+          "lon": 122.569804,
+          "lat": 10.695513
+        },
+        {
+          "name": "University of Iloilo PHINMA",
+          "type": "College",
+          "lon": 122.569591,
+          "lat": 10.692006
+        },
+        {
+          "name": "Museum of Philippine Economic History",
+          "type": "Establishment",
+          "lon": 122.572459,
+          "lat": 10.693186
+        }
+      ]  
+    },
+    {
+      "title": "Jeepney Route No. 2 - Calaparan Calumpang - Iloilo City Proper",
+      "description": "This route goes from Villa Arevalo Calaparan Area, to Iloilo City Proper.",
+      "coordinates": [
+        {"lon": 122.519538, "lat": 10.680312},
+        {"lon": 122.549347, "lat": 10.692029},
+        {"lon": 122.558497, "lat": 10.693299},
+        {"lon": 122.564464, "lat": 10.691909},
+        {"lon": 122.564755, "lat": 10.693732},
+        {"lon": 122.568882, "lat": 10.696364},
+        {"lon": 122.572437, "lat": 10.693006},
+        {"lon": 122.573650,"lat":  10.694378},
+        {"lon": 122.569393, "lat": 10.696575},
+        {"lon": 122.568200, "lat": 10.696186}
+      ],
+      "establishments": [
+        {
           "name": "Restaurant A",
           "type": "Restaurant",
           "lon": 122.5845,

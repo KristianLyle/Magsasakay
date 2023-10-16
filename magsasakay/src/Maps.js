@@ -4,12 +4,12 @@ import 'leaflet/dist/leaflet.css';
 import { decodePolyline } from './PolylineDecoder';
 import routeInfo from './RouteInfo.json';
 import RouteDropdown from './RouteDropdown';
-import L from 'leaflet'; // Import the L object from Leaflet
-import logo from './marker.png'; // Import your custom marker icon
+import L from 'leaflet';
+import logo from './marker.png';
 
 const customIcon = L.icon({
   iconUrl: logo,
-  iconSize: [32, 32], // Adjust the size of the icon as needed
+  iconSize: [32, 32],
   iconAnchor: [16, 32],
   popupAnchor: [0, -32],
 });
@@ -76,22 +76,19 @@ const MapComponent = () => {
                   <div>
                     <h3>{selectedRoute.title}</h3>
                     <p>{selectedRoute.description}</p>
-                    {/* Add additional information here as needed */}
                   </div>
                 </Popup>
               </Polyline>
-              {/* Add markers for establishments with custom icon */}
               {selectedRoute.establishments.map((establishment, index) => (
                 <Marker
                   key={index}
                   position={[establishment.lat, establishment.lon]}
-                  icon={customIcon} // Use the custom icon for the marker
+                  icon={customIcon}
                 >
                   <Popup>
                     <div>
                       <h3>{establishment.name}</h3>
                       <p>Type: {establishment.type}</p>
-                      {/* Add additional information here as needed */}
                     </div>
                   </Popup>
                 </Marker>
