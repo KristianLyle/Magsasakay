@@ -102,13 +102,13 @@ const SignUp = () => {
                         </div>      
                         
                         {passwordMismatch ? (
-                            <p className="text-red-500">Passwords do not match. Please try again.</p>
+                            <p className="text-red-500 text-center">Passwords do not match. Please try again.</p>
                         ) : null}
                         {accountRegistered === "Email already exists" ? ( 
-                            <p className="text-red-500">Email already exists. Please use a different email.</p>
+                            <p className="text-red-500 text-center">Email already exists. Please use a different email.</p>
                         ) : null}
                         {accountRegistered === "Account registered" ? (
-                            <p className="text-green-500">Account registered. Please login.</p>
+                            <p className="text-green-500 text-center">Account registered. Please login.</p>
                         ) : null}
                       
                         <div className='flex justify-center mb-3'>
