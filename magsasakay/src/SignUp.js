@@ -98,7 +98,7 @@ const SignUp = () => {
                                  Create Account </button> 
                         </div>
                         <div className="font-light text-center text-white font-Montserrat py-2 mb-3">
-                            <p className='text-center font-montserrat'> Already have an account? </p><Link className='underline hover:text-black' to='/Login'> Create an Account</Link>
+                            <p className='text-center font-montserrat'> Already have an account? </p><Link className='underline hover:text-black' to='/Login'> Click Here </Link>
                         </div>
                     </form>   
                 </div>
