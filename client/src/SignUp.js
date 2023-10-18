@@ -22,7 +22,7 @@ const SignUp = () => {
             console.log(user);
             setAccountRegistered(true);
 
-            Axios.post("http://localhost:8000/register", {
+            Axios.post("http://localhost:3001/signup", {
                 email: user.userEmail,
                 username: user.userName,
                 password: user.userPassword,
@@ -30,9 +30,9 @@ const SignUp = () => {
                 if (response.data.message === "Email already exists") {
                     // Display an error message that the email already exists
                     setAccountRegistered("Email already exists");
-                } else if (response.data.message === "Account registered") {
+                } else if (response.data.message === "User created successfully.") {
                     // Registration was successful
-                    setAccountRegistered("Account registered");
+                    setAccountRegistered("User created successfully.");
                 }
             });
         } else {
@@ -107,7 +107,7 @@ const SignUp = () => {
                         {accountRegistered === "Email already exists" ? ( 
                             <p className="text-red-500 text-center">Email already exists. Please use a different email.</p>
                         ) : null}
-                        {accountRegistered === "Account registered" ? (
+                        {accountRegistered === "User created successfully." ? (
                             <p className="text-green-500 text-center">Account registered. Please login.</p>
                         ) : null}
                       

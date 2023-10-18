@@ -14,15 +14,13 @@ const Login = () => {
 
     const login = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:8000/login", {
+        Axios.post("http://localhost:3001/login", {
           email: userEmail,
           password: userPassword,
         }).then((response) => {
-          if(response.data.message){
-            setLoginStatus(response.data.message);
-            alert(loginStatus);
+          if(response.data.message == "Invalid email or password"){
+            alert("Invalid email or password");
           }else{
-            setLoginStatus(response.data[0].email);
             history.push('/home'); // Redirect to home page
           }
         })
