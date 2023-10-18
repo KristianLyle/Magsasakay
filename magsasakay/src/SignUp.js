@@ -42,8 +42,8 @@ const SignUp = () => {
                         style={{ backgroundImage: `url(${signupImg})`, opacity:0.4}}
                     ></div>
                    
-                    <form className="max-w-[400px] w-full mx-auto bg-[#7826D0] p-8 px-8 rounded-lg relative drop-shadow-2xl" onSubmit={HandleSignUp}>
-                     <h2 className='mb-10 text-4xl dark:text-white font-bold font-montserrat text-center'> Set Up Your Account</h2>
+                    <form className="max-w-[400px] w-full mx-auto bg-[#7826D0] p-8 px-8 rounded-[37px] relative drop-shadow-2xl" onSubmit={HandleSignUp}>
+                     <h2 className='mb-10 text-4xl dark:text-white font-semibold font-montserrat text-center'> Set Up Your Account</h2>
    
                     <div className='mb-5'>
                         <label className = ' text-gray-200 font-montserrat' htmlFor='email'>Username</label> <br></br>
@@ -98,7 +98,7 @@ const SignUp = () => {
                                  Create Account </button> 
                         </div>
                         <div className="font-light text-center text-white font-Montserrat py-2 mb-3">
-                            <p className='text-center font-montserrat'> Already have an account? </p><Link className='underline hover:text-black' to='/Login'> Click Here </Link>
+                            <p className='text-center font-montserrat'> Already have an account? </p><Link className='underline hover:text-black' to='/'> Click Here </Link>
                         </div>
                     </form>   
                 </div>
