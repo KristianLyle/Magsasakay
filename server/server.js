@@ -1,65 +1,70 @@
-const express = require("express");
-const mysql = require("mysql2");
-const cors = require("cors");
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
+app.use(cors()); // Enable CORS for cross-origin requests
+app.use(bodyParser.json());
 
-app.use(express.json());
-app.use(cors());
+mongoose.connect('mongodb://127.0.0.1:27017/magsasakaydb', { useNewUrlParser: true, useUnifiedTopology: true });
 
-const con = mysql.createConnection({
-    user: "root",
-    host: "localhost",
-    password: "",
-    database: "magsasakay"
-})
-
-app.post('/register', (req, res) => {
-    const email = req.body.email;
-    const username = req.body.username;
-    const password = req.body.password;
-
-    // Check if the email already exists in the database
-    con.query("SELECT * FROM users WHERE email = ?", [email], (err, result) => {
-        if (err) {
-            res.send({ error: err });
-        } else if (result.length > 0) {
-            // Email already exists, send an error message
-            res.send({ message: "Email already exists" });
-            return;
-        } else {
-            // Email doesn't exist, proceed to insert the new user
-            con.query("INSERT INTO users (email, username, password) VALUES (?, ?, ?)", [email, username, password], (err, result) => {
-                if (err) {
-                    res.send({ error: err });
-                } else {
-                    res.send({ message: "Account registered" });
-                }
-            });
-        }
-    });
+const userSchema = new mongoose.Schema({
+  email: String,
+  username: String,
+  password: String,
 });
 
+const userModel = new mongoose.model('users', userSchema);
 
-app.post('/login', (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
-    con.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], 
-        (err, result) => {
-            if(err){
-                res.send({error: err});
-            } else {
-                if(result.length > 0){
-                    res.send(result);
-                } else {
-                    res.send({message: "WRONG EMAIL OR PASSWORD!"});
-                }
-            }
-        }
-    )
+// Login route
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      // Find a user with the provided email
+      const user = await userModel.findOne({ email });
+  
+      if (!user) {
+        return res.status(200).json({ message: 'Invalid email or password' });
+      }
+  
+      // Check if the provided password matches the stored password
+      if (user.password !== password) {
+        return  res.status(200).json({ message: 'Invalid email or password' });
+      }
+  
+      // Login successful 
+      res.status(200).json({ message: 'Login successful' });
+      // You can add code to generate a session or token for the user here.
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'An error occurred while processing your request' });
+    }
+  });
+  
+
+// Signup route
+app.post('/signup', async (req, res) => {
+    const { email, username, password } = req.body;
+  
+    try {
+      // Check if the email already exists
+      const existingUser = await userModel.findOne({ email });
+      if (existingUser) {
+        return res.status(201).json({ message: 'Email already exists' });
+      }
+  
+      // If email is not found, create a new user
+      const newUser = new userModel({ email, username, password });
+      await newUser.save();
+      res.status(201).json({ message: 'User created successfully.' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'An error occurred while creating the user.' });
+    }
+  });
+
+app.listen(3001, () => {
+  console.log(`Server is running on port 3001`);
 });
-
-
-app.listen(8000, () => {
-    console.log("running backend server");
-})
