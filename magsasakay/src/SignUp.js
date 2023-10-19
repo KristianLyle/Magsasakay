@@ -43,7 +43,7 @@ const SignUp = () => {
                     ></div>
                    
                     <form className="max-w-[400px] w-full mx-auto bg-[#7826D0] p-8 px-8 rounded-[37px] relative drop-shadow-2xl" onSubmit={HandleSignUp}>
-                     <h2 className='mb-10 text-4xl dark:text-white font-semibold font-montserrat text-center'> Set Up Your Account</h2>
+                     <h2 className='mb-10 text-[35px] dark:text-white font-semibold font-montserrat text-center'> Set Up Your Account</h2>
    
                     <div className='mb-5'>
                         <label className = ' text-gray-200 font-montserrat' htmlFor='email'>Username</label> <br></br>

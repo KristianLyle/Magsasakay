@@ -4,4 +4,45 @@
 @tailwind components;
 @tailwind utilities;
 
+.nav-text{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    height: 60px;
+}
+
+.nav-text a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0px 16px;
+    border-radius: 4px;
+}
+
+.nav-text a:hover{
+    background: #1a83ff;
+
+}
+
+.navMenu{
+    background-color: #160E3D;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+}
+
+.navMenu.active{
+    left: 0;
+    transition: 350ms;
+}
 
