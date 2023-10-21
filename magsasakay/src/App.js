@@ -4,6 +4,8 @@ import './index.css';
 import Login from './Login'
 import SignUp from './SignUp';
 import Home from './home';
+import Options from './options';
+
 
 function App() {
   return (
