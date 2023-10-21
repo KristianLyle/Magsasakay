@@ -2,6 +2,7 @@ import {useState} from 'react';
 import signupImg from './img/img1.jpg'
 import {Link} from  'react-router-dom';
 import './index.css';
+import Axios from 'axios';
 import logo from './img/logo.png';
 
 const SignUp = () => {
@@ -10,7 +11,7 @@ const SignUp = () => {
     const [userPassword, setUserPassword] = useState('');
     const [userPassword2, setUserPassword2] = useState('');
     const [passwordMismatch, setPasswordMismatch] = useState(false);
-    const [accountRegistered, setAccountRegistered] = useState(false);
+    const [accountRegistered, setAccountRegistered] = useState(null);
 
     const HandleSignUp = (e) => {
         e.preventDefault();
@@ -20,6 +21,20 @@ const SignUp = () => {
             const user = { userName, userEmail, userPassword };
             console.log(user);
             setAccountRegistered(true);
+
+            Axios.post("http://localhost:3001/signup", {
+                email: user.userEmail,
+                username: user.userName,
+                password: user.userPassword,
+            }).then((response) => {
+                if (response.data.message === "Email already exists") {
+                    // Display an error message that the email already exists
+                    setAccountRegistered("Email already exists");
+                } else if (response.data.message === "User created successfully.") {
+                    // Registration was successful
+                    setAccountRegistered("User created successfully.");
+                }
+            });
         } else {
             setPasswordMismatch(true); // Passwords don't match, set to true
           }
@@ -87,10 +102,13 @@ const SignUp = () => {
                         </div>      
                         
                         {passwordMismatch ? (
-                            <p className="text-red-500">Passwords do not match. Please try again.</p>
+                            <p className="text-red-500 text-center">Passwords do not match. Please try again.</p>
                         ) : null}
-                        {accountRegistered ? (
-                            <p>Account registered</p>
+                        {accountRegistered === "Email already exists" ? ( 
+                            <p className="text-red-500 text-center">Email already exists. Please use a different email.</p>
+                        ) : null}
+                        {accountRegistered === "User created successfully." ? (
+                            <p className="text-green-500 text-center">Account registered. Please login.</p>
                         ) : null}
                       
                         <div className='flex justify-center mb-3'>

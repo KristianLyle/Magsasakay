@@ -4,6 +4,7 @@ import './index.css';
 import Login from './Login'
 import SignUp from './SignUp';
 import Home from './home';
+import MapComponent from './Maps';
 
 function App() {
   return (
@@ -15,8 +16,11 @@ function App() {
         <Route exact path='/signUp'>
           <SignUp/>
         </Route>
-        <Route exact path= '/home'>
+        <Route exact path='/home'>
           <Home/>
+        </Route>
+        <Route exact path='/routes'>
+          <MapComponent/>
         </Route>
       </Switch>
     </Router>

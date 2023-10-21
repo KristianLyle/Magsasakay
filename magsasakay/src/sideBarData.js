@@ -29,4 +29,3 @@ export const sideBarData = [
         cName: 'nav-text'
     },
 ]
-
