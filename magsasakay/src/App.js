@@ -20,6 +20,9 @@ function App() {
         <Route exact path= '/home'>
           <Home/>
         </Route>
+        <Route exact path= '/routes'>
+          <Options/>
+        </Route>
       </Switch>
     </Router>
   );
