@@ -33,20 +33,20 @@ const Home = () => {
                     <div className="font-Montserrat font-semibold text-[50px] text-center text-white 
                         px-10 py-2 bg-red-50 ml-[100px] rounded-full inline-block border-white border-[2px]
                         bg-wte_bg bg-cover">
-                        <Link>Where to eat in Iloilo</Link> 
+                        <Link to="/restaurants">Where to eat in Iloilo</Link> 
                     </div> <br/> <br/> <br/> <br/>
 
                     <ul className='grid grid-cols-[repeat(auto-fill,_minmax(100px,_1fr))]
                      text-white font-Montserrat text-center items-center ml-[100px] gap-x-[50px]'>
                         <li className='w-[175px] text-[35px] flex flex-col'>
-                            <Link className='flex flex-col'>
+                            <Link className='flex flex-col' to="/about">
                                 <img src={about} alt='about'/>
                                 <span>About</span>
                             </Link>
                         </li>
                         <br/>
                         <li className='w-[175px] text-[35px] flex flex-col'>
-                            <Link className='flex flex-col'>
+                            <Link className='flex flex-col' to="/profile">
                                 <img src={profile} alt='profile'/>
                                 <span>Profile</span>
                             </Link>
