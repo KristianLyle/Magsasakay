@@ -50,7 +50,6 @@ const Options = () => {
                                 px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
                                 bg-[#0D70B1] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
                                 hover:border-[#5AF0D5] hover:text-[#160E3D] glow">
-                           
                             <   Link> 
                             <div className='flex justify-center'>
                                <img className="w-80 h-60 object-cover rounded-3xl" src={route} alt="" />  
