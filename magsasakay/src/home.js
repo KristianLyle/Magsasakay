@@ -53,7 +53,7 @@ const Home = () => {
                         </li>
                         <br/>
                         <li className='w-[175px] text-[35px] flex flex-col'>
-                            <Link className='flex flex-col'>
+                            <Link className='flex flex-col' to='/options'>
                                 <img src={routes} alt='routes'/>
                                 <span>Routes</span>
                             </Link>
