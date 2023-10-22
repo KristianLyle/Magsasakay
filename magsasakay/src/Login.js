@@ -4,7 +4,6 @@ import './index.css';
 import logo from './img/logo.png';
 import Axios from 'axios';
 
-
 const Login = () => {
     const [userEmail,setUserEmail]= useState('');
     const [userPassword, setUserPassword] = useState('');
@@ -27,62 +26,55 @@ const Login = () => {
       }
 
       return (
-        <>
-        <div className="container grid h-screen grid-cols-2 bg-image1 bg-contain">
-          <div className="flex flex-col items-center justify-center inset-0 bg-gradient-to-b from-transparent to-[#EA9769]">
-            <form className="loginForm max-w-[400px] max-h-[425px] h-full w-full mx-auto bg-[#7826D0] p-8 px-8 rounded-[37px] drop-shadow-2xl">
-              <h1 className='text-center text-white font-Montserrat font-semibold text-[35px]'> Login to Continue </h1>
-              <br />
-              <label className="text-white font-regular font-Montserrat" htmlFor="email">
-                Email
-              </label>
-              <br />
-              <input
-                className=" border border-black border-lg rounded-[10px] w-full p-2"
-                type="email"
-                placeholder="Enter email here"
-                required
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
-              />
-              <br /> <br />
-              <label className="text-white font-Montserrat font-regular" htmlFor="password">
-                Password
-              </label>
-              <br />
-              <input
-                className="border border-black border-lg rounded-[10px] w-full p-2"
-                type="password"
-                placeholder="Enter password here"
-                required
-                value={userPassword}
-                onChange={(e) => setUserPassword(e.target.value)}
-              />
-              <br />
-              <br />
-              <div className="createAccount font-light text-center text-white font-Montserrat">
-                <p>Don't have an account yet?</p> <Link className="underline hover:text-black" to="/SignUp">Click Here!</Link> <br /> 
+        <div className="min-h-screen relative flex font-Montserrat">
+          <div className="flex-1 flex items-center justify-center relative">
+            <div
+              className="absolute w-[100%] h-screen bg-image1 bg-cover opacity-100"
+            ></div>
+            <div className="absolute w-[100%] h-screen bg-gradient-to-t from-orange-500 to-cyan-500 opacity-60"></div>
+            <div className="w-full max-w-md p-8 rounded-[37px] drop-shadow-2xl bg-[#7826D0] text-white">
+              <h1 className="text-center text-4xl font-semibold mb-8">Login to Continue</h1>
+              <div className="mb-4">
+                <label htmlFor="email" className="text-lg">Email</label>
+                <input
+                  className="w-full py-2 px-3 border border-black rounded-[10px] text-black"
+                  type="email"
+                  placeholder="Enter email here"
+                  required
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                />
               </div>
-              <br />
-              <div className='text-center'>
-              <button className="hover:bg-[#160E3D] hover:text-[#F9BE60] 
-                                  px-[55px] text-center bg-[#F9BE60] 
-                                  rounded-full drop-shadow-lg text-[20px] 
-                                  font-Montserrat font-semibold"
-                                  onClick={login} 
-                                 >
-                Login </button>
+              <div className="mb-4">
+                <label htmlFor="password" className="text-lg">Password</label>
+                <input
+                  className="w-full py-2 px-3 border border-black rounded-[10px] text-black"
+                  type="password"
+                  placeholder="Enter password here"
+                  required
+                  value={userPassword}
+                  onChange={(e) => setUserPassword(e.target.value)}
+                />
               </div>
-              <br /> <br />
-            </form>
+              <div className="text-center mb-8">
+                <p className="text-white text-sm">Don't have an account yet? <Link className="underline hover:text-black" to="/SignUp">Click Here!</Link></p>
+              </div>
+              <div className="text-center">
+                <button className="bg-[#F9BE60] text-2xl px-6 py-2 rounded-full font-semibold text-black hover:bg-[#160E3D] hover:text-[#F9BE60] drop-shadow-2xl" onClick={login}>
+                  Login
+                </button>
+              </div>
+            </div>
           </div>
-          <div className="container flex flex-col items-center justify-center h-full bg-[#160E3D]">
-        <img src={logo} alt='logo'></img>
-        <p className='text-white font-Montserrat font-light'> 2023 All Rights Reserved </p>
+          <div className="w-1/3 bg-[#160E3D] text-white flex flex-col items-center justify-center">
+            <div className="w-1/2">
+              <img src={logo} alt="logo" />
+            </div>
+            <p className="text-xs mt-4">2023 All Rights Reserved</p>
+          </div>
         </div>
-        </div>
-        </>
       );
+      
 }
 
 export default Login;

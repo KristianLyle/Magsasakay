@@ -5,6 +5,8 @@ import Login from './Login'
 import SignUp from './SignUp';
 import Home from './home';
 import MapComponent from './Maps';
+import Options from './options';
+
 
 function App() {
   return (
@@ -19,8 +21,11 @@ function App() {
         <Route exact path='/home'>
           <Home/>
         </Route>
+        <Route exact path= '/routes'>
+          <Options/>
+        </Route>
         <Route exact path='/routes'>
-          <MapComponent/>
+          <Options/>
         </Route>
       </Switch>
     </Router>
