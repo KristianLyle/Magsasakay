@@ -2,7 +2,7 @@ import React from 'react';
 
 const RouteDropdown = ({ routes, selectedRoute, onSelectRoute }) => {
   return (
-    <div>
+    <div className='text-center ml-[30px]'>
       <label>Select a Jeepney Route: </label>
       <select value={selectedRoute} onChange={(e) => onSelectRoute(e.target.value)}>
         {selectedRoute ? null : <option value="">Select a route</option>}

@@ -1,87 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.nav-text{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 8px 0px 8px 16px;
-    height: 60px;
-}
-
-.nav-text a{
-    font-family: 'Montserrat';
-    font-weight: bold;
-    margin-left: -2px;
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    width: 95%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    border: white solid 2px;
-    border-radius: 15px;
-    background-color: #EE7200;
-    box-shadow: 3px 3px black;
-}
-
-.nav-text a:hover{
-    background: #1a83ff;
-
-}
-
-.navMenu{
-    background-color: #160E3D;
-    width: 250px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    transition: 850ms;
-    border: white 2px solid;
-}
-
-.navMenu.active{
-    left: 0;
-    transition: 350ms;
-}
-
-.nav-text a{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    width: 95%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0px 16px;
-    border-radius: 4px;
-}
-
-.nav-text a:hover{
-    background: #1a83ff;
-
-}
-
-.navMenu{
-    background-color: #160E3D;
-    width: 250px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    transition: 850ms;
-}
-
-.navMenu.active{
-    left: 0;
-    transition: 350ms;
-}
