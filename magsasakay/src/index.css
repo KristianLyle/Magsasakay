@@ -62,6 +62,7 @@
     left: -100%;
     transition: 850ms;
     border: white 2px solid;
+    z-index: 99999;
 }
 
 .navMenu.active{
