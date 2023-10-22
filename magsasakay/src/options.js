@@ -26,19 +26,19 @@ const Options = () => {
             <div className="mx-auto h-screen " >
                 <div className="">
                     <br/>
-                    <h1 className='text-white font-Montserrat mt-8 font-extrabold text-[55px] text-center'>
+                    <h1 className='text-white font-Montserrat mt-4 font-extrabold text-[85px] text-center'>
                         Select Option
                     </h1> <br/>
                     <br/> <br/>
                     <div className='mx-auto flex justify-center space-x-35'>
                         <div className='flex flex-col items-center'>
-                            <div className=" font-Montserrat font-semibold text-[25px] text-center text-white 
+                            <div className=" font-Montserrat font-bold text-[35px] text-center text-white 
                                 px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
                                 bg-[#8C0DF0] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
                                 hover:border-[#5AF0D5]  hover:text-[#5AF0D5]">
                                 <Link>
                                 <div className='flex justify-center'>
-                                    <img className="w-64 h-40 object-cover rounded-3xl" src={landmark} alt="" />  
+                                    <img className="w-80 h-60 object-cover rounded-3xl" src={landmark} alt="" />  
                                 </div>
                                 <span>Locate <br /> Destination</span>
                                 </Link> 
@@ -46,17 +46,17 @@ const Options = () => {
                         </div>
                         <br/> <br/> <br/> <br/>
                         <div className='flex flex-col items-center'>
-                            <div className="font-Montserrat font-semibold text-[25px] text-center text-white 
+                            <div className="font-Montserrat font-bold text-[35px] text-center text-white 
                                 px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
                                 bg-[#0D70B1] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
                                 hover:border-[#5AF0D5] hover:text-[#5AF0D5]">
                            
                             <   Link> 
                             <div className='flex justify-center'>
-                               <img className="w-64 h-40 object-cover rounded-3xl" src={route} alt="" />  
+                               <img className="w-80 h-60 object-cover rounded-3xl" src={route} alt="" />  
                             </div>
                             
-                            <span className='text-center'>View <br />PUV Routes</span>
+                            <span>View <br />PUV Routes</span>
                             </Link> 
                             </div>
                         </div>
