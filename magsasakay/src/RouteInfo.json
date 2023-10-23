@@ -15,7 +15,10 @@
       {"lon": 122.570010, "lat": 10.692076},
       {"lon": 122.570486, "lat": 10.694772}
     ],
+<<<<<<< Updated upstream
     "color": "blue",
+=======
+>>>>>>> Stashed changes
     "establishments": [
       {
         "name": "Iloilo - Guimaras Ferry Wharf",
@@ -53,7 +56,11 @@
         "lon": 122.572459,
         "lat": 10.693186
       }
+<<<<<<< Updated upstream
     ]
+=======
+    ]  
+>>>>>>> Stashed changes
   },
   {
     "title": "Jeepney Route No. 02 - Calaparan Calumpang - Iloilo City Proper",
@@ -70,7 +77,10 @@
       {"lon": 122.569393, "lat": 10.696575},
       {"lon": 122.568200, "lat": 10.696186}
     ],
+<<<<<<< Updated upstream
     "color": "red",
+=======
+>>>>>>> Stashed changes
     "establishments": [
       {
         "name": "Calaparan Area",
@@ -128,7 +138,10 @@
       {"lon": 122.576390, "lat": 10.689915},
       {"lon": 122.582751, "lat": 10.692195}
     ],
+<<<<<<< Updated upstream
     "color": "orange",
+=======
+>>>>>>> Stashed changes
     "establishments": [
       {
         "name": "Central Philippine University",
@@ -182,7 +195,10 @@
       {"lon": 122.549564, "lat": 10.725207},
       {"lon": 122.538680, "lat": 10.752374}
     ],
+<<<<<<< Updated upstream
     "color": "violet",
+=======
+>>>>>>> Stashed changes
     "establishments": [
       {
         "name": "Brandy Museum",
@@ -244,7 +260,10 @@
       {"lon": 122.569271, "lat": 10.696421},
       {"lon": 122.566373, "lat": 10.695790}
     ],
+<<<<<<< Updated upstream
     "color": "yellow",
+=======
+>>>>>>> Stashed changes
     "establishments": [
       {
         "name": "Festive Walk Mall",
@@ -355,7 +374,10 @@
       {"lon": 122.551608, "lat": 10.709657},
       {"lon": 122.544042, "lat": 10.703873}
     ],
+<<<<<<< Updated upstream
     "color": "gray",
+=======
+>>>>>>> Stashed changes
     "establishments": [
       {
         "name": "Mohon Transport Terminal (Provincial Transport for Iloilo 1st District Destinations)",
