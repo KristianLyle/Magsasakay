@@ -37,10 +37,9 @@ const Options = () => {
                   className=" font-Montserrat font-bold text-[35px] text-center text-white 
                                 px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
                                 bg-[#8C0DF0] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
-<<<<<<< HEAD
-                                hover:border-[#5AF0D5]  hover:text-[#160E3D] glow"
+                                hover:border-[#5AF0D5]  hover:text-[#5AF0D5]"
                 >
-                  <Link>
+                  <Link to="/locate-destination">
                     <div className="flex justify-center">
                       <img
                         className="w-80 h-60 object-cover rounded-3xl"
@@ -60,7 +59,7 @@ const Options = () => {
                   className="font-Montserrat font-bold text-[35px] text-center text-white 
                                 px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
                                 bg-[#0D70B1] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
-                                hover:border-[#5AF0D5] hover:text-[#160E3D] glow"
+                                hover:border-[#5AF0D5] hover:text-[#5AF0D5]"
                 >
                   <Link to="/view-routes">
                     <div className="flex justify-center">
@@ -69,34 +68,6 @@ const Options = () => {
                         src={route}
                         alt=""
                       />
-=======
-                                hover:border-[#5AF0D5]  hover:text-[#5AF0D5]">
-                                <Link>
-                                <div className='flex justify-center'>
-                                    <img className="w-80 h-60 object-cover rounded-3xl" src={landmark} alt="" />  
-                                </div>
-                                <span>Locate <br /> Destination</span>
-                                </Link> 
-                            </div> 
-                        </div>
-                        <br/> <br/> <br/> <br/>
-                        <div className='flex flex-col items-center'>
-                            <div className="font-Montserrat font-bold text-[35px] text-center text-white 
-                                px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
-                                bg-[#0D70B1] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
-                                hover:border-[#5AF0D5] hover:text-[#5AF0D5]">
-                           
-                            <   Link> 
-                            <div className='flex justify-center'>
-                               <img className="w-80 h-60 object-cover rounded-3xl" src={route} alt="" />  
-                            </div>
-                            
-                            <span>View <br />PUV Routes</span>
-                            </Link> 
-                            </div>
-                        </div>
-                         <br/> <br/> <br/> <br/>  
->>>>>>> parent of 91f52ebf (Merge branch 'w/tailwind' into krt-test)
                     </div>
 
                     <span>
