@@ -6,7 +6,6 @@ import routeInfo from './RouteInfo.json';
 import RouteDropdown from './RouteDropdown';
 import L from 'leaflet';
 import logo from './marker.png';
-import v_bg from './img/v-bg.mp4';
 
 const customIcon = L.icon({
   iconUrl: logo,
@@ -56,57 +55,49 @@ const MapComponent = () => {
   }, [selectedRoute]);
 
   return (
-    <>
-    <div className="relative h-screen">
-      <video src={v_bg} autoPlay loop muted className='absolute w-full h-full object-cover z-0' />
-      <div className="absolute w-full h-full bg-gradient-to-t from-indigo-500 to-orange-500 z-5 opacity-60"></div>
-      <div className="relative z-10">
-        <div className='text-center ml-[30px]'>
-          <RouteDropdown
-            routes={routes}
-            selectedRoute={selectedRouteIndex}
-            onSelectRoute={setSelectedRouteIndex}
-          /> <br/>
-        </div>
-        <div className='items-center'>
-          <MapContainer center={[10.7202, 122.5621]} zoom={13} 
-            className='rounded-[30px] h-[450px] w-[700px] ml-[415px] shadow-lg shadow-black-500/40
-                      border-[5px] border-[#160E3D]'>
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            {route && (
-              <div className="items-center">
-                <Polyline positions={decodedGeometry} color="blue" weight={5} opacity={0.7}>
+    <div>
+      <div>
+        <RouteDropdown
+          routes={routes}
+          selectedRoute={selectedRouteIndex}
+          onSelectRoute={setSelectedRouteIndex}
+        />
+      </div>
+      <div>
+        <MapContainer center={[10.7202, 122.5621]} zoom={13} style={{ height: '500px', width: '500px' }}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          {route && (
+            <div>
+              <Polyline positions={decodedGeometry} color="blue" weight={5} opacity={0.7}>
+                <Popup>
+                  <div>
+                    <h3>{selectedRoute.title}</h3>
+                    <p>{selectedRoute.description}</p>
+                  </div>
+                </Popup>
+              </Polyline>
+              {selectedRoute.establishments.map((establishment, index) => (
+                <Marker
+                  key={index}
+                  position={[establishment.lat, establishment.lon]}
+                  icon={customIcon}
+                >
                   <Popup>
-                    <div className="items">
-                      <h3>{selectedRoute.title}</h3>
-                      <p>{selectedRoute.description}</p>
+                    <div>
+                      <h3>{establishment.name}</h3>
+                      <p>Type: {establishment.type}</p>
                     </div>
                   </Popup>
-                </Polyline>
-                {selectedRoute.establishments.map((establishment, index) => (
-                  <Marker
-                    key={index}
-                    position={[establishment.lat, establishment.lon]}
-                    icon={customIcon}
-                  >
-                    <Popup>
-                      <div>
-                        <h3>{establishment.name}</h3>
-                        <p>Type: {establishment.type}</p>
-                      </div>
-                    </Popup>
-                  </Marker>
-                ))}
-              </div>
-            )}
-          </MapContainer>
-        </div>
+                </Marker>
+              ))}
+            </div>
+          )}
+        </MapContainer>
       </div>
     </div>
-    </>
   );
 };
 
