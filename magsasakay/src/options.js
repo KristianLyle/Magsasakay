@@ -39,7 +39,7 @@ const Options = () => {
                                 bg-[#8C0DF0] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
                                 hover:border-[#5AF0D5]  hover:text-[#5AF0D5]"
                 >
-                  <Link to="/locate-destination">
+                  <Link to="/find-routes">
                     <div className="flex justify-center">
                       <img
                         className="w-80 h-60 object-cover rounded-3xl"

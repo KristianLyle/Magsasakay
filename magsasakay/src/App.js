@@ -4,7 +4,8 @@ import "./index.css";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import Home from "./home";
-import ViewRoutes from "./Maps";
+import FindRoute from "./FindRoute";
+import ViewRoutes from "./ViewRoutes";
 import Options from "./options";
 
 function App() {
@@ -20,11 +21,14 @@ function App() {
         <Route exact path="/home">
           <Home />
         </Route>
-        <Route exact path="/options">
+        <Route exact path="/routes">
           <Options />
         </Route>
-        <Route to="/view-routes">
+        <Route exact path="/view-routes">
           <ViewRoutes />
+        </Route>
+        <Route exact path="/find-routes">
+          <FindRoute />
         </Route>
       </Switch>
     </Router>
