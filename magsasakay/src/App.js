@@ -20,11 +20,16 @@ function App() {
         <Route exact path="/home">
           <Home />
         </Route>
+<<<<<<< HEAD
         <Route exact path="/options">
           <Options />
         </Route>
         <Route to="/view-routes">
           <ViewRoutes />
+=======
+        <Route exact path= '/routes'>
+          <Options/>
+>>>>>>> parent of 91f52ebf (Merge branch 'w/tailwind' into krt-test)
         </Route>
       </Switch>
     </Router>

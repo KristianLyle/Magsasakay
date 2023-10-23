@@ -10,14 +10,13 @@ import routes from './img/routes.png';
 const Home = () => {
     return ( 
         <>
-            <Router >
+            <Router>
                 <NavBar/>
                 <Switch>
                     <Route exact path = '/'/>
                 </Switch>
             </Router>
-
-            <div className='bg-home_bg bg-no-repeat bg-cover z-10'>
+            <div className='bg-home_bg bg-no-repeat bg-cover'>
             <div className="container h-screen w-[150%]">
                 <div className="">
                     <br/>
@@ -39,22 +38,22 @@ const Home = () => {
 
                     <ul className='grid grid-cols-[repeat(auto-fill,_minmax(100px,_1fr))]
                      text-white font-Montserrat text-center items-center ml-[100px] gap-x-[50px]'>
-                        <li className='w-[175px] text-[35px] flex flex-col drop-shadow-2xl'>
+                        <li className='w-[175px] text-[35px] flex flex-col'>
                             <Link className='flex flex-col' to="/about">
                                 <img src={about} alt='about'/>
                                 <span>About</span>
                             </Link>
                         </li>
                         <br/>
-                        <li className='w-[175px] text-[35px] flex flex-col drop-shadow-2xl'>
+                        <li className='w-[175px] text-[35px] flex flex-col'>
                             <Link className='flex flex-col' to="/profile">
                                 <img src={profile} alt='profile'/>
                                 <span>Profile</span>
                             </Link>
                         </li>
                         <br/>
-                        <li className='w-[175px] text-[35px] flex flex-col transform hover:scale-110 hover:font-semibold hover:text-[orange] drop-shadow-2xl'>
-                            <Link className='flex flex-col' to='/options'>
+                        <li className='w-[175px] text-[35px] flex flex-col'>
+                            <Link className='flex flex-col' to="/routes">
                                 <img src={routes} alt='routes'/>
                                 <span>Routes</span>
                             </Link>
@@ -63,7 +62,7 @@ const Home = () => {
                 </div>
                 <div>
                 </div>
-                </div>
+            </div>
             </div>
         </>
      );
