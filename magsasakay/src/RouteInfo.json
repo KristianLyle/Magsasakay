@@ -52,42 +52,6 @@
 				"type": "Establishment",
 				"lon": 122.572459,
 				"lat": 10.693186
-			},
-			{
-				"name": "Plazoleta Gay",
-				"type": "Establishment",
-				"lon": 122.56904,
-				"lat": 10.69648
-			},
-			{
-				"name": "Iloilo Central Market",
-				"type": "Establishment",
-				"lon": 122.5697,
-				"lat": 10.6929
-			},
-			{
-				"name": "Goldberry Lite Hotel",
-				"type": "Establishment",
-				"lon": 122.570258919,
-				"lat": 10.6930326829
-			},
-			{
-				"name": "Cabalum Western College",
-				"type": "College",
-				"lon": 122.5686,
-				"lat": 10.7012
-			},
-			{
-				"name": "Gaisano Capital Guanco",
-				"type": "Establishment",
-				"lon": 122.5699,
-				"lat": 10.6922
-			},
-			{
-				"name": "Sunburst Park",
-				"type": "Establishment",
-				"lon": 122.5719,
-				"lat": 10.6938
 			}
 		]
 	},
@@ -133,7 +97,7 @@
 				"lat": 10.68935
 			},
 			{
-				"name": "Iloilo City Social Hygiene Clinic",
+				"name": "Iloilo City Social Hygiene ClinicUniversity of Iloilo – PHINMA",
 				"type": "Establishment",
 				"lon": 122.55831,
 				"lat": 10.69352
@@ -143,54 +107,6 @@
 				"type": "College",
 				"lon": 122.569591,
 				"lat": 10.692006
-			},
-			{
-				"name": "Baluarte Elementary School",
-				"type": "School",
-				"lon": 122.54831,
-				"lat": 10.69223
-			},
-			{
-				"name": "Tanza Church",
-				"type": "Establishment",
-				"lon": 122.5593,
-				"lat": 10.6933
-			},
-			{
-				"name": "Robinsons Place Iloilo",
-				"type": "Establishment",
-				"lon": 122.5662,
-				"lat": 10.6941
-			},
-			{
-				"name": "Go Hotel Iloilo",
-				"type": "Establishment",
-				"lon": 122.567178,
-				"lat": 10.6932968
-			},
-			{
-				"name": "Iloilo Central Market",
-				"type": "Establishment",
-				"lon": 122.5697,
-				"lat": 10.6929
-			},
-			{
-				"name": " Plaza Libertad",
-				"type": "Establishment",
-				"lon": 122.5737,
-				"lat": 10.6926
-			},
-			{
-				"name": "Goldberry Lite Hotel",
-				"type": "Establishment",
-				"lon": 122.570258919,
-				"lat": 10.6930326829
-			},
-			{
-				"name": "Socorro Drug",
-				"type": "Establishment",
-				"lon": 122.5692,
-				"lat": 10.6962
 			}
 		]
 	},
@@ -249,42 +165,6 @@
 				"type": "Establishment",
 				"lon": 122.5627,
 				"lat": 10.7116
-			},
-			{
-				"name": "Christ the King Memorial Park",
-				"type": "Establishment",
-				"lon": 122.54124,
-				"lat": 10.7458
-			},
-			{
-				"name": "Iloilo Mission Hospital",
-				"type": "Establishment",
-				"lon": 122.56,
-				"lat": 10.7143
-			},
-			{
-				"name": "Metro Iloilo Water District",
-				"type": "Establishment",
-				"lon": 122.56818,
-				"lat": 10.70518
-			},
-			{
-				"name": "City Mall Parola",
-				"type": "Establishment",
-				"lon": 122.583,
-				"lat": 10.6921
-			},
-			{
-				"name": "Plazoleta Gay",
-				"type": "Establishment",
-				"lon": 122.56904,
-				"lat": 10.69648
-			},
-			{
-				"name": "Atrium Mall",
-				"type": "Establishment",
-				"lon": 122.5582,
-				"lat": 10.7243
 			}
 		]
 	},
@@ -339,36 +219,6 @@
 				"type": "College",
 				"lon": 122.5369702,
 				"lat": 10.7374964
-			},
-			{
-				"name": "St. Joseph School Iloilo",
-				"type": "Establishment",
-				"lon": 122.5532,
-				"lat": 10.7047
-			},
-			{
-				"name": "Iloilo Fish Port Complex",
-				"type": "Establishment",
-				"lon": 122.55745,
-				"lat": 10.68935
-			},
-			{
-				"name": "Christ the King Memorial Park",
-				"type": "Establishment",
-				"lon": 122.54124,
-				"lat": 10.7458
-			},
-			{
-				"name": "Iloilo Doctors’ College",
-				"type": "Establishment",
-				"lon": 122.5535,
-				"lat": 10.6958
-			},
-			{
-				"name": "Iloilo Doctors’ Hospital",
-				"type": "Establishment",
-				"lon": 122.5545,
-				"lat": 10.6966
 			}
 		]
 	},
@@ -431,36 +281,6 @@
 				"type": "School",
 				"lon": 122.56545,
 				"lat": 10.70052
-			},
-			{
-				"name": "University of San Agustin",
-				"type": "School",
-				"lon": 122.5629,
-				"lat": 10.6995
-			},
-			{
-				"name": "Goldberry Lite Hotel",
-				"type": "Establishment",
-				"lon": 122.570258919,
-				"lat": 10.6930326829
-			},
-			{
-				"name": "Socorro Drug",
-				"type": "Establishment",
-				"lon": 122.5692,
-				"lat": 10.6962
-			},
-			{
-				"name": " Plaza Libertad",
-				"type": "Establishment",
-				"lon": 122.5737,
-				"lat": 10.6926
-			},
-			{
-				"name": "Iloilo City Hall",
-				"type": "Establishment",
-				"lon": 122.5621,
-				"lat": 10.7202
 			}
 		]
 	},
@@ -516,18 +336,6 @@
 				"type": "Establishment",
 				"lon": 122.5185,
 				"lat": 10.6897
-			},
-			{
-				"name": "Iloilo Supermart Villa",
-				"type": "Establishment",
-				"lon": 122.52344,
-				"lat": 10.68794
-			},
-			{
-				"name": "Jaro Plaza",
-				"type": "Plaza",
-				"lon": 122.5573,
-				"lat": 10.7244
 			}
 		]
 	},
@@ -562,10 +370,10 @@
 				"lat": 10.7144
 			},
 			{
-				"name": "One Spatial Iloilo",
-				"type": "Establishment",
-				"lon": 122.5428,
-				"lat": 10.7014
+				"name": "Cafe Z",
+				"type": "Cafe",
+				"lon": 122.5382,
+				"lat": 10.6963
 			},
 			{
 				"name": "Festive Walk Mall",
@@ -590,42 +398,6 @@
 				"type": "School",
 				"lon": 122.517104,
 				"lat": 10.689309
-			},
-			{
-				"name": "Camiña Balay nga Bato",
-				"type": "Establishment",
-				"lon": 122.5149,
-				"lat": 10.6896
-			},
-			{
-				"name": "Asilo de Molo",
-				"type": "Establishment",
-				"lon": 122.5362,
-				"lat": 10.6931
-			},
-			{
-				"name": "Wangwang Carwash Bar and Lounge",
-				"type": "Establishment",
-				"lon": 122.5440724,
-				"lat": 10.7027447
-			},
-			{
-				"name": "Plazuela Dos",
-				"type": "Establishment",
-				"lon": 122.563991547,
-				"lat": 10.6968970608
-			},
-			{
-				"name": "Solana Premiere",
-				"type": "Establishment",
-				"lon": 122.5441,
-				"lat": 10.7019
-			},
-			{
-				"name": "Atria Park District",
-				"type": "Establishment",
-				"lon": 122.5488029,
-				"lat": 10.7067683
 			}
 		]
 	}
