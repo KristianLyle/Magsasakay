@@ -1,426 +1,632 @@
 [
-  {
-    "title": "Jeepney Route No. 01 - Bo. Obrero - Iloilo City Proper Loop",
-    "description": "This route goes from Lapuz, Barrio Obrero area to University of Iloilo PHINMA.",
-    "coordinates": [
-      {"lon": 122.586769, "lat": 10.698412},
-      {"lon": 122.585744, "lat": 10.697221},
-      {"lon": 122.583435, "lat": 10.697274},
-      {"lon": 122.574346, "lat": 10.701791},
-      {"lon": 122.569179, "lat": 10.701634},
-      {"lon": 122.569092, "lat": 10.696519},
-      {"lon": 122.570956, "lat": 10.693991},
-      {"lon": 122.572557, "lat": 10.692917},
-      {"lon": 122.571430, "lat": 10.692004},
-      {"lon": 122.570010, "lat": 10.692076},
-      {"lon": 122.570486, "lat": 10.694772}
-    ],
-<<<<<<< Updated upstream
-    "color": "blue",
-=======
->>>>>>> Stashed changes
-    "establishments": [
-      {
-        "name": "Iloilo - Guimaras Ferry Wharf",
-        "type": "Pier",
-        "lon": 122.578595,
-        "lat": 10.701233
-      },
-      {
-        "name": "National Statistics Office - Iloilo",
-        "type": "Establishment",
-        "lon": 122.569264,
-        "lat": 10.698869
-      },
-      {
-        "name": "Hua Siong College of Iloilo",
-        "type": "College",
-        "lon": 122.568986,
-        "lat": 10.696941
-      },
-      {
-        "name": "Calle Real and Old Iloilo Business District",
-        "type": "Establishment",
-        "lon": 122.569804,
-        "lat": 10.695513
-      },
-      {
-        "name": "University of Iloilo PHINMA",
-        "type": "College",
-        "lon": 122.569591,
-        "lat": 10.692006
-      },
-      {
-        "name": "Museum of Philippine Economic History",
-        "type": "Establishment",
-        "lon": 122.572459,
-        "lat": 10.693186
-      }
-<<<<<<< Updated upstream
-    ]
-=======
-    ]  
->>>>>>> Stashed changes
-  },
-  {
-    "title": "Jeepney Route No. 02 - Calaparan Calumpang - Iloilo City Proper",
-    "description": "This route goes from Villa Arevalo Calaparan Area, to Iloilo City Proper.",
-    "coordinates": [
-      {"lon": 122.519538, "lat": 10.680312},
-      {"lon": 122.549347, "lat": 10.692029},
-      {"lon": 122.558497, "lat": 10.693299},
-      {"lon": 122.564464, "lat": 10.691909},
-      {"lon": 122.564755, "lat": 10.693732},
-      {"lon": 122.568882, "lat": 10.696364},
-      {"lon": 122.572437, "lat": 10.693006},
-      {"lon": 122.573650,"lat":  10.694378},
-      {"lon": 122.569393, "lat": 10.696575},
-      {"lon": 122.568200, "lat": 10.696186}
-    ],
-<<<<<<< Updated upstream
-    "color": "red",
-=======
->>>>>>> Stashed changes
-    "establishments": [
-      {
-        "name": "Calaparan Area",
-        "type": "Establishment",
-        "lon": 122.5221956,
-        "lat": 10.6876285
-      },
-      {
-        "name": "Green Dragon Lodge",
-        "type": "Establishment",
-        "lon": 122.55303,
-        "lat": 10.69271
-      }, 
-      {
-        "name": "Sofia Lodge",
-        "type": "Establishment",
-        "lon": 122.5539,
-        "lat": 10.6925
-      }, 
-      {
-        "name": "Iloilo Fish Port Complex",
-        "type": "Establishment",
-        "lon": 122.55745,
-        "lat": 10.68935
-      }, 
-      {
-        "name": "Iloilo City Social Hygiene ClinicUniversity of Iloilo – PHINMA",
-        "type": "Establishment",
-        "lon": 122.55831,
-        "lat": 10.69352
-      }, 
-      {
-        "name": "University of Iloilo – PHINMA",
-        "type": "College",
-        "lon": 122.569591,
-        "lat": 10.692006
-      }
-    ]  
-  },
-  {
-    "title": "Jeepney Route No. 03 - Ungka - Iloilo City Proper via CPU",
-    "description": "This is the route from Ungka to Iloilo City Proper via CPU.",
-    "coordinates": [
-      {"lon": 122.538587, "lat": 10.752370},
-      {"lon": 122.539349, "lat": 10.745288},
-      {"lon": 122.539283, "lat": 10.742690},
-      {"lon": 122.548297, "lat": 10.734053},
-      {"lon": 122.557081, "lat": 10.725571},
-      {"lon": 122.556328, "lat": 10.724740},
-      {"lon": 122.558435, "lat": 10.722115},
-      {"lon": 122.566120, "lat": 10.710192},
-      {"lon": 122.568136, "lat": 10.702219},
-      {"lon": 122.569114, "lat": 10.700666},
-      {"lon": 122.570092, "lat": 10.695251},
-      {"lon": 122.576390, "lat": 10.689915},
-      {"lon": 122.582751, "lat": 10.692195}
-    ],
-<<<<<<< Updated upstream
-    "color": "orange",
-=======
->>>>>>> Stashed changes
-    "establishments": [
-      {
-        "name": "Central Philippine University",
-        "type": "College",
-        "lon": 122.5469,
-        "lat": 10.7314
-      },
-      {
-        "name": "Jaro Plaza",
-        "type": "Plaza",
-        "lon": 122.5573,
-        "lat": 10.7244
-      },
-      {
-        "name": "Robinsons Place Jaro",
-        "type": "Establishment",
-        "lon": 122.5581,
-        "lat": 10.7209
-      }, 
-      {
-        "name": "West Visayas State University",
-        "type": "College",
-        "lon": 122.5624,
-        "lat": 10.7137
-      }, 
-      {
-        "name": "Gaisano City Iloilo",
-        "type": "Establishment",
-        "lon": 122.5670,
-        "lat": 10.7073
-      }, 
-      {
-        "name": "Iloilo Sports Complex",
-        "type": "Establishment",
-        "lon": 122.5627,
-        "lat": 10.7116
-      }
-    ]
-  },
-  {
-    "title": "Jeepney Route No. 04 - Ungka - Iloilo City Proper via Diversion/Festive Walk Transport Hub Loop",
-    "description": "This is the route from ITGSI Terminal to Iloilo City Proper loop.",
-    "coordinates": [
-      {"lon": 122.538560, "lat": 10.752372},
-      {"lon": 122.547841, "lat": 10.726814},
-      {"lon": 122.545749, "lat": 10.714982},
-      {"lon": 122.552095, "lat": 10.719482},
-      {"lon": 122.554149, "lat": 10.699841},
-      {"lon": 122.555298, "lat": 10.692830},
-      {"lon": 122.555368, "lat": 10.694353},
-      {"lon": 122.549564, "lat": 10.725207},
-      {"lon": 122.538680, "lat": 10.752374}
-    ],
-<<<<<<< Updated upstream
-    "color": "violet",
-=======
->>>>>>> Stashed changes
-    "establishments": [
-      {
-        "name": "Brandy Museum",
-        "type": "Establishment",
-        "lon": 122.5482,
-        "lat": 10.7184
-      },
-      {
-        "name": "Festive Walk Mall",
-        "type": "Establishment",
-        "lon": 122.5470,
-        "lat": 10.7178
-      }, 
-      {
-        "name": "Diversion 21 Hotel",
-        "type": "Establishment",
-        "lon": 122.5528,
-        "lat": 10.7072
-      }, 
-      {
-        "name": "SM City Iloilo",
-        "type": "Establishment",
-        "lon": 122.5510,
-        "lat": 10.7144
-      }, 
-      {
-        "name": "Iloilo Museum of Contemporary Art",
-        "type": "Establishment",
-        "lon": 122.54838,
-        "lat": 10.71821
-      }, 
-      {
-        "name": "University of San Agustin – Sambag Campus",
-        "type": "College",
-        "lon": 122.5369702,
-        "lat": 10.7374964
-      }
-    ]
-  },
-  {
-    "title": "Jeepney Route No. 05 - Festive Walk Transport Hub – Iloilo City Proper via SM City",
-    "description": "This is the route from Mandurriao to Iloilo City Proper via SM City.",
-    "coordinates": [
-      {"lon": 122.547046, "lat": 10.717456},
-      {"lon": 122.548325, "lat": 10.719743},
-      {"lon": 122.549058, "lat": 10.722214},
-      {"lon": 122.549583, "lat": 10.724812},
-      {"lon": 122.554140, "lat": 10.699851},
-      {"lon": 122.555778, "lat": 10.699928},
-      {"lon": 122.564657, "lat": 10.701033},
-      {"lon": 122.564782, "lat": 10.697718},
-      {"lon": 122.566305, "lat": 10.697887},
-      {"lon": 122.566373, "lat": 10.695790},
-      {"lon": 122.568940, "lat": 10.696378},
-      {"lon": 122.569117, "lat": 10.692263},
-      {"lon": 122.571213, "lat": 10.692019},
-      {"lon": 122.573809, "lat": 10.691759},
-      {"lon": 122.570758, "lat": 10.694475},
-      {"lon": 122.569271, "lat": 10.696421},
-      {"lon": 122.566373, "lat": 10.695790}
-    ],
-<<<<<<< Updated upstream
-    "color": "yellow",
-=======
->>>>>>> Stashed changes
-    "establishments": [
-      {
-        "name": "Festive Walk Mall",
-        "type": "Establishment",
-        "lon": 122.5470,
-        "lat": 10.7178
-      },
-      {
-        "name": "Highway 21 Hotel",
-        "type": "Establishment",
-        "lon": 122.5573,
-        "lat": 10.69956
-      }, 
-      {
-        "name": "Zuri Hotel",
-        "type": "Establishment",
-        "lon": 122.5525,
-        "lat": 10.7160
-      }, 
-      {
-        "name": "SM City Iloilo",
-        "type": "Establishment",
-        "lon": 122.5510,
-        "lat": 10.7144
-      }, 
-      {
-        "name": "Mabini Elementary School",
-        "type": "School",
-        "lon": 122.564807985 ,
-        "lat": 10.7001812585
-      }, 
-      {
-        "name": "Iloilo Central Elementrary School",
-        "type": "School",
-        "lon": 122.56545,
-        "lat": 10.70052
-      }
-    ]
-  },
-  {
-    "title": "Jeepney Route No. 20 - Villa - Jaro via Sooc/Onate/Festive Walk Transport Hub",
-    "description": "This is a circular route through Villa - Jaro.",
-    "coordinates": [
-      {"lon": 122.521105, "lat": 10.688969},
-      {"lon": 122.516386, "lat": 10.688933},
-      {"lon": 122.516671, "lat": 10.687041},
-      {"lon": 122.521543, "lat": 10.687607},
-      {"lon": 122.521753, "lat": 10.701125},
-      {"lon": 122.525941, "lat": 10.706521},
-      {"lon": 122.547185, "lat": 10.718549},
-      {"lon": 122.545800, "lat": 10.714998},
-      {"lon": 122.555554, "lat": 10.723613},
-      {"lon": 122.555478, "lat": 10.723516}
-    ],
-    "color": "green",
-    "establishments": [
-      {
-        "name": "Villa Arevalo Plaza",
-        "type": "Establishment",
-        "lon": 122.5159,
-        "lat": 10.6886
-      },
-      {
-        "name": "Jaro Cathedral",
-        "type": "Establishment",
-        "lon": 122.5561,
-        "lat": 10.7234
-      }, 
-      {
-        "name": "Arevalo Elementary School",
-        "type": "School",
-        "lon": 122.517104,
-        "lat": 10.689309
-      }, 
-      {
-        "name": "Puregold Jaro",
-        "type": "Establishment",
-        "lon": 122.55656,
-        "lat": 10.72497
-      }, 
-      {
-        "name": "SM Savemore Jaro",
-        "type": "Establishment",
-        "lon": 122.563463906,
-        "lat": 10.7410631608
-      },
-      {
-        "name": "Gloryville Subdivision Jaro",
-        "type": "Establishment",
-        "lon": 122.5185,
-        "lat": 10.6897
-      }
-    ]
-  },
-  {
-    "title": "Jeepney Route No. 23 - Mohon – Mandurriao Business District",
-    "description": "This is the route from Mohon Terminal to Diversion Road loop.",
-    "coordinates": [
-      {"lon": 122.500033, "lat": 10.693395},
-      {"lon": 122.507534, "lat": 10.691465},
-      {"lon": 122.521695, "lat": 10.688961},
-      {"lon": 122.535611, "lat": 10.692513},
-      {"lon": 122.542796, "lat": 10.700945},
-      {"lon": 122.542585, "lat": 10.707366},
-      {"lon": 122.544584, "lat": 10.712431},
-      {"lon": 122.547769, "lat": 10.718530},
-      {"lon": 122.552108, "lat": 10.719488},
-      {"lon": 122.551608, "lat": 10.709657},
-      {"lon": 122.544042, "lat": 10.703873}
-    ],
-<<<<<<< Updated upstream
-    "color": "gray",
-=======
->>>>>>> Stashed changes
-    "establishments": [
-      {
-        "name": "Mohon Transport Terminal (Provincial Transport for Iloilo 1st District Destinations)",
-        "type": "Terminal",
-        "lon": 122.49975,
-        "lat": 10.69268
-      },
-      {
-        "name": "SM City Iloilo",
-        "type": "Establishment",
-        "lon": 122.5510,
-        "lat": 10.7144
-      }, 
-      {
-        "name": "Cafe Z",
-        "type": "Cafe",
-        "lon": 122.5382,
-        "lat": 10.6963
-      }, 
-      {
-        "name": "Festive Walk Mall",
-        "type": "Establishment",
-        "lon": 122.5470,
-        "lat": 10.7178
-      },
-      {
-        "name": "Qualimed Hospital",
-        "type": "Establishment",
-        "lon": 122.54770742,
-        "lat": 10.70676157
-      },
-      {
-        "name": "Ateneo de Iloilo",
-        "type": "School",
-        "lon": 122.5475,
-        "lat": 10.7055
-      },
-      {
-        "name": "Arevalo Elementary School",
-        "type": "School",
-        "lon": 122.517104,
-        "lat": 10.689309
-      }
-    ]
-  }
+	{
+		"title": "Jeepney Route No. 01 - Bo. Obrero - Iloilo City Proper Loop",
+		"description": "This route goes from Lapuz, Barrio Obrero area to University of Iloilo PHINMA.",
+		"coordinates": [
+			{ "lon": 122.586769, "lat": 10.698412 },
+			{ "lon": 122.585744, "lat": 10.697221 },
+			{ "lon": 122.583435, "lat": 10.697274 },
+			{ "lon": 122.574346, "lat": 10.701791 },
+			{ "lon": 122.569179, "lat": 10.701634 },
+			{ "lon": 122.569092, "lat": 10.696519 },
+			{ "lon": 122.570956, "lat": 10.693991 },
+			{ "lon": 122.572557, "lat": 10.692917 },
+			{ "lon": 122.57143, "lat": 10.692004 },
+			{ "lon": 122.57001, "lat": 10.692076 },
+			{ "lon": 122.570486, "lat": 10.694772 }
+		],
+		"color": "blue",
+		"establishments": [
+			{
+				"name": "Iloilo - Guimaras Ferry Wharf",
+				"type": "Pier",
+				"lon": 122.578595,
+				"lat": 10.701233
+			},
+			{
+				"name": "National Statistics Office - Iloilo",
+				"type": "Establishment",
+				"lon": 122.569264,
+				"lat": 10.698869
+			},
+			{
+				"name": "Hua Siong College of Iloilo",
+				"type": "College",
+				"lon": 122.568986,
+				"lat": 10.696941
+			},
+			{
+				"name": "Calle Real and Old Iloilo Business District",
+				"type": "Establishment",
+				"lon": 122.569804,
+				"lat": 10.695513
+			},
+			{
+				"name": "University of Iloilo PHINMA",
+				"type": "College",
+				"lon": 122.569591,
+				"lat": 10.692006
+			},
+			{
+				"name": "Museum of Philippine Economic History",
+				"type": "Establishment",
+				"lon": 122.572459,
+				"lat": 10.693186
+			},
+			{
+				"name": "Plazoleta Gay",
+				"type": "Establishment",
+				"lon": 122.56904,
+				"lat": 10.69648
+			},
+			{
+				"name": "Iloilo Central Market",
+				"type": "Establishment",
+				"lon": 122.5697,
+				"lat": 10.6929
+			},
+			{
+				"name": "Goldberry Lite Hotel",
+				"type": "Establishment",
+				"lon": 122.570258919,
+				"lat": 10.6930326829
+			},
+			{
+				"name": "Cabalum Western College",
+				"type": "College",
+				"lon": 122.5686,
+				"lat": 10.7012
+			},
+			{
+				"name": "Gaisano Capital Guanco",
+				"type": "Establishment",
+				"lon": 122.5699,
+				"lat": 10.6922
+			},
+			{
+				"name": "Sunburst Park",
+				"type": "Establishment",
+				"lon": 122.5719,
+				"lat": 10.6938
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 02 - Calaparan Calumpang - Iloilo City Proper",
+		"description": "This route goes from Villa Arevalo Calaparan Area, to Iloilo City Proper.",
+		"coordinates": [
+			{ "lon": 122.519538, "lat": 10.680312 },
+			{ "lon": 122.549347, "lat": 10.692029 },
+			{ "lon": 122.558497, "lat": 10.693299 },
+			{ "lon": 122.564464, "lat": 10.691909 },
+			{ "lon": 122.564755, "lat": 10.693732 },
+			{ "lon": 122.568882, "lat": 10.696364 },
+			{ "lon": 122.572437, "lat": 10.693006 },
+			{ "lon": 122.57365, "lat": 10.694378 },
+			{ "lon": 122.569393, "lat": 10.696575 },
+			{ "lon": 122.5682, "lat": 10.696186 }
+		],
+		"color": "red",
+		"establishments": [
+			{
+				"name": "Calaparan Area",
+				"type": "Establishment",
+				"lon": 122.5221956,
+				"lat": 10.6876285
+			},
+			{
+				"name": "Green Dragon Lodge",
+				"type": "Establishment",
+				"lon": 122.55303,
+				"lat": 10.69271
+			},
+			{
+				"name": "Sofia Lodge",
+				"type": "Establishment",
+				"lon": 122.5539,
+				"lat": 10.6925
+			},
+			{
+				"name": "Iloilo Fish Port Complex",
+				"type": "Establishment",
+				"lon": 122.55745,
+				"lat": 10.68935
+			},
+			{
+				"name": "Iloilo City Social Hygiene Clinic",
+				"type": "Establishment",
+				"lon": 122.55831,
+				"lat": 10.69352
+			},
+			{
+				"name": "University of Iloilo – PHINMA",
+				"type": "College",
+				"lon": 122.569591,
+				"lat": 10.692006
+			},
+			{
+				"name": "Baluarte Elementary School",
+				"type": "School",
+				"lon": 122.54831,
+				"lat": 10.69223
+			},
+			{
+				"name": "Tanza Church",
+				"type": "Establishment",
+				"lon": 122.5593,
+				"lat": 10.6933
+			},
+			{
+				"name": "Robinsons Place Iloilo",
+				"type": "Establishment",
+				"lon": 122.5662,
+				"lat": 10.6941
+			},
+			{
+				"name": "Go Hotel Iloilo",
+				"type": "Establishment",
+				"lon": 122.567178,
+				"lat": 10.6932968
+			},
+			{
+				"name": "Iloilo Central Market",
+				"type": "Establishment",
+				"lon": 122.5697,
+				"lat": 10.6929
+			},
+			{
+				"name": " Plaza Libertad",
+				"type": "Establishment",
+				"lon": 122.5737,
+				"lat": 10.6926
+			},
+			{
+				"name": "Goldberry Lite Hotel",
+				"type": "Establishment",
+				"lon": 122.570258919,
+				"lat": 10.6930326829
+			},
+			{
+				"name": "Socorro Drug",
+				"type": "Establishment",
+				"lon": 122.5692,
+				"lat": 10.6962
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 03 - Ungka - Iloilo City Proper via CPU",
+		"description": "This is the route from Ungka to Iloilo City Proper via CPU.",
+		"coordinates": [
+			{ "lon": 122.538587, "lat": 10.75237 },
+			{ "lon": 122.539349, "lat": 10.745288 },
+			{ "lon": 122.539283, "lat": 10.74269 },
+			{ "lon": 122.548297, "lat": 10.734053 },
+			{ "lon": 122.557081, "lat": 10.725571 },
+			{ "lon": 122.556328, "lat": 10.72474 },
+			{ "lon": 122.558435, "lat": 10.722115 },
+			{ "lon": 122.56612, "lat": 10.710192 },
+			{ "lon": 122.568136, "lat": 10.702219 },
+			{ "lon": 122.569114, "lat": 10.700666 },
+			{ "lon": 122.570092, "lat": 10.695251 },
+			{ "lon": 122.57639, "lat": 10.689915 },
+			{ "lon": 122.582751, "lat": 10.692195 }
+		],
+		"color": "orange",
+		"establishments": [
+			{
+				"name": "Central Philippine University",
+				"type": "College",
+				"lon": 122.5469,
+				"lat": 10.7314
+			},
+			{
+				"name": "Jaro Plaza",
+				"type": "Plaza",
+				"lon": 122.5573,
+				"lat": 10.7244
+			},
+			{
+				"name": "Robinsons Place Jaro",
+				"type": "Establishment",
+				"lon": 122.5581,
+				"lat": 10.7209
+			},
+			{
+				"name": "West Visayas State University",
+				"type": "College",
+				"lon": 122.5624,
+				"lat": 10.7137
+			},
+			{
+				"name": "Gaisano City Iloilo",
+				"type": "Establishment",
+				"lon": 122.567,
+				"lat": 10.7073
+			},
+			{
+				"name": "Iloilo Sports Complex",
+				"type": "Establishment",
+				"lon": 122.5627,
+				"lat": 10.7116
+			},
+			{
+				"name": "Christ the King Memorial Park",
+				"type": "Establishment",
+				"lon": 122.54124,
+				"lat": 10.7458
+			},
+			{
+				"name": "Iloilo Mission Hospital",
+				"type": "Establishment",
+				"lon": 122.56,
+				"lat": 10.7143
+			},
+			{
+				"name": "Metro Iloilo Water District",
+				"type": "Establishment",
+				"lon": 122.56818,
+				"lat": 10.70518
+			},
+			{
+				"name": "City Mall Parola",
+				"type": "Establishment",
+				"lon": 122.583,
+				"lat": 10.6921
+			},
+			{
+				"name": "Plazoleta Gay",
+				"type": "Establishment",
+				"lon": 122.56904,
+				"lat": 10.69648
+			},
+			{
+				"name": "Atrium Mall",
+				"type": "Establishment",
+				"lon": 122.5582,
+				"lat": 10.7243
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 04 - Ungka - Iloilo City Proper via Diversion/Festive Walk Transport Hub Loop",
+		"description": "This is the route from ITGSI Terminal to Iloilo City Proper loop.",
+		"coordinates": [
+			{ "lon": 122.53856, "lat": 10.752372 },
+			{ "lon": 122.547841, "lat": 10.726814 },
+			{ "lon": 122.545749, "lat": 10.714982 },
+			{ "lon": 122.552095, "lat": 10.719482 },
+			{ "lon": 122.554149, "lat": 10.699841 },
+			{ "lon": 122.555298, "lat": 10.69283 },
+			{ "lon": 122.555368, "lat": 10.694353 },
+			{ "lon": 122.549564, "lat": 10.725207 },
+			{ "lon": 122.53868, "lat": 10.752374 }
+		],
+		"color": "violet",
+		"establishments": [
+			{
+				"name": "Brandy Museum",
+				"type": "Establishment",
+				"lon": 122.5482,
+				"lat": 10.7184
+			},
+			{
+				"name": "Festive Walk Mall",
+				"type": "Establishment",
+				"lon": 122.547,
+				"lat": 10.7178
+			},
+			{
+				"name": "Diversion 21 Hotel",
+				"type": "Establishment",
+				"lon": 122.5528,
+				"lat": 10.7072
+			},
+			{
+				"name": "SM City Iloilo",
+				"type": "Establishment",
+				"lon": 122.551,
+				"lat": 10.7144
+			},
+			{
+				"name": "Iloilo Museum of Contemporary Art",
+				"type": "Establishment",
+				"lon": 122.54838,
+				"lat": 10.71821
+			},
+			{
+				"name": "University of San Agustin – Sambag Campus",
+				"type": "College",
+				"lon": 122.5369702,
+				"lat": 10.7374964
+			},
+			{
+				"name": "St. Joseph School Iloilo",
+				"type": "Establishment",
+				"lon": 122.5532,
+				"lat": 10.7047
+			},
+			{
+				"name": "Iloilo Fish Port Complex",
+				"type": "Establishment",
+				"lon": 122.55745,
+				"lat": 10.68935
+			},
+			{
+				"name": "Christ the King Memorial Park",
+				"type": "Establishment",
+				"lon": 122.54124,
+				"lat": 10.7458
+			},
+			{
+				"name": "Iloilo Doctors’ College",
+				"type": "Establishment",
+				"lon": 122.5535,
+				"lat": 10.6958
+			},
+			{
+				"name": "Iloilo Doctors’ Hospital",
+				"type": "Establishment",
+				"lon": 122.5545,
+				"lat": 10.6966
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 05 - Festive Walk Transport Hub – Iloilo City Proper via SM City",
+		"description": "This is the route from Mandurriao to Iloilo City Proper via SM City.",
+		"coordinates": [
+			{ "lon": 122.547046, "lat": 10.717456 },
+			{ "lon": 122.548325, "lat": 10.719743 },
+			{ "lon": 122.549058, "lat": 10.722214 },
+			{ "lon": 122.549583, "lat": 10.724812 },
+			{ "lon": 122.55414, "lat": 10.699851 },
+			{ "lon": 122.555778, "lat": 10.699928 },
+			{ "lon": 122.564657, "lat": 10.701033 },
+			{ "lon": 122.564782, "lat": 10.697718 },
+			{ "lon": 122.566305, "lat": 10.697887 },
+			{ "lon": 122.566373, "lat": 10.69579 },
+			{ "lon": 122.56894, "lat": 10.696378 },
+			{ "lon": 122.569117, "lat": 10.692263 },
+			{ "lon": 122.571213, "lat": 10.692019 },
+			{ "lon": 122.573809, "lat": 10.691759 },
+			{ "lon": 122.570758, "lat": 10.694475 },
+			{ "lon": 122.569271, "lat": 10.696421 },
+			{ "lon": 122.566373, "lat": 10.69579 }
+		],
+		"color": "yellow",
+		"establishments": [
+			{
+				"name": "Festive Walk Mall",
+				"type": "Establishment",
+				"lon": 122.547,
+				"lat": 10.7178
+			},
+			{
+				"name": "Highway 21 Hotel",
+				"type": "Establishment",
+				"lon": 122.5573,
+				"lat": 10.69956
+			},
+			{
+				"name": "Zuri Hotel",
+				"type": "Establishment",
+				"lon": 122.5525,
+				"lat": 10.716
+			},
+			{
+				"name": "SM City Iloilo",
+				"type": "Establishment",
+				"lon": 122.551,
+				"lat": 10.7144
+			},
+			{
+				"name": "Mabini Elementary School",
+				"type": "School",
+				"lon": 122.564807985,
+				"lat": 10.7001812585
+			},
+			{
+				"name": "Iloilo Central Elementrary School",
+				"type": "School",
+				"lon": 122.56545,
+				"lat": 10.70052
+			},
+			{
+				"name": "University of San Agustin",
+				"type": "School",
+				"lon": 122.5629,
+				"lat": 10.6995
+			},
+			{
+				"name": "Goldberry Lite Hotel",
+				"type": "Establishment",
+				"lon": 122.570258919,
+				"lat": 10.6930326829
+			},
+			{
+				"name": "Socorro Drug",
+				"type": "Establishment",
+				"lon": 122.5692,
+				"lat": 10.6962
+			},
+			{
+				"name": " Plaza Libertad",
+				"type": "Establishment",
+				"lon": 122.5737,
+				"lat": 10.6926
+			},
+			{
+				"name": "Iloilo City Hall",
+				"type": "Establishment",
+				"lon": 122.5621,
+				"lat": 10.7202
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 20 - Villa - Jaro via Sooc/Onate/Festive Walk Transport Hub",
+		"description": "This is a circular route through Villa - Jaro.",
+		"coordinates": [
+			{ "lon": 122.521105, "lat": 10.688969 },
+			{ "lon": 122.516386, "lat": 10.688933 },
+			{ "lon": 122.516671, "lat": 10.687041 },
+			{ "lon": 122.521543, "lat": 10.687607 },
+			{ "lon": 122.521753, "lat": 10.701125 },
+			{ "lon": 122.525941, "lat": 10.706521 },
+			{ "lon": 122.547185, "lat": 10.718549 },
+			{ "lon": 122.5458, "lat": 10.714998 },
+			{ "lon": 122.555554, "lat": 10.723613 },
+			{ "lon": 122.555478, "lat": 10.723516 }
+		],
+		"color": "green",
+		"establishments": [
+			{
+				"name": "Villa Arevalo Plaza",
+				"type": "Establishment",
+				"lon": 122.5159,
+				"lat": 10.6886
+			},
+			{
+				"name": "Jaro Cathedral",
+				"type": "Establishment",
+				"lon": 122.5561,
+				"lat": 10.7234
+			},
+			{
+				"name": "Arevalo Elementary School",
+				"type": "School",
+				"lon": 122.517104,
+				"lat": 10.689309
+			},
+			{
+				"name": "Puregold Jaro",
+				"type": "Establishment",
+				"lon": 122.55656,
+				"lat": 10.72497
+			},
+			{
+				"name": "SM Savemore Jaro",
+				"type": "Establishment",
+				"lon": 122.563463906,
+				"lat": 10.7410631608
+			},
+			{
+				"name": "Gloryville Subdivision Jaro",
+				"type": "Establishment",
+				"lon": 122.5185,
+				"lat": 10.6897
+			},
+			{
+				"name": "Iloilo Supermart Villa",
+				"type": "Establishment",
+				"lon": 122.52344,
+				"lat": 10.68794
+			},
+			{
+				"name": "Jaro Plaza",
+				"type": "Plaza",
+				"lon": 122.5573,
+				"lat": 10.7244
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 23 - Mohon – Mandurriao Business District",
+		"description": "This is the route from Mohon Terminal to Diversion Road loop.",
+		"coordinates": [
+			{ "lon": 122.500033, "lat": 10.693395 },
+			{ "lon": 122.507534, "lat": 10.691465 },
+			{ "lon": 122.521695, "lat": 10.688961 },
+			{ "lon": 122.535611, "lat": 10.692513 },
+			{ "lon": 122.542796, "lat": 10.700945 },
+			{ "lon": 122.542585, "lat": 10.707366 },
+			{ "lon": 122.544584, "lat": 10.712431 },
+			{ "lon": 122.547769, "lat": 10.71853 },
+			{ "lon": 122.552108, "lat": 10.719488 },
+			{ "lon": 122.551608, "lat": 10.709657 },
+			{ "lon": 122.544042, "lat": 10.703873 }
+		],
+		"color": "gray",
+		"establishments": [
+			{
+				"name": "Mohon Transport Terminal (Provincial Transport for Iloilo 1st District Destinations)",
+				"type": "Terminal",
+				"lon": 122.49975,
+				"lat": 10.69268
+			},
+			{
+				"name": "SM City Iloilo",
+				"type": "Establishment",
+				"lon": 122.551,
+				"lat": 10.7144
+			},
+			{
+				"name": "One Spatial Iloilo",
+				"type": "Establishment",
+				"lon": 122.5428,
+				"lat": 10.7014
+			},
+			{
+				"name": "Festive Walk Mall",
+				"type": "Establishment",
+				"lon": 122.547,
+				"lat": 10.7178
+			},
+			{
+				"name": "Qualimed Hospital",
+				"type": "Establishment",
+				"lon": 122.54770742,
+				"lat": 10.70676157
+			},
+			{
+				"name": "Ateneo de Iloilo",
+				"type": "School",
+				"lon": 122.5475,
+				"lat": 10.7055
+			},
+			{
+				"name": "Arevalo Elementary School",
+				"type": "School",
+				"lon": 122.517104,
+				"lat": 10.689309
+			},
+			{
+				"name": "Camiña Balay nga Bato",
+				"type": "Establishment",
+				"lon": 122.5149,
+				"lat": 10.6896
+			},
+			{
+				"name": "Asilo de Molo",
+				"type": "Establishment",
+				"lon": 122.5362,
+				"lat": 10.6931
+			},
+			{
+				"name": "Wangwang Carwash Bar and Lounge",
+				"type": "Establishment",
+				"lon": 122.5440724,
+				"lat": 10.7027447
+			},
+			{
+				"name": "Plazuela Dos",
+				"type": "Establishment",
+				"lon": 122.563991547,
+				"lat": 10.6968970608
+			},
+			{
+				"name": "Solana Premiere",
+				"type": "Establishment",
+				"lon": 122.5441,
+				"lat": 10.7019
+			},
+			{
+				"name": "Atria Park District",
+				"type": "Establishment",
+				"lon": 122.5488029,
+				"lat": 10.7067683
+			}
+		]
+	}
 ]
