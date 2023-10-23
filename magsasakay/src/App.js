@@ -1,8 +1,11 @@
 import React from "react";
-import FindRoute from "./FindRoute";
-import ViewRoutes from "./ViewRoutes";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
-import { Router } from "express";
+import Login from "./Login";
+import SignUp from "./SignUp";
+import Home from "./home";
+import ViewRoutes from "./Maps";
+import Options from "./options";
 
 function App() {
   return (
