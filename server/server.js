@@ -3,10 +3,13 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const app = express();
 app.use(cors()); // Enable CORS for cross-origin requests
 app.use(bodyParser.json());
+
+const JWT_SECRET = "ajkshd21313[]]312321?()dsahkgb783";
 
 const mongoUrl =
   "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
@@ -28,28 +31,22 @@ const routesModel = mongoose.model("routes");
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  try {
-    // Find a user with the provided email
-    const user = await userModel.findOne({ email });
-
-    if (!user) {
-      return res.status(200).json({ message: "Invalid email or password" });
-    }
-
-    // Check if the provided password matches the stored password
-    if (user.password !== password) {
-      return res.status(200).json({ message: "Invalid email or password" });
-    }
-
-    // Login successful
-    res.status(200).json({ message: "Login successful" });
-    // You can add code to generate a session or token for the user here.
-  } catch (error) {
-    console.error(error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while processing your request" });
+  const user = await userModel.findOne({ email });
+  if (!user) {
+    return res.json({ error: "User Not found" });
   }
+  if (await bcrypt.compare(password, user.password)) {
+    const token = jwt.sign({ email: user.email }, JWT_SECRET, {
+      expiresIn: "15m",
+    });
+
+    if (res.status(201)) {
+      return res.json({ status: "ok", data: token });
+    } else {
+      return res.json({ error: "error" });
+    }
+  }
+  res.json({ status: "error", error: "Invalid Password" });
 });
 
 // Signup route

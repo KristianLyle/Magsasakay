@@ -2,28 +2,42 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./index.css";
 import logo from "./img/logo.png";
-import Axios from "axios";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState("");
 
-  const history = useHistory(); // Create a history object
-
-  const login = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    Axios.post("http://localhost:3001/login", {
-      email: userEmail,
-      password: userPassword,
-    }).then((response) => {
-      if (response.data.message == "Invalid email or password") {
-        alert("Invalid email or password");
-      } else {
-        history.push("/home"); // Redirect to home page
-      }
-    });
-  };
+
+    console.log(userEmail, userPassword);
+    fetch("http://localhost:3001/login", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        email: userEmail,
+        password: userPassword,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "userRegister");
+        if (data.status == "ok") {
+          alert("login successful");
+          window.localStorage.setItem("token", data.data);
+          window.localStorage.setItem("loggedIn", true);
+
+          window.location.href = "./userDetails";
+        } else {
+          alert(data.error);
+        }
+      });
+  }
 
   return (
     <div className="min-h-screen relative flex font-Montserrat">
@@ -71,7 +85,7 @@ const Login = () => {
           <div className="text-center">
             <button
               className="bg-[#F9BE60] text-2xl px-6 py-2 rounded-full font-semibold text-black hover:bg-[#160E3D] hover:text-[#F9BE60] drop-shadow-2xl"
-              onClick={login}
+              onClick={handleSubmit}
             >
               Login
             </button>
