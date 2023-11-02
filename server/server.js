@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -8,8 +10,6 @@ const jwt = require("jsonwebtoken");
 const app = express();
 app.use(cors()); // Enable CORS for cross-origin requests
 app.use(bodyParser.json());
-
-const JWT_SECRET = "ajkshd21313[]]312321?()dsahkgb783";
 
 const mongoUrl =
   "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
@@ -36,12 +36,13 @@ app.post("/login", async (req, res) => {
     return res.json({ error: "User Not found" });
   }
   if (await bcrypt.compare(password, user.password)) {
-    const token = jwt.sign({ email: user.email }, JWT_SECRET, {
-      expiresIn: "15m",
-    });
+    const token = jwt.sign(
+      { email: user.email },
+      process.env.ACCESS_TOKEN_SECRET
+    );
 
     if (res.status(201)) {
-      return res.json({ status: "ok", data: token });
+      return res.json({ status: "ok", token: token });
     } else {
       return res.json({ error: "error" });
     }

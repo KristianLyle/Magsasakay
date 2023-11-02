@@ -28,9 +28,9 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, "userRegister");
+        console.log(data);
         if (data.status == "ok") {
-          window.localStorage.setItem("token", data.data);
+          window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("loggedIn", true);
 
           history.push("/home"); // Redirect to home page
