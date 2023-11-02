@@ -7,6 +7,8 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
+  const history = useHistory();
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -28,11 +30,10 @@ const Login = () => {
       .then((data) => {
         console.log(data, "userRegister");
         if (data.status == "ok") {
-          alert("login successful");
           window.localStorage.setItem("token", data.data);
           window.localStorage.setItem("loggedIn", true);
 
-          window.location.href = "./userDetails";
+          history.push("/home"); // Redirect to home page
         } else {
           alert(data.error);
         }
