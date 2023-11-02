@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const bcrypt = require("bcryptjs");
 
 const app = express();
 app.use(cors()); // Enable CORS for cross-origin requests
@@ -55,6 +56,8 @@ app.post("/login", async (req, res) => {
 app.post("/signup", async (req, res) => {
   const { email, username, password } = req.body;
 
+  const encryptedPassword = await bcrypt.hash(password, 10);
+
   try {
     // Check if the email already exists
     const existingUser = await userModel.findOne({ email });
@@ -63,7 +66,11 @@ app.post("/signup", async (req, res) => {
     }
 
     // If email is not found, create a new user
-    const newUser = new userModel({ email, username, password });
+    const newUser = new userModel({
+      email,
+      username,
+      password: encryptedPassword,
+    });
     await newUser.save();
     res.status(201).json({ message: "User created successfully." });
   } catch (error) {
