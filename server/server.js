@@ -50,6 +50,18 @@ app.post("/login", async (req, res) => {
   res.json({ status: "error", error: "Invalid Password" });
 });
 
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+  if (token == null) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+}
+
 // Signup route
 app.post("/signup", async (req, res) => {
   const { email, username, password } = req.body;
