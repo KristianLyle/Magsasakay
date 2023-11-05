@@ -5,6 +5,7 @@ import Login from './Login'
 import SignUp from './SignUp';
 import Home from './home';
 import Options from './options';
+import Restaurants from './restaurants'
 
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route exact path='/options'>
           <Options/>
+        </Route>
+        <Route exact path ='/restaurants'>
+          <Restaurants/>
         </Route>
       </Switch>
     </Router>
