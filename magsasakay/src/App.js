@@ -7,6 +7,7 @@ import Home from "./home";
 import FindRoute from "./FindRoute";
 import ViewRoutes from "./ViewRoutes";
 import Options from "./options";
+import Restaurants from "./restaurants";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route exact path="/find-routes">
           <FindRoute />
+        </Route>
+        <Route exact path="/restaurants">
+          <Restaurants />
         </Route>
       </Switch>
     </Router>
