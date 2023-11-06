@@ -98,11 +98,11 @@ const Restaurants = () => {
               </div>
 
             </div> <br/> <br/>
-                <button className="bg-[#EE7200] text-[15px] py-2 rounded-full 
+                <Link to='restoViewMore' className="bg-[#EE7200] text-[15px] py-2 rounded-full 
                                 font-bold text-white hover:bg-white hover:text-[#160E3D] 
                                 drop-shadow-2xl ml-[665px] font-Montserrat px-[50px]">
                         View More
-                </button>
+                </Link>
           </div>
         </div>
       </div>

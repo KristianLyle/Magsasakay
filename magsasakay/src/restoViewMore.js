@@ -54,9 +54,9 @@ const ViewMore = () => {
                         <button className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md mr-[5px]">
                             Location
                         </button>
-                        <button className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md">
+                        <Link to='/resto_review' className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md">
                             View Reviews
-                        </button>
+                        </Link>
                   </div>
                    
                     </div>
