@@ -11,8 +11,9 @@ const app = express();
 app.use(cors()); // Enable CORS for cross-origin requests
 app.use(bodyParser.json());
 
-const mongoUrl =
-  "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
+const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
+// const mongoUrl =
+//   "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(mongoUrl, {
@@ -26,6 +27,7 @@ require("./userDetails");
 
 const userModel = mongoose.model("users");
 const routesModel = mongoose.model("routes");
+const restaurantModel = mongoose.model("restaurants");
 
 // Login route
 app.post("/login", async (req, res) => {
@@ -88,6 +90,21 @@ app.post("/signup", async (req, res) => {
     res
       .status(500)
       .json({ error: "An error occurred while creating the user." });
+  }
+});
+
+// Define a new route for fetching restaurant data
+app.get("/restaurants", async (req, res) => {
+  try {
+    const restaurants = await restaurantModel.aggregate([
+      { $sample: { size: 3 } },
+    ]);
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching restaurant data." });
   }
 });
 

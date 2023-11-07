@@ -34,3 +34,14 @@ const routesSchema = new mongoose.Schema(
 );
 
 mongoose.model("routes", routesSchema);
+
+const restaurantSchema = new mongoose.Schema(
+  {
+    name: String,
+    description: String,
+    image: String,
+  },
+  { collection: "restaurants" }
+);
+
+mongoose.model("restaurants", restaurantSchema);
