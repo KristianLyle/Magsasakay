@@ -108,6 +108,19 @@ app.get("/restaurants", async (req, res) => {
   }
 });
 
+// Define a new route for fetching all restaurant data
+app.get("/view-more-restaurants", async (req, res) => {
+  try {
+    const restaurants = await restaurantModel.find();
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching restaurant data." });
+  }
+});
+
 app.listen(3001, () => {
   console.log(`Server is running on port 3001`);
 });

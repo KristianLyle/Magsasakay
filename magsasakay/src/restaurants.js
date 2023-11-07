@@ -70,9 +70,12 @@ const Restaurants = () => {
                       <button className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mr-[5px]">
                         Location
                       </button>
-                      <button className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover-text-[#160E3D] drop-shadow-2xl">
+                      <Link
+                        to="/resto_review"
+                        className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover-text-[#160E3D] drop-shadow-2xl"
+                      >
                         View Reviews
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
