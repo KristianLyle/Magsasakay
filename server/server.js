@@ -26,8 +26,9 @@ mongoose
 require("./userDetails");
 
 const userModel = mongoose.model("users");
-const routesModel = mongoose.model("routes");
+// const routesModel = mongoose.model("routes");
 const restaurantModel = mongoose.model("restaurants");
+const reviewModel = mongoose.model("reviews");
 
 // Login route
 app.post("/login", async (req, res) => {
@@ -118,6 +119,43 @@ app.get("/view-more-restaurants", async (req, res) => {
     res
       .status(500)
       .json({ error: "An error occurred while fetching restaurant data." });
+  }
+});
+
+// Add a new route for fetching reviews by restaurant name
+app.post("/fetch-reviews", async (req, res) => {
+  const { restaurantName } = req.body;
+
+  try {
+    // Find all reviews for the specific restaurant
+    const reviews = await reviewModel.find({ restaurant: restaurantName });
+    res.json(reviews);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while fetching reviews for the restaurant.",
+    });
+  }
+});
+
+// Add a new route for submitting reviews
+app.post("/submit-review", async (req, res) => {
+  const { restaurantName, username, userimage, reviewText } = req.body;
+
+  try {
+    const newReview = new reviewModel({
+      restaurant: restaurantName,
+      username: username,
+      userimage: userimage,
+      review: reviewText,
+    });
+    await newReview.save();
+    res.status(201).json({ message: "Review submitted successfully." });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while submitting the review." });
   }
 });
 

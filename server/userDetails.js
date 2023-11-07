@@ -45,3 +45,15 @@ const restaurantSchema = new mongoose.Schema(
 );
 
 mongoose.model("restaurants", restaurantSchema);
+
+const reviewSchema = new mongoose.Schema(
+  {
+    restaurant: String,
+    username: String,
+    userimage: String,
+    review: String,
+  },
+  { collection: "reviews" }
+);
+
+mongoose.model("reviews", reviewSchema);
