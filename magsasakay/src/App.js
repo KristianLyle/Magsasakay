@@ -8,6 +8,8 @@ import FindRoute from "./FindRoute";
 import ViewRoutes from "./ViewRoutes";
 import Options from "./options";
 import Restaurants from "./restaurants";
+import ViewMore from "./restoViewMore";
+import RestoReviews from "./resto_review";
 
 function App() {
   return (
@@ -33,6 +35,12 @@ function App() {
         </Route>
         <Route exact path="/restaurants">
           <Restaurants />
+        </Route>
+        <Route exact path="/restoViewMore">
+          <ViewMore />
+        </Route>
+        <Route exact path="/resto_review">
+          <RestoReviews />
         </Route>
       </Switch>
     </Router>
