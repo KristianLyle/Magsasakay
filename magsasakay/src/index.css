@@ -44,7 +44,8 @@
     top: 0;
     left: -100%;
     transition: 850ms;
-    border: white 2px solid;
+    border: white 1px solid;
+    z-index: 99;
 }
 
 .navMenu.active{
@@ -61,7 +62,7 @@
     display: flex;
     align-items: center;
     padding: 0px 16px;
-    border-radius: 4px;
+    border-radius: 4px;;
 }
 
 .nav-text a:hover{

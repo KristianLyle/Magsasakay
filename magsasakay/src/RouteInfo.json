@@ -70,7 +70,7 @@
 			{ "lon": 122.569393, "lat": 10.696575 },
 			{ "lon": 122.5682, "lat": 10.696186 }
 		],
-		"color": "red",
+		"color": "blue",
 		"establishments": [
 			{
 				"name": "Calaparan Area",
@@ -128,7 +128,7 @@
 			{ "lon": 122.57639, "lat": 10.689915 },
 			{ "lon": 122.582751, "lat": 10.692195 }
 		],
-		"color": "orange",
+		"color": "blue",
 		"establishments": [
 			{
 				"name": "Central Philippine University",
@@ -182,7 +182,7 @@
 			{ "lon": 122.549564, "lat": 10.725207 },
 			{ "lon": 122.53868, "lat": 10.752374 }
 		],
-		"color": "violet",
+		"color": "blue",
 		"establishments": [
 			{
 				"name": "Brandy Museum",
@@ -244,7 +244,7 @@
 			{ "lon": 122.569271, "lat": 10.696421 },
 			{ "lon": 122.566373, "lat": 10.69579 }
 		],
-		"color": "yellow",
+		"color": "blue",
 		"establishments": [
 			{
 				"name": "Festive Walk Mall",
@@ -299,7 +299,7 @@
 			{ "lon": 122.555554, "lat": 10.723613 },
 			{ "lon": 122.555478, "lat": 10.723516 }
 		],
-		"color": "green",
+		"color": "blue",
 		"establishments": [
 			{
 				"name": "Villa Arevalo Plaza",
@@ -355,7 +355,7 @@
 			{ "lon": 122.551608, "lat": 10.709657 },
 			{ "lon": 122.544042, "lat": 10.703873 }
 		],
-		"color": "gray",
+		"color": "blue",
 		"establishments": [
 			{
 				"name": "Mohon Transport Terminal (Provincial Transport for Iloilo 1st District Destinations)",
