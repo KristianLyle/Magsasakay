@@ -14,7 +14,7 @@ const NavBar = () => {
      
     return ( 
         <>
-            <div className='navbar bg-[#160E3D] h-[55px] justify-start items-center flex'>
+            <div className='navbar bg-[#160E3D] h-[55px] justify-start items-center flex z-50'>
                 <Link to="#" className="menuBars ml-[10px] text-[25px] bg-[#7B00FF] rounded-[12px] px-[15px] py-[3px]"> 
                     <FaBars className="w-[30px]" onClick={showSideBar}/>
                 </Link>

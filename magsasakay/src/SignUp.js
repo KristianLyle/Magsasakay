@@ -11,6 +11,7 @@ const SignUp = () => {
     const [userPassword2, setUserPassword2] = useState('');
     const [passwordMismatch, setPasswordMismatch] = useState(false);
     const [accountRegistered, setAccountRegistered] = useState(false);
+    const [selectedColor, setSelectedColor] = useState('#F9BE60');
 
     const HandleSignUp = (e) => {
         e.preventDefault();
@@ -92,6 +93,27 @@ const SignUp = () => {
                         {accountRegistered ? (
                             <p>Account registered</p>
                         ) : null}
+
+                        <div className='mb-10'>
+                            <label className='text-gray-200 font-montserrat' htmlFor='color'>
+                                Select Color
+                            </label>
+                            <select
+                                className='border border-black border-lg rounded-[10px] w-full p-2'
+                                id='color'
+                                value={selectedColor}
+                                onChange={(e) => setSelectedColor(e.target.value)}
+                            >
+                            <option value='#F9BE60'>Yellow</option>
+                            <option value='#FF0000'>Red</option>
+                            <option value='#00FF00'>Green</option>
+                            <option value='#0000FF'>Blue</option>
+                            <option value='#FFA500'>Orange</option>
+                            <option value='#7F00FF'>Violet</option>
+                            <option value='#4B0082'>Indigo</option>
+                            </select>
+                            <br />
+                        </div>
                       
                         <div className='flex justify-center mb-3'>
                              <button className = "hover:bg-[#160E3D] hover:text-[#F9BE60] px-[55px] text-center bg-[#F9BE60] rounded-full drop-shadow-lg text-[20px] font-Montserrat font-semibold">
