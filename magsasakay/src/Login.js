@@ -35,7 +35,12 @@ const Login = () => {
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("loggedIn", true);
 
-          history.push("/home"); // Redirect to home page
+          // Pass selectedColor as a parameter when redirecting
+          // Pass selectedColor as a parameter when redirecting
+          history.push({
+            pathname: "/home",
+            search: `?selectedColor=${encodeURIComponent(selectedColor)}`,
+          });
         } else {
           alert(data.error);
         }

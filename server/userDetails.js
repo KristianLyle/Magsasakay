@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema(
     email: String,
     username: String,
     password: String,
+    color: String,
   },
   { collection: "users" }
 );

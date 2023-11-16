@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./index.css";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -8,14 +8,16 @@ import profile from "./img/profile.png";
 import routes from "./img/routes.png";
 
 const Home = () => {
-  const [overlayColor, setOverlayColor] = useState("#008000"); //diri ka extract sang hexcode halin sa db
+  const location = useLocation();
+  const selectedColor =
+    new URLSearchParams(location.search).get("selectedColor") || "#008000";
   const backgroundOverlay = {
     position: "absolute",
     top: 0,
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: overlayColor,
+    backgroundColor: selectedColor,
     zIndex: 1,
     opacity: 0.5,
   };
@@ -67,7 +69,7 @@ const Home = () => {
               </li>
               <br />
               <li className="w-[175px] text-[35px] flex flex-col transform hover:scale-110 hover:font-semibold hover:text-[orange]">
-                <Link to="/options">
+                <Link to="/routes">
                   <img src={routes} alt="routes" />
                   <span>Routes</span>
                 </Link>
