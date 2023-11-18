@@ -48,7 +48,7 @@ app.post("/login", async (req, res) => {
     );
 
     if (res.status(201)) {
-      return res.json({ status: "ok", token: token });
+      return res.json({ status: "ok", token: token, color: user.color });
     } else {
       return res.json({ error: "error" });
     }
