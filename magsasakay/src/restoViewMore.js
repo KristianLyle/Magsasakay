@@ -22,7 +22,7 @@ const ViewMore = () => {
       </Router>
       <div
         style={backgroundStyle}
-        className="bg-full"
+        //className="bg-full"
       >
         <div className="mx-auto min-h-screen">
           <div className=""> <br/>
