@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./index.css";
 import logo from "./img/logo.png";
+import login_req from "./img/login_req.gif";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -121,6 +122,7 @@ const Login = () => {
           <img src={logo} alt="logo" />
         </div>
         <p className="text-xs mt-4">2023 All Rights Reserved</p>
+        <img src={login_req} alt="gif here" width='1000px' height='500px' className='fixed mt-[160px]'/>
       </div>
     </div>
   );

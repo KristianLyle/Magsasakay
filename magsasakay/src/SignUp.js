@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import Axios from "axios";
 import logo from "./img/logo.png";
+import login_req from "./img/login_req.gif";
 
 const SignUp = () => {
   const [userName, setUserName] = useState("");
@@ -53,6 +54,7 @@ const SignUp = () => {
           {" "}
           2023 All Rights Reserved{" "}
         </p>
+        <img src={login_req} alt="gif here" width='1000px' height='500px' className=' fixed mt-[100px]'/>
       </div>
 
       <div className="bg-gradient-to-b from-orange-400 to-cyan-500 flex flex-col justify-center p-8">

@@ -36,7 +36,7 @@ const Home = () => {
       <div className="bg-home_bg bg-no-repeat bg-cover relative">
         <div style={backgroundOverlay}></div>
 
-        <div className="container h-screen w-[150%] relative z-10">
+        <div className="container h-screen max-w-[120%] relative z-10 bg-cover">
           <div className="text-white">
             <br />
             <h1 className="font-Montserrat font-extrabold text-[55px] ml-[10px]">
