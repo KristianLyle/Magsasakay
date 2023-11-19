@@ -42,34 +42,35 @@ const ViewMore = () => {
             <br />
             <div className="flex-col">
               {restaurants.map((restaurant) => (
-                <div key={restaurant.id} className="flex-container py-4">
+                <div key={restaurant.id} className="flex-container py-4 ">
                   <div
                     className="font-Montserrat font-bold text-[35px] text-center text-white 
                     px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px] 
-                    bg-[#FFF1F1] bg-cover hover:border-[#5AF0D5] max-w-none h-[200px]"
+                    bg-[#FFF1F1] bg-cover hover:border-[#5AF0D5] max-w-none h-[200px] text-ellipsis overflow-hidden ..."
                   >
                     <div className="flex text-black">
-                      <div className="w-1/2 flex justify-center">
+                      <div className="w-1/3 flex justify-start pl-8">
                         <div className="w-40 h-20 relative">
-                          <div className="absolute inset-0">
+                          <div className="absolute inset">
                             <img
-                              className=" object-cover rounded-3xl border-[2px] border-white"
+                              className="object-cover rounded-3xl border-[2px] border-[#160E3D]"
                               src={restaurant.image}
                               alt={restaurant.name}
+                              style={{ width: '200px', height: '150px' }}
                             />
                           </div>
                         </div>
                       </div>
-                      <div className="text-start pl-6">
-                        <span className="text-[25px] font-regular text-center">
+                      <div className="w-full text-start ml-[-150px] " >
+                        <span className="text-[25px] font-regular">
                           {restaurant.name}
                         </span>
-                        <div className="box-container">
-                          <p className="text-[15px] font-normal ml-[0px] text-left overflow-y">
+                        <div className="box-container ">
+                          <p className="text-[15px] font-normal text-left max-h-[65px] overflow-y-auto ">
                             {restaurant.description}
                           </p>
                         </div>
-                        <div className="flex justify-end mt-4">
+                        <div className="flex justify-end mt-[8px]">
                           <button className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md mr-[5px]">
                             Location
                           </button>
