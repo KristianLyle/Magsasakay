@@ -31,13 +31,11 @@ const RestoReviews = () => {
       const token = localStorage.getItem("token");
       const decodedToken = jwtDecode(token);
       const userName = decodedToken.username;
-      const selectedColor = decodedToken.color;
       const reviewData = {
         restaurantName: restaurantName,
         username: userName,
         userimage: user,
         reviewText: inputText,
-        color: selectedColor,
       };
 
       // Make a POST request to the server to submit the review
@@ -100,10 +98,7 @@ const RestoReviews = () => {
               <ul>
                 {postedText.map((review, index) => (
                   <li key={index}>
-                    <div
-                      className="max-w-[1300px] ml-[20px] rounded-[20px] p-[10px] font-Montserrat border-[4px] border-black drop-shadow-2xl"
-                      style={{ backgroundColor: review.color }}
-                    >
+                    <div className="bg-white max-w-[1300px] ml-[20px] rounded-[20px] p-[10px] font-Montserrat border-[4px] border-black drop-shadow-2xl">
                       <div className="flex items-center  ">
                         <img
                           src={review.userimage}

@@ -35,16 +35,13 @@ const reviewModel = mongoose.model("reviews");
 
 // Login route
 app.post("/login", async (req, res) => {
-  const { email, password, color } = req.body;
+  const { email, password } = req.body;
 
   const user = await userModel.findOne({ email });
   if (!user) {
     return res.json({ error: "User Not found" });
   }
   if (await bcrypt.compare(password, user.password)) {
-    if (color !== user.color) {
-      return res.json({ error: "Invalid Color" });
-    }
     const token = jwt.sign(
       { email: user.email, username: user.username, color: user.color },
       process.env.ACCESS_TOKEN_SECRET
@@ -73,7 +70,7 @@ function authenticateToken(req, res, next) {
 
 // Signup route
 app.post("/signup", async (req, res) => {
-  const { email, username, password, color } = req.body;
+  const { email, username, password } = req.body;
 
   const encryptedPassword = await bcrypt.hash(password, 10);
 
@@ -89,7 +86,6 @@ app.post("/signup", async (req, res) => {
       email,
       username,
       password: encryptedPassword,
-      color,
     });
     await newUser.save();
     res.status(201).json({ message: "User created successfully." });
@@ -155,7 +151,6 @@ app.post("/submit-review", async (req, res) => {
       username: username,
       userimage: userimage,
       review: reviewText,
-      color: color,
     });
     await newReview.save();
     res.status(201).json({ message: "Review submitted successfully." });

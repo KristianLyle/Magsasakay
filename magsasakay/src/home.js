@@ -9,21 +9,6 @@ import profile from "./img/profile.png";
 import routes from "./img/routes.png";
 
 const Home = () => {
-  // Decode the token to get user information
-  const token = localStorage.getItem("token");
-  const decodedToken = jwtDecode(token);
-  const selectedColor = decodedToken.color;
-  const backgroundOverlay = {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundColor: selectedColor,
-    zIndex: 1,
-    opacity: 0.5,
-  };
-
   return (
     <>
       <Router>
@@ -34,8 +19,6 @@ const Home = () => {
       </Router>
 
       <div className="bg-home_bg bg-no-repeat bg-cover relative">
-        <div style={backgroundOverlay}></div>
-
         <div className="container h-screen w-[150%] relative z-10">
           <div className="text-white">
             <br />
