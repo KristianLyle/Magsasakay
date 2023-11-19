@@ -60,7 +60,7 @@ const Restaurants = () => {
                         alt={restaurant.name}
                       />
                     </div>
-                    <span className="text-[25px] font-regular">
+                    <span className="text-[20px] font-regular">
                       {restaurant.name}
                     </span>
                     <div className="box-container">
