@@ -16,6 +16,12 @@ const customIcon = L.icon({
 });
 
 const MapComponent = () => {
+  <Router>
+    <NavBar/>
+      <Switch>
+          <Route exact path = '/'/>
+      </Switch>
+  </Router>
   const [selectedRouteIndex, setSelectedRouteIndex] = useState('');
   const routes = routeInfo;
   const selectedRoute = routes[selectedRouteIndex];
