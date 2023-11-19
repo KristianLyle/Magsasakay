@@ -74,10 +74,9 @@ const ViewMore = () => {
                             Location
                           </button>
                           <Link
-                            to={{
-                              pathname: "/resto_review",
-                              state: { restaurantName: restaurant.name },
-                            }}
+                            to={`/resto_review/${encodeURIComponent(
+                              restaurant.name
+                            )}`}
                             className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md"
                           >
                             View Reviews

@@ -7,14 +7,13 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  useLocation,
+  useParams,
 } from "react-router-dom";
 import resto_bg from "./img/resto_bg.jpg";
 import user from "./img/user.jpg";
 
 const RestoReviews = () => {
-  const location = useLocation();
-  const { restaurantName } = location.state;
+  const { restaurantName } = useParams();
   const backgroundStyle = {
     backgroundImage: `url(${resto_bg})`,
   };

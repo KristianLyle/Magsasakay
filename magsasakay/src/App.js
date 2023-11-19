@@ -44,7 +44,7 @@ function App() {
         <Route exact path="/restoViewMore">
           <ViewMore />
         </Route>
-        <Route exact path="/resto_review">
+        <Route exact path="/resto_review/:restaurantName">
           <RestoReviews />
         </Route>
       </Switch>
