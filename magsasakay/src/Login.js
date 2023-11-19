@@ -36,7 +36,6 @@ const Login = () => {
           window.localStorage.setItem("loggedIn", true);
           history.push({
             pathname: "/home",
-            search: `?selectedColor=${encodeURIComponent(selectedColor)}`,
           });
         } else {
           alert(data.error);
