@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./index.css";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
@@ -7,9 +7,15 @@ import { sideBarData } from "./sideBarData";
 import logo from "./img/logo.png";
 
 const NavBar = () => {
+  const history = useHistory();
   const [sideBar, setSideBar] = useState(false);
 
   const showSideBar = () => setSideBar(!sideBar);
+  
+  const handleClick = (path) => {
+    history.push(path)
+    window.location.reload()
+  };
 
   return (
     <>
@@ -32,7 +38,7 @@ const NavBar = () => {
           {sideBarData.map((item, index) => {
             return (
               <li key={index} className={item.cName}>
-                <Link to={item.path}>
+                <Link to={item.path} onClick={() => handleClick(item.path)}>
                   <span className="ml-[16px] items-center"> {item.title} </span>
                 </Link>
               </li>
