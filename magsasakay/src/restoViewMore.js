@@ -51,9 +51,9 @@ const ViewMore = () => {
                     <div className="flex text-black">
                       <div className="w-1/3 flex justify-start pl-8">
                         <div className="w-40 h-20 relative">
-                          <div className="absolute inset-0">
+                          <div className="absolute inset">
                             <img
-                              className="object-cover rounded-3xl border-[2px] border-white"
+                              className="object-cover rounded-3xl border-[2px] border-[#160E3D]"
                               src={restaurant.image}
                               alt={restaurant.name}
                               style={{ width: '200px', height: '150px' }}
@@ -66,11 +66,11 @@ const ViewMore = () => {
                           {restaurant.name}
                         </span>
                         <div className="box-container ">
-                          <p className="text-[15px] font-normal text-left ">
+                          <p className="text-[15px] font-normal text-left max-h-[65px] overflow-y-auto ">
                             {restaurant.description}
                           </p>
                         </div>
-                        <div className="flex justify-end mt-4">
+                        <div className="flex justify-end mt-[8px]">
                           <button className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md mr-[5px]">
                             Location
                           </button>
