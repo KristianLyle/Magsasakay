@@ -7,6 +7,7 @@ import {
   Marker,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { jwtDecode } from "jwt-decode";
 import { decodePolyline } from "./PolylineDecoder";
 import L from "leaflet";
 import logo from "./marker.png";
@@ -19,7 +20,10 @@ const customIcon = L.icon({
 });
 
 const MapComponent = ({ selectedRoute, color }) => {
-  const selectedColor = window.localStorage.getItem("color");
+  // Decode the token to get user information
+  const token = localStorage.getItem("token");
+  const decodedToken = jwtDecode(token);
+  const selectedColor = decodedToken.color;
   const [route, setRoute] = useState(null);
   const [decodedGeometry, setDecodedGeometry] = useState([]);
 

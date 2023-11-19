@@ -43,7 +43,7 @@ app.post("/login", async (req, res) => {
       return res.json({ error: "Invalid Color" });
     }
     const token = jwt.sign(
-      { email: user.email },
+      { email: user.email, username: user.username, color: user.color },
       process.env.ACCESS_TOKEN_SECRET
     );
 
@@ -144,7 +144,7 @@ app.post("/fetch-reviews", async (req, res) => {
 
 // Add a new route for submitting reviews
 app.post("/submit-review", async (req, res) => {
-  const { restaurantName, username, userimage, reviewText } = req.body;
+  const { restaurantName, username, userimage, reviewText, color } = req.body;
 
   try {
     const newReview = new reviewModel({
@@ -152,6 +152,7 @@ app.post("/submit-review", async (req, res) => {
       username: username,
       userimage: userimage,
       review: reviewText,
+      color: color,
     });
     await newReview.save();
     res.status(201).json({ message: "Review submitted successfully." });

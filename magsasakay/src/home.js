@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import about from "./img/about.png";
 import profile from "./img/profile.png";
 import routes from "./img/routes.png";
 
 const Home = () => {
-  const selectedColor = window.localStorage.getItem("color");
+  // Decode the token to get user information
+  const token = localStorage.getItem("token");
+  const decodedToken = jwtDecode(token);
+  const selectedColor = decodedToken.color;
   const backgroundOverlay = {
     position: "absolute",
     top: 0,

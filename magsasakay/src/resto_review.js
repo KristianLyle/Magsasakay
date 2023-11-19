@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import "./index.css";
 import NavBar from "./navbar";
+import { jwtDecode } from "jwt-decode";
 import {
   BrowserRouter as Router,
   Route,
@@ -27,12 +28,17 @@ const RestoReviews = () => {
 
   const handlePostText = () => {
     if (inputText.trim() !== "") {
-      // Prepare the data for the review
+      // Decode the token to get user information
+      const token = localStorage.getItem("token");
+      const decodedToken = jwtDecode(token);
+      const userName = decodedToken.username;
+      const selectedColor = decodedToken.color;
       const reviewData = {
         restaurantName: restaurantName,
-        username: "User Name",
+        username: userName,
         userimage: user,
         reviewText: inputText,
+        color: selectedColor,
       };
 
       // Make a POST request to the server to submit the review

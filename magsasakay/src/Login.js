@@ -32,12 +32,8 @@ const Login = () => {
       .then((data) => {
         console.log(data);
         if (data.status == "ok") {
-          window.localStorage.setItem("color", data.color);
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("loggedIn", true);
-
-          // Pass selectedColor as a parameter when redirecting
-          // Pass selectedColor as a parameter when redirecting
           history.push({
             pathname: "/home",
             search: `?selectedColor=${encodeURIComponent(selectedColor)}`,
