@@ -60,7 +60,7 @@ const Restaurants = () => {
                         alt={restaurant.name}
                       />
                     </div>
-                    <span className="text-[25px] font-regular">
+                    <span className="text-[20px] font-regular">
                       {restaurant.name}
                     </span>
                     <div className="box-container">
@@ -75,7 +75,7 @@ const Restaurants = () => {
                           pathname: "/resto_review",
                           state: { restaurantName: restaurant.name },
                         }}
-                        className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover-text-[#160E3D] drop-shadow-2xl"
+                        className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl"
                       >
                         View Reviews
                       </Link>
