@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
 import Login from "./Login";
@@ -12,6 +12,11 @@ import ViewMore from "./restoViewMore";
 import RestoReviews from "./resto_review";
 
 function App() {
+  useEffect(() => {
+    // Set the title when the component mounts
+    document.title = "Magsasakay";
+  }, []);
+
   return (
     <Router>
       <Switch>

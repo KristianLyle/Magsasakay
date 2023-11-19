@@ -101,7 +101,10 @@ const RestoReviews = () => {
               <ul>
                 {postedText.map((review, index) => (
                   <li key={index}>
-                    <div className="bg-white max-w-[1300px] ml-[20px] rounded-[20px] p-[10px] font-Montserrat border-[4px] border-black drop-shadow-2xl">
+                    <div
+                      className="max-w-[1300px] ml-[20px] rounded-[20px] p-[10px] font-Montserrat border-[4px] border-black drop-shadow-2xl"
+                      style={{ backgroundColor: review.color }}
+                    >
                       <div className="flex items-center  ">
                         <img
                           src={review.userimage}
