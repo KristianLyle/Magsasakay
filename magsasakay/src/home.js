@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./index.css";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -8,9 +8,7 @@ import profile from "./img/profile.png";
 import routes from "./img/routes.png";
 
 const Home = () => {
-  const location = useLocation();
-  const selectedColor =
-    new URLSearchParams(location.search).get("selectedColor") || "#008000";
+  const selectedColor = window.localStorage.getItem("color");
   const backgroundOverlay = {
     position: "absolute",
     top: 0,
