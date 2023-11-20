@@ -61,21 +61,21 @@ const Home = () => {
               <li className="w-[175px] text-[35px] flex flex-col">
                 <Link to="/about">
                   <img src={about} alt="about" />
-                  <span>About</span>
+                  <span className="ml-[-25px]">About</span>
                 </Link>
               </li>
               <br />
               <li className="w-[175px] text-[35px] flex flex-col">
                 <Link to="/profile">
                   <img src={profile} alt="profile" />
-                  <span>Profile</span>
+                  <span className="ml-[-25px]">Profile</span>
                 </Link>
               </li>
               <br />
               <li className="w-[175px] text-[35px] flex flex-col transform hover:scale-110 hover:font-semibold hover:text-[orange]">
                 <Link to="/routes">
                   <img src={routes} alt="routes" />
-                  <span>Routes</span>
+                  <span className="ml-[-25px]">Routes</span>
                 </Link>
               </li>
             </ul>
