@@ -3,6 +3,7 @@ import RouteDropdown from './RouteDropdown';
 import MapComponent from './Map';
 import routeInfo from './RouteInfo.json';
 import v_bg from './img/v-bg.mp4';
+import viewRoute_req from './img/viewRoute_req.png';
 
 const RouteFinder = () => {
   const [selectedRoute, setSelectedRoute] = useState(null);
@@ -31,6 +32,7 @@ const RouteFinder = () => {
         />
         <br/>
         <MapComponent selectedRoute={selectedRoute} />
+        <img src={viewRoute_req} alt='client request on view route page' width='350px' className='mt-[-725px]'/>
       </div>
     </div>
   );

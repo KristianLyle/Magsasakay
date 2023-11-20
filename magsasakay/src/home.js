@@ -7,6 +7,8 @@ import { jwtDecode } from "jwt-decode";
 import about from "./img/about.png";
 import profile from "./img/profile.png";
 import routes from "./img/routes.png";
+import home_req from "./img/home_req.png";
+
 
 const Home = () => {
   // Decode the token to get user information
@@ -33,9 +35,8 @@ const Home = () => {
         </Switch>
       </Router>
 
-      <div className="bg-home_bg bg-no-repeat bg-cover relative">
+      <div className="bg-home_bg bg-cover h-[120vh] w-[195.9vh] relative">
         <div style={backgroundOverlay}></div>
-
         <div className="container h-screen max-w-[120%] relative z-10 bg-cover">
           <div className="text-white">
             <br />
@@ -50,7 +51,8 @@ const Home = () => {
               read honest reviews. Your guide to travel and dining adventures.
               Start exploring now!
             </p>{" "}
-            <br /> <br /> <br />
+            <img src={home_req} alt="client request for home page" width="400px" className="ml-[175px]"/>
+            <br /> <br /> 
             <div className="font-Montserrat font-semibold text-[50px] text-center bg-wte_bg ml-[100px] rounded-full inline-block border-white border-[2px] px-10 py-2">
               <Link to="/restaurants">Where to eat in Iloilo</Link>
             </div>{" "}
