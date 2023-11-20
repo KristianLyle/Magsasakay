@@ -56,12 +56,12 @@ const ViewMore = () => {
                               className="object-cover rounded-3xl border-[2px] border-[#160E3D]"
                               src={restaurant.image}
                               alt={restaurant.name}
-                              style={{ width: '200px', height: '150px' }}
+                              style={{ width: "200px", height: "150px" }}
                             />
                           </div>
                         </div>
                       </div>
-                      <div className="w-full text-start ml-[-150px] " >
+                      <div className="w-full text-start ml-[-150px] ">
                         <span className="text-[25px] font-regular">
                           {restaurant.name}
                         </span>

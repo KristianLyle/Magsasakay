@@ -19,12 +19,25 @@ const Options = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div
-        style={backgroundStyle}
-        className="bg-cover bg-no-repeat bg-center bg-fixed min-h-screen"
-      >
+      <div style={backgroundStyle} className="bg-full">
         <div className="mx-auto h-screen ">
           <div className="">
+            <div className=" text-white font-Montserrat bg-cover min-w-screen h-[300px] mt-0">
+              <h1 className="  mt-0 pl-4 text-center font-extrabold text-[50px]">
+                Our Mission
+              </h1>{" "}
+              <br />
+              <div className="box-container p-2 text-left font-semibold text-[20px] overflow-y-auto whitespace-normal">
+                <p className="font-normal mx-[4px] max-h-[125px] ">
+                  There is an informal saying among Ilonggos: It isn’t siopao if
+                  it isn’t Roberto’s. That’s right, Roberto’s siopao is so good
+                  that it might redefine what people know about the dish
+                  entirely. Their siopao comes in different sizes. But for the
+                  best value, buy their ‘Queen’ siopao. It is the biggest and
+                  the most packed out of all their siopao.
+                </p>
+              </div>
+            </div>
             <br />
             <h1 className="text-white font-Montserrat mt-4 font-extrabold text-[85px] text-center">
               Select Option
