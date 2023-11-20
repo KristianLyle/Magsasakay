@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import about from "./img/about.png";
 import profile from "./img/profile.png";
 import routes from "./img/routes.png";
+import home_req from "./img/home_req.png";
 
 const Home = () => {
   return (
@@ -33,7 +34,13 @@ const Home = () => {
               read honest reviews. Your guide to travel and dining adventures.
               Start exploring now!
             </p>{" "}
-            <br /> <br /> <br />
+            <img
+              src={home_req}
+              alt="client request for home page"
+              width="400px"
+              className="ml-[175px]"
+            />
+            <br /> <br />
             <div className="font-Montserrat font-semibold text-[50px] text-center bg-wte_bg ml-[100px] rounded-full inline-block border-white border-[2px] px-10 py-2">
               <Link to="/restaurants">Where to eat in Iloilo</Link>
             </div>{" "}
@@ -42,21 +49,21 @@ const Home = () => {
               <li className="w-[175px] text-[35px] flex flex-col">
                 <Link to="/about">
                   <img src={about} alt="about" />
-                  <span>About</span>
+                  <span className="ml-[-25px]">About</span>
                 </Link>
               </li>
               <br />
               <li className="w-[175px] text-[35px] flex flex-col">
                 <Link to="/profile">
                   <img src={profile} alt="profile" />
-                  <span>Profile</span>
+                  <span className="ml-[-25px]">Profile</span>
                 </Link>
               </li>
               <br />
               <li className="w-[175px] text-[35px] flex flex-col transform hover:scale-110 hover:font-semibold hover:text-[orange]">
                 <Link to="/routes">
                   <img src={routes} alt="routes" />
-                  <span>Routes</span>
+                  <span className="ml-[-25px]">Routes</span>
                 </Link>
               </li>
             </ul>
