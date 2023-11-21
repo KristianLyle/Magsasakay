@@ -37,7 +37,7 @@ const Options = () => {
                   className=" font-Montserrat font-bold text-[35px] text-center text-white 
                                 px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
                                 bg-[#8C0DF0] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
-                                hover:border-[#5AF0D5]  hover:text-[#5AF0D5]"
+                                hover:border-[#5AF0D5]  hover:text-[#160E3D] glow"
                 >
                   <Link to="/find-routes">
                     <div className="flex justify-center">
@@ -59,7 +59,7 @@ const Options = () => {
                   className="font-Montserrat font-bold text-[35px] text-center text-white 
                                 px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
                                 bg-[#0D70B1] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
-                                hover:border-[#5AF0D5] hover:text-[#5AF0D5]"
+                                hover:border-[#5AF0D5]  hover:text-[#160E3D] glow"
                 >
                   <Link to="/view-routes">
                     <div className="flex justify-center">
