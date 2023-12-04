@@ -49,7 +49,7 @@ const ProfileReviews = () => {
                     Cancel</button>
               </div>
             ) : (
-              <div className="bg-white text-black px-1 py-5 text-[15px] w-[850px] max-w-[900px] max-h-[100px] rounded-[15px] overflow-auto">
+              <div className="bg-white text-black px-1 py-5 text-[15px] w-[850px] max-w-[900px] max-h-[100px] min-h-[100px] rounded-[15px] overflow-auto">
                 {review.reviewText}
               </div>
             )}
