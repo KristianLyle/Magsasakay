@@ -9,6 +9,7 @@ import Restaurants from './restaurants'
 import ViewMore from './restoViewMore';
 import RestoReviews from './resto_review';
 import About from './about'
+import Profile from './profile';
 
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route exact path ='/about'> 
           <About/>
+        </Route>
+        <Route exact path = '/profile'>
+          <Profile/>
         </Route>
       </Switch>
     </Router>
