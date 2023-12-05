@@ -11,9 +11,9 @@ const app = express();
 app.use(cors()); // Enable CORS for cross-origin requests
 app.use(bodyParser.json());
 
-//const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
-const mongoUrl =
-  "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
+const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
+// const mongoUrl =
+//   "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(mongoUrl, {
@@ -40,7 +40,7 @@ app.post("/login", async (req, res) => {
   }
   if (await bcrypt.compare(password, user.password)) {
     const token = jwt.sign(
-      { email: user.email, username: user.username, color: user.color },
+      { email: user.email, username: user.username },
       process.env.ACCESS_TOKEN_SECRET
     );
 
@@ -52,18 +52,6 @@ app.post("/login", async (req, res) => {
   }
   res.json({ status: "error", error: "Invalid Password" });
 });
-
-function authenticateToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-  if (token == null) return res.sendStatus(401);
-
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403);
-    req.user = user;
-    next();
-  });
-}
 
 // Signup route
 app.post("/signup", async (req, res) => {
@@ -140,7 +128,7 @@ app.post("/fetch-reviews", async (req, res) => {
 
 // Add a new route for submitting reviews
 app.post("/submit-review", async (req, res) => {
-  const { restaurantName, username, userimage, reviewText, color } = req.body;
+  const { restaurantName, username, userimage, reviewText } = req.body;
 
   try {
     const newReview = new reviewModel({
@@ -158,6 +146,69 @@ app.post("/submit-review", async (req, res) => {
       .json({ error: "An error occurred while submitting the review." });
   }
 });
+
+// Add a new route for fetching user-specific reviews
+app.post("/fetch-user-reviews", async (req, res) => {
+  try {
+    // Extract username from the decoded token
+    const { userName } = req.body;
+
+    // Find all reviews for the specific user
+    const userReviews = await reviewModel.find({ username: userName });
+    res.json(userReviews);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while fetching user reviews.",
+    });
+  }
+});
+
+// Add a new route for updating user-specific reviews
+app.post("/update-review", async (req, res) => {
+  try {
+    const { reviewId, reviewText } = req.body;
+
+    // Validate if reviewId is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(reviewId)) {
+      return res.status(400).json({ error: "Invalid reviewId" });
+    }
+
+    const updatedReview = await reviewModel.findByIdAndUpdate(
+      reviewId,
+      { review: reviewText },
+      { new: true }
+    );
+
+    if (!updatedReview) {
+      return res.status(404).json({ error: "Review not found" });
+    }
+
+    res
+      .status(201)
+      .json({ message: "Review updated successfully.", updatedReview });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while updating the review.",
+    });
+  }
+});
+
+// function authenticateToken(req, res, next) {
+//   const authHeader = req.headers["authorization"];
+//   const token = authHeader && authHeader.split(" ")[1];
+//   if (token == null) return res.sendStatus(401);
+
+//   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+//     if (err) {
+//       console.error(err);
+//       return res.sendStatus(403);
+//     }
+//     req.user = user;
+//     next();
+//   });
+// }
 
 app.listen(3001, () => {
   console.log(`Server is running on port 3001`);
