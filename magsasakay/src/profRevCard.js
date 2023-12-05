@@ -27,6 +27,28 @@ const ProfileReviews = () => {
     setEditedText(initialText);
   };
 
+  const handleDeleteClick = (reviewId) => {
+    // Send a request to the server to delete the review from the database
+    Axios.post("http://localhost:3001/delete-review", {
+      reviewId,
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          console.log(response.data);
+          // Filter out the deleted review from the local state
+          const updatedReviews = reviews.filter(
+            (review) => review._id !== reviewId
+          );
+          setReviews(updatedReviews);
+        } else {
+          console.error("Failed to delete review");
+        }
+      })
+      .catch((error) => {
+        console.error("Error while deleting review:", error);
+      });
+  };
+
   const handleSaveClick = (index, reviewId) => {
     // Send a request to the server to update the review in the database
     Axios.post("http://localhost:3001/update-review", {
@@ -96,7 +118,10 @@ const ProfileReviews = () => {
               >
                 Edit Review
               </button>
-              <button className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]">
+              <button
+                className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]"
+                onClick={() => handleDeleteClick(review._id)}
+              >
                 Delete Review
               </button>
             </div>

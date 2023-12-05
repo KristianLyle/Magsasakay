@@ -195,6 +195,84 @@ app.post("/update-review", async (req, res) => {
   }
 });
 
+// Add a new route for deleting user-specific reviews
+app.post("/delete-review", async (req, res) => {
+  try {
+    const { reviewId } = req.body;
+
+    // Validate if reviewId is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(reviewId)) {
+      return res.status(400).json({ error: "Invalid reviewId" });
+    }
+
+    const deletedReview = await reviewModel.findByIdAndDelete(reviewId);
+
+    if (!deletedReview) {
+      return res.status(404).json({ error: "Review not found" });
+    }
+
+    res.status(201).json({ message: "Review deleted successfully." });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while deleting the review.",
+    });
+  }
+});
+
+// Add a new route for fetching user details
+app.post("/fetch-user-details", async (req, res) => {
+  try {
+    const { userName } = req.body;
+
+    const user = await userModel.findOne({ username: userName });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Return relevant user details
+    const userDetail = {
+      email: user.email,
+      username: user.username,
+      userimage: user.userimage,
+      bio: user.bio,
+    };
+
+    res.json(userDetail);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching user details." });
+  }
+});
+
+// Add a new route for updating user profile
+app.post("/update-user-bio", async (req, res) => {
+  try {
+    const { email, bio } = req.body;
+
+    const updatedProfile = await userModel.findOneAndUpdate(
+      { email },
+      { $set: { bio } },
+      { new: true }
+    );
+
+    if (!updatedProfile) {
+      return res.status(404).json({ error: "Profile not found" });
+    }
+
+    res
+      .status(201)
+      .json({ message: "Profile updated successfully.", updatedProfile });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while updating the profile." });
+  }
+});
+
 // function authenticateToken(req, res, next) {
 //   const authHeader = req.headers["authorization"];
 //   const token = authHeader && authHeader.split(" ")[1];
