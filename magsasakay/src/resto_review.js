@@ -10,7 +10,6 @@ import {
   useParams,
 } from "react-router-dom";
 import resto_bg from "./img/resto_bg.jpg";
-import user from "./img/user.jpg";
 
 const RestoReviews = () => {
   const { restaurantName } = useParams();
@@ -19,42 +18,57 @@ const RestoReviews = () => {
   };
   const [showInput, setShowInput] = useState(false);
   const [inputText, setInputText] = useState("");
-  const [postedText, setPostedText] = useState([]);
+  const [postedReviews, setPostedReviews] = useState([]);
 
   const handleButtonClick = () => {
     setShowInput(true);
   };
 
-  const handlePostText = () => {
+  const handlePostText = async () => {
     if (inputText.trim() !== "") {
       // Decode the token to get user information
       const token = localStorage.getItem("token");
       const decodedToken = jwtDecode(token);
       const userName = decodedToken.username;
-      const reviewData = {
-        restaurantName: restaurantName,
-        username: userName,
-        userimage: user,
-        reviewText: inputText,
-      };
 
-      // Make a POST request to the server to submit the review
-      Axios.post("http://localhost:3001/submit-review", reviewData)
-        .then((response) => {
-          if (response.status === 201) {
-            // Review submitted successfully
-            setPostedText([...postedText, inputText]);
-            setInputText("");
-            setShowInput(false);
-            // Refresh the page
-            window.location.reload();
-          } else {
-            console.error("Failed to submit review");
+      // Fetch user details to get the user image
+      try {
+        const userResponse = await Axios.post(
+          "http://localhost:3001/fetch-user-details",
+          {
+            userName: userName,
           }
-        })
-        .catch((error) => {
-          console.error("Error while submitting review:", error);
-        });
+        );
+
+        const userImage = userResponse.data.userimage;
+
+        const reviewData = {
+          restaurantName: restaurantName,
+          username: userName,
+          userimage: userImage,
+          reviewText: inputText,
+        };
+
+        // Make a POST request to the server to submit the review
+        const response = await Axios.post(
+          "http://localhost:3001/submit-review",
+          reviewData
+        );
+
+        if (response.status === 201) {
+          // Review submitted successfully
+          setPostedReviews([
+            ...postedReviews,
+            { userimage: userImage, review: inputText, username: userName },
+          ]);
+          setInputText("");
+          setShowInput(false);
+        } else {
+          console.error("Failed to submit review");
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
     }
   };
 
@@ -64,8 +78,7 @@ const RestoReviews = () => {
       restaurantName: restaurantName,
     })
       .then((response) => {
-        setPostedText(response.data);
-        console.log(response.data);
+        setPostedReviews(response.data);
       })
       .catch((error) => {
         console.error("Error fetching restaurant data:", error);
@@ -92,16 +105,16 @@ const RestoReviews = () => {
             {restaurantName}
           </h1>{" "}
           <br />
-          {postedText.length > 0 && (
+          {postedReviews.length > 0 && (
             <div>
               <br />
               <ul>
-                {postedText.map((review, index) => (
+                {postedReviews.map((review, index) => (
                   <li key={index}>
                     <div className="bg-white max-w-[1300px] ml-[20px] rounded-[20px] p-[10px] font-Montserrat border-[4px] border-black drop-shadow-2xl">
                       <div className="flex items-center  ">
                         <img
-                          src={review.userimage}
+                          src={`/${review.userimage}`}
                           width="100px"
                           height="96px"
                           className="border-[3px] rounded-full border-black"

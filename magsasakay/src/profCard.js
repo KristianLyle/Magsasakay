@@ -9,6 +9,8 @@ const ProfileCard = () => {
   const [editedBio, setEditedBio] = useState("");
   const [editedPicture, setEditedPicture] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
+  const [showSaveButton, setShowSaveButton] = useState(false);
+  const [displayedPicture, setDisplayedPicture] = useState(null);
 
   useEffect(() => {
     // Fetch user details from the server on component mount
@@ -20,6 +22,7 @@ const ProfileCard = () => {
         setCurrentUser(response.data);
         setEditedBio(response.data.bio); // Set initial bio value
         setEditedPicture(response.data.userimage); // Set initial picture value
+        setDisplayedPicture(response.data.userimage); // Set initial displayed picture value
       })
       .catch((error) => {
         console.error("Error fetching user details:", error);
@@ -58,16 +61,41 @@ const ProfileCard = () => {
       });
   };
 
+  const submitImage = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("image", editedPicture);
+    formData.append("email", currentUser.email);
+
+    const result = await Axios.post(
+      "http://localhost:3001/upload-image",
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+
+    setShowSaveButton(false); // Hide the "Save Picture" button after uploading
+    setDisplayedPicture(URL.createObjectURL(editedPicture)); // Display the uploaded image immediately
+    window.location.reload();
+  };
+
+  const handleCancelImageClick = () => {
+    window.location.reload();
+  };
+
   const handleCancelBioClick = () => {
     setEditingBio(false);
     // Reset the editedBio state to the current bio
     setEditedBio(currentUser.bio);
   };
 
-  const handlePictureChange = (event) => {
-    const file = event.target.files[0];
-    setEditedPicture(URL.createObjectURL(file));
-    // Save the picture to the server
+  const handlePictureChange = (e) => {
+    const file = e.target.files[0];
+    setDisplayedPicture(URL.createObjectURL(file));
+    setEditedPicture(file);
+    setShowSaveButton(true); // Show the "Save Picture" button when an image is selected
   };
 
   return (
@@ -83,7 +111,7 @@ const ProfileCard = () => {
             className="cursor-pointer hover:opacity-75"
           >
             <img
-              src={editedPicture || user}
+              src={displayedPicture || user}
               className="h-[200px] w-[200px] rounded-[100px] mt-[-125px] p-[5px] bg-white ml-[150px]"
             />
             <input
@@ -93,6 +121,23 @@ const ProfileCard = () => {
               style={{ display: "none" }}
               onChange={handlePictureChange}
             />
+            {showSaveButton && (
+              <>
+                <button
+                  onClick={submitImage}
+                  className="ml-2 bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px]"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={handleCancelImageClick}
+                  className="ml-2 bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px]"
+                >
+                  Cancel
+                </button>
+                <br />
+              </>
+            )}
           </label>
           <div className="profile-title text-[26px] font-semibold text-white">
             {currentUser.username}

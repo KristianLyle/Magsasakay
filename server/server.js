@@ -9,11 +9,12 @@ const jwt = require("jsonwebtoken");
 
 const app = express();
 app.use(cors()); // Enable CORS for cross-origin requests
+app.use("/uploads", express.static("uploads"));
 app.use(bodyParser.json());
 
-const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
-// const mongoUrl =
-//   "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
+// const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
+const mongoUrl =
+  "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(mongoUrl, {
@@ -273,20 +274,47 @@ app.post("/update-user-bio", async (req, res) => {
   }
 });
 
-// function authenticateToken(req, res, next) {
-//   const authHeader = req.headers["authorization"];
-//   const token = authHeader && authHeader.split(" ")[1];
-//   if (token == null) return res.sendStatus(401);
+///////////////////////////////////////////////////////////////////////////////////////////
+const multer = require("multer");
 
-//   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-//     if (err) {
-//       console.error(err);
-//       return res.sendStatus(403);
-//     }
-//     req.user = user;
-//     next();
-//   });
-// }
+// ... (other code remains unchanged)
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "../magsasakay/public/uploads");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    const fullPath = `${uniqueSuffix}${file.originalname}`;
+    cb(null, fullPath);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+// Modify the /upload-image route
+app.post("/upload-image", upload.single("image"), async (req, res) => {
+  try {
+    const imageName = `./uploads/${req.file.filename}`;
+    const { email } = req.body;
+
+    // Update the user's profile image in the userModel with the full path
+    const updatedProfile = await userModel.findOneAndUpdate(
+      { email },
+      { $set: { userimage: imageName } }, // Update the userimage field
+      { new: true }
+    );
+
+    if (!updatedProfile) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json({ status: "ok" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: "error" });
+  }
+});
 
 app.listen(3001, () => {
   console.log(`Server is running on port 3001`);
