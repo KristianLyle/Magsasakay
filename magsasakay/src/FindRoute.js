@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MapComponent from "./MultiRoute"; // Import your MapComponent
 import routeInfo from "./RouteInfo.json"; // Import your JSON data
+import f_bg from './img/f_bg.mp4';
 
 const RouteFinder = () => {
   const [startPoint, setStartPoint] = useState("");
@@ -89,12 +90,26 @@ const RouteFinder = () => {
   };
 
   return (
-    <div>
-      <h2>Find a Route</h2>
-      <div>
-        <label>Starting Point:</label>
-        <select value={startPoint} onChange={handleStartPointChange}>
-          <option value="">Select starting point</option>
+    <div className = 'items-center text-center'>
+      <div className="fixed inset-0 flex z-[-99]">
+        <video
+          src={f_bg}
+          autoPlay
+          loop
+          muted
+          className="absolute w-full h-full object-cover"
+        />
+        <div className="absolute w-full h-full bg-gradient-to-t from-indigo-500 to-orange-500 opacity-40"></div>
+      </div>
+      <h2 className='font-extrabold text-[75px] 
+                        p-[10px] text-white drop-shadow-xl'>
+                          Find a Route 
+      </h2>
+      <div className="font-Montserrat ml-[-35px]">
+        <label className = 'text-white drop-shadow-2xl font-semibold '>Starting Point:  </label>
+        <select className = 'text-black w-[50%] rounded-[20px] p-[7px] border-[3px] border-black drop-shadow-xl'
+        value={startPoint} onChange={handleStartPointChange}>
+          <option className = 'text-white'value="">Select starting point</option>
           {getUniqueAndSortedEstablishments().map((establishment) => (
             <option key={establishment} value={establishment}>
               {establishment}
@@ -102,10 +117,12 @@ const RouteFinder = () => {
           ))}
         </select>
       </div>
+      <br/>
 
-      <div>
-        <label>Destination:</label>
-        <select value={destination} onChange={handleDestinationChange}>
+      <div className = 'font-Montserrat ml-[-15px]'>
+        <label className = 'text-white drop-shadow-2xl font-semibold'>Destination:  </label>
+        <select className = 'text-black w-[50%] rounded-[20px] p-[7px] border-[3px] border-black drop-shadow-xl'
+        value={destination} onChange={handleDestinationChange}>
           <option value="">Select destination</option>
           {getUniqueAndSortedEstablishments().map((establishment) => (
             <option key={establishment} value={establishment}>
@@ -115,16 +132,21 @@ const RouteFinder = () => {
         </select>
       </div>
 
-      <button onClick={findRoute}>Find Route</button>
+      <br/>
 
+      <button className= 'font-Montserrat ml-[35px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] px-[25px] max-w-[200px]' 
+      onClick={findRoute}>
+        Find Route
+      </button>
+      <br/><br/>
       {/* Display Jeepney route titles after the button is clicked */}
       {selectedRouteCoordinates && (
-        <div>
-          <p>Starting Point Jeepney Route: {startingPointJeepneyRouteTitle}</p>
-          <p>Destination Jeepney Route: {destinationJeepneyRouteTitle}</p>
+        <div className = 'font-Montserrat text-white drop-shadow-2xl  bg-[#160E3D] max-w-[1000px] rounded-xl py-[5px] px-[20px] ml-[275px]'>
+          <p>Starting Point Jeepney Route:</p> <p className="font-semibold"> {startingPointJeepneyRouteTitle}</p> <br/>
+          <p>Destination Jeepney Route: </p> <p className="font-semibold">{destinationJeepneyRouteTitle}</p>
         </div>
       )}
-
+      <div className="relative p-6 text-white text-center items-center ml-[390px]">
       <MapComponent
         selectedRouteCoordinates={selectedRouteCoordinates}
         startingPointJeepneyRouteTitle={startingPointJeepneyRouteTitle}
@@ -132,6 +154,8 @@ const RouteFinder = () => {
         startingPointDetails={startingPointDetails}
         destinationDetails={destinationDetails}
       />
+      </div>
+     
     </div>
   );
 };

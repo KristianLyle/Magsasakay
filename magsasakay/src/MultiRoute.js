@@ -90,7 +90,9 @@ const MapComponent = ({
       <MapContainer
         center={[10.7202, 122.5621]}
         zoom={13}
-        style={{ height: "500px", width: "500px" }}
+        style={{ height: "450px", width: "700px" }}
+        className="rounded-[30px] h-[450px] w-[700px] shadow-lg shadow-black-500/40
+                      border-[5px] border-[#160E3D] drop-shadow-2xl"
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
