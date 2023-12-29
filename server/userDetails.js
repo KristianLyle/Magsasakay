@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema(
     email: String,
     username: String,
     password: String,
-    color: String,
+    userimage: String,
+    bio: String,
   },
   { collection: "users" }
 );
@@ -53,7 +54,6 @@ const reviewSchema = new mongoose.Schema(
     username: String,
     userimage: String,
     review: String,
-    color: String,
   },
   { collection: "reviews" }
 );

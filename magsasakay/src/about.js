@@ -1,5 +1,4 @@
 import React from 'react';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import the carousel styles
 import { Link } from 'react-router-dom';
 import './index.css';
 import NavBar from './navbar';

@@ -19,8 +19,8 @@ const Home = () => {
         </Switch>
       </Router>
 
-      <div className="bg-home_bg bg-no-repeat bg-cover relative">
-        <div className="container h-screen w-[150%] relative z-10">
+      <div className="bg-home_bg bg-cover h-[120vh] overflow-x-hidden relative">
+        <div className="container h-full w-[150%] relative z-10">
           <div className="text-white">
             <br />
             <h1 className="font-Montserrat font-extrabold text-[55px] ml-[10px]">
