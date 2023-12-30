@@ -203,7 +203,7 @@
 				"lat": 10.7072
 			},
 			{
-				"name": "Carlos Bakeshop",
+				"name": "SM City Iloilo",
 				"type": "Establishment",
 				"lon": 122.551,
 				"lat": 10.7144
@@ -265,7 +265,7 @@
 				"lat": 10.716
 			},
 			{
-				"name": "Carlos Bakeshop",
+				"name": "SM City Iloilo",
 				"type": "Establishment",
 				"lon": 122.551,
 				"lat": 10.7144
@@ -364,13 +364,13 @@
 				"lat": 10.69268
 			},
 			{
-				"name": "Carlos Bakeshop",
+				"name": "SM City Iloilo",
 				"type": "Establishment",
 				"lon": 122.551,
 				"lat": 10.7144
 			},
 			{
-				"name": "Molo Mansion Cafe",
+				"name": "Cafe Z",
 				"type": "Cafe",
 				"lon": 122.5382,
 				"lat": 10.6963
@@ -398,6 +398,12 @@
 				"type": "School",
 				"lon": 122.517104,
 				"lat": 10.689309
+			},
+			{
+				"name": "Molo Mansion Cafe",
+				"type": "Cafe",
+				"lon": 122.54342,
+				"lat": 10.696544
 			}
 		]
 	}
