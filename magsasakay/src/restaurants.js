@@ -25,7 +25,7 @@ const Restaurants = () => {
     localStorage.setItem("selectedRestaurantId", restaurantName);
 
     // Redirect to Location page
-    history.push("/location");
+    history.push(`/location/${restaurantName}`);
   };
 
   const backgroundStyle = {

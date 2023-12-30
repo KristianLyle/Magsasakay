@@ -56,7 +56,7 @@ function App() {
         <Route exact path="/profile">
           <Profile />
         </Route>
-        <Route exact path="/location">
+        <Route exact path="/location/:restaurantName">
           <Location />
         </Route>
       </Switch>

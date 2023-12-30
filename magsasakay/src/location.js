@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import RouteDropdown from "./RouteDropdown";
+import RouteDropdown from "./restoRouteDropdown";
 import MapComponent from "./Map";
 import restoRouteInfo from "./restoRoutes.json";
 import v_bg from "./img/v-bg.mp4";
@@ -34,9 +34,9 @@ const Location = () => {
     setSelectedRoute(route);
   }, [selectedRestaurant]);
 
-  const handleRouteSelect = (routeIndex) => {
-    // Update selectedRoute based on the index received from the dropdown
-    setSelectedRoute(restoRouteInfo[routeIndex]);
+  const handleRouteSelect = (selectedRoute) => {
+    // Update selectedRoute directly
+    setSelectedRoute(selectedRoute);
   };
 
   // Decode the token to get user information
@@ -74,9 +74,7 @@ const Location = () => {
               (est) => est.name === selectedRestaurant?.name
             )
           )}
-          selectedRoute={
-            selectedRoute ? restoRouteInfo.indexOf(selectedRoute) : ""
-          }
+          selectedRoute={selectedRoute}
           onSelectRoute={handleRouteSelect}
         />
         <br />
