@@ -1,0 +1,200 @@
+[
+	{
+		"title": "Jeepney Route No. 01 - Bo. Obrero - Iloilo City Proper Loop",
+		"description": "This route goes from Lapuz, Barrio Obrero area to University of Iloilo PHINMA.",
+		"coordinates": [
+			{ "lon": 122.586769, "lat": 10.698412 },
+			{ "lon": 122.585744, "lat": 10.697221 },
+			{ "lon": 122.583435, "lat": 10.697274 },
+			{ "lon": 122.574346, "lat": 10.701791 },
+			{ "lon": 122.569179, "lat": 10.701634 },
+			{ "lon": 122.569092, "lat": 10.696519 },
+			{ "lon": 122.570956, "lat": 10.693991 },
+			{ "lon": 122.572557, "lat": 10.692917 },
+			{ "lon": 122.57143, "lat": 10.692004 },
+			{ "lon": 122.57001, "lat": 10.692076 },
+			{ "lon": 122.570486, "lat": 10.694772 }
+		],
+		"color": "blue",
+		"establishments": [
+			{
+				"name": "Muelle Deli and Restaurant",
+				"type": "Restaurant",
+				"lon": 122.569591,
+				"lat": 10.692006
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 02 - Calaparan Calumpang - Iloilo City Proper",
+		"description": "This route goes from Villa Arevalo Calaparan Area, to Iloilo City Proper.",
+		"coordinates": [
+			{ "lon": 122.519538, "lat": 10.680312 },
+			{ "lon": 122.549347, "lat": 10.692029 },
+			{ "lon": 122.558497, "lat": 10.693299 },
+			{ "lon": 122.564464, "lat": 10.691909 },
+			{ "lon": 122.564755, "lat": 10.693732 },
+			{ "lon": 122.568882, "lat": 10.696364 },
+			{ "lon": 122.572437, "lat": 10.693006 },
+			{ "lon": 122.57365, "lat": 10.694378 },
+			{ "lon": 122.569393, "lat": 10.696575 },
+			{ "lon": 122.5682, "lat": 10.696186 }
+		],
+		"color": "blue",
+		"establishments": [
+			{
+				"name": "Muelle Deli and Restaurant",
+				"type": "Restaurant",
+				"lon": 122.569591,
+				"lat": 10.692006
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 03 - Ungka - Iloilo City Proper via CPU",
+		"description": "This is the route from Ungka to Iloilo City Proper via CPU.",
+		"coordinates": [
+			{ "lon": 122.538587, "lat": 10.75237 },
+			{ "lon": 122.539349, "lat": 10.745288 },
+			{ "lon": 122.539283, "lat": 10.74269 },
+			{ "lon": 122.548297, "lat": 10.734053 },
+			{ "lon": 122.557081, "lat": 10.725571 },
+			{ "lon": 122.556328, "lat": 10.72474 },
+			{ "lon": 122.558435, "lat": 10.722115 },
+			{ "lon": 122.56612, "lat": 10.710192 },
+			{ "lon": 122.568136, "lat": 10.702219 },
+			{ "lon": 122.569114, "lat": 10.700666 },
+			{ "lon": 122.570092, "lat": 10.695251 },
+			{ "lon": 122.57639, "lat": 10.689915 },
+			{ "lon": 122.582751, "lat": 10.692195 }
+		],
+		"color": "blue",
+		"establishments": [
+			{
+				"name": "Roberto's Siopao",
+				"type": "Fastfood",
+				"lon": 122.5573,
+				"lat": 10.7244
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 04 - Ungka - Iloilo City Proper via Diversion/Festive Walk Transport Hub Loop",
+		"description": "This is the route from ITGSI Terminal to Iloilo City Proper loop.",
+		"coordinates": [
+			{ "lon": 122.53856, "lat": 10.752372 },
+			{ "lon": 122.547841, "lat": 10.726814 },
+			{ "lon": 122.545749, "lat": 10.714982 },
+			{ "lon": 122.552095, "lat": 10.719482 },
+			{ "lon": 122.554149, "lat": 10.699841 },
+			{ "lon": 122.555298, "lat": 10.69283 },
+			{ "lon": 122.555368, "lat": 10.694353 },
+			{ "lon": 122.549564, "lat": 10.725207 },
+			{ "lon": 122.53868, "lat": 10.752374 }
+		],
+		"color": "blue",
+		"establishments": [
+            {
+				"name": "Mamusa Art Bistro",
+				"type": "Dining",
+				"lon": 122.547,
+				"lat": 10.7178
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 05 - Festive Walk Transport Hub – Iloilo City Proper via SM City",
+		"description": "This is the route from Mandurriao to Iloilo City Proper via SM City.",
+		"coordinates": [
+			{ "lon": 122.547046, "lat": 10.717456 },
+			{ "lon": 122.548325, "lat": 10.719743 },
+			{ "lon": 122.549058, "lat": 10.722214 },
+			{ "lon": 122.549583, "lat": 10.724812 },
+			{ "lon": 122.55414, "lat": 10.699851 },
+			{ "lon": 122.555778, "lat": 10.699928 },
+			{ "lon": 122.564657, "lat": 10.701033 },
+			{ "lon": 122.564782, "lat": 10.697718 },
+			{ "lon": 122.566305, "lat": 10.697887 },
+			{ "lon": 122.566373, "lat": 10.69579 },
+			{ "lon": 122.56894, "lat": 10.696378 },
+			{ "lon": 122.569117, "lat": 10.692263 },
+			{ "lon": 122.571213, "lat": 10.692019 },
+			{ "lon": 122.573809, "lat": 10.691759 },
+			{ "lon": 122.570758, "lat": 10.694475 },
+			{ "lon": 122.569271, "lat": 10.696421 },
+			{ "lon": 122.566373, "lat": 10.69579 }
+		],
+		"color": "blue",
+		"establishments": [
+			{
+				"name": "Carlos Bakeshop",
+				"type": "Bakeshop",
+				"lon": 122.551,
+				"lat": 10.7144
+			},
+            {
+				"name": "Mamusa Art Bistro",
+				"type": "Dining",
+				"lon": 122.547,
+				"lat": 10.7178
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 20 - Villa - Jaro via Sooc/Onate/Festive Walk Transport Hub",
+		"description": "This is a circular route through Villa - Jaro.",
+		"coordinates": [
+			{ "lon": 122.521105, "lat": 10.688969 },
+			{ "lon": 122.516386, "lat": 10.688933 },
+			{ "lon": 122.516671, "lat": 10.687041 },
+			{ "lon": 122.521543, "lat": 10.687607 },
+			{ "lon": 122.521753, "lat": 10.701125 },
+			{ "lon": 122.525941, "lat": 10.706521 },
+			{ "lon": 122.547185, "lat": 10.718549 },
+			{ "lon": 122.5458, "lat": 10.714998 },
+			{ "lon": 122.555554, "lat": 10.723613 },
+			{ "lon": 122.555478, "lat": 10.723516 }
+		],
+		"color": "blue",
+		"establishments": [
+			{
+				"name": "Tatoy's Manokan",
+				"type": "Eatery",
+				"lon": 122.55656,
+				"lat": 10.72497
+			}
+		]
+	},
+	{
+		"title": "Jeepney Route No. 23 - Mohon – Mandurriao Business District",
+		"description": "This is the route from Mohon Terminal to Diversion Road loop.",
+		"coordinates": [
+			{ "lon": 122.500033, "lat": 10.693395 },
+			{ "lon": 122.507534, "lat": 10.691465 },
+			{ "lon": 122.521695, "lat": 10.688961 },
+			{ "lon": 122.535611, "lat": 10.692513 },
+			{ "lon": 122.542796, "lat": 10.700945 },
+			{ "lon": 122.542585, "lat": 10.707366 },
+			{ "lon": 122.544584, "lat": 10.712431 },
+			{ "lon": 122.547769, "lat": 10.71853 },
+			{ "lon": 122.552108, "lat": 10.719488 },
+			{ "lon": 122.551608, "lat": 10.709657 },
+			{ "lon": 122.544042, "lat": 10.703873 }
+		],
+		"color": "blue",
+		"establishments": [
+			{
+				"name": "Molo Mansion Cafe",
+				"type": "Cafe",
+				"lon": 122.54342,
+				"lat": 10.696544
+			},
+            {
+				"name": "Carlos Bakeshop",
+				"type": "Bakeshop",
+				"lon": 122.551,
+				"lat": 10.7144
+			}
+		]
+	}
+]

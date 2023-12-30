@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RouteDropdown from "./RouteDropdown";
 import MapComponent from "./Map";
-import routeInfo from "./RouteInfo.json";
+import restoRouteInfo from "./restoRoutes.json";
 import v_bg from "./img/v-bg.mp4";
 import viewRoute_req from "./img/viewRoute_req.png";
 import { jwtDecode } from "jwt-decode";
@@ -11,12 +11,10 @@ const Location = () => {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   useEffect(() => {
-    // Fetch selected restaurant data based on some local variable
-    // For now, let's assume it's stored in localStorage as selectedRestaurantId
     const selectedRestaurantId = localStorage.getItem("selectedRestaurantId");
 
     // Find the selected restaurant in the restaurant data using case-insensitive comparison
-    const restaurant = routeInfo
+    const restaurant = restoRouteInfo
       .flatMap((route) => route.establishments)
       .find(
         (est) =>
@@ -29,7 +27,7 @@ const Location = () => {
 
   useEffect(() => {
     // Update selectedRoute based on selectedRestaurant
-    const route = routeInfo.find((r) =>
+    const route = restoRouteInfo.find((r) =>
       r.establishments.some((est) => est.name === selectedRestaurant?.name)
     );
 
@@ -38,7 +36,7 @@ const Location = () => {
 
   const handleRouteSelect = (routeIndex) => {
     // Update selectedRoute based on the index received from the dropdown
-    setSelectedRoute(routeInfo[routeIndex]);
+    setSelectedRoute(restoRouteInfo[routeIndex]);
   };
 
   // Decode the token to get user information
@@ -71,12 +69,14 @@ const Location = () => {
       </div>
       <div className="relative p-6 text-white text-center items-center ml-[30px]">
         <RouteDropdown
-          routes={routeInfo.filter((r) =>
+          routes={restoRouteInfo.filter((r) =>
             r.establishments.some(
               (est) => est.name === selectedRestaurant?.name
             )
           )}
-          selectedRoute={selectedRoute ? routeInfo.indexOf(selectedRoute) : ""}
+          selectedRoute={
+            selectedRoute ? restoRouteInfo.indexOf(selectedRoute) : ""
+          }
           onSelectRoute={handleRouteSelect}
         />
         <br />
