@@ -15,27 +15,46 @@ const Location = () => {
     // For now, let's assume it's stored in localStorage as selectedRestaurantId
     const selectedRestaurantId = localStorage.getItem("selectedRestaurantId");
 
-    // Find the selected restaurant in the restaurant data
+    // Find the selected restaurant in the restaurant data using case-insensitive comparison
     const restaurant = routeInfo
       .flatMap((route) => route.establishments)
-      .find((est) => est.name === selectedRestaurantId);
+      .find(
+        (est) =>
+          est.name.trim().toLowerCase() ===
+          selectedRestaurantId.trim().toLowerCase()
+      );
 
     setSelectedRestaurant(restaurant);
   }, []);
 
   useEffect(() => {
     // Update selectedRoute based on selectedRestaurant
-    const route = routeInfo.find((route) =>
-      route.establishments.some((est) => est.name === selectedRestaurant?.name)
+    const route = routeInfo.find((r) =>
+      r.establishments.some((est) => est.name === selectedRestaurant?.name)
     );
 
     setSelectedRoute(route);
   }, [selectedRestaurant]);
 
+  const handleRouteSelect = (routeIndex) => {
+    // Update selectedRoute based on the index received from the dropdown
+    setSelectedRoute(routeInfo[routeIndex]);
+  };
+
   // Decode the token to get user information
   const token = localStorage.getItem("token");
   const decodedToken = jwtDecode(token);
   const selectedColor = decodedToken.color;
+  const backgroundOverlay = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: selectedColor,
+    zIndex: 1,
+    opacity: 0.4,
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -47,24 +66,13 @@ const Location = () => {
           muted
           className="absolute w-full h-full object-cover"
         />
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: selectedColor,
-            zIndex: 1,
-            opacity: 0.4,
-          }}
-        ></div>
+        <div style={backgroundOverlay}></div>
         <div className="absolute w-full h-full bg-gradient-to-t from-indigo-500 to-orange-500 opacity-60"></div>
       </div>
       <div className="relative p-6 text-white text-center items-center ml-[30px]">
         <RouteDropdown
-          routes={routeInfo.filter((route) =>
-            route.establishments.some(
+          routes={routeInfo.filter((r) =>
+            r.establishments.some(
               (est) => est.name === selectedRestaurant?.name
             )
           )}
@@ -72,10 +80,7 @@ const Location = () => {
           onSelectRoute={handleRouteSelect}
         />
         <br />
-        <MapComponent
-          selectedRoute={selectedRoute}
-          selectedRestaurant={selectedRestaurant}
-        />
+        <MapComponent selectedRoute={selectedRoute} />
         <img
           src={viewRoute_req}
           alt="client request on view route page"
@@ -85,10 +90,6 @@ const Location = () => {
       </div>
     </div>
   );
-
-  function handleRouteSelect(routeIndex) {
-    setSelectedRoute(routeInfo[routeIndex]);
-  }
 };
 
 export default Location;
