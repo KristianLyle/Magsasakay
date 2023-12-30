@@ -12,6 +12,7 @@ import ViewMore from "./restoViewMore";
 import RestoReviews from "./resto_review";
 import About from "./about";
 import Profile from "./profile";
+import Location from "./location";
 
 function App() {
   useEffect(() => {
@@ -54,6 +55,9 @@ function App() {
         </Route>
         <Route exact path="/profile">
           <Profile />
+        </Route>
+        <Route exact path="/location">
+          <Location />
         </Route>
       </Switch>
     </Router>

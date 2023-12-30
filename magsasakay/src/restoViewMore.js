@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const ViewMore = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     // Fetch restaurant data from the API
@@ -16,6 +18,14 @@ const ViewMore = () => {
         console.error("Error fetching restaurant data:", error)
       );
   }, []);
+
+  const handleLocationClick = (restaurantName) => {
+    // Store the selected restaurant name in localStorage
+    localStorage.setItem("selectedRestaurantId", restaurantName);
+
+    // Redirect to Location page
+    history.push("/location");
+  };
 
   const backgroundStyle = {
     backgroundImage: `linear-gradient(to bottom, rgba(123, 0, 255, 0.7), rgba(240, 143, 90, 0.7))`,
@@ -71,7 +81,10 @@ const ViewMore = () => {
                           </p>
                         </div>
                         <div className="flex justify-end mt-[8px]">
-                          <button className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md mr-[5px]">
+                          <button
+                            onClick={() => handleLocationClick(restaurant.name)}
+                            className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md mr-[5px]"
+                          >
                             Location
                           </button>
                           <Link
