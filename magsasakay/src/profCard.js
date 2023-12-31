@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import user from "./img/default-user.png";
+import user from "./img/default-user.jpg";
 import city from "./img/city.png";
 
 const ProfileCard = () => {

@@ -114,7 +114,7 @@ const ProfileReviews = () => {
             <div>
               <button
                 className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]"
-                onClick={() => handleEditClick(index, review.reviewText)}
+                onClick={() => handleEditClick(index, review.review)}
               >
                 Edit Review
               </button>
