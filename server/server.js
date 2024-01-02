@@ -111,6 +111,34 @@ app.get("/view-more-restaurants", async (req, res) => {
   }
 });
 
+app.post("/fetch-restaurant-details", async (req, res) => {
+  try {
+    const { restaurantName } = req.body;
+
+    const restaurant = await restaurantModel.findOne({
+      name: restaurantName,
+    });
+
+    if (!restaurant) {
+      return res.status(404).json({ error: "Restaurant not found" });
+    }
+
+    // Return relevant restaurant details
+    const restaurantDetails = {
+      name: restaurant.name,
+      image: restaurant.image,
+      description: restaurant.description,
+    };
+
+    res.json(restaurantDetails);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while fetching restaurant details.",
+    });
+  }
+});
+
 // Add a new route for fetching reviews by restaurant name
 app.post("/fetch-reviews", async (req, res) => {
   const { restaurantName } = req.body;
