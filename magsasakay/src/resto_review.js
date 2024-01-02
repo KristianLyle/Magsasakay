@@ -19,6 +19,20 @@ const RestoReviews = () => {
   const [showInput, setShowInput] = useState(false);
   const [inputText, setInputText] = useState("");
   const [postedReviews, setPostedReviews] = useState([]);
+  const [restaurantDetails, setRestaurantDetails] = useState({});
+
+  useEffect(() => {
+    // Fetch restaurant data
+    Axios.post("http://localhost:3001/fetch-restaurant-details", {
+      restaurantName: restaurantName,
+    })
+      .then((response) => {
+        setRestaurantDetails(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching restaurant details:", error);
+      });
+  }, [restaurantName]);
 
   const handleButtonClick = () => {
     setShowInput(true);
@@ -73,7 +87,7 @@ const RestoReviews = () => {
   };
 
   useEffect(() => {
-    // Fetch restaurant data from the API
+    // Fetch restaurant reviews from the API
     Axios.post("http://localhost:3001/fetch-reviews", {
       restaurantName: restaurantName,
     })
@@ -102,16 +116,15 @@ const RestoReviews = () => {
             className="text-white font-Montserrat mt-4 text-left font-extrabold text-[40px]"
             style={{ margin: 0 }}
           >
-            {restaurantName}
+            {restaurantDetails.name}
           </h1>{" "}
           <div>
-            {/* main Container */}
-            <div>
-              {/* pic*/}
-            </div>
-            <div>
-              {/* desc*/}
-            </div>
+            {/* Display restaurant image and description here */}
+            <img
+              src={`/${restaurantDetails.image}`}
+              alt={restaurantDetails.name}
+            />
+            <p>{restaurantDetails.description}</p>
           </div>
           <br />
           {postedReviews.length > 0 && (
