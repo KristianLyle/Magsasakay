@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import RouteDropdown from "./restoRouteDropdown";
 import MapComponent from "./Map";
 import restoRouteInfo from "./restoRoutes.json";
-import v_bg from "./img/v-bg.mp4";
+import l_bg from "./img/l_bg.mp4";
 import viewRoute_req from "./img/viewRoute_req.png";
 import { jwtDecode } from "jwt-decode";
+import NavBar from "./navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const Location = () => {
   const [selectedRoute, setSelectedRoute] = useState(null);
@@ -55,10 +57,17 @@ const Location = () => {
   };
 
   return (
+    <>
+    <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" />
+        </Switch>
+      </Router>
     <div className="min-h-screen flex items-center justify-center">
-      <div className="fixed inset-0 flex">
+      <div className="fixed inset-0 flex -z-50">
         <video
-          src={v_bg}
+          src={l_bg}
           autoPlay
           loop
           muted
@@ -87,6 +96,7 @@ const Location = () => {
         />
       </div>
     </div>
+    </>
   );
 };
 

@@ -5,6 +5,8 @@ import routeInfo from './RouteInfo.json';
 import v_bg from './img/v-bg.mp4';
 import viewRoute_req from './img/viewRoute_req.png';
 import { jwtDecode } from "jwt-decode";
+import NavBar from "./navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const RouteFinder = () => {
   const [selectedRoute, setSelectedRoute] = useState(null);
@@ -28,8 +30,15 @@ const RouteFinder = () => {
   };
 
   return (
+    <>
+    <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" />
+        </Switch>
+      </Router>
     <div className="min-h-screen flex items-center justify-center">
-      <div className="fixed inset-0 flex">
+      <div className="fixed inset-0 flex -z-50">
         <video
           src={v_bg}
           autoPlay
@@ -51,6 +60,7 @@ const RouteFinder = () => {
         <img src={viewRoute_req} alt='client request on view route page' width='350px' className='mt-[-725px]'/>
       </div>
     </div>
+    </>
   );
 };
 
