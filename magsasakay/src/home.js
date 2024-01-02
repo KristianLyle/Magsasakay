@@ -8,6 +8,7 @@ import about from "./img/about.png";
 import profile from "./img/profile.png";
 import routes from "./img/routes.png";
 import home_req from "./img/home_req.png";
+import restaurant from "./img/restaurant.png";
 
 const Home = () => {
   return (
@@ -42,7 +43,7 @@ const Home = () => {
             />
             <br /> <br />
             <div className="font-Montserrat font-semibold text-[50px] text-center bg-wte_bg ml-[100px] rounded-full inline-block border-white border-[2px] px-10 py-2">
-              <Link to="/restaurants">Where to eat in Iloilo</Link>
+              <Link to="/routes">Where to go in Iloilo</Link>
             </div>{" "}
             <br /> <br /> <br /> <br />
             <ul className="grid grid-cols-[repeat(auto-fill,_minmax(100px,_1fr))] text-center items-center ml-[100px] gap-x-[50px]">
@@ -61,9 +62,9 @@ const Home = () => {
               </li>
               <br />
               <li className="w-[175px] text-[35px] flex flex-col transform hover:scale-110 hover:font-semibold hover:text-[orange]">
-                <Link to="/routes">
-                  <img src={routes} alt="routes" />
-                  <span className="ml-[-25px]">Routes</span>
+                <Link to="/restaurants">
+                  <img src={restaurant} alt="restaurants" />
+                  <span className="ml-[-25px]">Restaurants</span>
                 </Link>
               </li>
             </ul>

@@ -104,6 +104,15 @@ const RestoReviews = () => {
           >
             {restaurantName}
           </h1>{" "}
+          <div>
+            {/* main Container */}
+            <div>
+              {/* pic*/}
+            </div>
+            <div>
+              {/* desc*/}
+            </div>
+          </div>
           <br />
           {postedReviews.length > 0 && (
             <div>
