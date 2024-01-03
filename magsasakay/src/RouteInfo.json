@@ -18,40 +18,53 @@
 		"color": "blue",
 		"establishments": [
 			{
+				"name": "Muelle Deli and Restaurant",
+				"type": "Restaurant",
+				"lon": 122.569591,
+				"lat": 10.692006,
+				"image": "img/muelle.jpg"
+			},
+			{
 				"name": "Iloilo - Guimaras Ferry Wharf",
 				"type": "Pier",
 				"lon": 122.578595,
-				"lat": 10.701233
+				"lat": 10.701233,
+				"image": "img/wharf.jpg"
 			},
 			{
 				"name": "National Statistics Office - Iloilo",
 				"type": "Establishment",
 				"lon": 122.569264,
-				"lat": 10.698869
+				"lat": 10.698869,
+				"image": "img/statistics.jpg"
 			},
 			{
 				"name": "Hua Siong College of Iloilo",
 				"type": "College",
 				"lon": 122.568986,
-				"lat": 10.696941
+				"lat": 10.696941,
+				"image": "img/huasiong.webp"
 			},
 			{
 				"name": "Calle Real and Old Iloilo Business District",
 				"type": "Establishment",
 				"lon": 122.569804,
-				"lat": 10.695513
+				"lat": 10.695513,
+				"image": "img/calle.jpg"
 			},
 			{
 				"name": "University of Iloilo PHINMA",
 				"type": "College",
 				"lon": 122.569591,
-				"lat": 10.692006
+				"lat": 10.692006,
+				"image": "img/phinma.png"
 			},
 			{
 				"name": "Museum of Philippine Economic History",
 				"type": "Establishment",
 				"lon": 122.572459,
-				"lat": 10.693186
+				"lat": 10.693186,
+				"image": "img/economic-museum.jpg"
 			}
 		]
 	},
@@ -73,40 +86,46 @@
 		"color": "blue",
 		"establishments": [
 			{
-				"name": "Calaparan Area",
-				"type": "Establishment",
-				"lon": 122.5221956,
-				"lat": 10.6876285
+				"name": "Muelle Deli and Restaurant",
+				"type": "Restaurant",
+				"lon": 122.569591,
+				"lat": 10.692006,
+				"image": "img/muelle.jpg"
 			},
 			{
 				"name": "Green Dragon Lodge",
 				"type": "Establishment",
 				"lon": 122.55303,
-				"lat": 10.69271
+				"lat": 10.69271,
+				"image": "img/greendragon.jpg"
 			},
 			{
 				"name": "Sofia Lodge",
 				"type": "Establishment",
 				"lon": 122.5539,
-				"lat": 10.6925
+				"lat": 10.6925,
+				"image": "img/sofia.jpg"
 			},
 			{
 				"name": "Iloilo Fish Port Complex",
 				"type": "Establishment",
 				"lon": 122.55745,
-				"lat": 10.68935
+				"lat": 10.68935,
+				"image": "img/fishport.jpg"
 			},
 			{
 				"name": "Iloilo City Social Hygiene ClinicUniversity of Iloilo – PHINMA",
 				"type": "Establishment",
 				"lon": 122.55831,
-				"lat": 10.69352
+				"lat": 10.69352,
+				"image": "img/hygiene.jpg"
 			},
 			{
 				"name": "University of Iloilo – PHINMA",
 				"type": "College",
 				"lon": 122.569591,
-				"lat": 10.692006
+				"lat": 10.692006,
+				"image": "img/phinma.png"
 			}
 		]
 	},
@@ -131,40 +150,53 @@
 		"color": "blue",
 		"establishments": [
 			{
+				"name": "Roberto's Siopao",
+				"type": "Fastfood",
+				"lon": 122.5573,
+				"lat": 10.7244,
+				"image": "img/roberto.png"
+			},
+			{
 				"name": "Central Philippine University",
 				"type": "College",
 				"lon": 122.5469,
-				"lat": 10.7314
+				"lat": 10.7314,
+				"image": "img/cpu.jpg"
 			},
 			{
 				"name": "Jaro Plaza",
 				"type": "Plaza",
 				"lon": 122.5573,
-				"lat": 10.7244
+				"lat": 10.7244,
+				"image": "img/jaroplaza.jpg"
 			},
 			{
 				"name": "Robinsons Place Jaro",
 				"type": "Establishment",
 				"lon": 122.5581,
-				"lat": 10.7209
+				"lat": 10.7209,
+				"image": "img/robjaro.jpg"
 			},
 			{
 				"name": "West Visayas State University",
 				"type": "College",
 				"lon": 122.5624,
-				"lat": 10.7137
+				"lat": 10.7137,
+				"image": "img/wvsu.jpg"
 			},
 			{
 				"name": "Gaisano City Iloilo",
 				"type": "Establishment",
 				"lon": 122.567,
-				"lat": 10.7073
+				"lat": 10.7073,
+				"image": "img/gaisanocity.jpg"
 			},
 			{
 				"name": "Iloilo Sports Complex",
 				"type": "Establishment",
 				"lon": 122.5627,
-				"lat": 10.7116
+				"lat": 10.7116,
+				"image": "img/sportscom.jpg"
 			}
 		]
 	},
@@ -185,40 +217,53 @@
 		"color": "blue",
 		"establishments": [
 			{
+				"name": "Mamusa Art Bistro",
+				"type": "Dining",
+				"lon": 122.547,
+				"lat": 10.7178,
+				"image": "img/mamusa.png"
+			},
+			{
 				"name": "Brandy Museum",
 				"type": "Establishment",
 				"lon": 122.5482,
-				"lat": 10.7184
+				"lat": 10.7184,
+				"image": "img/brandy.webp"
 			},
 			{
 				"name": "Festive Walk Mall",
 				"type": "Establishment",
 				"lon": 122.547,
-				"lat": 10.7178
+				"lat": 10.7178,
+				"image": "img/festive.webp"
 			},
 			{
 				"name": "Diversion 21 Hotel",
 				"type": "Establishment",
 				"lon": 122.5528,
-				"lat": 10.7072
+				"lat": 10.7072,
+				"image": "img/diversion21.jpg"
 			},
 			{
 				"name": "SM City Iloilo",
 				"type": "Establishment",
 				"lon": 122.551,
-				"lat": 10.7144
+				"lat": 10.7144,
+				"image": "img/smcity.jpg"
 			},
 			{
 				"name": "Iloilo Museum of Contemporary Art",
 				"type": "Establishment",
 				"lon": 122.54838,
-				"lat": 10.71821
+				"lat": 10.71821,
+				"image": "img/ilomoca.jpg"
 			},
 			{
 				"name": "University of San Agustin – Sambag Campus",
 				"type": "College",
 				"lon": 122.5369702,
-				"lat": 10.7374964
+				"lat": 10.7374964,
+				"image": "img/sanag.webp"
 			}
 		]
 	},
@@ -247,40 +292,60 @@
 		"color": "blue",
 		"establishments": [
 			{
+				"name": "Carlos Bakeshop",
+				"type": "Bakeshop",
+				"lon": 122.551,
+				"lat": 10.7144,
+				"image": "img/carlos.png"
+			},
+			{
+				"name": "Mamusa Art Bistro",
+				"type": "Dining",
+				"lon": 122.547,
+				"lat": 10.7178,
+				"image": "img/mamusa.png"
+			},
+			{
 				"name": "Festive Walk Mall",
 				"type": "Establishment",
 				"lon": 122.547,
-				"lat": 10.7178
+				"lat": 10.7178,
+				"image": "img/festive.webp"
 			},
 			{
 				"name": "Highway 21 Hotel",
 				"type": "Establishment",
 				"lon": 122.5573,
-				"lat": 10.69956
+				"lat": 10.69956,
+				"image": "img/highway21.jpg"
 			},
 			{
 				"name": "Zuri Hotel",
 				"type": "Establishment",
 				"lon": 122.5525,
-				"lat": 10.716
+				"lat": 10.716,
+				"image": "img/zuri.jpg"
 			},
 			{
 				"name": "SM City Iloilo",
 				"type": "Establishment",
 				"lon": 122.551,
-				"lat": 10.7144
+				"lat": 10.7144,
+				"image": "img/smcity.jpg"
 			},
 			{
 				"name": "Mabini Elementary School",
 				"type": "School",
 				"lon": 122.564807985,
-				"lat": 10.7001812585
+				"lat": 10.7001812585,
+				"image": "img/mabini.jpg"
 			},
 			{
 				"name": "Iloilo Central Elementrary School",
 				"type": "School",
 				"lon": 122.56545,
-				"lat": 10.70052
+				"lat": 10.70052,
+				"image": "img/iloilocentral.png"
 			}
 		]
 	},
@@ -302,40 +367,53 @@
 		"color": "blue",
 		"establishments": [
 			{
+				"name": "Tatoy's Manokan",
+				"type": "Eatery",
+				"lon": 122.55656,
+				"lat": 10.72497,
+				"image": "img/tatoys.png"
+			},
+			{
 				"name": "Villa Arevalo Plaza",
 				"type": "Establishment",
 				"lon": 122.5159,
-				"lat": 10.6886
+				"lat": 10.6886,
+				"image": "img/villa.jpg"
 			},
 			{
 				"name": "Jaro Cathedral",
 				"type": "Establishment",
 				"lon": 122.5561,
-				"lat": 10.7234
+				"lat": 10.7234,
+				"image": "img/jaro-cathedral.jpg"
 			},
 			{
 				"name": "Arevalo Elementary School",
 				"type": "School",
 				"lon": 122.517104,
-				"lat": 10.689309
+				"lat": 10.689309,
+				"image": "img/arevalo.jpg"
 			},
 			{
 				"name": "Puregold Jaro",
 				"type": "Establishment",
 				"lon": 122.55656,
-				"lat": 10.72497
+				"lat": 10.72497,
+				"image": "img/puregold.jpg"
 			},
 			{
 				"name": "SM Savemore Jaro",
 				"type": "Establishment",
 				"lon": 122.563463906,
-				"lat": 10.7410631608
+				"lat": 10.7410631608,
+				"image": "img/smsavemore.jpg"
 			},
 			{
 				"name": "Gloryville Subdivision Jaro",
 				"type": "Establishment",
 				"lon": 122.5185,
-				"lat": 10.6897
+				"lat": 10.6897,
+				"image": "img/gloryville.jpg"
 			}
 		]
 	},
@@ -358,46 +436,67 @@
 		"color": "blue",
 		"establishments": [
 			{
+				"name": "Molo Mansion Cafe",
+				"type": "Cafe",
+				"lon": 122.54342,
+				"lat": 10.696544,
+				"image": "img/moloCafe.jpg"
+			},
+			{
+				"name": "Carlos Bakeshop",
+				"type": "Bakeshop",
+				"lon": 122.551,
+				"lat": 10.7144,
+				"image": "img/carlos.png"
+			},
+			{
 				"name": "Mohon Transport Terminal (Provincial Transport for Iloilo 1st District Destinations)",
 				"type": "Terminal",
 				"lon": 122.49975,
-				"lat": 10.69268
+				"lat": 10.69268,
+				"image": "img/mohon.jpg"
 			},
 			{
 				"name": "SM City Iloilo",
 				"type": "Establishment",
 				"lon": 122.551,
-				"lat": 10.7144
+				"lat": 10.7144,
+				"image": "img/smcity.jpg"
 			},
 			{
 				"name": "Cafe Z",
 				"type": "Cafe",
 				"lon": 122.5382,
-				"lat": 10.6963
+				"lat": 10.6963,
+				"image": "img/zcafe.jpg"
 			},
 			{
 				"name": "Festive Walk Mall",
 				"type": "Establishment",
 				"lon": 122.547,
-				"lat": 10.7178
+				"lat": 10.7178,
+				"image": "img/festive.webp"
 			},
 			{
 				"name": "Qualimed Hospital",
 				"type": "Establishment",
 				"lon": 122.54770742,
-				"lat": 10.70676157
+				"lat": 10.70676157,
+				"image": "img/qualimed.jpg"
 			},
 			{
 				"name": "Ateneo de Iloilo",
 				"type": "School",
 				"lon": 122.5475,
-				"lat": 10.7055
+				"lat": 10.7055,
+				"image": "img/ateneo.jpg"
 			},
 			{
 				"name": "Arevalo Elementary School",
 				"type": "School",
 				"lon": 122.517104,
-				"lat": 10.689309
+				"lat": 10.689309,
+				"image": "img/arevalo.jpg"
 			}
 		]
 	}
