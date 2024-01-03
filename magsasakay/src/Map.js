@@ -84,20 +84,29 @@ const MapComponent = ({ selectedRoute, color }) => {
                     </div>
                   </Popup>
                 </Polyline>
-                {selectedRoute.establishments.map((establishment, index) => (
-                  <Marker
-                    key={index}
-                    position={[establishment.lat, establishment.lon]}
-                    icon={customIcon}
-                  >
-                    <Popup>
-                      <div>
-                        <h3>{establishment.name}</h3>
-                        <p>Type: {establishment.type}</p>
-                      </div>
-                    </Popup>
-                  </Marker>
-                ))}
+                {selectedRoute.establishments.map(
+                  (establishment, index) => (
+                    console.log(establishment),
+                    (
+                      <Marker
+                        key={index}
+                        position={[establishment.lat, establishment.lon]}
+                        icon={customIcon}
+                      >
+                        <Popup>
+                          <div>
+                            <img
+                              src={`${process.env.PUBLIC_URL}/${establishment.image}`}
+                              alt=""
+                            />
+                            <h3>{establishment.name}</h3>
+                            <p>Type: {establishment.type}</p>
+                          </div>
+                        </Popup>
+                      </Marker>
+                    )
+                  )
+                )}
               </div>
             )}
           </MapContainer>

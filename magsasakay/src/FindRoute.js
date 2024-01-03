@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import MapComponent from "./MultiRoute"; // Import your MapComponent
 import routeInfo from "./RouteInfo.json"; // Import your JSON data
 import f_bg from './img/f_bg.mp4';
+import NavBar from "./navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const RouteFinder = () => {
   const [startPoint, setStartPoint] = useState("");
@@ -90,8 +92,15 @@ const RouteFinder = () => {
   };
 
   return (
+    <>
+    <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" />
+        </Switch>
+      </Router>
     <div className = 'items-center text-center'>
-      <div className="fixed inset-0 flex z-[-99]">
+      <div className="fixed inset-0 flex -z-50">
         <video
           src={f_bg}
           autoPlay
@@ -157,6 +166,7 @@ const RouteFinder = () => {
       </div>
      
     </div>
+    </>
   );
 };
 

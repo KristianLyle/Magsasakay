@@ -118,13 +118,15 @@ const RestoReviews = () => {
           >
             {restaurantDetails.name}
           </h1>{" "}
-          <div>
+          <div className = 'flex py-2 font-Montserrat bg-white max-w-[1450px] ml-[40px] rounded-3xl'>
             {/* Display restaurant image and description here */}
             <img
+              style={{ width: "200px", height: "150px" }}
               src={`/${restaurantDetails.image}`}
               alt={restaurantDetails.name}
+              className = 'object-cover rounded-3xl border-[2px] border-[#160E3D] ml-[10px]'
             />
-            <p>{restaurantDetails.description}</p>
+            <p className="mt-[30px] p-[10px]">{restaurantDetails.description}</p>
           </div>
           <br />
           {postedReviews.length > 0 && (

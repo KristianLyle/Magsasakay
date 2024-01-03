@@ -21,7 +21,8 @@
 				"name": "Muelle Deli and Restaurant",
 				"type": "Restaurant",
 				"lon": 122.569591,
-				"lat": 10.692006
+				"lat": 10.695007,
+				"image": "img/muelle.jpg"
 			}
 		]
 	},
@@ -46,7 +47,8 @@
 				"name": "Muelle Deli and Restaurant",
 				"type": "Restaurant",
 				"lon": 122.569591,
-				"lat": 10.692006
+				"lat": 10.695007,
+				"image": "img/muelle.jpg"
 			}
 		]
 	},
@@ -74,7 +76,8 @@
 				"name": "Roberto's Siopao",
 				"type": "Fastfood",
 				"lon": 122.5573,
-				"lat": 10.7244
+				"lat": 10.7210,
+				"image": "img/roberto.png"
 			}
 		]
 	},
@@ -94,11 +97,12 @@
 		],
 		"color": "blue",
 		"establishments": [
-            {
+			{
 				"name": "Mamusa Art Bistro",
 				"type": "Dining",
 				"lon": 122.547,
-				"lat": 10.7178
+				"lat": 10.7178,
+				"image": "img/mamusa.png"
 			}
 		]
 	},
@@ -130,13 +134,15 @@
 				"name": "Carlos Bakeshop",
 				"type": "Bakeshop",
 				"lon": 122.551,
-				"lat": 10.7144
+				"lat": 10.7144,
+				"image": "img/carlos.png"
 			},
-            {
+			{
 				"name": "Mamusa Art Bistro",
 				"type": "Dining",
 				"lon": 122.547,
-				"lat": 10.7178
+				"lat": 10.7178,
+				"image": "img/mamusa.png"
 			}
 		]
 	},
@@ -161,7 +167,8 @@
 				"name": "Tatoy's Manokan",
 				"type": "Eatery",
 				"lon": 122.55656,
-				"lat": 10.72497
+				"lat": 10.72497,
+				"image": "img/tatoys.png"
 			}
 		]
 	},
@@ -187,13 +194,15 @@
 				"name": "Molo Mansion Cafe",
 				"type": "Cafe",
 				"lon": 122.54342,
-				"lat": 10.696544
+				"lat": 10.696544,
+				"image": "img/moloCafe.jpg"
 			},
-            {
+			{
 				"name": "Carlos Bakeshop",
 				"type": "Bakeshop",
 				"lon": 122.551,
-				"lat": 10.7144
+				"lat": 10.7144,
+				"image": "img/carlos.png"
 			}
 		]
 	}
