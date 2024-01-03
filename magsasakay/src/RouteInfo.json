@@ -18,18 +18,18 @@
 		"color": "blue",
 		"establishments": [
 			{
-				"name": "Muelle Deli and Restaurant",
-				"type": "Restaurant",
-				"lon": 122.569591,
-				"lat": 10.692006,
-				"image": "img/muelle.jpg"
-			},
-			{
 				"name": "Iloilo - Guimaras Ferry Wharf",
 				"type": "Pier",
 				"lon": 122.578595,
 				"lat": 10.701233,
 				"image": "img/wharf.jpg"
+			},
+			{
+				"name": "Muelle Deli and Restaurant",
+				"type": "Restaurant",
+				"lon": 122.569591,
+				"lat": 10.695007,
+				"image": "img/muelle.jpg"
 			},
 			{
 				"name": "National Statistics Office - Iloilo",
@@ -89,7 +89,7 @@
 				"name": "Muelle Deli and Restaurant",
 				"type": "Restaurant",
 				"lon": 122.569591,
-				"lat": 10.692006,
+				"lat": 10.695007,
 				"image": "img/muelle.jpg"
 			},
 			{
@@ -153,7 +153,7 @@
 				"name": "Roberto's Siopao",
 				"type": "Fastfood",
 				"lon": 122.5573,
-				"lat": 10.7244,
+				"lat": 10.7210,
 				"image": "img/roberto.png"
 			},
 			{
