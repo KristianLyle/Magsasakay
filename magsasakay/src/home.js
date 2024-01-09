@@ -20,7 +20,7 @@ const Home = () => {
         </Switch>
       </Router>
 
-      <div className="bg-home_bg bg-cover h-[120vh] overflow-x-hidden relative">
+      <div className="bg-home_bg bg-cover h-[120vh] overflow-hidden relative">
         <div className="container h-full w-[150%] relative z-10">
           <div className="text-white">
             <br />
