@@ -114,7 +114,7 @@ const RouteFinder = () => {
                         p-[10px] text-white drop-shadow-xl'>
                           Find a Route 
       </h2>
-      <div className="font-Montserrat ml-[-35px]">
+      <div className="font-Montserrat">
         <label className = 'text-white drop-shadow-2xl font-semibold '>Starting Point:  </label>
         <select className = 'text-black w-[50%] rounded-[20px] p-[7px] border-[3px] border-black drop-shadow-xl'
         value={startPoint} onChange={handleStartPointChange}>
@@ -143,19 +143,21 @@ const RouteFinder = () => {
 
       <br/>
 
-      <button className= 'font-Montserrat ml-[35px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] px-[25px] max-w-[200px]' 
+      <button className= 'font-Montserrat bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] px-[25px] max-w-[200px]' 
       onClick={findRoute}>
         Find Route
       </button>
       <br/><br/>
       {/* Display Jeepney route titles after the button is clicked */}
       {selectedRouteCoordinates && (
-        <div className = 'font-Montserrat text-white drop-shadow-2xl  bg-[#160E3D] max-w-[1000px] rounded-xl py-[5px] px-[20px] ml-[275px]'>
-          <p>Starting Point Jeepney Route:</p> <p className="font-semibold"> {startingPointJeepneyRouteTitle}</p> <br/>
-          <p>Destination Jeepney Route: </p> <p className="font-semibold">{destinationJeepneyRouteTitle}</p>
+        <div className= "flex justify-center items-center">
+          <div className = 'items-center font-Montserrat text-white drop-shadow-2xl  bg-[#160E3D] max-w-[1000px] rounded-xl py-[5px] px-[20px]'>
+            <p>Starting Point Jeepney Route:</p> <p className="font-semibold"> {startingPointJeepneyRouteTitle}</p> <br/>
+            <p>Destination Jeepney Route: </p> <p className="font-semibold">{destinationJeepneyRouteTitle}</p>
+          </div>
         </div>
       )}
-      <div className="relative p-6 text-white text-center items-center ml-[390px]">
+      <div className="relative p-6 text-white text-center items-center">
       <MapComponent
         selectedRouteCoordinates={selectedRouteCoordinates}
         startingPointJeepneyRouteTitle={startingPointJeepneyRouteTitle}

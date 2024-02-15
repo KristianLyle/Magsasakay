@@ -57,13 +57,13 @@ const MapComponent = ({ selectedRoute, color }) => {
 
   return (
     <>
-      <div className="relative h-screen">
-        <div className="items-center ml-[355px]">
+      <div className="h-screen relative flex items-center justify-center">
+        <div className="items-center mt-[-100px]">
           <MapContainer
             center={[10.7202, 122.5621]}
             zoom={13}
             className="rounded-[30px] h-[450px] w-[700px] shadow-lg shadow-black-500/40
-                      border-[5px] border-[#160E3D] drop-shadow-2xl"
+                      border-[5px] border-[#160E3D] drop-shadow-2xl" 
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

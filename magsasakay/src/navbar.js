@@ -26,7 +26,6 @@ const NavBar = () => {
         >
           <FaBars className="w-[30px]" onClick={showSideBar} />
         </Link>
-        <img src={logo} alt="logo" className="w-[65px] ml-[1370px]"></img>
       </div>
       <nav className={sideBar ? "navMenu active" : "navMenu"}>
         <ul className="navMenu-items w-[100%]" onClick={showSideBar}>
