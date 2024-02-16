@@ -86,3 +86,10 @@
     left: 0;
     transition: 350ms;
 }
+
+@media (min-width: 400px){
+    * {
+        grid-column: auto / span 2;
+
+    }
+}

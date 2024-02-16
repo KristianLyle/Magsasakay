@@ -22,7 +22,7 @@ const Home = () => {
 
       <div className="bg-home_bg bg-cover h-[120vh] overflow-hidden relative">
         <div className="container h-full w-[150%] relative z-10">
-          <div className="text-white">
+          <div className="text-white overflow-hidden">
             <br />
             <h1 className="font-Montserrat font-extrabold text-[55px] ml-[10px]">
               Welcome to Magsasakay!
