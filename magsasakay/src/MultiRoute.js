@@ -102,7 +102,7 @@ const MapComponent = ({
   );
 
   return (
-    <div className="h-screen relative flex items-center mt-[-150px] justify-center">
+    <div className="h-screen relative flex items-center mt-[-100px] justify-center">
       <MapContainer
         center={[10.7202, 122.5621]}
         zoom={13}

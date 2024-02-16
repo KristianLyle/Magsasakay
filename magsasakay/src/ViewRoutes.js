@@ -49,7 +49,7 @@ const RouteFinder = () => {
           <div style={backgroundOverlay}></div>
           <div className="absolute w-full h-full bg-gradient-to-t from-indigo-500 to-orange-500 opacity-60"></div>
         </div>
-        <div className="relative p-6 text-white text-center items-center mt-[-10px]">
+        <div className="relative p-6 text-white text-center first-letter:items-center mt-[-10px]">
           <RouteDropdown
             routes={routeInfo}
             selectedRoute={

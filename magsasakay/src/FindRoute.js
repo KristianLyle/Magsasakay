@@ -157,7 +157,7 @@ const RouteFinder = () => {
         <br />
 
         <button
-          className="font-Montserrat bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] px-[25px] max-w-[200px]"
+          className="z-[99] relative font-Montserrat bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] px-[25px] max-w-[200px]"
           onClick={findRoute}
         >
           Find Route
@@ -183,7 +183,7 @@ const RouteFinder = () => {
             </div>
           </div>
         )}
-        <div className="relative p-6 text-white text-center items-center">
+        <div className="relative z-[1] p-6 text-white text-center items-center">
           <MapComponent
             selectedRouteCoordinates={selectedRouteCoordinates}
             startingPointJeepneyRouteTitle={startingPointJeepneyRouteTitle}

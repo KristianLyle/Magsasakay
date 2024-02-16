@@ -61,7 +61,7 @@ const ViewMore = () => {
                     <div className="flex text-black">
                       <div className="w-1/3 flex justify-start pl-8">
                         <div className="w-40 h-20 relative">
-                          <div className="absolute inset">
+                          <div className="">
                             <img
                               className="object-cover rounded-3xl border-[2px] border-[#160E3D]"
                               src={restaurant.image}
