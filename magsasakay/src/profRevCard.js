@@ -10,7 +10,8 @@ const ProfileReviews = () => {
 
   //Delete confirmation functions
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const handleConfirmDelete = (reviewId) =>{
+  const handleConfirmDelete = () => {
+    const reviewId = localStorage.getItem("reviewID");
     // Send a request to the server to delete the review from the database
     Axios.post("http://localhost:3001/delete-review", {
       reviewId,
@@ -31,11 +32,11 @@ const ProfileReviews = () => {
         console.error("Error while deleting review:", error);
       });
     setShowConfirmation(false);
-  }
+  };
 
-  const handleCancelDelete = () => {
+  const handleCancelDelete = (reviewId) => {
     setShowConfirmation(false);
-  }
+  };
 
   // Fetch reviews from the server on component mount
   useEffect(() => {
@@ -57,7 +58,8 @@ const ProfileReviews = () => {
     setEditedText(initialText);
   };
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (reviewId) => {
+    window.localStorage.setItem("reviewID", reviewId);
     setShowConfirmation(true);
   };
 
@@ -103,16 +105,16 @@ const ProfileReviews = () => {
                 />
                 <button
                   className="bg-[#EE7200] text-[14px] py-2 rounded-full font-bold text-white 
-                hover:bg-[#160E3D] hover:text-white drop-shadow-2xl mt-[1px] font-Montserrat  
-                max-w-[100px] w-[90px]"
+                  hover:bg-[#160E3D] hover:text-white drop-shadow-2xl mt-[1px] font-Montserrat  
+                  max-w-[100px] w-[90px]"
                   onClick={() => handleSaveClick(index, review._id)}
                 >
                   Save
                 </button>
                 <button
                   className="ml-[5px] bg-[#EE7200] text-[14px] py-2 rounded-full font-bold text-white 
-                hover:bg-[#160E3D] hover:text-white drop-shadow-2xl mt-[1px] font-Montserrat  
-                max-w-[100px] w-[90px]"
+                  hover:bg-[#160E3D] hover:text-white drop-shadow-2xl mt-[1px] font-Montserrat  
+                  max-w-[100px] w-[90px]"
                   onClick={handleCancelClick}
                 >
                   Cancel
@@ -132,14 +134,13 @@ const ProfileReviews = () => {
               </button>
               <button
                 className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]"
-                //onClick={() => handleDeleteClick(review._id)}
-                onClick = {() => handleDeleteClick()
-                 }
+                onClick={() => handleDeleteClick(review._id)}
+                // onClick={() => handleDeleteClick()}
               >
                 Delete Review
               </button>
               {showConfirmation && (
-                  <DeleteConfirmation
+                <DeleteConfirmation
                   message="Are you sure you want to delete?"
                   onConfirm={() => handleConfirmDelete(review._id)}
                   onCancel={handleCancelDelete}
