@@ -1,11 +1,41 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import DeleteConfirmation from "./deleteConfirmation";
 
 const ProfileReviews = () => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editedText, setEditedText] = useState("");
   const [reviews, setReviews] = useState([]);
+
+  //Delete confirmation functions
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const handleConfirmDelete = (reviewId) =>{
+    // Send a request to the server to delete the review from the database
+    Axios.post("http://localhost:3001/delete-review", {
+      reviewId,
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          console.log(response.data);
+          // Filter out the deleted review from the local state
+          const updatedReviews = reviews.filter(
+            (review) => review._id !== reviewId
+          );
+          setReviews(updatedReviews);
+        } else {
+          console.error("Failed to delete review");
+        }
+      })
+      .catch((error) => {
+        console.error("Error while deleting review:", error);
+      });
+    setShowConfirmation(false);
+  }
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
+  }
 
   // Fetch reviews from the server on component mount
   useEffect(() => {
@@ -27,26 +57,8 @@ const ProfileReviews = () => {
     setEditedText(initialText);
   };
 
-  const handleDeleteClick = (reviewId) => {
-    // Send a request to the server to delete the review from the database
-    Axios.post("http://localhost:3001/delete-review", {
-      reviewId,
-    })
-      .then((response) => {
-        if (response.status === 201) {
-          console.log(response.data);
-          // Filter out the deleted review from the local state
-          const updatedReviews = reviews.filter(
-            (review) => review._id !== reviewId
-          );
-          setReviews(updatedReviews);
-        } else {
-          console.error("Failed to delete review");
-        }
-      })
-      .catch((error) => {
-        console.error("Error while deleting review:", error);
-      });
+  const handleDeleteClick = () => {
+    setShowConfirmation(true);
   };
 
   const handleSaveClick = (index, reviewId) => {
@@ -120,10 +132,19 @@ const ProfileReviews = () => {
               </button>
               <button
                 className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]"
-                onClick={() => handleDeleteClick(review._id)}
+                //onClick={() => handleDeleteClick(review._id)}
+                onClick = {() => handleDeleteClick()
+                 }
               >
                 Delete Review
               </button>
+              {showConfirmation && (
+                  <DeleteConfirmation
+                  message="Are you sure you want to delete?"
+                  onConfirm={() => handleConfirmDelete(review._id)}
+                  onCancel={handleCancelDelete}
+                />
+              )}
             </div>
             <br />
           </li>
