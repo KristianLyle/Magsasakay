@@ -12,9 +12,9 @@ app.use(cors()); // Enable CORS for cross-origin requests
 app.use("/uploads", express.static("uploads"));
 app.use(bodyParser.json());
 
-//const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
-const mongoUrl =
- "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
+const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
+// const mongoUrl =
+//  "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(mongoUrl, {
@@ -157,7 +157,8 @@ app.post("/fetch-reviews", async (req, res) => {
 
 // Add a new route for submitting reviews
 app.post("/submit-review", async (req, res) => {
-  const { restaurantName, username, userimage, reviewText } = req.body;
+  const { restaurantName, username, userimage, reviewText, starRating } =
+    req.body;
 
   try {
     const newReview = new reviewModel({
@@ -165,6 +166,7 @@ app.post("/submit-review", async (req, res) => {
       username: username,
       userimage: userimage,
       review: reviewText,
+      rating: starRating,
     });
     await newReview.save();
     res.status(201).json({ message: "Review submitted successfully." });

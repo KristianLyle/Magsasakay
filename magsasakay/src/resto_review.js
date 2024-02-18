@@ -11,6 +11,8 @@ import {
 } from "react-router-dom";
 import resto_bg from "./img/resto_bg.jpg";
 import StarRating from "./StarRating";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const RestoReviews = () => {
   const { restaurantName } = useParams();
@@ -46,7 +48,7 @@ const RestoReviews = () => {
       const token = localStorage.getItem("token");
       const decodedToken = jwtDecode(token);
       const userName = decodedToken.username;
-  
+
       // Fetch user details to get the user image
       try {
         const userResponse = await Axios.post(
@@ -55,28 +57,33 @@ const RestoReviews = () => {
             userName: userName,
           }
         );
-  
+
         const userImage = userResponse.data.userimage;
-  
+
         const reviewData = {
           restaurantName: restaurantName,
           username: userName,
           userimage: userImage,
           reviewText: inputText,
-          rating: selectedRating,
+          starRating: selectedRating,
         };
-  
+
         // Make a POST request to the server to submit the review
         const response = await Axios.post(
           "http://localhost:3001/submit-review",
           reviewData
         );
-  
+
         if (response.status === 201) {
           // Review submitted successfully
           setPostedReviews([
             ...postedReviews,
-            { userimage: userImage, review: inputText, username: userName, rating: selectedRating },
+            {
+              userimage: userImage,
+              review: inputText,
+              username: userName,
+              rating: selectedRating,
+            },
           ]);
           setInputText("");
           setShowInput(false);
@@ -121,15 +128,17 @@ const RestoReviews = () => {
           >
             {restaurantDetails.name}
           </h1>{" "}
-          <div className = 'flex py-2 font-Montserrat bg-white max-w-[1450px] ml-[40px] mr-[60px] rounded-3xl'>
+          <div className="flex py-2 font-Montserrat bg-white max-w-[1450px] ml-[40px] mr-[60px] rounded-3xl">
             {/* Display restaurant image and description here */}
             <img
               style={{ width: "200px", height: "150px" }}
               src={`/${restaurantDetails.image}`}
               alt={restaurantDetails.name}
-              className = 'object-cover rounded-3xl border-[2px] border-[#160E3D] ml-[10px]'
+              className="object-cover rounded-3xl border-[2px] border-[#160E3D] ml-[10px]"
             />
-            <p className="mt-[30px] p-[10px]">{restaurantDetails.description}</p>
+            <p className="mt-[30px] p-[10px]">
+              {restaurantDetails.description}
+            </p>
           </div>
           <br />
           {postedReviews.length > 0 && (
@@ -146,6 +155,13 @@ const RestoReviews = () => {
                           height="96px"
                           className="border-[3px] rounded-full border-black"
                         />
+                        {[...Array(review.rating)].map((_, i) => (
+                          <FontAwesomeIcon
+                            key={i}
+                            icon={faStar}
+                            style={{ color: "#FFD700", fontSize: "24px" }}
+                          />
+                        ))}
                         <p className="ml-[10px] font-medium">{review.review}</p>
                       </div>
                       <p className="max-w-[1300px] ml-[10px] text-[14px] font-bold">
@@ -178,7 +194,10 @@ const RestoReviews = () => {
               />
               <br />
               <div className="flex flex-col ml-[40px] ">
-                <StarRating onRatingChange={setSelectedRating} selectedRating={selectedRating} />
+                <StarRating
+                  onRatingChange={setSelectedRating}
+                  selectedRating={selectedRating}
+                />
                 <button
                   style={{ marginTop: "10px" }}
                   onClick={handlePostText}

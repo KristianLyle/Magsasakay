@@ -54,6 +54,7 @@ const reviewSchema = new mongoose.Schema(
     username: String,
     userimage: String,
     review: String,
+    rating: Number,
   },
   { collection: "reviews" }
 );
