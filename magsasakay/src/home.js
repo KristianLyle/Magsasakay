@@ -20,15 +20,15 @@ const Home = () => {
         </Switch>
       </Router>
 
-      <div className="bg-home_bg bg-cover h-[120vh] overflow-hidden relative">
+      <div className="bg-home_bg bg-cover h-[125vh] overflow-hidden relative">
         <div className="container h-full w-[150%] relative z-10">
           <div className="text-white overflow-hidden">
             <br />
-            <h1 className="font-Montserrat font-extrabold text-[55px] ml-[10px]">
+            <h1 className="font-Montserrat font-extrabold text-[55px] ml-[40px]">
               Welcome to Magsasakay!
             </h1>{" "}
             <br />
-            <p className="font-Montserrat font-regular text-[20px] ml-[10px]">
+            <p className="font-Montserrat font-regular text-[20px] ml-[40px]">
               Discover seamless public transportation options to your
               destination and explore <br /> top-rated traveler-recommended
               restaurants in the city. Plan your journey effortlessly, <br />{" "}
@@ -46,7 +46,7 @@ const Home = () => {
               <Link to="/routes">Where to go in Iloilo</Link>
             </div>{" "}
             <br /> <br /> <br /> <br />
-            <ul className="grid grid-cols-[repeat(auto-fill,_minmax(100px,_1fr))] text-center items-center ml-[100px] gap-x-[50px]">
+            <ul className="grid grid-cols-[repeat(auto-fill,_minmax(100px,_1fr))] text-center items-center ml-[100px] gap-x-[50px] mb-[100px]">
               <li className="w-[175px] text-[35px] flex flex-col transform hover:scale-110 hover:font-semibold hover:text-[orange]">
                 <Link to="/about">
                   <img src={about} alt="about" />
