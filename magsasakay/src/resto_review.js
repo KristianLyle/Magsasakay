@@ -155,14 +155,22 @@ const RestoReviews = () => {
                           height="96px"
                           className="border-[3px] rounded-full border-black"
                         />
-                        {[...Array(review.rating)].map((_, i) => (
-                          <FontAwesomeIcon
-                            key={i}
-                            icon={faStar}
-                            style={{ color: "#FFD700", fontSize: "24px" }}
-                          />
-                        ))}
-                        <p className="ml-[10px] font-medium">{review.review}</p>
+                        <div className="flex flex-col items-center">
+                          <div className="flex items-center">
+                            {[...Array(5)].map((_, i) => (
+                              <FontAwesomeIcon
+                                key={i}
+                                icon={
+                                  i < review.rating ? faStar : ["far", "star"]
+                                } // Use 'far' prefix for empty stars
+                                style={{ color: "#FFD700", fontSize: "24px" }}
+                              />
+                            ))}
+                          </div>
+                          <p className="ml-[10px] font-medium">
+                            {review.review}
+                          </p>
+                        </div>
                       </div>
                       <p className="max-w-[1300px] ml-[10px] text-[14px] font-bold">
                         {review.username}
