@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
 import NavBar from './navbar';
@@ -9,6 +9,28 @@ import { useHistory } from 'react-router-dom';
 const Restaurants = () => {
 	const [restaurants, setRestaurants] = useState([]);
 	const history = useHistory();
+
+	const [isOpen, setIsOpen] = useState(false);
+
+	const descStyle = {
+	  WebkitLineClamp: 3,
+	  overflow: 'hidden',
+	  WebkitBoxOrient: 'vertical',
+	  display: '-webkit-box'
+	}
+  
+	const [showReadMore, setShowReadMore] = useState(false)
+  
+	const ref = useRef(null)
+  
+	useEffect(() => {
+	  if (ref.current){
+		console.log(ref.current.scrollHeight, ref.current.clientHeight)
+		setShowReadMore(
+		  ref.current.scrollHeight != ref.current.clientHeight
+		)
+	  }
+	})
 
 	useEffect(() => {
 		// Fetch restaurant data from the API
@@ -63,7 +85,7 @@ const Restaurants = () => {
 									<div
 										className='font-Montserrat font-bold text-[35px] text-center text-white 
                     							   px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
-                   								 bg-[#160E3D] hover:border-[#5AF0D5] min-w-[350px] max-w-[350px] h-[500px]'>
+                   								 bg-[#160E3D] hover:border-[#5AF0D5] min-w-[350px] max-w-[350px] min-h-[500px] max-h-[1000px]'>
 										{/* Render restaurant details from the API */}
 										<div className='flex justify-center items-center'>
 											<img
@@ -75,10 +97,21 @@ const Restaurants = () => {
 										<span className='text-[20px] font-regular'>
 											{restaurant.name}
 										</span>
-										<div className='box-container'>
-											<p className='text-[12px] font-normal ml-[0px] text-left max-h-[125px] overflow-y-auto'>
+										<div className='box-container text-left'>
+											<p 
+											style={ isOpen ? null : descStyle
+											}
+											ref= {ref}
+											className='text-[12px] font-normal ml-[0px] text-left '>
 												{restaurant.description}
-											</p>
+											</p> 
+											{showReadMore && (
+                            					<button onClick={() => setIsOpen(!isOpen)}
+                            					className = ' underline font-Montserrat font-light text-[12px]'> {isOpen ? 'Read Less' : 'Read More'}
+                           						</button>
+                          					)}<br/>
+											</div>
+											<div>
 											<button
 												onClick={() => handleLocationClick(restaurant.name)}
 												className='bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md mr-[5px]'>

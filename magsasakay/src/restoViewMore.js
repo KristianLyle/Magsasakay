@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 import NavBar from "./navbar";
@@ -8,6 +8,29 @@ import { useHistory } from "react-router-dom";
 const ViewMore = () => {
   const [restaurants, setRestaurants] = useState([]);
   const history = useHistory();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const descStyle = {
+    WebkitLineClamp: 2,
+	  overflow: 'hidden',
+	  WebkitBoxOrient: 'vertical',
+	  display: '-webkit-box'
+  }
+
+  const [showReadMore, setShowReadMore] = useState(false)
+
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (ref.current) {
+      console.log('scrollHeight:', ref.current.scrollHeight);
+      console.log('clientHeight:', ref.current.clientHeight);
+      setShowReadMore(ref.current.scrollHeight !== ref.current.clientHeight);
+    } else {
+      console.log('Ref is null');
+    }
+  }, [restaurants])
 
   useEffect(() => {
     // Fetch restaurant data from the API
@@ -56,7 +79,7 @@ const ViewMore = () => {
                   <div
                     className="font-Montserrat font-bold text-[35px] text-center text-white 
                     px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px] 
-                    bg-[#FFF1F1] bg-cover hover:border-[#5AF0D5] max-w-none h-[200px] text-ellipsis overflow-hidden ..."
+                    bg-[#FFF1F1] bg-cover hover:border-[#5AF0D5] max-w-none max-h-[550px] text-ellipsis ..."
                   >
                     <div className="flex text-black">
                       <div className="w-1/3 flex justify-start pl-8">
@@ -75,11 +98,21 @@ const ViewMore = () => {
                         <span className="text-[25px] font-regular">
                           {restaurant.name}
                         </span>
+
                         <div className="box-container ">
-                          <p className="text-[15px] font-normal text-left max-h-[65px] overflow-y-auto ">
+                          <p style={ isOpen ? null : descStyle
+                          }
+                          ref= {ref}
+                          className="text-[15px] font-normal text-left">
                             {restaurant.description}
                           </p>
+                          {showReadMore && (
+                            <button onClick={() => setIsOpen(!isOpen)}
+                            className = 'underline font-Montserrat font-light text-[17px]'> {isOpen ? 'Read Less' : 'Read More'}
+                           </button>
+                          )}       
                         </div>
+
                         <div className="flex justify-end mt-[8px]">
                           <button
                             onClick={() => handleLocationClick(restaurant.name)}
