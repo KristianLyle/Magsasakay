@@ -50,9 +50,9 @@ const Restaurants = () => {
 		history.push(`/location/${restaurantName}`);
 	};
 
-	const backgroundStyle = {
-		backgroundImage: `url(${resto_bg})`,
-	};
+//const backgroundStyle = {
+		//backgroundImage: `url(${resto_bg})`,
+	//};
 
 	return (
 		<>
@@ -66,15 +66,15 @@ const Restaurants = () => {
 				</Switch>
 			</Router>
 			<div
-				style={backgroundStyle}
-				className='bg-cover bg-center min-h-screen w-screen mx-auto'>
+				//style={backgroundStyle}
+				className='bg-resto_bg bg-cover bg-center min-h-screen w-screen mx-auto'>
 				<div className='mx-auto h-screen'>
 					<div className=''>
 						<br />
 						<h1
 							className='text-white font-Montserrat mt-4 text-center font-extrabold text-[40px]'
 							style={{ margin: 0 }}>
-							Popular Right Now
+							You Might Like
 						</h1>
 						<br />
 						<div className='mx-auto flex justify-center items-center space-x-35'>

@@ -49,6 +49,10 @@ const NavBar = () => {
             alt="logo"
             className="items-center w-[25 0px] ml-[0.098px]"
           ></img>
+          <div className= 'ml-[130px] mt-[115px]'>
+            <button className='bg-[#EE7200] font-Montserrat rounded-full py-2 font-bold text-white hover:bg-[#1a83ff] drop-shadow-2xl px-[25px] max-w-[200px]'> 
+            Logout </button>
+          </div>
         </ul>
       </nav>
     </>
