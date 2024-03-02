@@ -12,9 +12,9 @@ app.use(cors()); // Enable CORS for cross-origin requests
 app.use("/uploads", express.static("uploads"));
 app.use(bodyParser.json());
 
-//const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
- const mongoUrl =
-  "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
+const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
+//  const mongoUrl =
+//   "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(mongoUrl, {
@@ -37,7 +37,7 @@ app.post("/login", async (req, res) => {
 
   const user = await userModel.findOne({ email });
   if (!user) {
-    return res.json({ error: "User Not found" });
+    return res.json({ error: "User Not Found" });
   }
   if (await bcrypt.compare(password, user.password)) {
     const token = jwt.sign(
@@ -128,6 +128,7 @@ app.post("/fetch-restaurant-details", async (req, res) => {
       name: restaurant.name,
       image: restaurant.image,
       description: restaurant.description,
+      averageRating: restaurant.averageRating,
     };
 
     res.json(restaurantDetails);
@@ -161,6 +162,7 @@ app.post("/submit-review", async (req, res) => {
     req.body;
 
   try {
+    // Create a new review document
     const newReview = new reviewModel({
       restaurant: restaurantName,
       username: username,
@@ -168,7 +170,20 @@ app.post("/submit-review", async (req, res) => {
       review: reviewText,
       rating: starRating,
     });
+    // Save the review document to the database
     await newReview.save();
+
+    // Calculate the new averageRating for the specific restaurant
+    const reviews = await reviewModel.find({ restaurant: restaurantName });
+    const totalRatings = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+    const averageRating = totalRatings / reviews.length;
+
+    // Update the averageRating of the specific restaurant
+    await restaurantModel.updateOne(
+      { name: restaurantName },
+      { averageRating }
+    );
+
     res.status(201).json({ message: "Review submitted successfully." });
   } catch (error) {
     console.error(error);
@@ -226,7 +241,6 @@ app.post("/update-review", async (req, res) => {
   }
 });
 
-// Add a new route for deleting user-specific reviews
 app.post("/delete-review", async (req, res) => {
   try {
     const { reviewId } = req.body;
@@ -236,11 +250,26 @@ app.post("/delete-review", async (req, res) => {
       return res.status(400).json({ error: "Invalid reviewId" });
     }
 
+    // Find and delete the review
     const deletedReview = await reviewModel.findByIdAndDelete(reviewId);
 
     if (!deletedReview) {
       return res.status(404).json({ error: "Review not found" });
     }
+
+    // Calculate the new averageRating for the specific restaurant
+    const reviews = await reviewModel.find({
+      restaurant: deletedReview.restaurant,
+    });
+    const totalRatings = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+    const numReviews = reviews.length;
+    const averageRating = numReviews ? totalRatings / numReviews : 0; // Check if numReviews is not zero before calculating average
+
+    // Update the averageRating of the specific restaurant
+    await restaurantModel.updateOne(
+      { name: deletedReview.restaurant },
+      { averageRating }
+    );
 
     res.status(201).json({ message: "Review deleted successfully." });
   } catch (error) {
