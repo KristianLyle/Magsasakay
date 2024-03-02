@@ -14,10 +14,12 @@ const NavBar = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleConfirmDLogout = () => {
-    history.push('/');
+    window.localStorage.removeItem("token");
+    window.localStorage.setItem("loggedIn", false);
+    history.push("/");
     window.location.reload();
     setShowConfirmation(false);
-  }
+  };
 
   const handleCancelLogout = () => {
     setShowConfirmation(false);
@@ -27,7 +29,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     setShowConfirmation(true);
-  }
+  };
 
   const handleClick = (path) => {
     history.push(path);
@@ -66,18 +68,21 @@ const NavBar = () => {
             alt="logo"
             className="items-center w-[25 0px] ml-[0.098px]"
           ></img>
-          <div className= 'ml-[130px] mt-[115px]'>
-            <button onClick = {handleLogout}
-            className='bg-[#EE7200] font-Montserrat rounded-full py-2 font-bold text-white hover:bg-[#1a83ff] drop-shadow-2xl px-[25px] max-w-[200px]'> 
-            Logout </button>
+          <div className="ml-[130px] mt-[115px]">
+            <button
+              onClick={handleLogout}
+              className="bg-[#EE7200] font-Montserrat rounded-full py-2 font-bold text-white hover:bg-[#1a83ff] drop-shadow-2xl px-[25px] max-w-[200px]"
+            >
+              Logout{" "}
+            </button>
 
             {showConfirmation && (
-                <DeleteConfirmation
-                  message="Are you sure you want to logout?"
-                  onConfirm={handleConfirmDLogout}
-                  onCancel={handleCancelLogout}
-                />
-              )}
+              <DeleteConfirmation
+                message="Are you sure you want to logout?"
+                onConfirm={handleConfirmDLogout}
+                onCancel={handleCancelLogout}
+              />
+            )}
           </div>
         </ul>
       </nav>

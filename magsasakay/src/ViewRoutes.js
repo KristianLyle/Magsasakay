@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RouteDropdown from "./RouteDropdown";
 import MapComponent from "./Map";
 import routeInfo from "./RouteInfo.json";
@@ -6,11 +6,23 @@ import v_bg from "./img/v-bg.mp4";
 import viewRoute_req from "./img/viewRoute_req.png";
 import { jwtDecode } from "jwt-decode";
 import NavBar from "./navbar";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory,
+} from "react-router-dom";
 
 const RouteFinder = () => {
   const [selectedRoute, setSelectedRoute] = useState(null);
-
+  const history = useHistory();
+  useEffect(() => {
+    const status = window.localStorage.getItem("loggedIn");
+    if (status === "false") {
+      history.push("/");
+      window.location.reload();
+    }
+  }, [history]);
   const handleRouteSelect = (routeIndex) => {
     setSelectedRoute(routeInfo[routeIndex]);
   };

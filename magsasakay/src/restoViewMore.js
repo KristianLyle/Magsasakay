@@ -11,26 +11,33 @@ const ViewMore = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    const status = window.localStorage.getItem("loggedIn");
+    if (status === "false") {
+      history.push("/");
+      window.location.reload();
+    }
+  }, [history]);
   const descStyle = {
     WebkitLineClamp: 2,
-	  overflow: 'hidden',
-	  WebkitBoxOrient: 'vertical',
-	  display: '-webkit-box'
-  }
+    overflow: "hidden",
+    WebkitBoxOrient: "vertical",
+    display: "-webkit-box",
+  };
 
-  const [showReadMore, setShowReadMore] = useState(false)
+  const [showReadMore, setShowReadMore] = useState(false);
 
-  const ref = useRef(null)
+  const ref = useRef(null);
 
   useEffect(() => {
     if (ref.current) {
-      console.log('scrollHeight:', ref.current.scrollHeight);
-      console.log('clientHeight:', ref.current.clientHeight);
+      console.log("scrollHeight:", ref.current.scrollHeight);
+      console.log("clientHeight:", ref.current.clientHeight);
       setShowReadMore(ref.current.scrollHeight !== ref.current.clientHeight);
     } else {
-      console.log('Ref is null');
+      console.log("Ref is null");
     }
-  }, [restaurants])
+  }, [restaurants]);
 
   useEffect(() => {
     // Fetch restaurant data from the API
@@ -100,17 +107,22 @@ const ViewMore = () => {
                         </span>
 
                         <div className="box-container ">
-                          <p style={ isOpen ? null : descStyle
-                          }
-                          ref= {ref}
-                          className="text-[15px] font-normal text-left">
+                          <p
+                            style={isOpen ? null : descStyle}
+                            ref={ref}
+                            className="text-[15px] font-normal text-left"
+                          >
                             {restaurant.description}
                           </p>
                           {showReadMore && (
-                            <button onClick={() => setIsOpen(!isOpen)}
-                            className = 'underline font-Montserrat font-light text-[17px]'> {isOpen ? 'Read Less' : 'Read More'}
-                           </button>
-                          )}       
+                            <button
+                              onClick={() => setIsOpen(!isOpen)}
+                              className="underline font-Montserrat font-light text-[17px]"
+                            >
+                              {" "}
+                              {isOpen ? "Read Less" : "Read More"}
+                            </button>
+                          )}
                         </div>
 
                         <div className="flex justify-end mt-[8px]">

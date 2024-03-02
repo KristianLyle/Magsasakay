@@ -8,6 +8,7 @@ import {
   Route,
   Switch,
   useParams,
+  useHistory,
 } from "react-router-dom";
 import resto_bg from "./img/resto_bg.jpg";
 import StarRating from "./StarRating";
@@ -24,7 +25,14 @@ const RestoReviews = () => {
   const [postedReviews, setPostedReviews] = useState([]);
   const [restaurantDetails, setRestaurantDetails] = useState({});
   const [selectedRating, setSelectedRating] = useState(0); // Add state for selectedRating
-
+  const history = useHistory();
+  useEffect(() => {
+    const status = window.localStorage.getItem("loggedIn");
+    if (status === "false") {
+      history.push("/");
+      window.location.reload();
+    }
+  }, [history]);
   useEffect(() => {
     // Fetch restaurant data
     Axios.post("http://localhost:3001/fetch-restaurant-details", {
@@ -87,6 +95,7 @@ const RestoReviews = () => {
           ]);
           setInputText("");
           setShowInput(false);
+          window.location.reload();
         } else {
           console.error("Failed to submit review");
         }
@@ -128,6 +137,17 @@ const RestoReviews = () => {
           >
             {restaurantDetails.name}
           </h1>{" "}
+          <div className="flex items-center">
+            {[...Array(5)].map((_, i) => (
+              <FontAwesomeIcon
+                key={i}
+                icon={
+                  i < restaurantDetails.averageRating ? faStar : ["far", "star"]
+                } // Use 'far' prefix for empty stars
+                style={{ color: "#FFD700", fontSize: "48px" }}
+              />
+            ))}
+          </div>
           <div className="flex py-2 font-Montserrat bg-white max-w-[1450px] ml-[40px] mr-[60px] rounded-3xl">
             {/* Display restaurant image and description here */}
             <img

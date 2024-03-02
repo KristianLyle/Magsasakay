@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./index.css";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -11,6 +11,15 @@ import home_req from "./img/home_req.png";
 import restaurant from "./img/restaurant.png";
 
 const Home = () => {
+  const history = useHistory();
+  useEffect(() => {
+    const status = window.localStorage.getItem("loggedIn");
+    if (status === "false") {
+      history.push("/");
+      window.location.reload();
+    }
+  }, [history]);
+
   return (
     <>
       <Router>
