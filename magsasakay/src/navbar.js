@@ -1,16 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./index.css";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { sideBarData } from "./sideBarData";
 import logo from "./img/logo.png";
+import DeleteConfirmation from "./deleteConfirmation";
 
 const NavBar = () => {
   const history = useHistory();
   const [sideBar, setSideBar] = useState(false);
 
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const handleConfirmDLogout = () => {
+    history.push('/');
+    window.location.reload();
+    setShowConfirmation(false);
+  }
+
+  const handleCancelLogout = () => {
+    setShowConfirmation(false);
+  };
+
   const showSideBar = () => setSideBar(!sideBar);
+
+  const handleLogout = () => {
+    setShowConfirmation(true);
+  }
 
   const handleClick = (path) => {
     history.push(path);
@@ -50,8 +67,17 @@ const NavBar = () => {
             className="items-center w-[25 0px] ml-[0.098px]"
           ></img>
           <div className= 'ml-[130px] mt-[115px]'>
-            <button className='bg-[#EE7200] font-Montserrat rounded-full py-2 font-bold text-white hover:bg-[#1a83ff] drop-shadow-2xl px-[25px] max-w-[200px]'> 
+            <button onClick = {handleLogout}
+            className='bg-[#EE7200] font-Montserrat rounded-full py-2 font-bold text-white hover:bg-[#1a83ff] drop-shadow-2xl px-[25px] max-w-[200px]'> 
             Logout </button>
+
+            {showConfirmation && (
+                <DeleteConfirmation
+                  message="Are you sure you want to logout?"
+                  onConfirm={handleConfirmDLogout}
+                  onCancel={handleCancelLogout}
+                />
+              )}
           </div>
         </ul>
       </nav>
