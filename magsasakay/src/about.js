@@ -1,281 +1,129 @@
-import React, { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import "./index.css";
-import NavBar from "./navbar";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import aboutBg from "./img/city.png";
-import cityImg from "./img/iloilo1.jpeg";
-import cityImg2 from "./img/location.jpg";
-import cityImg3 from "./img/ilonight.jpg";
-import dev1 from "./img/dev1.jpg";
-import dev2 from "./img/dev2.jpg";
-import dev3 from "./img/dev3.jpg";
-import dev4 from "./img/dev4.jpg";
-import dev5 from "./img/dev5.jpg";
+import React, { useEffect, useRef, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './index.css';
+import NavBar from './navbar';
+import cityImg from './img/iloilo1.jpeg';
+import cityImg2 from './img/location.jpg'
+import cityImg3 from './img/ilonight.jpg'
+import dev1 from './img/dev1.jpg';
+import dev2 from './img/dev2.jpg';
+import dev3 from './img/dev3.jpg';
+import dev4 from './img/dev4.jpg';
+import dev5 from './img/dev5.jpg';
 
 const About = () => {
-  const history = useHistory();
-  useEffect(() => {
-    const status = window.localStorage.getItem("loggedIn");
-    if (status === "false") {
-      history.push("/");
-      window.location.reload();
-    }
-  }, [history]);
-  const missionImages = [cityImg, cityImg2, cityImg3]; // Array of images for the carousel
+    const missionImages = [cityImg, cityImg2, cityImg3];
+    let missionIndex = 0;
 
-  let missionIndex = 0; // Index for the current background image
+    const changeMissionBackground = () => {
+        missionIndex = (missionIndex + 1) % missionImages.length;
+        const missionContainer = document.getElementById('missionContainer');
+        if (missionContainer) {
+            missionContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(244, 156, 83, 0.05), rgba(0,0,0,0.75)), url(${missionImages[missionIndex]})`;
+        }
+    };
 
-  // Function to change background image
-  const changeMissionBackground = () => {
-    missionIndex = (missionIndex + 1) % missionImages.length;
-    const missionContainer = document.getElementById("missionContainer");
-    if (missionContainer) {
-      missionContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(13, 112, 177, 1.7), rgba(0,0,0,0.75)), url(${missionImages[missionIndex]})`;
-    }
-  };
 
-  // Auto-change background image after a certain interval
-  setInterval(changeMissionBackground, 5000);
-  const backgroundStyle = {
-    backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(244, 156, 83, 1)), url(${aboutBg})`,
-    backgroundSize: "cover", // Ensures the image covers the entire container
-    backgroundPosition: "center", // Centers the background image
-    height: "100vh", // Makes sure the background covers the entire viewport height
-  };
+    useEffect(() => {
+        const interval = setInterval(changeMissionBackground, 5000);
+        return () => clearInterval(interval);
+    }, []);
 
-  return (
-    <>
-      <Router>
-        <NavBar />
-        <Switch>
-          <Route exact path="/" />
-        </Switch>
-      </Router>
+    const backgroundRef = useRef(null);
 
-      <div
-        style={backgroundStyle}
-        className="bg-contain bg-full bg-center min-h-screen"
-      >
-        <div className="mx-auto h-screen">
-          <div className="">
-            <div className="">
-              <div
-                id="missionContainer"
-                className=" text-white font-Montserrat bg-cover min-w-screen h-[210px] py-2 mt-0"
+    // Calculate the height of the background container
+    useEffect(() => {
+        if (backgroundRef.current) {
+            const height = backgroundRef.current.scrollHeight;
+            backgroundRef.current.style.minHeight = `100vh`; // Ensure background covers the viewport height
+        }
+    }, []);
+
+    const [expanded, setExpanded] = useState(false);
+
+    const toggleExpand = () => {
+        setExpanded(!expanded);
+    };
+
+    return (
+        <>
+            <Router>
+                <NavBar />
+                <Switch>
+                    <Route exact path="/" />
+                </Switch>
+            </Router>
+
+            <div
+                ref={backgroundRef}
                 style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(13, 112, 177, 1.7), rgba(0,0,0,0.75)), url(${cityImg})`,
+                    backgroundImage: `linear-gradient(to top, rgba(244, 156, 83, 0.5), rgba(13, 112, 177, 1.7)`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    minHeight: '100vh', // Ensure background covers the viewport height
                 }}
-              >
-                <h1 className="  mt-0 pl-4 text-center font-extrabold text-[50px]">
-                  Our Mission
-                </h1>
-                <div className="box-container p-2 text-left font-semibold text-[18px] overflow-y-auto whitespace-normal">
-                  <p className="font-normal mx-[4px] max-h-[125px] ">
-                    To empower individuals and communities by providing a
-                    seamless and efficient route planning platform that
-                    simplifies their journeys, enhances their daily lives, and
-                    contributes to a more sustainable and connected world. We
-                    are committed to delivering accurate, accessible, and
-                    innovative route solutions that prioritize user convenience,
-                    safety, and environmental responsibility. Through our
-                    platform, we aim to inspire exploration, foster connections,
-                    and pave the way for a brighter, more accessible future.
-                  </p>
-                </div>
-              </div>
-              <hr />
-              {/* <div className=' text-white font-Montserrat bg-cover min-w-screen  mt-0 bg-cityImg'>
-                <h1 className='  mt-0 pl-4 text-center font-extrabold text-[50px]'>
-                    Our Mission
-                </h1>
-                <div className="box-container p-2 text-left font-semibold text-[15px] overflow-y-auto whitespace-normal">
-                    <p className='font-normal mx-[4px] max-h-[125px] '>
-                    There is an informal saying among Ilonggos: It isn’t siopao if it isn’t Roberto’s. That’s right, Roberto’s siopao is so good that it might redefine what people know about the dish entirely. Their siopao comes in different sizes. But for the best value, buy their ‘Queen’ siopao. It is the biggest and the most packed out of all their siopao.
+                className="bg-contain bg-full bg-center min-h-screen flex flex-col"
+            >
+                <div>
+                    <div
+                        id="missionContainer"
+                        className="text-white font-Montserrat bg-cover min-w-screen h-[350px] py-2 mt-0"
+                        style={{
+                            backgroundImage: `linear-gradient(to bottom, rgba(13, 112, 177, 1.7), rgba(0,0,0,0.75)), url(${cityImg})`
+                        }}
+                    >
+                        <div className="absolute top-40 left-0 right-0">
+                            <h1 className="mt-130 pt-100 pl-4 text-left font-extrabold text-[50px]">Our Mission</h1>
+                            <div className="box-container p-2 text-left font-semibold text-[18px] whitespace-normal">
+                                <p
+                                    id="missionContent"
+                                    className={`font-normal mx-[4px] ${
+                                        expanded ? 'overflow-y-auto' : 'overflow-y-hidden'
+                                        } max-h-[${expanded ? 'none' : '125px'}] text-base md:text-lg lg:text-xl`}
+                                >
+                                    To empower individuals and communities by providing a seamless and efficient route planning platform that simplifies their journeys, enhances their daily lives, and contributes to a more sustainable and connected world. We are committed to delivering accurate, accessible, and innovative route solutions that prioritize user convenience, safety, and environmental responsibility. Through our platform, we aim to inspire exploration, foster connections, and pave the way for a brighter, more accessible future.
+                                </p>
+                                <button onClick={toggleExpand} className="text-blue-400 ml-2 mt-2">{expanded ? 'See Less' : 'See More'}</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <h1 className="text-white font-Montserrat font-bold mt-8 md:mt-4 ml-10 text-left text-[33px]">About Us</h1>
+                    <p className="text-white font-Montserrat p-4 ml-6 text-left font-normal text-base md:text-lg lg:text-xl">
+                        At our commute app, you'll find a team of dedicated individuals driving innovation and excellence. Kristian Lyle Sencil excels as a Scrum Master, guiding teams through agile methodologies and fostering collaboration. Rainer Mayagma, a results-driven project manager, ensures projects are delivered on time and within budget with his exceptional organizational skills. John Luis Magtoto, a highly skilled developer, tackles coding challenges with finesse, delivering clean and efficient solutions. Kurt Matthew Amodia brings a passion for crafting elegant software solutions, adapting seamlessly to diverse project requirements. Zyrex Djewel Ganit, known for his relentless work ethic, prioritizes project success above all else, infusing the team with his uplifting spirit. Together, we're committed to simplifying journeys and creating a more connected world through our commute app.
                     </p>
-                </div>
-                
-        </div> */}
-              <h1 className="text-white font-Montserrat mt-4 ml-10 text-left font-semibold text-[30px]">
-                About Us
-              </h1>{" "}
-              <br />
-              <div className="mx-auto flex justify-center space-x-0">
-                <div className="flex-container">
-                  <div
-                    className="font-Montserrat font-bold text-[35px] text-center text-white 
-                    mx-8 rounded-3xl inline-block 
-                  bg-[#0D70B1] bg-cover max-w-[400px] h-[400px]"
-                  >
-                    <div className="flex justify-center">
-                      <img
-                        className="w-80 h-40 object-cover rounded-t-3xl border-[2px]"
-                        src={dev1}
-                        alt=""
-                      />
-                    </div>
-                    <div className="bg-[#7826D0] rounded-b-3xl  border-[2px]">
-                      <span className="text-[15px] font-regular">
-                        Kristian Lyle Sencil
-                      </span>
-                      <p className="text-[10px] mb-2 text-white-500">
-                        kbsencil1@up.edu.ph
-                      </p>
-                    </div>
-                    <div className="box-container p-2 text-center">
-                      <p className="text-[12px] font-normal ml-[0px] text-left max-h-[125px] overflow-y-auto">
-                        Lyle Sencil excels as a Scrum Master, adeptly guiding
-                        teams through agile methodologies and enhancing
-                        collaboration information and ensure alignment on
-                        project goals. Lyle's commitment to promoting
-                        transparency empower teams to learn and grow. Lyle was a
-                        former mayor of Passi who have countless records of
-                        theft.
-                      </p>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="flex-container">
-                  <div
-                    className="font-Montserrat font-bold text-[35px] text-center text-white 
-                    mx-8 rounded-3xl inline-block 
-                  bg-[#0D70B1] bg-cover max-w-[400px] h-[400px]"
-                  >
-                    <div className="flex justify-center">
-                      <img
-                        className="w-80 h-40 object-cover rounded-t-3xl border-[2px]"
-                        src={dev2}
-                        alt=""
-                      />
-                    </div>
-                    <div className="bg-[#7826D0] rounded-b-3xl border-[2px]">
-                      <span className="text-[15px] font-regular">
-                        Rainer Mayagma
-                      </span>
-                      <p className="text-[10px] mb-2 text-white-500">
-                        rtmayagma@up.edu.ph
-                      </p>
-                    </div>
-                    <div className="box-container p-2 text-center">
-                      <p className="text-[12px] font-normal ml-[0px] text-left max-h-[125px] overflow-y-auto">
-                        Rainer Mayagma a former inmate is a results-driven
-                        project manager known for his exceptional organizational
-                        skills and strategic thinking. With a proven track
-                        record of delivering complex projects on schedule and
-                        within budget, he is a reliable leader for any team.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                    <div className="p-4"></div>
 
-                <div className="flex-container">
-                  <div
-                    className="font-Montserrat font-bold text-[35px] text-center text-white 
-                    mx-8 rounded-3xl inline-block 
-                  bg-[#0D70B1] bg-cover max-w-[400px] h-[400px]"
-                  >
-                    <div className="flex justify-center">
-                      <img
-                        className="w-80 h-40 object-cover rounded-t-3xl border-[2px]"
-                        src={dev3}
-                        alt=""
-                      />
+                    {/* Developer Profile Containers */}
+                    <div className="flex flex-wrap justify-center space-y-0 space-x-0 mt-8 md:mt-0">
+                        <DeveloperProfile src={dev1} name="Kristian Lyle Sencil" role="Scrum Master" email="kbsencil1@up.edu.ph" />
+                        <DeveloperProfile src={dev2} name="Rayner Mayagma" role="Project Manager" email="rtmayagma@up.edu.ph" />
+                        <DeveloperProfile src={dev3} name="John Luis Magtoto" role="Full Stack Developer" email="jfmagtoto@up.edu.ph" />
+                        <DeveloperProfile src={dev4} name="Kurt Matthew Amodia" role="Back-end Developer" email="kaamodia@up.edu.ph" />
+                        <DeveloperProfile src={dev5} name="Zyrex Djewel Ganit" role="Front-end Developer" email="zfganit@up.edu.ph" />
                     </div>
-                    <div className="bg-[#7826D0] rounded-b-3xl border-[2px]">
-                      <span className="text-[15px] font-regular">
-                        John Luis Magtoto
-                      </span>
-                      <p className="text-[10px] mb-2 text-white-500">
-                        jfmagtoto@up.edu.ph
-                      </p>
-                    </div>
-                    <div className="box-container p-2 text-center">
-                      <p className="text-[12px] font-normal ml-[0px] text-left max-h-[125px] overflow-y-auto">
-                        Luis Magtoto was a macho dancer but now a highly skilled
-                        developer known for his proficiency in various
-                        programming languages and a knack for tackling complex
-                        coding challenges. His dedication to clean, efficient
-                        code and strong problem-solving abilities make him a
-                        valuable asset.
-                      </p>
-                    </div>
-                  </div>
+                    <br /><br />
                 </div>
-
-                <div className="flex-container">
-                  <div
-                    className="font-Montserrat font-bold text-[35px] text-center text-white 
-                    mx-8 rounded-3xl inline-block 
-                  bg-[#0D70B1] bg-cover max-w-[400px] h-[400px]"
-                  >
-                    <div className="flex justify-center">
-                      <img
-                        className="w-80 h-40 object-cover rounded-t-3xl border-[2px]"
-                        src={dev4}
-                        alt=""
-                      />
-                    </div>
-                    <div className="bg-[#7826D0] rounded-b-3xl border-[2px]">
-                      <span className="text-[15px] font-regular">
-                        Kurt Matthew Amodia
-                      </span>
-                      <p className="text-[10px] mb-2 text-white-500">
-                        kaamodia@up.edu.ph
-                      </p>
-                    </div>
-                    <div className="box-container p-2 text-center">
-                      <p className="text-[12px] font-normal ml-[0px] text-left max-h-[125px] overflow-y-auto">
-                        Kurt Amodia was once a pastor but now a seasoned
-                        software developer with a passion for crafting elegant
-                        and efficient solutions. Kurt's extensive experience in
-                        a variety of programming languages and technologies
-                        allows him to adapt seamlessly to diverse project
-                        requirements.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex-container">
-                  <div
-                    className="font-Montserrat font-bold text-[35px] text-center text-white 
-                    mx-8 rounded-3xl inline-block 
-                  bg-[#0D70B1] bg-cover max-w-[400px] h-[400px]"
-                  >
-                    <div className="flex justify-center">
-                      <img
-                        className="w-80 h-40 object-cover rounded-t-3xl border-[2px]"
-                        src={dev5}
-                        alt=""
-                      />
-                    </div>
-                    <div className="bg-[#7826D0] rounded-b-3xl border-[2px]">
-                      <span className="text-[15px] font-regular">
-                        Zyrex Djewel Ganit
-                      </span>
-                      <p className="text-[10px] mb-2 text-white-500">
-                        zfganit@up.edu.ph
-                      </p>
-                    </div>
-                    <div className="box-container p-2 text-center">
-                      <p className="text-[12px] font-normal ml-[0px] text-left max-h-[125px] overflow-y-auto">
-                        Zyrex Ganit a former R-rated movie star found love in
-                        programming and developing software. He is a relentless
-                        worker who prioritizes the state of the project above
-                        anything else. His peers also comment that he has a very
-                        uplifting spirit brought about by his former career
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>{" "}
-            <br /> <br />
-          </div>
-        </div>
-      </div>
-    </>
-  );
+            </div>
+        </>
+    );
 };
+
+const DeveloperProfile = ({ src, name, role, email }) => (
+    <div className="flex-container mb-4 md:mb-0 flex-grow">
+        <div className="font-Montserrat font-bold text-[35px] text-center text-white mx-4 md:mx-8 rounded-3xl inline-block bg-cover w-full md:max-w-[400px] h-[200px] relative">
+            <div className="flex justify-center">
+                <div className="w-40 h-40 overflow-hidden rounded-full border-[1px] mx-auto">
+                    <img className="w-full h-full object-cover" src={src} alt="" />
+                </div>
+            </div>
+            <span className="text-[20px] font-regular">{name}</span>
+            <p className="text-[15px] mt-2 text-white-500">{role}</p>
+            <p className="text-[15px] mb-2 text-white-500 font-normal">{email}</p>
+        </div>
+    </div>
+);
 
 export default About;
