@@ -128,16 +128,18 @@ const RestoReviews = () => {
       </Router>
       <div
         style={backgroundStyle}
-        className="bg-contain bg-full bg-center min-h-screen"
+        className="bg-cover bg-full bg-center min-h-screen"
       >
         <div className="mx-auto min-h-screen flex flex-col overflow-y-auto bg-no-repeat ml-[20px]">
-          <h1
-            className="text-white font-Montserrat mt-4 text-left font-extrabold text-[40px]"
-            style={{ margin: 0 }}
-          >
-            {restaurantDetails.name}
-          </h1>{" "}
-          <div className="flex items-center">
+          <br/>
+          <div className = ' flex items-center'>
+            <h1
+              className="text-white font-Montserrat mt-4 text-left font-extrabold text-[40px]"
+              style={{ margin: 0 }}
+            >
+              {restaurantDetails.name}
+            </h1>{" "}
+            <div className="flex items-center ml-[10px]">
             {[...Array(5)].map((_, i) => (
               <FontAwesomeIcon
                 key={i}
@@ -147,7 +149,8 @@ const RestoReviews = () => {
                 style={{ color: "#FFD700", fontSize: "48px" }}
               />
             ))}
-          </div>
+            </div>
+          </div> <br/>
           <div className="flex py-2 font-Montserrat bg-white max-w-[1450px] ml-[40px] mr-[60px] rounded-3xl">
             {/* Display restaurant image and description here */}
             <img
