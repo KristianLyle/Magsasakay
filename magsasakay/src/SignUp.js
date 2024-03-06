@@ -40,25 +40,11 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
-      {/* <div className="container"> */}
-      <div className="bg-[#160E3D] flex flex-col justify-center p-8">
-        <div className="w-50 h-50 flex justify-center">
-          <img src={logo} alt="logo"></img>
-        </div>
-
-        <p className="text-white font-Montserrat font-light flex justify-center">
-          {" "}
-          2023 All Rights Reserved{" "}
-        </p>
-      </div>
-
-      <div className="bg-gradient-to-b from-orange-400 to-cyan-500 flex flex-col justify-center p-8">
-        <div
-          className="absolute right-0 top-0 w-1/2 h-screen bg-cover "
-          style={{ backgroundImage: `url(${signupImg})`, opacity: 0.4 }}
-        ></div>
-
+    <div className="min-h-screen relative flex font-Montserrat">
+        <div className="flex-1 flex items-center justify-center relative">
+        <div className="absolute w-[100%] h-screen bg-image1 bg-cover opacity-100"></div>
+        <div className="absolute w-[100%] h-screen bg-gradient-to-t from-orange-500 to-cyan-500 opacity-60"></div>
+        <div className="w-full max-w-md p-8 rounded-[37px] drop-shadow-2xl text-white">
         <form
           className="max-w-[400px] w-full mx-auto bg-[#7826D0] p-8 px-8 rounded-[37px] relative drop-shadow-2xl"
           onSubmit={HandleSignUp}
@@ -152,7 +138,7 @@ const SignUp = () => {
           ) : null}
 
           <div className="flex justify-center mb-3">
-            <button className="hover:bg-[#160E3D] hover:text-[#F9BE60] px-[55px] text-center bg-[#F9BE60] rounded-full drop-shadow-lg text-[20px] font-Montserrat font-semibold">
+            <button className="text-black hover:bg-[#160E3D] hover:text-[#F9BE60] px-[55px] text-center bg-[#F9BE60] rounded-full drop-shadow-lg text-[20px] font-Montserrat font-semibold">
               Create Account{" "}
             </button>
           </div>
@@ -163,14 +149,20 @@ const SignUp = () => {
             </p>
             <Link className="underline hover:text-black" to="/">
               {" "}
-              Click Here{" "}
+              Login Here{" "}
             </Link>
           </div>
         </form>
+        </div>
+        </div>
+        <div className="w-1/3 bg-[#160E3D] text-white flex flex-col items-center justify-center">
+        <div className="w-1/2">
+          <img src={logo} alt="logo" />
+        </div>
+        <p className="text-xs mt-4">2023 All Rights Reserved</p>
       </div>
     </div>
-    // </div>
-  );
-};
 
+  )
+};
 export default SignUp;
