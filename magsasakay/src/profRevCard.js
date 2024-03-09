@@ -142,7 +142,7 @@ const ProfileReviews = () => {
                 Edit Review
               </button>
               <button
-                className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]"
+                className="ml-[5px] bg-[#BF2F00] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]"
                 onClick={() => handleDeleteClick(review._id)}
                 // onClick={() => handleDeleteClick()}
               >

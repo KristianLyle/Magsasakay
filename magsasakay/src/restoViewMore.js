@@ -89,7 +89,7 @@ const ViewMore = () => {
                     bg-[#FFF1F1] bg-cover hover:border-[#5AF0D5] max-w-none max-h-[550px] text-ellipsis ..."
                   >
                     <div className="flex text-black">
-                      <div className="w-1/3 flex justify-start pl-8">
+                      <div className="w-1/3 flex justify-start pl-2">
                         <div className="w-40 h-20 relative">
                           <div className="">
                             <img

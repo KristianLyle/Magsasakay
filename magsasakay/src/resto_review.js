@@ -24,8 +24,9 @@ const RestoReviews = () => {
   const [inputText, setInputText] = useState("");
   const [postedReviews, setPostedReviews] = useState([]);
   const [restaurantDetails, setRestaurantDetails] = useState({});
-  const [selectedRating, setSelectedRating] = useState(0); // Add state for selectedRating
+  const [selectedRating, setSelectedRating] = useState(0);
   const history = useHistory();
+
   useEffect(() => {
     const status = window.localStorage.getItem("loggedIn");
     if (status === "false") {
@@ -33,8 +34,8 @@ const RestoReviews = () => {
       window.location.reload();
     }
   }, [history]);
+
   useEffect(() => {
-    // Fetch restaurant data
     Axios.post("http://localhost:3001/fetch-restaurant-details", {
       restaurantName: restaurantName,
     })
@@ -50,14 +51,17 @@ const RestoReviews = () => {
     setShowInput(true);
   };
 
+  const handleCancelButtonClick = () =>{
+    setInputText("");
+    setShowInput(false);
+  };
+
   const handlePostText = async () => {
     if (inputText.trim() !== "") {
-      // Decode the token to get user information
       const token = localStorage.getItem("token");
       const decodedToken = jwtDecode(token);
       const userName = decodedToken.username;
 
-      // Fetch user details to get the user image
       try {
         const userResponse = await Axios.post(
           "http://localhost:3001/fetch-user-details",
@@ -76,26 +80,23 @@ const RestoReviews = () => {
           starRating: selectedRating,
         };
 
-        // Make a POST request to the server to submit the review
         const response = await Axios.post(
           "http://localhost:3001/submit-review",
           reviewData
         );
 
         if (response.status === 201) {
-          // Review submitted successfully
+          const newReview = {
+            userimage: userImage,
+            review: inputText,
+            username: userName,
+            rating: selectedRating,
+          };
           setPostedReviews([
-            ...postedReviews,
-            {
-              userimage: userImage,
-              review: inputText,
-              username: userName,
-              rating: selectedRating,
-            },
+            newReview, ...postedReviews
           ]);
           setInputText("");
           setShowInput(false);
-          window.location.reload();
         } else {
           console.error("Failed to submit review");
         }
@@ -106,7 +107,6 @@ const RestoReviews = () => {
   };
 
   useEffect(() => {
-    // Fetch restaurant reviews from the API
     Axios.post("http://localhost:3001/fetch-reviews", {
       restaurantName: restaurantName,
     })
@@ -130,7 +130,7 @@ const RestoReviews = () => {
         style={backgroundStyle}
         className="bg-cover bg-full bg-center min-h-screen"
       >
-        <div className="mx-auto min-h-screen flex flex-col overflow-y-auto bg-no-repeat ml-[20px]">
+        <div className="mx-auto min-h-screen flex flex-col overflow-y-auto bg-no-repeat ml-[60px] mr-[50px]">
           <br/>
           <div className = ' flex items-center'>
             <h1
@@ -145,14 +145,16 @@ const RestoReviews = () => {
                 key={i}
                 icon={
                   i < restaurantDetails.averageRating ? faStar : ["far", "star"]
-                } // Use 'far' prefix for empty stars
-                style={{ color: "#FFD700", fontSize: "48px" }}
+                }
+                className="star-icon"
+                style={{ color: i < restaurantDetails.averageRating ? "#FFD700" : "#ccc" }}
+                onMouseEnter={(e) => e.target.style.color = "#yourDesiredHoverColor"}
+                onMouseLeave={(e) => e.target.style.color = i < restaurantDetails.averageRating ? "#FFD700" : "#ccc"}
               />
             ))}
             </div>
           </div> <br/>
-          <div className="flex py-2 font-Montserrat bg-white max-w-[1450px] ml-[40px] mr-[60px] rounded-3xl">
-            {/* Display restaurant image and description here */}
+          <div className="flex py-2 font-Montserrat bg-white rounded-3xl">
             <img
               style={{ width: "200px", height: "150px" }}
               src={`/${restaurantDetails.image}`}
@@ -168,34 +170,34 @@ const RestoReviews = () => {
             <div>
               <br />
               <ul>
-                {postedReviews.map((review, index) => (
+                {postedReviews.slice(0).reverse().map((review, index) => (
                   <li key={index}>
-                    <div className="bg-white max-w-[1300px] ml-[40px] rounded-[20px] p-[10px] font-Montserrat border-[4px] border-black drop-shadow-2xl">
-                      <div className="flex items-center  ">
+                    <div className="bg-white max-w-[1300px] ml-[40px] mr-[40px] rounded-[20px] p-[10px] font-Montserrat border-[4px] border-black drop-shadow-2xl">
+                      <div className="flex items-start  ">
                         <img
                           src={`/${review.userimage}`}
                           width="100px"
                           height="96px"
                           className="border-[3px] rounded-full border-black"
                         />
-                        <div className="flex flex-col items-center">
+                        <div className="flex flex-col items-start ml-4">
                           <div className="flex items-center">
                             {[...Array(5)].map((_, i) => (
                               <FontAwesomeIcon
                                 key={i}
                                 icon={
                                   i < review.rating ? faStar : ["far", "star"]
-                                } // Use 'far' prefix for empty stars
+                                }
                                 style={{ color: "#FFD700", fontSize: "24px" }}
                               />
                             ))}
                           </div>
-                          <p className="ml-[10px] font-medium">
+                          <p className="ml-2 font-medium max-w-[1000px]">
                             {review.review}
                           </p>
                         </div>
                       </div>
-                      <p className="max-w-[1300px] ml-[10px] text-[14px] font-bold">
+                      <p className="max-w-[1300px] ml-[10px] text-[14px] font-bold mt-2">
                         {review.username}
                       </p>
                     </div>
@@ -206,37 +208,51 @@ const RestoReviews = () => {
               <br />
             </div>
           )}
-          <button
-            onClick={handleButtonClick}
-            className="bg-[#EE7200] text-[15px] py-2 rounded-full 
-                            font-bold text-white hover:bg-white hover:text-[#160E3D] 
-                            drop-shadow-2xl ml-[40px] font-Montserrat px-[25px] max-w-[200px]"
-          >
-            Write Review
-          </button>{" "}
+          {!showInput && (
+            <button
+              onClick={handleButtonClick}
+              className="bg-[#EE7200] text-[15px] py-2 rounded-full 
+                              font-bold text-white hover:bg-white hover:text-[#160E3D] 
+                              drop-shadow-2xl ml-[40px] font-Montserrat px-[25px] max-w-[200px]"
+            >
+              Write a Review
+            </button>
+          )}
           <br />
           {showInput && (
-            <div className="flex flex-col">
-              <textarea
-                type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                className="h-[100px] max-w-[100%] w-[1200px] border border-gray-300 rounded p-2 ml-[40px]"
-              />
-              <br />
-              <div className="flex flex-col ml-[40px] ">
+            <div className="flex flex-col ">
+              <div className="ml-[40px] mb-[5px]">
                 <StarRating
                   onRatingChange={setSelectedRating}
                   selectedRating={selectedRating}
                 />
+              </div>
+              <textarea
+                type="text"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                placeholder="Write your review here..."
+                className="h-[100px] max-w-[100%] w-[1200px] border border-gray-300 rounded p-2 ml-[40px]"
+              />
+              <br />
+              <div className="flex flex-col ml-[40px] ">
                 <button
-                  style={{ marginTop: "10px" }}
+                  style={{ marginTop: "10px", marginBottom: "10px" }}
                   onClick={handlePostText}
                   className="bg-[#EE7200] text-[15px] py-2 rounded-full 
-                                                                font-bold text-white hover.bg-white hover.text-[#160E3D] 
-                                                                drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
+                                                            font-bold text-white hover:bg-white hover:text-[#160E3D] 
+                                                            drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
                 >
                   Post Review
+                </button>
+                <button
+                  style={{marginTop: "2px"}}
+                  onClick={handleCancelButtonClick}
+                  className="bg-[#BF2F00] text-[15px] py-2 rounded-full
+                              font-bold text-white hover:bg-white hover:text-[#160E3D]
+                              drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px] hover:bg-[#FACA15]"   
+                >
+                  Cancel
                 </button>
               </div>
             </div>
