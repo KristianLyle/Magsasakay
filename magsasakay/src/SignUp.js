@@ -40,7 +40,7 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="min-h-screen relative flex font-Montserrat">
+    <div className="bg-cover min-h-screen relative flex font-Montserrat">
         <div className="flex-1 flex items-center justify-center relative">
         <div className="absolute w-[100%] h-screen bg-image1 bg-cover opacity-100"></div>
         <div className="absolute w-[100%] h-screen bg-gradient-to-t from-orange-500 to-cyan-500 opacity-60"></div>

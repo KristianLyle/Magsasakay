@@ -131,7 +131,7 @@ const Restaurants = () => {
                         to={`/resto_review/${encodeURIComponent(
                           restaurant.name
                         )}`} // Pass the restaurant name in the URL
-                        className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover-text-[#160E3D] drop-shadow-2xl"
+                        className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl"
                       >
                         View Reviews
                       </Link>

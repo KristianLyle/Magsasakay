@@ -7,7 +7,7 @@ const DeleteConfirmation = ({ message, onConfirm, onCancel }) => {
             <p>{message}</p> <br/>
             <button className="mr-[5px] bg-[#EE7200] rounded-full py-2 font-bold text-white hover:bg-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px]" 
             onClick={onConfirm}> Confirm </button>
-            <button className='bg-[#EE7200] rounded-full py-2 font-bold text-white hover:bg-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px]' 
+            <button className='bg-[#ff0000] rounded-full py-2 font-bold text-white hover:bg-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px]' 
             onClick={onCancel}> Cancel </button>
         </div>
     </div>
