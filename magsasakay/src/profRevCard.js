@@ -2,23 +2,13 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import DeleteConfirmation from "./deleteConfirmation";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ProfileReviews = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editedText, setEditedText] = useState("");
   const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    // Fetch restaurant data from the API
-    fetch("http://localhost:3001/view-more-restaurants")
-      .then((response) => response.json())
-      .then((data) => setRestaurants(data))
-      .catch((error) =>
-        console.error("Error fetching restaurant data:", error)
-      );
-  }, []);
 
   //Delete confirmation functions
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -107,14 +97,13 @@ const ProfileReviews = () => {
       <ul className="ml-[15px] p-[5px]">
         {reviews.map((review, index) => (
           <li key={review._id} className="max-w-[500px] px-[2px]">
-            
             {/* tabang */}
-            {restaurants.map((restaurant) => ( 
-            <Link  
-            className="text-[20px] font-regular"
-            to={`/resto_review/${encodeURIComponent(restaurant.name)}`}
-            >{review.restaurant}</Link>
-            ))}
+            <Link
+              className="text-[20px] font-regular"
+              to={`/resto_review/${encodeURIComponent(review.restaurant)}`}
+            >
+              {review.restaurant}
+            </Link>
 
             {editingIndex === index ? (
               <div className="bg-white text-black px-1 py-5 text-[15px] w-[850px] max-w-[900px] max-h-[100px] rounded-[15px] overflow-y-auto">
