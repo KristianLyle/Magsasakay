@@ -31,7 +31,7 @@ const Profile = () => {
     left: 0,
     height: "100%",
     width: "33.33%",
-    backgroundColor: "lightblue",
+    //backgroundColor: "lightblue",
     zIndex: 1,
   };
 
@@ -43,17 +43,20 @@ const Profile = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div className="relative">
-        <div style={leftPanelStyle}>
-          <ProfileCard />
+      <div className="relative bg-cover">
+        <div style={leftPanelStyle} 
+        className="relative z-11">
+          <ProfileCard
+          className="relative z-12" />
         </div>
         <div
           style={backgroundStyle}
-          className="bg-contain bg-full bg-center min-h-screen"
+          className=" bg-cover bg-full bg-center min-h-screen relative z-12"
         >
-          {" "}
+          
           <br />
-          <ProfileReviews />
+          <ProfileReviews
+          className= ' '/>
         </div>
       </div>
     </>
