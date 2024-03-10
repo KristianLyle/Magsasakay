@@ -21,6 +21,8 @@ const customIcon = L.icon({
 const MapComponent = ({ selectedRoute, color }) => {
   const [route, setRoute] = useState(null);
   const [decodedGeometry, setDecodedGeometry] = useState([]);
+  const [hoveredMarker, setHoveredMarker] = useState(null);
+  const [clickedMarker, setClickedMarker] = useState(null);
 
   useEffect(() => {
     if (selectedRoute) {
@@ -56,58 +58,67 @@ const MapComponent = ({ selectedRoute, color }) => {
   }, [selectedRoute]);
 
   return (
-    <>
-      <div className="h-screen relative flex items-center justify-center">
-        <div className="items-center mt-[-100px]">
-          <MapContainer
-            center={[10.7202, 122.5621]}
-            zoom={13}
-            className="rounded-[30px] h-[450px] w-[700px] shadow-lg shadow-black-500/40
-			border-[5px] border-[#160E3D] drop-shadow-2xl"
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            {route && (
-              <div className="items-center">
-                <Polyline
-                  positions={decodedGeometry}
-                  color={selectedRoute.color}
-                  weight={5}
-                  opacity={0.7}
+    <div className="h-screen relative flex items-center justify-center">
+      <div className="items-center mt-[-100px]">
+        <MapContainer
+          center={[10.7202, 122.5621]}
+          zoom={13}
+          className="rounded-[30px] h-[450px] w-[700px] shadow-lg shadow-black-500/40 border-[5px]  border-[#160E3D] drop-shadow-2xl"
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          {route && (
+            <div className="items-center ">
+              <Polyline
+                positions={decodedGeometry}
+                color={selectedRoute.color}
+                weight={5}
+                opacity={0.7}
+              >
+                <Popup>
+                  <div className="bg-[#EE7200] p-4">
+                    <h3 className="text-white text-xl font-semibold">
+                      {selectedRoute.title}
+                    </h3>
+                    <p className="text-white">{selectedRoute.description}</p>
+                  </div>
+                </Popup>
+              </Polyline>
+              {selectedRoute.establishments.map((establishment, index) => (
+                <Marker
+                  key={index}
+                  position={[establishment.lat, establishment.lon]}
+                  icon={customIcon}
+                  eventHandlers={{
+                    mouseover: () => setHoveredMarker(index),
+                    mouseout: () => setHoveredMarker(null),
+                    click: () => setClickedMarker(index),
+                  }}
                 >
-                  <Popup>
-                    <div>
-                      <h3>{selectedRoute.title}</h3>
-                      <p>{selectedRoute.description}</p>
-                    </div>
-                  </Popup>
-                </Polyline>
-                {selectedRoute.establishments.map((establishment, index) => (
-                  <Marker
-                    key={index}
-                    position={[establishment.lat, establishment.lon]}
-                    icon={customIcon}
-                  >
-                    <Popup>
-                      <div>
+                  {(hoveredMarker === index || clickedMarker === index) && (
+                    <Popup onClose={() => setClickedMarker(null)}>
+                      <div className="text-center bg-[#EE7200] p-4 text-white">
                         <img
+                          className="popup-image w-[200px] h-[150px] object-cover mx-auto mb-4"
                           src={`${process.env.PUBLIC_URL}/${establishment.image}`}
                           alt=""
                         />
-                        <h3>{establishment.name}</h3>
-                        <p>Type: {establishment.type}</p>
+                        <h3 className="font-semibold text-xl">
+                          {establishment.name}
+                        </h3>
+                        <p className="mt-1">Type: {establishment.type}</p>
                       </div>
                     </Popup>
-                  </Marker>
-                ))}
-              </div>
-            )}
-          </MapContainer>
-        </div>
+                  )}
+                </Marker>
+              ))}
+            </div>
+          )}
+        </MapContainer>
       </div>
-    </>
+    </div>
   );
 };
 

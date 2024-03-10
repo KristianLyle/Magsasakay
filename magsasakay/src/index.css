@@ -93,3 +93,72 @@
 
     }
 }
+.landmark-size-image{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.leaflet-popup-content-wrapper{
+    background-color: #EE7200 !important;
+    border-radius: 5px !important;
+}
+
+.leaflet-popup-content{
+    margin: 0px !important;
+    padding: 10px !important;
+}
+
+.leaflet-popup-close-button {
+    background-color: red !important;
+    color: white !important;
+    font-size: 20px !important;
+    border-top-right-radius: 5px;
+  }
+
+.leaflet-popup-close-button:hover{
+    background-color: white !important;
+    color: gray!important;
+}
+  
+/* .popup-image{
+    width: 100px !important;
+    height: 100px !important;
+    object-fit: cover !important;
+} */
+
+.leaflet-popup-content{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+}
+
+.leaflet-popup-content h3{
+    padding-top: 10%;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+
+.leaflet-popup-content p{
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+
+.popup-image-container {
+    max-width: 200px; 
+    max-height: 150px; 
+    overflow: hidden;
+  }
+  
+  .popup-image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+   
+  }
+  
