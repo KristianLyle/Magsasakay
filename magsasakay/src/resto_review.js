@@ -166,9 +166,44 @@ const RestoReviews = () => {
             </p>
           </div>
           <br />
+          <br />
+            <div className="flex flex-col ">
+              <div className="ml-[40px] mb-[5px]">
+                <StarRating
+                  onRatingChange={setSelectedRating}
+                  selectedRating={selectedRating}
+                />
+              </div>
+              <textarea
+                type="text"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                placeholder="Write your review here..."
+                className="h-[100px] max-w-[100%] w-[1200px] border border-gray-300 rounded p-2 ml-[40px]"
+              />
+              <div className="flex flex-col ml-[40px] ">
+                <button
+                  style={{ marginTop: "10px", marginBottom: "10px" }}
+                  onClick={handlePostText}
+                  className="bg-[#EE7200] text-[15px] py-2 rounded-full 
+                                                            font-bold text-white hover:bg-white hover:text-[#160E3D] 
+                                                            drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
+                >
+                  Post Review
+                </button>
+                <button
+                  style={{marginTop: "2px"}}
+                  onClick={handleCancelButtonClick}
+                  className="bg-[#BF2F00] text-[15px] py-2 rounded-full
+                              font-bold text-white hover:bg-white hover:text-[#160E3D]
+                              drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px] hover:bg-[#FACA15]"   
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           {postedReviews.length > 0 && (
             <div>
-              <br />
               <ul>
                 {postedReviews.slice(0).reverse().map((review, index) => (
                   <li key={index}>
@@ -192,7 +227,7 @@ const RestoReviews = () => {
                               />
                             ))}
                           </div>
-                          <p className="ml-2 font-medium max-w-[1000px]">
+                          <p className="ml-2 font-medium max-w-[1000px] py-5">
                             {review.review}
                           </p>
                         </div>
@@ -208,55 +243,7 @@ const RestoReviews = () => {
               <br />
             </div>
           )}
-          {!showInput && (
-            <button
-              onClick={handleButtonClick}
-              className="bg-[#EE7200] text-[15px] py-2 rounded-full 
-                              font-bold text-white hover:bg-white hover:text-[#160E3D] 
-                              drop-shadow-2xl ml-[40px] font-Montserrat px-[25px] max-w-[200px]"
-            >
-              Write a Review
-            </button>
-          )}
-          <br />
-          {showInput && (
-            <div className="flex flex-col ">
-              <div className="ml-[40px] mb-[5px]">
-                <StarRating
-                  onRatingChange={setSelectedRating}
-                  selectedRating={selectedRating}
-                />
-              </div>
-              <textarea
-                type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                placeholder="Write your review here..."
-                className="h-[100px] max-w-[100%] w-[1200px] border border-gray-300 rounded p-2 ml-[40px]"
-              />
-              <br />
-              <div className="flex flex-col ml-[40px] ">
-                <button
-                  style={{ marginTop: "10px", marginBottom: "10px" }}
-                  onClick={handlePostText}
-                  className="bg-[#EE7200] text-[15px] py-2 rounded-full 
-                                                            font-bold text-white hover:bg-white hover:text-[#160E3D] 
-                                                            drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
-                >
-                  Post Review
-                </button>
-                <button
-                  style={{marginTop: "2px"}}
-                  onClick={handleCancelButtonClick}
-                  className="bg-[#BF2F00] text-[15px] py-2 rounded-full
-                              font-bold text-white hover:bg-white hover:text-[#160E3D]
-                              drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px] hover:bg-[#FACA15]"   
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          )}
+          
         </div>
       </div>
     </>
