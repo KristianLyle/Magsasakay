@@ -61,7 +61,7 @@ const Restaurants = () => {
   //};
 
   return (
-    <>
+    <div className='overflow-x-hidden'>
       <Router>
         <NavBar />
         <Switch>
@@ -154,7 +154,7 @@ const Restaurants = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

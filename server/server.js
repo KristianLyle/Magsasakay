@@ -12,9 +12,9 @@ app.use(cors()); // Enable CORS for cross-origin requests
 app.use("/uploads", express.static("uploads"));
 app.use(bodyParser.json());
 
-const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
-//  const mongoUrl =
-//  "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
+//const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
+ const mongoUrl =
+  "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(mongoUrl, {
