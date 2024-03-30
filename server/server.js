@@ -13,7 +13,7 @@ app.use("/uploads", express.static("uploads"));
 app.use(bodyParser.json());
 
 //const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
- const mongoUrl =
+const mongoUrl =
   "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
@@ -134,6 +134,7 @@ app.post("/fetch-restaurant-details", async (req, res) => {
       image: restaurant.image,
       description: restaurant.description,
       averageRating: roundedRating,
+      location: restaurant.location,
     };
 
     //add conditions that if the decimal value of the rating is 0-4, it rounds down, if 5 above, rounds up

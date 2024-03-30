@@ -57,12 +57,12 @@ const RestoReviews = () => {
     setShowInput(false);
   };
 
+  const token = localStorage.getItem("token");
+  const decodedToken = jwtDecode(token);
+  const userName = decodedToken.username;
+
   const handlePostText = async () => {
     if (inputText.trim() !== "") {
-      const token = localStorage.getItem("token");
-      const decodedToken = jwtDecode(token);
-      const userName = decodedToken.username;
-
       try {
         const userResponse = await Axios.post(
           "http://localhost:3001/fetch-user-details",
@@ -162,6 +162,12 @@ const RestoReviews = () => {
                   }
                 />
               ))}
+              <h1
+                className="text-white font-Montserrat mt-4 text-left font-extrabold text-[25px]"
+                style={{ margin: 0 }}
+              >
+                {restaurantDetails.location}
+              </h1>{" "}
             </div>
           </div>{" "}
           <br />
@@ -184,6 +190,12 @@ const RestoReviews = () => {
                 onRatingChange={setSelectedRating}
                 selectedRating={selectedRating}
               />
+              <h1
+                className="text-white font-Montserrat mt-4 text-left font-extrabold text-[20px]"
+                style={{ margin: 0 }}
+              >
+                {userName}
+              </h1>{" "}
             </div>
             <textarea
               type="text"

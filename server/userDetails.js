@@ -43,6 +43,7 @@ const restaurantSchema = new mongoose.Schema(
     description: String,
     image: String,
     averageRating: Number,
+    location: String,
   },
   { collection: "restaurants" }
 );
