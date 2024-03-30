@@ -12,6 +12,10 @@ module.exports = {
         'resto_bg': "url('img/resto_bg.jpg')",
         'resto_but': "url('img/resto_but.png')"
       },
+      screens:{
+        "phone": "360px",
+
+      }
     },
     fontFamily: {
       Montserrat: ['Montserrat'],

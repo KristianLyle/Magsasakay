@@ -40,8 +40,8 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="bg-cover min-h-screen relative flex font-Montserrat">
-        <div className="flex-1 flex items-center justify-center relative">
+    <div className="bg-cover min-h-screen relative flex font-Montserrat sm:flex">
+        <div className="flex-1 flex items-center justify-center relative sm:w-3/4">
         <div className="absolute w-[100%] h-screen bg-image1 bg-cover opacity-100"></div>
         <div className="absolute w-[100%] h-screen bg-gradient-to-t from-orange-500 to-cyan-500 opacity-60"></div>
         <div className="w-full max-w-md p-8 rounded-[37px] drop-shadow-2xl text-white">
@@ -49,18 +49,25 @@ const SignUp = () => {
           className="max-w-[400px] w-full mx-auto bg-[#7826D0] p-8 px-8 rounded-[37px] relative drop-shadow-2xl"
           onSubmit={HandleSignUp}
         >
-          <h2 className="mb-10 text-[35px] dark:text-white font-semibold font-montserrat text-center">
+          <h2 className="mb-10 text-[35px] dark:text-white font-semibold font-montserrat text-center
+                        phone:text-2xl phone:mb-[10px]
+                        md:text-4xl md:mb-10">
             {" "}
             Set Up Your Account
           </h2>
 
-          <div className="mb-5">
-            <label className=" text-gray-200 font-montserrat" htmlFor="email">
+          <div className="mb-5 phone:items-left">
+            <label className=" text-gray-200 font-montserrat
+                              phone:text-sm 
+                              md:text-lg"
+             htmlFor="email">
               Username
             </label>{" "}
             <br></br>
             <input
-              className=" border border-black border-lg rounded-[10px] w-full p-2"
+              className=" border border-black border-lg rounded-[10px] w-full p-2
+                          phone:w-full phone:text-xs
+                          md:text-xl"
               type="text"
               placeholder="Enter username here"
               required
@@ -70,12 +77,17 @@ const SignUp = () => {
             <br></br>
           </div>
           <div className="mb-5">
-            <label className=" text-gray-200 font-montserrat" fhtmlFor="email">
+            <label className=" text-gray-200 font-montserrat
+                              phone:text-sm 
+                              md:text-lg" 
+            htmlFor="email">
               Email
             </label>{" "}
             <br></br>
             <input
-              className=" border border-black border-lg rounded-[10px] w-full p-2"
+              className=" border border-black border-lg rounded-[10px] w-full p-2
+                          phone:w-full phone:text-xs
+                          md:text-xl"
               type="email"
               placeholder="Enter email here"
               required
@@ -86,14 +98,18 @@ const SignUp = () => {
           </div>
           <div className="mb-5">
             <label
-              className=" text-gray-200 font-montserrat"
+              className="text-gray-200 font-montserrat
+                          phone:text-sm 
+                          md:text-lg"
               htmlFor="password"
             >
               Password
             </label>{" "}
             <br></br>
             <input
-              className="border border-black border-lg rounded-[10px] w-full p-2"
+              className="border border-black border-lg rounded-[10px] w-full p-2
+                        phone:w-full phone:text-xs
+                        md:text-xl"
               type="password"
               placeholder="Enter password here"
               required
@@ -104,14 +120,18 @@ const SignUp = () => {
           </div>
           <div className="mb-5">
             <label
-              className=" text-gray-200 font-montserrat"
+              className=" text-gray-200 font-montserrat
+                        phone:text-sm 
+                        md:text-lg"
               htmlFor="password"
             >
               Re-type Password
             </label>{" "}
             <br></br>
             <input
-              className="border border-black border-lg rounded-[10px] w-full p-2"
+              className="border border-black border-lg rounded-[10px] w-full p-2
+                        phone:w-full phone:text-xs
+                        md:text-xl"
               type="password"
               placeholder="Re-type password here"
               required
@@ -138,16 +158,23 @@ const SignUp = () => {
           ) : null}
 
           <div className="flex justify-center mb-3">
-            <button className="text-black hover:bg-[#160E3D] hover:text-[#F9BE60] px-[55px] text-center bg-[#F9BE60] rounded-full drop-shadow-lg text-[20px] font-Montserrat font-semibold">
+            <button className="text-black hover:bg-[#160E3D] hover:text-[#F9BE60] px-[55px] text-center bg-[#F9BE60] rounded-full drop-shadow-lg text-[20px] font-Montserrat font-semibold
+                              phone:text-sm
+                              md:text-2xl">
               Create Account{" "}
             </button>
           </div>
           <div className="font-light text-center text-white font-Montserrat py-2 mb-3">
-            <p className="text-center font-montserrat">
+            <p className="text-center font-montserrat
+                        phone:text-xs
+                        md:text-lg">
               {" "}
               Already have an account?{" "}
             </p>
-            <Link className="underline hover:text-black" to="/">
+            <Link className="underline hover:text-black
+                            phone:text-xs
+                            md:text-lg" 
+            to="/">
               {" "}
               Login Here{" "}
             </Link>
@@ -155,11 +182,17 @@ const SignUp = () => {
         </form>
         </div>
         </div>
-        <div className="w-1/3 bg-[#160E3D] text-white flex flex-col items-center justify-center">
-        <div className="w-1/2">
+        <div className="w-1/3 bg-[#160E3D] text-white flex flex-col items-center justify-center
+                        phone:w-3/5">
+        <div className="w-1/2
+                        phone:w-2/3
+                        md:w-1/2">
           <img src={logo} alt="logo" />
         </div>
-        <p className="text-xs mt-4">2023 All Rights Reserved</p>
+        <p className="text-xs mt-4
+                      phone:text-xs phone:p-2 phone:text-center
+                      md:text-xs">
+          2023 All Rights Reserved</p>
       </div>
     </div>
 
