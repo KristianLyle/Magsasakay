@@ -100,7 +100,9 @@ const ProfileCard = () => {
 
   return (
     <>
-      <div className="w-[505px] h-full rounded-[4px] pb-[20px] bg-gradient-to-t from-blue-400 to-orange-500 text-center font-Montserrat">
+      <div className="w-[505px] h-full rounded-[4px] pb-[20px] bg-gradient-to-t from-blue-400 to-orange-500 text-center font-Montserrat
+                     phone:w-4/5 phone:h-1/2 phone:pb-0
+                     md:w-[505px] md:h-full md:pb-[20px]">
         <div
           className="h-[350px] rounded-[4px_4px_0px_0px]"
           style={{ backgroundImage: `url(${city})` }}
@@ -112,7 +114,9 @@ const ProfileCard = () => {
           >
             <img
               src={displayedPicture || user}
-              className="h-[200px] w-[200px] rounded-[100px] mt-[-125px] p-[5px] bg-white ml-[150px]"
+              className="h-[200px] w-[200px] rounded-[100px] mt-[-125px] p-[5px] bg-white ml-[150px]
+                        phone:w-2/3 phone:h-2/3 phone:ml-7 phone:mt-[-75px]
+                        md:w-[200px] md:h-[200px] md:ml-[150px] md:mt-[-125px] md:rounded-full" 
             />
             <input
               type="file"
@@ -139,44 +143,73 @@ const ProfileCard = () => {
               </>
             )}
           </label>
-          <div className="profile-title text-[26px] font-semibold text-white">
+          <div className="profile-title text-[26px] font-semibold text-white
+                          phone:text-base
+                          md:text-[26px]">
             {currentUser.username}
           </div>
-          <div className="profile-button py-[10px] text-white">
-            <a href={`mailto: ${currentUser.email}`}>{currentUser.email}</a>
+          <div className="profile-button py-[10px] text-white
+                         phone:py-[2px]
+                         md:py-[10px]">
+            <a className= "phone:text-xs md:text-md"
+            href={`mailto: ${currentUser.email}`}>{currentUser.email}</a>
           </div>
+
           {editingBio ? (
-            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] rounded-[15px] overflow-auto">
+            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] rounded-[15px] overflow-auto
+                            phone:text-[7.5px] phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px] 
+                            md:text-[15px] md:ml-[27px] md:mr-0 md:max-w-[450px]
+                            ">
               <textarea
                 value={editedBio}
                 onChange={(e) => setEditedBio(e.target.value)}
-                className="w-[400px] h-[150px] p-2"
+                className="w-[400px] h-[150px] p-2
+                           phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
+                           md:ml-[27px] md:mr-0 md:max-w-[450px]
+                           "
                 placeholder="Enter your bio here..."
               />
               <button
                 onClick={handleSaveBioClick}
-                className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]"
+                className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
+                          phone:text-xs phone:max-w-[125px]
+                          md:text-[15px] md:max-w-[200px]
+                          "
               >
                 Save Bio
               </button>
               <button
                 onClick={handleCancelBioClick}
-                className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]"
+                className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
+                          phone:text-xs phone:max-w-[125px]
+                          md:text-[15px] md:max-w-[200px]
+                          "
               >
                 Cancel
               </button>
             </div>
           ) : (
-            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] rounded-[15px] overflow-auto">
-              <p className="bg-orange">{currentUser.bio}</p>
+            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] rounded-[15px] overflow-auto
+                            phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
+                            md:ml-[27px] md:mr-0 md:max-w-[450px]
+                            ">
+              <p className="bg-orange
+                            phone:text-[7.5px]
+                            md:text-[15px] "
+                            >
+                              {currentUser.bio}</p>
               <button
                 onClick={handleEditBioClick}
-                className="ml-[350px] underline hover:text-white"
+                className="ml-[350px] underline hover:text-white
+                          phone:text-[7.5px] phone:ml-20
+                          md:text-[15px] md:ml-[350px]
+                          "
               >
                 Edit Bio
               </button>
             </div>
           )}
+
           <div className="profile-button">
             <a href={`mailto: ${currentUser.email}`}></a>
           </div>

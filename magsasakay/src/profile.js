@@ -25,12 +25,12 @@ const Profile = () => {
     backgroundImage: `url(${prof_bg})`,
   };
 
-  const leftPanelStyle = {
+   const leftPanelStyle = {
     position: "absolute",
-    top: 0,
-    left: 0,
-    height: "100%",
-    width: "33.33%",
+    //top: 0,
+    //left: 0,
+    //height: "100%",
+    //width: "33.33%",
     //backgroundColor: "lightblue",
     zIndex: 1,
   };
@@ -44,16 +44,16 @@ const Profile = () => {
         </Switch>
       </Router>
       <div className="relative bg-cover">
-        <div style={leftPanelStyle} 
-        className="relative z-11">
+        <div style={leftPanelStyle}
+        className="relative z-11 top-0 left-0 h-full
+                   phone:w-3/5
+                    ">
           <ProfileCard
           className="relative z-12" />
         </div>
         <div
           style={backgroundStyle}
-          className=" bg-cover bg-full bg-center min-h-screen relative z-12"
-        >
-          
+          className=" bg-cover bg-full bg-center min-h-screen relative z-12">      
           <br />
           <ProfileReviews
           className= ' '/>
