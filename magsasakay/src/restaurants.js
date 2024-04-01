@@ -61,7 +61,7 @@ const Restaurants = () => {
   //};
 
   return (
-    <div className='overflow-x-hidden'>
+    <div className='overflow-x-hidden bg-resto_bg bg-cover bg-center'>
       <Router>
         <NavBar />
         <Switch>
@@ -70,60 +70,77 @@ const Restaurants = () => {
       </Router>
       <div
         //style={backgroundStyle}
-        className="bg-resto_bg bg-cover bg-center min-h-screen w-screen mx-auto"
+        className=" min-h-screen w-screen mx-auto "
       >
         <div className="mx-auto h-screen">
           <div className="">
             <br />
             <h1
-              className="text-white font-Montserrat mt-4 text-center font-extrabold text-[40px]"
+              className="text-white font-Montserrat mt-4 text-center font-extrabold text-[40px]
+                        phone:text-base
+                        md:text-[40px]"
               style={{ margin: 0 }}
             >
               You Might Like
             </h1>
             <br />
-            <div className="mx-auto flex justify-center items-center space-x-35">
+            <div className="mx-auto flex justify-center items-center space-x-35
+                            phone:space-x-[1000px] lg:space-x-10
+                          ">
               {restaurants.map((restaurant, index) => (
                 <div className="flex-container" key={index}>
                   <div
                     className="font-Montserrat font-bold text-[35px] text-center text-white 
-                    							   px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
-                   								 bg-[#160E3D] hover:border-[#5AF0D5] min-w-[350px] max-w-[350px] min-h-[500px] max-h-[1000px]"
+                    					 px-3 py-3 mx-16 rounded-3xl inline-block border-white border-[2px]
+                   					 bg-[#160E3D] hover:border-[#5AF0D5] min-w-[350px] max-w-[350px] min-h-[500px] max-h-[1000px] overflow-auto
+                               phone:min-w-[150px] phone:w-[120px] phone:min-h-[100px] phone:h-[300px] phone:max-h-[350px]
+                               md:min-w-[350px] md:w-[350px] md:min-h-[500px] md:max-h-[1000px] md:h-[500px] md:flex md:flex-col"
                   >
                     {/* Render restaurant details from the API */}
                     <div className="flex justify-center items-center">
                       <img
-                        className="w-80 h-60 object-cover rounded-3xl border-[2px] border-white"
+                        className="w-80 h-60 object-cover rounded-3xl border-[2px] border-white
+                                  phone:w-30 phone:h-20 phone:rounded-2xl
+                                  md:w-80 md:h-60 md:rounded-3xl"
                         src={restaurant.image}
                         alt={restaurant.name}
                       />
                     </div>
-                    <span className="text-[20px] font-regular">
+                    <div className="text-[20px] font-regular
+                                    phone:text-[10px] phone:leading-tight phone:mt-[10px] phone:mb-[10px]
+                                    md:text-[20px]">
                       {restaurant.name}
-                    </span>
+                    </div>
                     <div className="box-container text-left">
                       <p
                         style={isOpen ? null : descStyle}
                         ref={ref}
-                        className="text-[12px] font-normal ml-[0px] text-left "
+                        className="text-[12px] font-normal ml-[0px] text-left 
+                                  phone:text-[6px]
+                                  md:text-[12px]"
                       >
                         {restaurant.description}
                       </p>
                       {showReadMore && (
                         <button
                           onClick={() => setIsOpen(!isOpen)}
-                          className=" underline font-Montserrat font-light text-[12px]"
+                          className=" underline font-Montserrat font-light text-[12px]
+                                    phone:text-[6px]   
+                                    md:text-[12px]       
+                          "
                         >
                           {" "}
                           {isOpen ? "Read Less" : "Read More"}
                         </button>
                       )}
-                      <br />
+                      <br className="phone:hidden" />
                     </div>
                     <div>
                       <button
                         onClick={() => handleLocationClick(restaurant.name)}
-                        className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md mr-[5px]"
+                        className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] shadow-md mr-[5px]
+                                  phone:text-[6px] phone:px-3
+                                  md:text-[15px] md:px-6"
                       >
                         Location
                       </button>
@@ -131,7 +148,9 @@ const Restaurants = () => {
                         to={`/resto_review/${encodeURIComponent(
                           restaurant.name
                         )}`} // Pass the restaurant name in the URL
-                        className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl"
+                        className="bg-[#EE7200] text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl
+                                  phone:text-[6px] phone:px-3
+                                  md:text-[15px] md:px-6"
                       >
                         View Reviews
                       </Link>
@@ -146,11 +165,14 @@ const Restaurants = () => {
                 to="restoViewMore"
                 className="bg-[#EE7200] text-[15px] py-2 rounded-full 
 									font-bold text-white hover:bg-white hover:text-[#160E3D] 
-									drop-shadow-2xl font-Montserrat px-[50px]"
+									drop-shadow-2xl font-Montserrat px-[50px]
+                  phone:text-[10px]
+                  md:text-[15px]"
               >
                 View More
               </Link>
             </div>
+            
           </div>
         </div>
       </div>
