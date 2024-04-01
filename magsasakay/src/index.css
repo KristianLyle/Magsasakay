@@ -162,3 +162,8 @@
    
   }
   
+  @media (max-width: 640px){
+    .review-star-icon{
+        font-size: 18px;
+    }
+  }
