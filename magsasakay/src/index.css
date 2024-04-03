@@ -167,3 +167,6 @@
         font-size: 18px;
     }
   }
+  .flowbite-carousel-arrow {
+    display: none !important;
+}

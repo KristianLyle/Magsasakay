@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+    "node_modules/flowbite-react/lib/esm/**/*.js"
   ],
   theme: {
     extend: {
@@ -10,7 +11,10 @@ module.exports = {
         'home_bg': "url('img/home_bg.jpg')",
         'wte_bg': "url('img/wte_bg.jpg')",
         'resto_bg': "url('img/resto_bg.jpg')",
-        'resto_but': "url('img/resto_but.png')"
+        'resto_but': "url('img/resto_but.png')",
+        'ilonight': "url('img/ilonight.jpg')",
+        'iloilo1': "url('img/home_bg.png')",
+        'slide1bg': "url('img/slide1bg.jpg')"
       },
       screens:{
         "phone": "360px",
@@ -21,5 +25,7 @@ module.exports = {
       Montserrat: ['Montserrat'],
     },
   },
-  plugins: [],
+  plugins: [
+    require("flowbite/plugin"),
+  ],
 };
