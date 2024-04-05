@@ -1,0 +1,42 @@
+[
+	{
+		"category": "Electrician",
+		"name": "Nig Marketing",
+		"location": [10.6954, 122.56461]
+	},
+	{
+		"category": "Electrician",
+		"name": "SANGYAHON",
+		"location": [10.69218, 122.57008]
+	},
+	{
+		"category": "Glaziery",
+		"name": "Alejado Glass",
+		"location": [10.72204, 122.55866]
+	},
+	{
+		"category": "Hvac",
+		"name": "Aircon Section",
+		"location": [10.73135, 122.54759]
+	},
+	{
+		"category": "Photographer",
+		"name": "Ambient Sight Photodesign",
+		"location": [10.69818, 122.55448]
+	},
+	{
+		"category": "Photographer",
+		"name": "Handumanan Photography",
+		"location": [10.70008, 122.56162]
+	},
+	{
+		"category": "Shoemaker",
+		"name": "Mr. Quickie",
+		"location": [10.69379, 122.56558]
+	},
+	{
+		"category": "Tailor",
+		"name": "Royal's Sports Things & Uniforms",
+		"location": [10.69324, 122.56815]
+	}
+]
