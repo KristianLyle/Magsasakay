@@ -5,47 +5,18 @@ import DeleteConfirmation from "./deleteConfirmation";
 import { Link } from "react-router-dom";
 
 const ProfileReviews = () => {
-  const [restaurants, setRestaurants] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const reviewsPerPage = 5;
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editedText, setEditedText] = useState("");
-  const [reviews, setReviews] = useState([]);
 
-  //Delete confirmation functions
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const handleConfirmDelete = () => {
-    const reviewId = localStorage.getItem("reviewID");
-    // Send a request to the server to delete the review from the database
-    Axios.post("http://localhost:3001/delete-review", {
-      reviewId,
-    })
-      .then((response) => {
-        if (response.status === 201) {
-          console.log(response.data);
-          // Filter out the deleted review from the local state
-          const updatedReviews = reviews.filter(
-            (review) => review._id !== reviewId
-          );
-          setReviews(updatedReviews);
-        } else {
-          console.error("Failed to delete review");
-        }
-      })
-      .catch((error) => {
-        console.error("Error while deleting review:", error);
-      });
-    setShowConfirmation(false);
-  };
-
-  const handleCancelDelete = (reviewId) => {
-    setShowConfirmation(false);
-  };
-
-  // Fetch reviews from the server on component mount
   useEffect(() => {
-    // Fetch reviews for the logged-in user
     const token = localStorage.getItem("token");
     const decodedToken = jwtDecode(token);
     const userName = decodedToken.username;
+
     Axios.post("http://localhost:3001/fetch-user-reviews", { userName })
       .then((response) => {
         setReviews(response.data);
@@ -66,14 +37,12 @@ const ProfileReviews = () => {
   };
 
   const handleSaveClick = (index, reviewId) => {
-    // Send a request to the server to update the review in the database
     Axios.post("http://localhost:3001/update-review", {
       reviewId,
       reviewText: editedText,
     })
       .then((response) => {
         if (response.status === 201) {
-          console.log(response.data);
           setEditingIndex(null);
           window.location.reload();
         } else {
@@ -89,6 +58,41 @@ const ProfileReviews = () => {
     setEditingIndex(null);
   };
 
+  const handleConfirmDelete = (reviewId) => {
+    Axios.post("http://localhost:3001/delete-review", {
+      reviewId,
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          const updatedReviews = reviews.filter(
+            (review) => review._id !== reviewId
+          );
+          setReviews(updatedReviews);
+        } else {
+          console.error("Failed to delete review");
+        }
+      })
+      .catch((error) => {
+        console.error("Error while deleting review:", error);
+      });
+
+    setShowConfirmation(false);
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
+  };
+
+  // Logic to paginate reviews
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+  const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+
+  // Logic to change page
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div className="ml-[550px] font-Montserrat bg-[#7826D0] max-w-full text-white p-[5px] rounded-[30px]
                    phone:ml-[205px] phone:max-w-[190px] phone:p-[1px]
@@ -101,7 +105,7 @@ const ProfileReviews = () => {
       </h1>
       
       <ul className="ml-[15px] p-[5px]">
-        {reviews.map((review, index) => (
+        {currentReviews.map((review, index) => (
           <li key={review._id} className="max-w-[500px] px-[2px]">
             <Link
               className="text-[20px] font-regular
@@ -162,7 +166,6 @@ const ProfileReviews = () => {
                           phone:w-[85%] phone:text-[55%]
                           md:w-[100%] md:text-[15px]"
                 onClick={() => handleDeleteClick(review._id)}
-                // onClick={() => handleDeleteClick()}
               >
                 Delete Review
               </button>
@@ -178,6 +181,26 @@ const ProfileReviews = () => {
           </li>
         ))}
       </ul>
+
+      {/* Pagination */}
+      <div className="pagination">
+        {reviews.length > reviewsPerPage && (
+          <ul className="flex justify-center">
+            {Array.from({ length: Math.ceil(reviews.length / reviewsPerPage) }, (_, i) => (
+              <li key={i} className="px-3 py-1">
+                <button
+                  onClick={() => paginate(i + 1)}
+                  className={`bg-[#EE7200] text-white font-bold py-2 px-4 rounded-full hover:bg-[#160E3D] hover:text-white ${
+                    currentPage === i + 1 ? "bg-[#160E3D]" : ""
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
