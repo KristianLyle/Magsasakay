@@ -29,8 +29,8 @@ const Profile = () => {
     position: "absolute",
     //top: 0,
     //left: 0,
-    //height: "100%",
-    //width: "33.33%",
+    height: "100%",
+    width: "33.33%",
     //backgroundColor: "lightblue",
     zIndex: 1,
   };

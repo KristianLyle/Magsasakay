@@ -5,7 +5,7 @@ export const sideBarData = [
         cName: 'nav-text'
     },
     {
-        title: 'View Profile',
+        title: 'Profile',
         path: '/profile',
         cName: 'nav-text'
     },
