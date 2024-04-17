@@ -12,7 +12,7 @@ app.use(cors()); // Enable CORS for cross-origin requests
 app.use("/uploads", express.static("uploads"));
 app.use(bodyParser.json());
 
-//const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
+// const mongoUrl = "mongodb://127.0.0.1:27017/magsasakaydb";
 const mongoUrl =
   "mongodb+srv://magsasakay:magsasakay@cluster0.y2i34yq.mongodb.net/?retryWrites=true&w=majority";
 
@@ -155,6 +155,26 @@ app.post("/fetch-reviews", async (req, res) => {
   try {
     // Find all reviews for the specific restaurant
     const reviews = await reviewModel.find({ restaurant: restaurantName });
+    res.json(reviews);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "An error occurred while fetching reviews for the restaurant.",
+    });
+  }
+});
+
+// Add a new route for fetching reviews by restaurant name
+app.post("/fetch-recent-reviews", async (req, res) => {
+  const { restaurantName } = req.body;
+
+  try {
+    // Find all reviews for the specific restaurant
+    const reviews = await reviewModel
+      .find({ restaurant: restaurantName })
+      .sort({ createdAt: -1 })
+      .limit(5); // Limit the results to 5 reviews
+
     res.json(reviews);
   } catch (error) {
     console.error(error);

@@ -57,6 +57,7 @@ const reviewSchema = new mongoose.Schema(
     userimage: String,
     review: String,
     rating: Number,
+    createdAt: { type: Date, default: Date.now },
   },
   { collection: "reviews" }
 );

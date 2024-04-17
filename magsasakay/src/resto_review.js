@@ -108,7 +108,7 @@ const RestoReviews = () => {
   };
 
   useEffect(() => {
-    Axios.post("http://localhost:3001/fetch-reviews", {
+    Axios.post("http://localhost:3001/fetch-recent-reviews", {
       restaurantName: restaurantName,
     })
       .then((response) => {
@@ -122,30 +122,34 @@ const RestoReviews = () => {
   const Review = ({ review }) => {
     const [showFullReview, setShowFullReview] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
-  
+
     useEffect(() => {
       const handleResize = () => {
         setIsSmallScreen(window.innerWidth <= 768); // Adjust the breakpoint as needed
       };
-  
+
       handleResize(); // Check on initial render
-      window.addEventListener('resize', handleResize); // Add event listener for window resize
-      return () => window.removeEventListener('resize', handleResize); // Cleanup on unmount
+      window.addEventListener("resize", handleResize); // Add event listener for window resize
+      return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
     }, []);
-  
+
     const toggleShowFullReview = () => {
       setShowFullReview(!showFullReview);
     };
-  
+
     const splitText = (text, maxLength) => {
       if (text.length <= maxLength) {
         return text;
       }
-      return text.slice(0, maxLength) + '...';
+      return text.slice(0, maxLength) + "...";
     };
-  
+
     return (
-      <div className={`bg-white max-w-[1300px] ml-[40px] mr-[40px] rounded-[20px] p-[10px] font-Montserrat border-[4px] border-black drop-shadow-2xl ${showFullReview && 'h-auto'}`}>
+      <div
+        className={`bg-white max-w-[1300px] ml-[40px] mr-[40px] rounded-[20px] p-[10px] font-Montserrat border-[4px] border-black drop-shadow-2xl ${
+          showFullReview && "h-auto"
+        }`}
+      >
         <div className="flex flex-wrap items-center md:items-start md:flex-nowrap">
           <div className="flex items-center justify-center md:justify-start md:mr-4">
             <div className="flex flex-col md:items-center">
@@ -160,7 +164,7 @@ const RestoReviews = () => {
               </div>
             </div>
           </div>
-  
+
           <div className="flex flex-col items-start mt-4 ml-2">
             <div className="flex items-center">
               {[...Array(5)].map((_, i) => (
@@ -172,7 +176,14 @@ const RestoReviews = () => {
                 />
               ))}
             </div>
-            <p className={`ml-2 font-medium max-w-[1000px] py-5 ${showFullReview || !isSmallScreen ? 'overflow-y-visible' : 'overflow-y-hidden'}`} style={{ wordWrap: 'break-word', wordBreak: 'break-word' }}>
+            <p
+              className={`ml-2 font-medium max-w-[1000px] py-5 ${
+                showFullReview || !isSmallScreen
+                  ? "overflow-y-visible"
+                  : "overflow-y-hidden"
+              }`}
+              style={{ wordWrap: "break-word", wordBreak: "break-word" }}
+            >
               {showFullReview ? review.review : splitText(review.review, 100)}
               {!showFullReview && review.review.length > 100 && (
                 <span
@@ -191,16 +202,12 @@ const RestoReviews = () => {
                 </span>
               )}
             </p>
-  
-  
           </div>
         </div>
       </div>
     );
   };
-  
-  
-  
+
   return (
     <>
       <Router>
@@ -235,8 +242,8 @@ const RestoReviews = () => {
                   style={{
                     color:
                       i < restaurantDetails.averageRating ? "#FFD700" : "#ccc",
-                      fontSize: "30px",
-                      marginRight: "4px",
+                    fontSize: "30px",
+                    marginRight: "4px",
                   }}
                   onMouseEnter={(e) =>
                     (e.target.style.color = "#yourDesiredHoverColor")
@@ -246,17 +253,15 @@ const RestoReviews = () => {
                       i < restaurantDetails.averageRating ? "#FFD700" : "#ccc")
                   }
                 />
-              ))}
-              {" "}
-              
+              ))}{" "}
             </div>
           </div>{" "}
           <h1
-                className="text-white font-Montserrat mt-4 text-left font-extrabold text-[20px]"
-                style={{ margin: 0 }}
-              >
-                {restaurantDetails.location}
-              </h1>{" "}
+            className="text-white font-Montserrat mt-4 text-left font-extrabold text-[20px]"
+            style={{ margin: 0 }}
+          >
+            {restaurantDetails.location}
+          </h1>{" "}
           <br />
           <div className="flex flex-col md:flex-row py-2 font-Montserrat bg-gray-200 rounded-3xl overflow-hidden items-center">
             <img
@@ -290,7 +295,7 @@ const RestoReviews = () => {
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Write your review here..."
               className="h-[100px] max-w-[100%] w-[1200px] border border-gray-300 rounded-lg p-4 ml-[40px] focus:outline-one focus:ring-2 focus:ring-blue-500 overflow-y-auto"
-              style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"}}
+              style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}
             />
             <div className="flex flex-col ml-[40px] ">
               <button
