@@ -7,11 +7,13 @@ const FindRoute = ({ onIntersectionChange }) => {
 	const [searchQueryFrom, setSearchQueryFrom] = useState('');
 	const [filteredPlacesFrom, setFilteredPlacesFrom] = useState([]);
 	const [fromLocation, setFromLocation] = useState('');
+	const [fromCoordinates, setFromCoordinates] = useState(null);
 	const [nearestRoutesFrom, setNearestRoutesFrom] = useState(null);
 
 	const [searchQueryTo, setSearchQueryTo] = useState('');
 	const [filteredPlacesTo, setFilteredPlacesTo] = useState([]);
 	const [toLocation, setToLocation] = useState('');
+	const [toCoordinates, setToCoordinates] = useState(null);
 	const [nearestRoutesTo, setNearestRoutesTo] = useState(null);
 
 	const handleSearchFrom = (event) => {
@@ -61,6 +63,7 @@ const FindRoute = ({ onIntersectionChange }) => {
 	const handleSuggestionClickFrom = (place) => {
 		setSearchQueryFrom(place.name);
 		setFromLocation(place.name);
+		setFromCoordinates(place.location); // Set the coordinates for 'from' location
 		setFilteredPlacesFrom([]);
 		const nearestRoutes = NearestRouteComponent(place.location);
 		setNearestRoutesFrom(nearestRoutes);
@@ -69,16 +72,13 @@ const FindRoute = ({ onIntersectionChange }) => {
 	const handleSuggestionClickTo = (place) => {
 		setSearchQueryTo(place.name);
 		setToLocation(place.name);
+		setToCoordinates(place.location); // Set the coordinates for 'to' location
 		setFilteredPlacesTo([]);
 		const nearestRoutes = NearestRouteComponent(place.location);
 		setNearestRoutesTo(nearestRoutes);
 	};
 
 	const suggestionStyle = { cursor: 'pointer' };
-
-	const handleIntersectionChange = (value) => {
-		onIntersectionChange(value); // Callback to update selected intersections in parent component
-	};
 
 	const [selectedIntersections, setSelectedIntersections] = useState([]);
 
@@ -87,9 +87,33 @@ const FindRoute = ({ onIntersectionChange }) => {
 		intersectionPoints = calculateIntersection(
 			nearestRoutesFrom,
 			nearestRoutesTo
-		);
-		console.log(intersectionPoints);
+		).map((intersection) => ({
+			...intersection,
+			fromLocation,
+			toLocation,
+			fromCoordinates,
+			toCoordinates,
+		}));
 	}
+	const handleCheckboxChange = (intersection) => {
+		const isChecked = selectedIntersections.some(
+			(item) =>
+				item.routeFrom === intersection.routeFrom &&
+				item.routeTo === intersection.routeTo
+		);
+		if (isChecked) {
+			setSelectedIntersections(
+				selectedIntersections.filter(
+					(item) =>
+						item.routeFrom !== intersection.routeFrom ||
+						item.routeTo !== intersection.routeTo
+				)
+			);
+		} else {
+			setSelectedIntersections([...selectedIntersections, intersection]);
+			console.log(intersection); // Log the intersection object
+		}
+	};
 
 	return (
 		<div className='find-route-container'>
@@ -140,11 +164,12 @@ const FindRoute = ({ onIntersectionChange }) => {
 								<input
 									type='checkbox'
 									id={`intersection-${index}`}
-									value={`${intersection.routeFrom} to ${intersection.routeTo}`}
-									checked={selectedIntersections.includes(
-										`${intersection.routeFrom} to ${intersection.routeTo}`
+									checked={selectedIntersections.some(
+										(item) =>
+											item.routeFrom === intersection.routeFrom &&
+											item.routeTo === intersection.routeTo
 									)}
-									onChange={(e) => handleIntersectionChange(e.target.value)}
+									onChange={() => handleCheckboxChange(intersection)} // Pass the intersection object to handleCheckboxChange
 								/>
 								<label htmlFor={`intersection-${index}`}>
 									{`${intersection.routeFrom} to ${intersection.routeTo}`}
