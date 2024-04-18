@@ -1,0 +1,62 @@
+[
+	{
+		"category": "Fitness Centre",
+		"name": "Fitness Hub Gym",
+		"location": [10.69258, 122.57292]
+	},
+	{
+		"category": "Fitness Centre",
+		"name": "Euphuria",
+		"location": [10.73623, 122.54541]
+	},
+	{
+		"category": "Fitness Centre",
+		"name": "Iron Gym",
+		"location": [10.71236, 122.54014]
+	},
+	{
+		"category": "Fitness Centre",
+		"name": "3C Gym",
+		"location": [10.71191, 122.5403]
+	},
+	{
+		"category": "Fitness Centre",
+		"name": "Wvsu football field",
+		"location": [10.7139, 122.56328]
+	},
+	{
+		"category": "Fitness Centre",
+		"name": "Tinagan gym",
+		"location": [10.69187, 122.57177]
+	},
+	{
+		"category": "Fitness Centre",
+		"name": "Barefoot Yoga",
+		"location": [10.71071, 122.56644]
+	},
+	{
+		"category": "Miniature Golf",
+		"name": "Mini-l Golf sa Mansion",
+		"location": [10.69645, 122.54319]
+	},
+	{
+		"category": "Pitch",
+		"name": "Mandurriao Cockpit",
+		"location": [10.71639, 122.5406]
+	},
+	{
+		"category": "Sports",
+		"name": "ULTRA Tennis Club",
+		"location": [10.71248, 122.57064]
+	},
+	{
+		"category": "Sports Centre",
+		"name": "The Pump Factory",
+		"location": [10.69976, 122.54378]
+	},
+	{
+		"category": "Stadium",
+		"name": "Nabitasan Covered Court",
+		"location": [10.70528, 122.5629]
+	}
+]

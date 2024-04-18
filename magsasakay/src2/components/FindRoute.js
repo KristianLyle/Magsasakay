@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import placesData from './Places.json';
+import React, { useState } from 'react';
+import placesData from '../json/Places.json';
 import NearestRouteComponent from './NearestRoute';
 import calculateIntersection from './RouteIntersection';
 
@@ -15,8 +15,6 @@ const FindRoute = ({ onIntersectionChange }) => {
 	const [toLocation, setToLocation] = useState('');
 	const [toCoordinates, setToCoordinates] = useState(null);
 	const [nearestRoutesTo, setNearestRoutesTo] = useState(null);
-
-	const [selectedIntersections, setSelectedIntersections] = useState([]);
 
 	const handleSearchFrom = (event) => {
 		const query = event.target.value;
@@ -82,33 +80,7 @@ const FindRoute = ({ onIntersectionChange }) => {
 
 	const suggestionStyle = { cursor: 'pointer' };
 
-	const handleCheckboxChange = (intersection) => {
-		// Check if the intersection is already selected
-		const index = selectedIntersections.findIndex(
-			(item) =>
-				item.routeFrom === intersection.routeFrom &&
-				item.routeTo === intersection.routeTo
-		);
-
-		// If the intersection is already selected, remove it
-		if (index !== -1) {
-			setSelectedIntersections((prevSelectedIntersections) =>
-				prevSelectedIntersections.filter((_, idx) => idx !== index)
-			);
-		} else {
-			// If the intersection is not selected, add it
-			setSelectedIntersections((prevSelectedIntersections) => [
-				...prevSelectedIntersections,
-				intersection,
-			]);
-		}
-
-		// Log the updated selected intersections after the state update
-		setSelectedIntersections((updatedSelectedIntersections) => {
-			// console.log('Selected Intersections:', updatedSelectedIntersections);
-			return updatedSelectedIntersections;
-		});
-	};
+	const [selectedIntersections, setSelectedIntersections] = useState([]);
 
 	let intersectionPoints = null;
 	if (nearestRoutesFrom && nearestRoutesTo) {
@@ -123,11 +95,25 @@ const FindRoute = ({ onIntersectionChange }) => {
 			toCoordinates,
 		}));
 	}
-
-	useEffect(() => {
-		// Call the onIntersectionChange function with the updated selectedIntersections array
-		onIntersectionChange(selectedIntersections);
-	}, [selectedIntersections, onIntersectionChange]);
+	const handleCheckboxChange = (intersection) => {
+		const isChecked = selectedIntersections.some(
+			(item) =>
+				item.routeFrom === intersection.routeFrom &&
+				item.routeTo === intersection.routeTo
+		);
+		if (isChecked) {
+			setSelectedIntersections(
+				selectedIntersections.filter(
+					(item) =>
+						item.routeFrom !== intersection.routeFrom ||
+						item.routeTo !== intersection.routeTo
+				)
+			);
+		} else {
+			setSelectedIntersections([...selectedIntersections, intersection]);
+			console.log(intersection); // Log the intersection object
+		}
+	};
 
 	return (
 		<div className='find-route-container'>
@@ -183,7 +169,7 @@ const FindRoute = ({ onIntersectionChange }) => {
 											item.routeFrom === intersection.routeFrom &&
 											item.routeTo === intersection.routeTo
 									)}
-									onChange={() => handleCheckboxChange(intersection)}
+									onChange={() => handleCheckboxChange(intersection)} // Pass the intersection object to handleCheckboxChange
 								/>
 								<label htmlFor={`intersection-${index}`}>
 									{`${intersection.routeFrom} to ${intersection.routeTo}`}

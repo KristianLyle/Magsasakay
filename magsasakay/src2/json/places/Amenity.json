@@ -1,0 +1,862 @@
+[
+	{
+		"category": "ATM",
+		"name": "PNB",
+		"location": [10.7, 122.55721]
+	},
+	{
+		"category": "ATM",
+		"name": "PNB",
+		"location": [10.7262, 122.55695]
+	},
+	{
+		"category": "ATM",
+		"name": "DBP",
+		"location": [10.69366, 122.57357]
+	},
+	{
+		"category": "ATM",
+		"name": "Landbank",
+		"location": [10.72532, 122.55751]
+	},
+	{
+		"category": "ATM",
+		"name": "Metrobank",
+		"location": [10.68717, 122.51694]
+	},
+	{
+		"category": "ATM",
+		"name": "DBP",
+		"location": [10.71669, 122.56187]
+	},
+	{
+		"category": "ATM",
+		"name": "UCPB",
+		"location": [10.72466, 122.55606]
+	},
+	{
+		"category": "ATM",
+		"name": "PSBank",
+		"location": [10.69881, 122.56647]
+	},
+	{
+		"category": "ATM",
+		"name": "PNB",
+		"location": [10.70119, 122.56746]
+	},
+	{
+		"category": "ATM",
+		"name": "One Network Bank",
+		"location": [10.69359, 122.56487]
+	},
+	{
+		"category": "ATM",
+		"name": "UnionBank",
+		"location": [10.70035, 122.56106]
+	},
+	{
+		"category": "ATM",
+		"name": "PNB",
+		"location": [10.69235, 122.57314]
+	},
+	{
+		"category": "ATM",
+		"name": "BPI",
+		"location": [10.69928, 122.56933]
+	},
+	{
+		"category": "ATM",
+		"name": "BPI",
+		"location": [10.69929, 122.56932]
+	},
+	{
+		"category": "ATM",
+		"name": "PNB",
+		"location": [10.7322, 122.55036]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.70052, 122.55936]
+	},
+	{
+		"category": "Bank",
+		"name": "UCPB",
+		"location": [10.69709, 122.56489]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.726, 122.55664]
+	},
+	{
+		"category": "Bank",
+		"name": "China Bank",
+		"location": [10.6917, 122.57227]
+	},
+	{
+		"category": "Bank",
+		"name": "PNB",
+		"location": [10.69231, 122.5732]
+	},
+	{
+		"category": "Bank",
+		"name": "China Bank",
+		"location": [10.69457, 122.5692]
+	},
+	{
+		"category": "Bank",
+		"name": "Security Bank",
+		"location": [10.69437, 122.5692]
+	},
+	{
+		"category": "Bank",
+		"name": "Bank of the Philippine Islands",
+		"location": [10.69345, 122.56891]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.69418, 122.56915]
+	},
+	{
+		"category": "Bank",
+		"name": "PNB",
+		"location": [10.69597, 122.56655]
+	},
+	{
+		"category": "Bank",
+		"name": "Security Bank",
+		"location": [10.69557, 122.56645]
+	},
+	{
+		"category": "Bank",
+		"name": "PNB",
+		"location": [10.69412, 122.56194]
+	},
+	{
+		"category": "Bank",
+		"name": "EastWest Unibank",
+		"location": [10.69457, 122.56339]
+	},
+	{
+		"category": "Bank",
+		"name": "Metrobank",
+		"location": [10.69554, 122.56486]
+	},
+	{
+		"category": "Bank",
+		"name": "Maybank",
+		"location": [10.69542, 122.56501]
+	},
+	{
+		"category": "Bank",
+		"name": "UnionBank",
+		"location": [10.69831, 122.56925]
+	},
+	{
+		"category": "Bank",
+		"name": "Export Bank",
+		"location": [10.69771, 122.56624]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.69872, 122.56624]
+	},
+	{
+		"category": "Bank",
+		"name": "Rcbc Jalandoni",
+		"location": [10.69776, 122.5619]
+	},
+	{
+		"category": "Bank",
+		"name": "Bank of the Philippine Islands",
+		"location": [10.70044, 122.55704]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI",
+		"location": [10.71713, 122.56167]
+	},
+	{
+		"category": "Bank",
+		"name": "RCBC",
+		"location": [10.70972, 122.56635]
+	},
+	{
+		"category": "Bank",
+		"name": "Queenbank",
+		"location": [10.69935, 122.56799]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI Family Savings Bank",
+		"location": [10.69677, 122.56654]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.69819, 122.56755]
+	},
+	{
+		"category": "Bank",
+		"name": "Philtrust Bank and Co",
+		"location": [10.69776, 122.56657]
+	},
+	{
+		"category": "Bank",
+		"name": "Robinsons Bank",
+		"location": [10.69358, 122.56586]
+	},
+	{
+		"category": "Bank",
+		"name": "PNB",
+		"location": [10.72775, 122.55562]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.69957, 122.56795]
+	},
+	{
+		"category": "Bank",
+		"name": "Iloilo City Development Bank",
+		"location": [10.70071, 122.56783]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.7372, 122.5615]
+	},
+	{
+		"category": "Bank",
+		"name": "First Consolidated Bank",
+		"location": [10.72611, 122.54941]
+	},
+	{
+		"category": "Bank",
+		"name": "UCPB",
+		"location": [10.70009, 122.56897]
+	},
+	{
+		"category": "Bank",
+		"name": "DBP",
+		"location": [10.72413, 122.55632]
+	},
+	{
+		"category": "Bank",
+		"name": "Landbank",
+		"location": [10.70757, 122.56703]
+	},
+	{
+		"category": "Bank",
+		"name": "PNB",
+		"location": [10.7, 122.55717]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.70793, 122.56718]
+	},
+	{
+		"category": "Bank",
+		"name": "Metrobank",
+		"location": [10.7082, 122.56779]
+	},
+	{
+		"category": "Bank",
+		"name": "Queen Bank",
+		"location": [10.70807, 122.56761]
+	},
+	{
+		"category": "Bank",
+		"name": "Metrobank",
+		"location": [10.74346, 122.56523]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI",
+		"location": [10.70817, 122.5679]
+	},
+	{
+		"category": "Bank",
+		"name": "Metrobank",
+		"location": [10.71797, 122.53962]
+	},
+	{
+		"category": "Bank",
+		"name": "PNB",
+		"location": [10.70807, 122.56806]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI",
+		"location": [10.70118, 122.56616]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI",
+		"location": [10.70347, 122.55083]
+	},
+	{
+		"category": "Bank",
+		"name": "One Network Bank",
+		"location": [10.70196, 122.56803]
+	},
+	{
+		"category": "Bank",
+		"name": "One Network Bank",
+		"location": [10.70702, 122.56705]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI",
+		"location": [10.6962, 122.54524]
+	},
+	{
+		"category": "Bank",
+		"name": "China Bank",
+		"location": [10.69565, 122.5646]
+	},
+	{
+		"category": "Bank",
+		"name": "EastWest",
+		"location": [10.69657, 122.54576]
+	},
+	{
+		"category": "Bank",
+		"name": "East West Rural Bank",
+		"location": [10.7047, 122.56779]
+	},
+	{
+		"category": "Bank",
+		"name": "EastWest Unibank",
+		"location": [10.69906, 122.56921]
+	},
+	{
+		"category": "Bank",
+		"name": "East West Bank - Jaro Townsquare",
+		"location": [10.74114, 122.56336]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.71498, 122.55069]
+	},
+	{
+		"category": "Bank",
+		"name": "Bank of the Philippine Islands",
+		"location": [10.71851, 122.54283]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.69531, 122.56566]
+	},
+	{
+		"category": "Bank",
+		"name": "Sterling Bank",
+		"location": [10.70012, 122.56653]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI",
+		"location": [10.69815, 122.56788]
+	},
+	{
+		"category": "Bank",
+		"name": "Metrobank",
+		"location": [10.728, 122.55636]
+	},
+	{
+		"category": "Bank",
+		"name": "Metrobank",
+		"location": [10.70633, 122.55221]
+	},
+	{
+		"category": "Bank",
+		"name": "OK Bank",
+		"location": [10.7206, 122.55937]
+	},
+	{
+		"category": "Bank",
+		"name": "PS Bank",
+		"location": [10.71866, 122.56062]
+	},
+	{
+		"category": "Bank",
+		"name": "Chinabank",
+		"location": [10.71845, 122.56079]
+	},
+	{
+		"category": "Bank",
+		"name": "Penbank",
+		"location": [10.72041, 122.55949]
+	},
+	{
+		"category": "Bank",
+		"name": "China Bank",
+		"location": [10.7256, 122.55696]
+	},
+	{
+		"category": "Bank",
+		"name": "BC Bank",
+		"location": [10.72793, 122.55624]
+	},
+	{
+		"category": "Bank",
+		"name": "Maybank",
+		"location": [10.72568, 122.55692]
+	},
+	{
+		"category": "Bank",
+		"name": "Philippine Business Bank",
+		"location": [10.69977, 122.56657]
+	},
+	{
+		"category": "Bank",
+		"name": "Life Bank Rural Bank",
+		"location": [10.69174, 122.56886]
+	},
+	{
+		"category": "Bank",
+		"name": "Postbank",
+		"location": [10.69481, 122.56892]
+	},
+	{
+		"category": "Bank",
+		"name": "PSBank",
+		"location": [10.69876, 122.56648]
+	},
+	{
+		"category": "Bank",
+		"name": "Metrobank",
+		"location": [10.69389, 122.56916]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.68702, 122.51668]
+	},
+	{
+		"category": "Bank",
+		"name": "UnionBank",
+		"location": [10.70035, 122.5611]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI",
+		"location": [10.7385, 122.56246]
+	},
+	{
+		"category": "Bank",
+		"name": "Bank of the Philippine Islands",
+		"location": [10.71514, 122.54693]
+	},
+	{
+		"category": "Bank",
+		"name": "Citi Savings Bank",
+		"location": [10.70017, 122.55651]
+	},
+	{
+		"category": "Bank",
+		"name": "Bank of Commerce",
+		"location": [10.70082, 122.56889]
+	},
+	{
+		"category": "Bank",
+		"name": "RCBC",
+		"location": [10.6932, 122.56505]
+	},
+	{
+		"category": "Bank",
+		"name": "PR Bank",
+		"location": [10.69512, 122.56412]
+	},
+	{
+		"category": "Bank",
+		"name": "PNB",
+		"location": [10.69396, 122.56969]
+	},
+	{
+		"category": "Bank",
+		"name": "GIFC",
+		"location": [10.69908, 122.56918]
+	},
+	{
+		"category": "Bank",
+		"name": "Cct leganes",
+		"location": [10.74706, 122.56793]
+	},
+	{
+		"category": "Bank",
+		"name": "Queenbank",
+		"location": [10.69243, 122.57075]
+	},
+	{
+		"category": "Bank",
+		"name": "Cct tabuc suba",
+		"location": [10.73322, 122.56091]
+	},
+	{
+		"category": "Bank",
+		"name": "CCT Lapaz",
+		"location": [10.7089, 122.57013]
+	},
+	{
+		"category": "Bank",
+		"name": "Bank of Commerce",
+		"location": [10.69307, 122.57149]
+	},
+	{
+		"category": "Bank",
+		"name": "PNB",
+		"location": [10.69995, 122.56926]
+	},
+	{
+		"category": "Bank",
+		"name": "Pbcom",
+		"location": [10.69624, 122.56768]
+	},
+	{
+		"category": "Bank",
+		"name": "PERA MPC",
+		"location": [10.69624, 122.54572]
+	},
+	{
+		"category": "Bank",
+		"name": "RCBC",
+		"location": [10.69562, 122.57004]
+	},
+	{
+		"category": "Bank",
+		"name": "Producers Bank",
+		"location": [10.70053, 122.56781]
+	},
+	{
+		"category": "Bank",
+		"name": "Security Bank",
+		"location": [10.69997, 122.55758]
+	},
+	{
+		"category": "Bank",
+		"name": "Bank of Makati",
+		"location": [10.69466, 122.56922]
+	},
+	{
+		"category": "Bank",
+		"name": "BDO",
+		"location": [10.69756, 122.56926]
+	},
+	{
+		"category": "Bank",
+		"name": "China Bank Savings",
+		"location": [10.69881, 122.56919]
+	},
+	{
+		"category": "Bank",
+		"name": "RCBC",
+		"location": [10.69778, 122.56186]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI",
+		"location": [10.70646, 122.5484]
+	},
+	{
+		"category": "Bank",
+		"name": "Chinabank",
+		"location": [10.70829, 122.54934]
+	},
+	{
+		"category": "Bank",
+		"name": "Asia United Bank",
+		"location": [10.70899, 122.5498]
+	},
+	{
+		"category": "Bank",
+		"name": "Philippine Business Bank",
+		"location": [10.70894, 122.54972]
+	},
+	{
+		"category": "Bank",
+		"name": "ISLA Bank",
+		"location": [10.72343, 122.55731]
+	},
+	{
+		"category": "Bank",
+		"name": "Metrobank",
+		"location": [10.70837, 122.56782]
+	},
+	{
+		"category": "Bank",
+		"name": "BPI",
+		"location": [10.70834, 122.56786]
+	},
+	{
+		"category": "Bank",
+		"name": "PNB",
+		"location": [10.74554, 122.56668]
+	},
+	{
+		"category": "Bank",
+		"name": "PSBank",
+		"location": [10.69694, 122.56894]
+	},
+	{
+		"category": "Bureau De Change",
+		"name": "AFPSLAI",
+		"location": [10.69826, 122.56144]
+	},
+	{
+		"category": "Bureau De Change",
+		"name": "J-buck's Money Changer",
+		"location": [10.69765, 122.56893]
+	},
+	{
+		"category": "Bureau De Change",
+		"name": "Palawan Pawnshoo",
+		"location": [10.69347, 122.56916]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.71574, 122.53631]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.71612, 122.56249]
+	},
+	{
+		"category": "Financial",
+		"name": "M Lhuillier",
+		"location": [10.72263, 122.5549]
+	},
+	{
+		"category": "Financial",
+		"name": "M Lhuillier",
+		"location": [10.6951, 122.57049]
+	},
+	{
+		"category": "Financial",
+		"name": "M Lhuillier",
+		"location": [10.69688, 122.54254]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.73198, 122.55084]
+	},
+	{
+		"category": "Financial",
+		"name": "Css ever lending",
+		"location": [10.69218, 122.57317]
+	},
+	{
+		"category": "Financial",
+		"name": "M Lhuillier",
+		"location": [10.6997, 122.5692]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana lhuiller",
+		"location": [10.70738, 122.56693]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.69602, 122.56791]
+	},
+	{
+		"category": "Financial",
+		"name": "M Lhuillier",
+		"location": [10.69377, 122.57072]
+	},
+	{
+		"category": "Financial",
+		"name": "M. Lhuillier - Ilonga",
+		"location": [10.69367, 122.57067]
+	},
+	{
+		"category": "Financial",
+		"name": "M Lhuillier",
+		"location": [10.68705, 122.51701]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.69776, 122.56924]
+	},
+	{
+		"category": "Financial",
+		"name": "Visayas Goodwill Credit Corporation",
+		"location": [10.69748, 122.56409]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.6936, 122.56923]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.69378, 122.57151]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.69661, 122.56184]
+	},
+	{
+		"category": "Financial",
+		"name": "M Lhuillier",
+		"location": [10.69971, 122.56164]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.709, 122.56868]
+	},
+	{
+		"category": "Financial",
+		"name": "Cebuana Lhuillier",
+		"location": [10.69324, 122.50018]
+	},
+	{
+		"category": "Money Transfer",
+		"name": "Western Union",
+		"location": [10.71666, 122.56195]
+	},
+	{
+		"category": "Money Transfer",
+		"name": "Palawan Express",
+		"location": [10.69348, 122.49904]
+	},
+	{
+		"category": "Money Transfer",
+		"name": "Western Union",
+		"location": [10.69577, 122.56989]
+	},
+	{
+		"category": "Money Transfer",
+		"name": "Palawan Express",
+		"location": [10.69322, 122.56485]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "RD Pawnshop",
+		"location": [10.71362, 122.56792]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.69749, 122.56448]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.69256, 122.57112]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.69251, 122.56921]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "AC Pawnshop & Jewelry Store",
+		"location": [10.72047, 122.55946]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.70226, 122.57545]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.68698, 122.51697]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.69851, 122.56165]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "ZFA",
+		"location": [10.6925, 122.57186]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.69301, 122.5631]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.73183, 122.55096]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Villarica",
+		"location": [10.69727, 122.56918]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.69841, 122.56917]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Sarabia Pawnshop & Jewelry",
+		"location": [10.69437, 122.5706]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "GVa Pawnshop",
+		"location": [10.69439, 122.57059]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "RD",
+		"location": [10.69654, 122.56183]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan",
+		"location": [10.71801, 122.56026]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Taytay sa Kauswagan",
+		"location": [10.72217, 122.56028]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "RD Pawnshop",
+		"location": [10.69984, 122.55375]
+	},
+	{
+		"category": "Pawnshop",
+		"name": "Palawan Pawnshop",
+		"location": [10.69971, 122.5528]
+	},
+	{
+		"category": "Payment Centre",
+		"name": "Bayad Center",
+		"location": [10.69974, 122.56755]
+	},
+	{
+		"category": "Payment Centre",
+		"name": "U Super Service Center",
+		"location": [10.69755, 122.56898]
+	},
+	{
+		"category": "Payment Terminal",
+		"name": "Gcash",
+		"location": [10.70922, 122.56865]
+	}
+]

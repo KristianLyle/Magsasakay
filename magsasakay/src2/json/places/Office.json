@@ -1,0 +1,887 @@
+[
+	{
+		"category": "Advertising Agency",
+		"name": "DS Advertizing",
+		"location": [10.71726, 122.56172]
+	},
+	{
+		"category": "Advertising Agency",
+		"name": "Jama Adversting Services",
+		"location": [10.70911, 122.57441]
+	},
+	{
+		"category": "Association",
+		"name": "Alliance of Provincial Operators and Drivers Transport Cooperative",
+		"location": [10.6932, 122.50013]
+	},
+	{
+		"category": "Association",
+		"name": "CPU Parent-Teacher Association",
+		"location": [10.73086, 122.55125]
+	},
+	{
+		"category": "Association",
+		"name": "Iloilo City Association of Barangay Captains",
+		"location": [10.72422, 122.55788]
+	},
+	{
+		"category": "Association",
+		"name": "Iloilo Harbor Pilots Association",
+		"location": [10.70013, 122.57493]
+	},
+	{
+		"category": "Association",
+		"name": "Panay Farmers",
+		"location": [10.69774, 122.57595]
+	},
+	{
+		"category": "Association",
+		"name": "PNPAAAI",
+		"location": [10.69058, 122.58087]
+	},
+	{
+		"category": "Association",
+		"name": "St Joseph Cooperative",
+		"location": [10.73588, 122.54634]
+	},
+	{
+		"category": "Association",
+		"name": "Tiu-Gan Association",
+		"location": [10.69687, 122.5706]
+	},
+	{
+		"category": "Association",
+		"name": "YMCA of Iloilo",
+		"location": [10.70063, 122.56928]
+	},
+	{
+		"category": "Company",
+		"name": "Abella's transport manufacturing",
+		"location": [10.68749, 122.51901]
+	},
+	{
+		"category": "Company",
+		"name": "ADZI",
+		"location": [10.69616, 122.56466]
+	},
+	{
+		"category": "Company",
+		"name": "Baranggay 93.5 Iloilo",
+		"location": [10.74102, 122.56417]
+	},
+	{
+		"category": "Company",
+		"name": "Benby",
+		"location": [10.69953, 122.58054]
+	},
+	{
+		"category": "Company",
+		"name": "Bombo Radyo Philippines",
+		"location": [10.69186, 122.56885]
+	},
+	{
+		"category": "Company",
+		"name": "Comfoods",
+		"location": [10.69038, 122.57451]
+	},
+	{
+		"category": "Company",
+		"name": "Convenience Distribution Inc., Iloilo",
+		"location": [10.7118, 122.58463]
+	},
+	{
+		"category": "Company",
+		"name": "East Point Product",
+		"location": [10.69623, 122.57098]
+	},
+	{
+		"category": "Company",
+		"name": "Entrego category",
+		"location": [10.70646, 122.58869]
+	},
+	{
+		"category": "Company",
+		"name": "F. Gurrea constructions",
+		"location": [10.7183, 122.54591]
+	},
+	{
+		"category": "Company",
+		"name": "Forbes Taxi Cab",
+		"location": [10.73721, 122.56247]
+	},
+	{
+		"category": "Company",
+		"name": "GMA TV6 Iloilo",
+		"location": [10.74108, 122.56422]
+	},
+	{
+		"category": "Company",
+		"name": "GVJ Plan Build",
+		"location": [10.72183, 122.55095]
+	},
+	{
+		"category": "Company",
+		"name": "Iqor",
+		"location": [10.71469, 122.546]
+	},
+	{
+		"category": "Company",
+		"name": "King William",
+		"location": [10.69469, 122.57444]
+	},
+	{
+		"category": "Company",
+		"name": "LA MONTE",
+		"location": [10.71726, 122.55916]
+	},
+	{
+		"category": "Company",
+		"name": "LBCarmelo Engineering",
+		"location": [10.71388, 122.56801]
+	},
+	{
+		"category": "Company",
+		"name": "Lead Generation Inc.",
+		"location": [10.71217, 122.54816]
+	},
+	{
+		"category": "Company",
+		"name": "Light of Glory Transport Services, Incorporated",
+		"location": [10.70647, 122.56569]
+	},
+	{
+		"category": "Company",
+		"name": "Liyu Distribution Inc.",
+		"location": [10.71201, 122.58402]
+	},
+	{
+		"category": "Company",
+		"name": "LJP Iloilo",
+		"location": [10.69943, 122.57721]
+	},
+	{
+		"category": "Company",
+		"name": "Lopez Engineering",
+		"location": [10.71645, 122.58064]
+	},
+	{
+		"category": "Company",
+		"name": "Megalink Metacenter Inc.",
+		"location": [10.69282, 122.57221]
+	},
+	{
+		"category": "Company",
+		"name": "Melvin Taxi",
+		"location": [10.69646, 122.55851]
+	},
+	{
+		"category": "Company",
+		"name": "Microensure Insurace Brokers Philippines",
+		"location": [10.72212, 122.56024]
+	},
+	{
+		"category": "Company",
+		"name": "NYK Fil Ship Mgt",
+		"location": [10.72239, 122.55844]
+	},
+	{
+		"category": "Company",
+		"name": "Panay Electric Company, Inc.12",
+		"location": [10.70256, 122.56441]
+	},
+	{
+		"category": "Company",
+		"name": "Panay Railways",
+		"location": [10.70943, 122.56855]
+	},
+	{
+		"category": "Company",
+		"name": "Philippines Foremost Milling Corporation",
+		"location": [10.70152, 122.5728]
+	},
+	{
+		"category": "Company",
+		"name": "PhotoPro",
+		"location": [10.70968, 122.56926]
+	},
+	{
+		"category": "Company",
+		"name": "Rad & Zy Universal",
+		"location": [10.7002, 122.54996]
+	},
+	{
+		"category": "Company",
+		"name": "San Miguel Brewery Warehouses",
+		"location": [10.69554, 122.57923]
+	},
+	{
+		"category": "Company",
+		"name": "SkyBright Solar",
+		"location": [10.70933, 122.55112]
+	},
+	{
+		"category": "Company",
+		"name": "Trans asia",
+		"location": [10.69776, 122.57849]
+	},
+	{
+		"category": "Company",
+		"name": "Unitas Pax Security Agency",
+		"location": [10.72303, 122.55097]
+	},
+	{
+		"category": "Company",
+		"name": "Voiceless Technologies",
+		"location": [10.71205, 122.54796]
+	},
+	{
+		"category": "Company",
+		"name": "WVOSH Net",
+		"location": [10.73882, 122.54178]
+	},
+	{
+		"category": "Company",
+		"name": "Yakult Panay",
+		"location": [10.69423, 122.54601]
+	},
+	{
+		"category": "Company",
+		"name": "YM roofing & services",
+		"location": [10.76274, 122.55335]
+	},
+	{
+		"category": "Educational Institution",
+		"name": "Cebugems Review Center",
+		"location": [10.72174, 122.55893]
+	},
+	{
+		"category": "Educational Institution",
+		"name": "Complete Engineering and Review Center Iloilo",
+		"location": [10.70002, 122.56162]
+	},
+	{
+		"category": "Educational Institution",
+		"name": "Complete Engineering Review and Training Center",
+		"location": [10.69983, 122.56155]
+	},
+	{
+		"category": "Educational Institution",
+		"name": "EXACT Excellence and Competency Training Center",
+		"location": [10.69938, 122.55951]
+	},
+	{
+		"category": "Educational Institution",
+		"name": "Iloilo Review School for CPA's",
+		"location": [10.701, 122.56626]
+	},
+	{
+		"category": "Educational Institution",
+		"name": "Paramotor Guru\"s flying school",
+		"location": [10.68544, 122.52183]
+	},
+	{
+		"category": "Educational Institution",
+		"name": "SEAMAC International Training Institute, Inc.",
+		"location": [10.69992, 122.56002]
+	},
+	{
+		"category": "Employment Agency",
+		"name": "BSM",
+		"location": [10.70008, 122.55858]
+	},
+	{
+		"category": "Employment Agency",
+		"name": "BSM Crew Service Centre",
+		"location": [10.70012, 122.55862]
+	},
+	{
+		"category": "Employment Agency",
+		"name": "Kahirupan Human Resources Center",
+		"location": [10.6931, 122.56046]
+	},
+	{
+		"category": "Employment Agency",
+		"name": "Leonis Navigation",
+		"location": [10.70009, 122.55853]
+	},
+	{
+		"category": "Employment Agency",
+		"name": "Marlow Navigation Philippines",
+		"location": [10.70014, 122.56161]
+	},
+	{
+		"category": "Employment Agency",
+		"name": "Nonstop Overseas Employnent Inc.",
+		"location": [10.69696, 122.56647]
+	},
+	{
+		"category": "Employment Agency",
+		"name": "Philipine Overseas Employment Agency",
+		"location": [10.69763, 122.56625]
+	},
+	{
+		"category": "Foundation",
+		"name": "Tinukib Foundation",
+		"location": [10.72214, 122.56026]
+	},
+	{
+		"category": "Government",
+		"name": "Admin",
+		"location": [10.74905, 122.55203]
+	},
+	{
+		"category": "Government",
+		"name": "Admin category",
+		"location": [10.71572, 122.56596]
+	},
+	{
+		"category": "Government",
+		"name": "BIR",
+		"location": [10.71075, 122.55081]
+	},
+	{
+		"category": "Government",
+		"name": "Bureau of Animal Industry - Veterinary Quarantine Station 6",
+		"location": [10.69219, 122.5822]
+	},
+	{
+		"category": "Government",
+		"name": "Bureau of Customs",
+		"location": [10.69415, 122.57234]
+	},
+	{
+		"category": "Government",
+		"name": "Bureau of Fisheries and Aquatic Resources Region 6",
+		"location": [10.69448, 122.57186]
+	},
+	{
+		"category": "Government",
+		"name": "Bureau of Immigration",
+		"location": [10.69414, 122.57237]
+	},
+	{
+		"category": "Government",
+		"name": "Bureau of Internal Revenue",
+		"location": [10.71111, 122.5491]
+	},
+	{
+		"category": "Government",
+		"name": "Bureau of Jail Management and Penology",
+		"location": [10.69233, 122.58142]
+	},
+	{
+		"category": "Government",
+		"name": "Bureau of Land",
+		"location": [10.6903, 122.57759]
+	},
+	{
+		"category": "Government",
+		"name": "Bureau of Plants Industry",
+		"location": [10.69353, 122.58146]
+	},
+	{
+		"category": "Government",
+		"name": "Bureau of Quarantine",
+		"location": [10.69033, 122.58267]
+	},
+	{
+		"category": "Government",
+		"name": "Coast Guard Western Visayas District Headquarters",
+		"location": [10.69616, 122.58651]
+	},
+	{
+		"category": "Government",
+		"name": "Commission on Elections",
+		"location": [10.69286, 122.56346]
+	},
+	{
+		"category": "Government",
+		"name": "Congressional District category, Iloilo",
+		"location": [10.69389, 122.57254]
+	},
+	{
+		"category": "Government",
+		"name": "DENR PENRO Iloilo",
+		"location": [10.69177, 122.58281]
+	},
+	{
+		"category": "Government",
+		"name": "DENR-SMD R6",
+		"location": [10.6898, 122.57784]
+	},
+	{
+		"category": "Government",
+		"name": "Department of Agrarian Reform",
+		"location": [10.7539, 122.57267]
+	},
+	{
+		"category": "Government",
+		"name": "Department of Agrarian Reform",
+		"location": [10.709, 122.56481]
+	},
+	{
+		"category": "Government",
+		"name": "Department of Budget and Management",
+		"location": [10.69155, 122.57388]
+	},
+	{
+		"category": "Government",
+		"name": "Department of Environment and Natural Resources",
+		"location": [10.69297, 122.58221]
+	},
+	{
+		"category": "Government",
+		"name": "Department of Information and Communications Technology",
+		"location": [10.69417, 122.57688]
+	},
+	{
+		"category": "Government",
+		"name": "Department of Labor & Employment Region VI category",
+		"location": [10.72256, 122.55953]
+	},
+	{
+		"category": "Government",
+		"name": "Department of Public Works and Highway",
+		"location": [10.69344, 122.58205]
+	},
+	{
+		"category": "Government",
+		"name": "Department of Science and Technology VI",
+		"location": [10.71207, 122.56459]
+	},
+	{
+		"category": "Government",
+		"name": "Department of Trade and Industry Region 6 category",
+		"location": [10.69358, 122.57239]
+	},
+	{
+		"category": "Government",
+		"name": "DOH Regional category VI",
+		"location": [10.71992, 122.54246]
+	},
+	{
+		"category": "Government",
+		"name": "DOLE Regional category \u2165",
+		"location": [10.69415, 122.57464]
+	},
+	{
+		"category": "Government",
+		"name": "Engineering",
+		"location": [10.74918, 122.55186]
+	},
+	{
+		"category": "Government",
+		"name": "Environmental Management Bureau",
+		"location": [10.72311, 122.55532]
+	},
+	{
+		"category": "Government",
+		"name": "Home Development Mutual Fund",
+		"location": [10.69649, 122.54582]
+	},
+	{
+		"category": "Government",
+		"name": "IEC & IDS category",
+		"location": [10.74897, 122.55222]
+	},
+	{
+		"category": "Government",
+		"name": "Iloilo City Disaster Risk Reduction and Management category",
+		"location": [10.69608, 122.55554]
+	},
+	{
+		"category": "Government",
+		"name": "Iloilo City Veterinarian",
+		"location": [10.6964, 122.55519]
+	},
+	{
+		"category": "Government",
+		"name": "JRMP II Building",
+		"location": [10.74912, 122.55194]
+	},
+	{
+		"category": "Government",
+		"name": "LTO Drivers License Renewal category",
+		"location": [10.71746, 122.5477]
+	},
+	{
+		"category": "Government",
+		"name": "MARINA",
+		"location": [10.72188, 122.55874]
+	},
+	{
+		"category": "Government",
+		"name": "Maritime Industry Authority",
+		"location": [10.73913, 122.56297]
+	},
+	{
+		"category": "Government",
+		"name": "Mnhs New building",
+		"location": [10.7185, 122.54401]
+	},
+	{
+		"category": "Government",
+		"name": "Mnhs New building 2",
+		"location": [10.71856, 122.54377]
+	},
+	{
+		"category": "Government",
+		"name": "Mnhs New building 3",
+		"location": [10.71869, 122.54377]
+	},
+	{
+		"category": "Government",
+		"name": "National Museum - Western Visayas Satellite category",
+		"location": [10.7256, 122.55768]
+	},
+	{
+		"category": "Government",
+		"name": "Negosyo Center",
+		"location": [10.69337, 122.57221]
+	},
+	{
+		"category": "Government",
+		"name": "NIA MTQC",
+		"location": [10.74872, 122.55226]
+	},
+	{
+		"category": "Government",
+		"name": "NIA-JRMP II Portable category",
+		"location": [10.74875, 122.55184]
+	},
+	{
+		"category": "Government",
+		"name": "Ombudsman Region 6",
+		"location": [10.70001, 122.55902]
+	},
+	{
+		"category": "Government",
+		"name": "Pag-ibig",
+		"location": [10.71155, 122.55139]
+	},
+	{
+		"category": "Government",
+		"name": "PhilHealth category",
+		"location": [10.70742, 122.56667]
+	},
+	{
+		"category": "Government",
+		"name": "Philipine Charity Sweepstakes category",
+		"location": [10.70495, 122.56824]
+	},
+	{
+		"category": "Government",
+		"name": "Philippine Regulatory Commission",
+		"location": [10.72569, 122.55682]
+	},
+	{
+		"category": "Government",
+		"name": "Plant Quarantine Service",
+		"location": [10.69363, 122.58169]
+	},
+	{
+		"category": "Government",
+		"name": "PRDP RPCO 6 category",
+		"location": [10.69328, 122.58121]
+	},
+	{
+		"category": "Government",
+		"name": "President Roxas Barangay Hall",
+		"location": [10.70042, 122.57006]
+	},
+	{
+		"category": "Government",
+		"name": "Professional Regularatory Commission",
+		"location": [10.69501, 122.5653]
+	},
+	{
+		"category": "Government",
+		"name": "RCPC WESVIARC",
+		"location": [10.77113, 122.58118]
+	},
+	{
+		"category": "Government",
+		"name": "Regional Animal Diseases and Diagnostic Laboratory 6 (RADDL)",
+		"location": [10.69204, 122.58223]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Barangay ng Concepcion-Montes",
+		"location": [10.69395, 122.57948]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Barangay ng Dungon-C",
+		"location": [10.72611, 122.5375]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Barangay ng Ortiz",
+		"location": [10.69024, 122.57161]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Barangay ng Rizal",
+		"location": [10.70233, 122.57167]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Barangay ng Sambag",
+		"location": [10.74137, 122.54049]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Barangay sang Compania Central",
+		"location": [10.68909, 122.5363]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Barangay sang North Fundidor",
+		"location": [10.69141, 122.53403]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Balabago",
+		"location": [10.73817, 122.57703]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Buhang",
+		"location": [10.74956, 122.56654]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Calaparan",
+		"location": [10.68123, 122.52794]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Catilingban",
+		"location": [10.69607, 122.54402]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Cuartero",
+		"location": [10.72503, 122.55331]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Desamparados",
+		"location": [10.72173, 122.55422]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Dulonan",
+		"location": [10.69075, 122.52741]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng East Baluarte",
+		"location": [10.69212, 122.5494]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng East Timawa",
+		"location": [10.69623, 122.55068]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Hipulan",
+		"location": [10.69306, 122.56078]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Jereos",
+		"location": [10.71908, 122.56625]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Mabolo-Delgado",
+		"location": [10.6969, 122.55777]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Magsaysay",
+		"location": [10.7098, 122.56213]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Mohon",
+		"location": [10.69202, 122.5043]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Punong Lapuz",
+		"location": [10.70381, 122.57319]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Quezon",
+		"location": [10.68723, 122.51926]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Railway",
+		"location": [10.70997, 122.56795]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng San Jose",
+		"location": [10.6878, 122.51659]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng San Pedro",
+		"location": [10.69916, 122.54717]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Santo Rosario - Duran",
+		"location": [10.68955, 122.57763]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Ticud",
+		"location": [10.71746, 122.57849]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng West Habog-habog",
+		"location": [10.69082, 122.54752]
+	},
+	{
+		"category": "Government",
+		"name": "Sangguniang Pambarangay ng Ybiernas",
+		"location": [10.69779, 122.55597]
+	},
+	{
+		"category": "Government",
+		"name": "Senior high school building",
+		"location": [10.7185, 122.5441]
+	},
+	{
+		"category": "Government",
+		"name": "Social Security System",
+		"location": [10.69615, 122.54548]
+	},
+	{
+		"category": "Government",
+		"name": "Social Security System",
+		"location": [10.69312, 122.57157]
+	},
+	{
+		"category": "Government",
+		"name": "Survey category",
+		"location": [10.74919, 122.55178]
+	},
+	{
+		"category": "Government",
+		"name": "Technical Education and Skills Development Authority",
+		"location": [10.69398, 122.57663]
+	},
+	{
+		"category": "Insurance",
+		"name": "Pro friends",
+		"location": [10.70045, 122.55686]
+	},
+	{
+		"category": "Insurance",
+		"name": "Standard Insurance",
+		"location": [10.70082, 122.55373]
+	},
+	{
+		"category": "It",
+		"name": "GECO Philippines",
+		"location": [10.72795, 122.55634]
+	},
+	{
+		"category": "It",
+		"name": "Transcom",
+		"location": [10.71644, 122.54681]
+	},
+	{
+		"category": "Lawyer",
+		"name": "Public Attorney's category",
+		"location": [10.70422, 122.56815]
+	},
+	{
+		"category": "Logistics",
+		"name": "Aboitiz Corporation",
+		"location": [10.70147, 122.57253]
+	},
+	{
+		"category": "Ngo",
+		"name": "Balay ni Maria Foundation",
+		"location": [10.70068, 122.55905]
+	},
+	{
+		"category": "Ngo",
+		"name": "Cubical Quad HF Antenna",
+		"location": [10.70512, 122.55428]
+	},
+	{
+		"category": "Ngo",
+		"name": "Girl Scout of the Philippines",
+		"location": [10.71184, 122.56406]
+	},
+	{
+		"category": "Ngo",
+		"name": "Zoological Society of London",
+		"location": [10.71364, 122.56689]
+	},
+	{
+		"category": "Religion",
+		"name": "CPU University Church",
+		"location": [10.72978, 122.54791]
+	},
+	{
+		"category": "Religion",
+		"name": "Iloilo Mission Assembly Church",
+		"location": [10.72333, 122.55905]
+	},
+	{
+		"category": "Religion",
+		"name": "Immaculate Concepcion Parish category",
+		"location": [10.69341, 122.55972]
+	},
+	{
+		"category": "Research",
+		"name": "Wind Energy R & D category",
+		"location": [10.73059, 122.54746]
+	},
+	{
+		"category": "Telecommunication",
+		"name": "Cable Star Iloilo",
+		"location": [10.70338, 122.55188]
+	},
+	{
+		"category": "Telecommunication",
+		"name": "Callbox",
+		"location": [10.70019, 122.55351]
+	},
+	{
+		"category": "Telecommunication",
+		"name": "Frecker mobile sound",
+		"location": [10.6961, 122.58579]
+	},
+	{
+		"category": "Telecommunication",
+		"name": "iMart ISATU",
+		"location": [10.7165, 122.56598]
+	},
+	{
+		"category": "Telecommunication",
+		"name": "Panay Broadband by Buenavista Cable",
+		"location": [10.71732, 122.56178]
+	},
+	{
+		"category": "Telecommunication",
+		"name": "PLDT",
+		"location": [10.71195, 122.56467]
+	},
+	{
+		"category": "Water Utility",
+		"name": "Metro Pacific Iloilo Water",
+		"location": [10.71754, 122.54773]
+	}
+]
