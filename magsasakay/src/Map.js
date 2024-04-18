@@ -119,16 +119,6 @@ const Map = ({ routesData, selectedRoutes, intersectionPoints }) => {
 						</Marker>
 					</React.Fragment>
 				))}
-			{/* <Marker
-				position={[10.7152, 122.55177]}
-				icon={customIcon}>
-				<Tooltip
-					direction='top'
-					offset={[0, -10]}
-					opacity={1}>
-					SM City
-				</Tooltip>
-			</Marker> */}
 		</MapContainer>
 	);
 };

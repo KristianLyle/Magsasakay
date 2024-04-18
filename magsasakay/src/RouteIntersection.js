@@ -23,6 +23,12 @@ function calculateIntersection(nearestRoutesFrom, nearestRoutesTo) {
 				}
 			);
 
+			// Check if there's actually an intersection and limit to one intersection
+			if (intersection && intersection.geometry.coordinates.length > 1) {
+				intersection.geometry.coordinates =
+					intersection.geometry.coordinates[0];
+			}
+
 			// Check if there's actually an intersection
 			if (intersection) {
 				// Add intersection details to the array
