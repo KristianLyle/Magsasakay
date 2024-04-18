@@ -1,0 +1,57 @@
+Header {
+	border-bottom: 2px solid #498998;
+	background-color: #246271;
+	width: 100%;
+	height: 60px;
+
+	display: flex;
+	align-items: center;
+}
+
+.logo {
+	max-width: 150px;
+}
+
+.logo-container {
+	margin-left: 10px;
+}
+
+.nav-bar {
+	display: flex;
+	flex: 1;
+	justify-content: space-evenly;
+}
+
+.nav-bar button {
+	border: 0;
+	background-color: transparent;
+
+	color: white;
+	font-size: 20px;
+	font-weight: 500;
+	font-family: sans-serif;
+}
+
+.nav-bar button:hover {
+	color: #f4b55e;
+}
+
+.nav-bar .vertical-divider {
+	height: 40px;
+	border: 1px solid #1f5360;
+}
+
+.profile {
+	display: flex;
+	flex: 1;
+	justify-content: flex-end;
+	margin-right: 10px;
+}
+
+.profile-pic {
+	width: 40px;
+	height: 40px;
+	border: 2px solid white;
+	border-radius: 50%;
+	background-color: black;
+}

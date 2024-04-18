@@ -1,0 +1,15 @@
+.Map {
+	font-family: sans-serif;
+	font-size: 16px;
+}
+
+.leaflet-container {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	flex: 1;
+}
+
+.leaflet-control-attribution {
+	font-size: 0;
+}

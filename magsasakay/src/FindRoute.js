@@ -1,214 +1,199 @@
-import React, { useState, useEffect } from "react";
-import MapComponent from "./MultiRoute"; // Import your MapComponent
-import routeInfo from "./RouteInfo.json"; // Import your JSON data
-import f_bg from "./img/f_bg.mp4";
-import NavBar from "./navbar";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useHistory,
-} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import placesData from './Places.json';
+import NearestRouteComponent from './NearestRoute';
+import calculateIntersection from './RouteIntersection';
 
-const RouteFinder = () => {
-  const [startPoint, setStartPoint] = useState("");
-  const [destination, setDestination] = useState("");
-  const [selectedRouteCoordinates, setSelectedRouteCoordinates] =
-    useState(null);
-  const [startingPointJeepneyRouteTitle, setStartingPointJeepneyRouteTitle] =
-    useState("");
-  const [destinationJeepneyRouteTitle, setDestinationJeepneyRouteTitle] =
-    useState("");
-  const [startingPointDetails, setStartingPointDetails] = useState(null);
-  const [destinationDetails, setDestinationDetails] = useState(null);
+const FindRoute = ({ onIntersectionChange }) => {
+	const [searchQueryFrom, setSearchQueryFrom] = useState('');
+	const [filteredPlacesFrom, setFilteredPlacesFrom] = useState([]);
+	const [fromLocation, setFromLocation] = useState('');
+	const [fromCoordinates, setFromCoordinates] = useState(null);
+	const [nearestRoutesFrom, setNearestRoutesFrom] = useState(null);
 
-  const history = useHistory();
-  useEffect(() => {
-    const status = window.localStorage.getItem("loggedIn");
-    if (status === "false") {
-      history.push("/");
-      window.location.reload();
-    }
-  }, [history]);
+	const [searchQueryTo, setSearchQueryTo] = useState('');
+	const [filteredPlacesTo, setFilteredPlacesTo] = useState([]);
+	const [toLocation, setToLocation] = useState('');
+	const [toCoordinates, setToCoordinates] = useState(null);
+	const [nearestRoutesTo, setNearestRoutesTo] = useState(null);
 
-  // Function to find route coordinates, Jeepney route title, and route number based on the selected establishment
-  const findRouteInfo = (establishmentName) => {
-    for (const route of routeInfo) {
-      for (const establishment of route.establishments) {
-        if (establishment.name === establishmentName) {
-          return {
-            coordinates: route.coordinates,
-            title: route.title,
-            details: establishment,
-            routeNo: route.routeNo,
-          };
-        }
-      }
-    }
-    return null;
-  };
+	const [selectedIntersections, setSelectedIntersections] = useState([]);
 
-  // Function to handle user selection of starting point
-  const handleStartPointChange = (event) => {
-    const selectedStartPoint = event.target.value;
-    setStartPoint(selectedStartPoint);
+	const handleSearchFrom = (event) => {
+		const query = event.target.value;
+		setFromLocation(query);
+		handleSearch(query, setFilteredPlacesFrom, setSearchQueryFrom);
+	};
 
-    // Find coordinates, title, and details for the selected starting point
-    const startRouteInfo = findRouteInfo(selectedStartPoint);
-    if (startRouteInfo) {
-      setStartingPointJeepneyRouteTitle(startRouteInfo.title);
-      setStartingPointDetails(startRouteInfo.details);
-    }
-  };
+	const handleSearchTo = (event) => {
+		const query = event.target.value;
+		setToLocation(query);
+		handleSearch(query, setFilteredPlacesTo, setSearchQueryTo);
+	};
 
-  // Function to handle user selection of destination
-  const handleDestinationChange = (event) => {
-    const selectedDestination = event.target.value;
-    setDestination(selectedDestination);
+	const handleSearch = (query, setFilteredPlaces, setSearchQuery) => {
+		setSearchQuery(query);
+		if (query.trim() === '') {
+			setFilteredPlaces([]);
+		} else {
+			const startsWithNameQuery = [];
+			const containsNameQuery = [];
+			const startsWithCategoryQuery = [];
+			const containsCategoryQuery = [];
+			const lowercaseQuery = query.toLowerCase();
+			for (const place of placesData) {
+				const lowercaseName = place.name.toLowerCase();
+				const lowercaseCategory = place.category.toLowerCase();
+				if (lowercaseName.startsWith(lowercaseQuery)) {
+					startsWithNameQuery.push(place);
+				} else if (lowercaseName.includes(lowercaseQuery)) {
+					containsNameQuery.push(place);
+				} else if (lowercaseCategory.startsWith(lowercaseQuery)) {
+					startsWithCategoryQuery.push(place);
+				} else if (lowercaseCategory.includes(lowercaseQuery)) {
+					containsCategoryQuery.push(place);
+				}
+			}
+			const filtered = startsWithNameQuery.concat(
+				containsNameQuery,
+				startsWithCategoryQuery,
+				containsCategoryQuery
+			);
+			setFilteredPlaces(filtered);
+		}
+	};
 
-    // Find coordinates, title, and details for the selected destination
-    const destinationRouteInfo = findRouteInfo(selectedDestination);
-    if (destinationRouteInfo) {
-      setDestinationJeepneyRouteTitle(destinationRouteInfo.title);
-      setDestinationDetails(destinationRouteInfo.details);
-    }
-  };
+	const handleSuggestionClickFrom = (place) => {
+		setSearchQueryFrom(place.name);
+		setFromLocation(place.name);
+		setFromCoordinates(place.location); // Set the coordinates for 'from' location
+		setFilteredPlacesFrom([]);
+		const nearestRoutes = NearestRouteComponent(place.location);
+		setNearestRoutesFrom(nearestRoutes);
+	};
 
-  // Function to find and display the route based on the selected starting point and destination
-  const findRoute = () => {
-    // Find coordinates for the selected starting point and destination
-    const startPointCoordinates = findRouteInfo(startPoint)?.coordinates;
-    const destinationCoordinates = findRouteInfo(destination)?.coordinates;
+	const handleSuggestionClickTo = (place) => {
+		setSearchQueryTo(place.name);
+		setToLocation(place.name);
+		setToCoordinates(place.location); // Set the coordinates for 'to' location
+		setFilteredPlacesTo([]);
+		const nearestRoutes = NearestRouteComponent(place.location);
+		setNearestRoutesTo(nearestRoutes);
+	};
 
-    if (startPointCoordinates && destinationCoordinates) {
-      setSelectedRouteCoordinates({
-        startPointCoordinates,
-        destinationCoordinates,
-      });
-    } else {
-      setSelectedRouteCoordinates(null);
-    }
-  };
+	const suggestionStyle = { cursor: 'pointer' };
 
-  // Function to get unique and sorted establishment names
-  const getUniqueAndSortedEstablishments = () => {
-    const establishments = routeInfo.reduce((acc, route) => {
-      route.establishments.forEach((establishment) => {
-        if (!acc.includes(establishment.name)) {
-          acc.push(establishment.name);
-        }
-      });
-      return acc;
-    }, []);
+	const handleCheckboxChange = (intersection) => {
+		// Check if the intersection is already selected
+		const index = selectedIntersections.findIndex(
+			(item) =>
+				item.routeFrom === intersection.routeFrom &&
+				item.routeTo === intersection.routeTo
+		);
 
-    return establishments.sort();
-  };
+		// If the intersection is already selected, remove it
+		if (index !== -1) {
+			setSelectedIntersections((prevSelectedIntersections) =>
+				prevSelectedIntersections.filter((_, idx) => idx !== index)
+			);
+		} else {
+			// If the intersection is not selected, add it
+			setSelectedIntersections((prevSelectedIntersections) => [
+				...prevSelectedIntersections,
+				intersection,
+			]);
+		}
 
-  return (
-    <>
-      <Router>
-        <NavBar />
-        <Switch>
-          <Route exact path="/" />
-        </Switch>
-      </Router>
-      <div className="items-center text-center">
-        <div className="fixed inset-0 flex -z-50">
-          <video
-            src={f_bg}
-            autoPlay
-            loop
-            muted
-            className="absolute w-full h-full object-cover"
-          />
-          <div className="absolute w-full h-full bg-gradient-to-t from-indigo-500 to-orange-500 opacity-40"></div>
-        </div>
-        <h2
-          className="font-extrabold text-[75px] 
-                        p-[10px] text-white drop-shadow-xl"
-        >
-          Find a Route
-        </h2>
-        <div className="font-Montserrat">
-          <label className="text-white drop-shadow-2xl font-semibold ">
-            Starting Point:{" "}
-          </label>
-          <select
-            className="text-black w-[50%] rounded-[20px] p-[7px] border-[3px] border-black drop-shadow-xl"
-            value={startPoint}
-            onChange={handleStartPointChange}
-          >
-            <option className="text-white" value="">
-              Select starting point
-            </option>
-            {getUniqueAndSortedEstablishments().map((establishment) => (
-              <option key={establishment} value={establishment}>
-                {establishment}
-              </option>
-            ))}
-          </select>
-        </div>
-        <br />
+		// Log the updated selected intersections after the state update
+		setSelectedIntersections((updatedSelectedIntersections) => {
+			// console.log('Selected Intersections:', updatedSelectedIntersections);
+			return updatedSelectedIntersections;
+		});
+	};
 
-        <div className="font-Montserrat ml-[-15px]">
-          <label className="text-white drop-shadow-2xl font-semibold">
-            Destination:{" "}
-          </label>
-          <select
-            className="text-black w-[50%] rounded-[20px] p-[7px] border-[3px] border-black drop-shadow-xl"
-            value={destination}
-            onChange={handleDestinationChange}
-          >
-            <option value="">Select destination</option>
-            {getUniqueAndSortedEstablishments().map((establishment) => (
-              <option key={establishment} value={establishment}>
-                {establishment}
-              </option>
-            ))}
-          </select>
-        </div>
+	let intersectionPoints = null;
+	if (nearestRoutesFrom && nearestRoutesTo) {
+		intersectionPoints = calculateIntersection(
+			nearestRoutesFrom,
+			nearestRoutesTo
+		).map((intersection) => ({
+			...intersection,
+			fromLocation,
+			toLocation,
+			fromCoordinates,
+			toCoordinates,
+		}));
+	}
 
-        <br />
+	useEffect(() => {
+		// Call the onIntersectionChange function with the updated selectedIntersections array
+		onIntersectionChange(selectedIntersections);
+	}, [selectedIntersections, onIntersectionChange]);
 
-        <button
-          className="z-[99] relative font-Montserrat bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] px-[25px] max-w-[200px]"
-          onClick={findRoute}
-        >
-          Find Route
-        </button>
-        <br />
-        <br />
-        {/* Display Jeepney route titles after the button is clicked */}
-        {selectedRouteCoordinates && (
-          <div className="flex justify-center items-center">
-            <div className="items-center font-Montserrat text-white drop-shadow-2xl  bg-[#160E3D] max-w-[1000px] rounded-xl py-[5px] px-[20px]">
-              <p>Starting Point Jeepney Route:</p>{" "}
-              <p className="font-semibold">
-                {" "}
-                {startingPointJeepneyRouteTitle}{" "}
-                <span style={{ color: "blue" }}>(Blue)</span>
-              </p>{" "}
-              <br />
-              <p>Destination Jeepney Route: </p>{" "}
-              <p className="font-semibold">
-                {destinationJeepneyRouteTitle}{" "}
-                <span style={{ color: "red" }}>(Red)</span>
-              </p>
-            </div>
-          </div>
-        )}
-        <div className="relative z-[1] p-6 text-white text-center items-center">
-          <MapComponent
-            selectedRouteCoordinates={selectedRouteCoordinates}
-            startingPointJeepneyRouteTitle={startingPointJeepneyRouteTitle}
-            destinationJeepneyRouteTitle={destinationJeepneyRouteTitle}
-            startingPointDetails={startingPointDetails}
-            destinationDetails={destinationDetails}
-          />
-        </div>
-      </div>
-    </>
-  );
+	return (
+		<div className='find-route-container'>
+			<div className='find-route-title'>
+				<h1>Find Route</h1>
+				<div className='find-route-forms'>
+					<label>From: </label>
+					<input
+						type='text'
+						value={fromLocation}
+						onChange={handleSearchFrom}
+					/>
+					{searchQueryFrom.trim() !== '' && (
+						<div className='place-suggestions'>
+							{filteredPlacesFrom.map((place, index) => (
+								<div
+									key={index}
+									style={suggestionStyle}
+									onClick={() => handleSuggestionClickFrom(place)}>
+									{place.name}
+								</div>
+							))}
+						</div>
+					)}
+					<label>To: </label>
+					<input
+						type='text'
+						value={toLocation}
+						onChange={handleSearchTo}
+					/>
+					{searchQueryTo.trim() !== '' && (
+						<div className='place-suggestions'>
+							{filteredPlacesTo.map((place, index) => (
+								<div
+									key={index}
+									style={suggestionStyle}
+									onClick={() => handleSuggestionClickTo(place)}>
+									{place.name}
+								</div>
+							))}
+						</div>
+					)}
+				</div>
+				<div className='find-route-routes'>
+					{intersectionPoints &&
+						intersectionPoints.map((intersection, index) => (
+							<div key={index}>
+								<input
+									type='checkbox'
+									id={`intersection-${index}`}
+									checked={selectedIntersections.some(
+										(item) =>
+											item.routeFrom === intersection.routeFrom &&
+											item.routeTo === intersection.routeTo
+									)}
+									onChange={() => handleCheckboxChange(intersection)}
+								/>
+								<label htmlFor={`intersection-${index}`}>
+									{`${intersection.routeFrom} to ${intersection.routeTo}`}
+								</label>
+							</div>
+						))}
+				</div>
+			</div>
+		</div>
+	);
 };
 
-export default RouteFinder;
+export default FindRoute;

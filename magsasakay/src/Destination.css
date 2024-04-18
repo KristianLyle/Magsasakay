@@ -1,0 +1,42 @@
+.destination-container {
+	width: 25vw;
+	display: flex;
+	flex-direction: column;
+	display: none;
+
+	background-color: #246271;
+	align-items: flex-start;
+	border-right: 2px solid #498998;
+}
+
+.destination-title {
+	color: #f4b55e;
+	background-color: #1f5360;
+	border-bottom: 2px solid #498998;
+
+	width: 100%;
+}
+
+.destination-title h3 {
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-family: sans-serif;
+}
+
+.destination-contents {
+	background-color: #246271;
+	color: white;
+
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.destination-input {
+	display: flex;
+	flex-direction: column;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	align-items: center;
+}
