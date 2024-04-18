@@ -54,58 +54,68 @@ const Map = ({ routesData, selectedRoutes, intersectionPoints }) => {
       {intersectionPoints &&
         intersectionPoints.map((intersection, index) => (
           <React.Fragment key={index}>
-            <Polyline
-              positions={[intersection.routeFromCoordinates]}
-              color={intersection.routeFromColor || "red"} // Use routeFromColor, default to red if not provided
-              weight={5}
-              opacity={0.7}
-            >
-              <Tooltip direction="top" offset={[0, 0]} opacity={1} sticky>
-                {intersection.routeFrom}
-              </Tooltip>
-            </Polyline>
-            <Polyline
-              positions={[intersection.routeToCoordinates]}
-              color={intersection.routeToColor || "green"} // Use routeToColor, default to green if not provided
-              weight={5}
-              opacity={0.7}
-            >
-              <Tooltip direction="top" offset={[0, 0]} opacity={1} sticky>
-                {intersection.routeTo}
-              </Tooltip>
-            </Polyline>
-            <Polyline
-              positions={[intersection.intersection]}
-              color="red"
-              weight={5}
-              opacity={0.7}
-            >
-              <Tooltip direction="top" offset={[0, 20]} opacity={1} permanent>
-                Change jeepney here
-              </Tooltip>
-            </Polyline>
-            <Marker position={intersection.fromCoordinates} icon={customIcon}>
-              <Tooltip direction="top" offset={[0, -23]} opacity={1} permanent>
-                {intersection.fromLocation}
-              </Tooltip>
-            </Marker>
-            <Marker position={intersection.toCoordinates} icon={customIcon}>
-              <Tooltip direction="top" offset={[0, -23]} opacity={1} permanent>
-                {intersection.toLocation}
-              </Tooltip>
-            </Marker>
+            {intersection.routeFromCoordinates && (
+              <Polyline
+                positions={[intersection.routeFromCoordinates]}
+                color={intersection.routeFromColor || "red"}
+                weight={5}
+                opacity={0.7}
+              >
+                <Tooltip direction="top" offset={[0, 0]} opacity={1} sticky>
+                  {intersection.routeFrom}
+                </Tooltip>
+              </Polyline>
+            )}
+            {intersection.routeToCoordinates && (
+              <Polyline
+                positions={[intersection.routeToCoordinates]}
+                color={intersection.routeToColor || "green"}
+                weight={5}
+                opacity={0.7}
+              >
+                <Tooltip direction="top" offset={[0, 0]} opacity={1} sticky>
+                  {intersection.routeTo}
+                </Tooltip>
+              </Polyline>
+            )}
+            {intersection.intersection && (
+              <Polyline
+                positions={[intersection.intersection]}
+                color="red"
+                weight={5}
+                opacity={0.7}
+              >
+                <Tooltip direction="top" offset={[0, 20]} opacity={1} permanent>
+                  Change jeepney here
+                </Tooltip>
+              </Polyline>
+            )}
+            {intersection.fromCoordinates && (
+              <Marker position={intersection.fromCoordinates} icon={customIcon}>
+                <Tooltip
+                  direction="top"
+                  offset={[0, -23]}
+                  opacity={1}
+                  permanent
+                >
+                  {intersection.fromLocation}
+                </Tooltip>
+              </Marker>
+            )}
+            {intersection.toCoordinates && (
+              <Marker position={intersection.toCoordinates} icon={customIcon}>
+                <Tooltip
+                  direction="top"
+                  offset={[0, -23]}
+                  opacity={1}
+                  permanent
+                >
+                  {intersection.toLocation}
+                </Tooltip>
+              </Marker>
+            )}
           </React.Fragment>
         ))}
-      {/* <Marker
-				position={[10.7152, 122.55177]}
-				icon={customIcon}>
-				<Tooltip
-					direction='top'
-					offset={[0, -10]}
-					opacity={1}>
-					SM City
-				</Tooltip>
-			</Marker> */}
     </MapContainer>
   );
 };

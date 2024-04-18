@@ -8,44 +8,42 @@ function calculateDistance(coord1, coord2) {
 }
 
 function findNearestRoute(placeCoordinates) {
-	// Minimum nearest distance threshold
-	const minNearestDistance = 0.001;
-
-	// Initialize variables to hold the nearest routes and their distances
 	let nearestRoutes = [];
 	let nearestDistance = Infinity;
+	let minNearestDistance = 0.001;
 
-	// Iterate through each route and calculate nearest routes
-	routesData.forEach((route, index) => {
-		// Initialize variables to hold the nearest route for the current iteration and its distance
-		let nearestRoute = null;
-		let nearestRouteDistance = Infinity;
+	while (nearestRoutes.length === 0 && minNearestDistance <= 0.01) {
+		nearestRoutes = [];
 
-		// Iterate through each coordinate in the route
-		route.coordinates.forEach((coordinate) => {
-			const distance = calculateDistance(placeCoordinates, coordinate);
-			if (distance < nearestRouteDistance) {
-				nearestRouteDistance = distance;
-				nearestRoute = route;
+		// eslint-disable-next-line no-loop-func
+		routesData.forEach((route) => {
+			let nearestRoute = null;
+			let nearestRouteDistance = Infinity;
+
+			route.coordinates.forEach((coordinate) => {
+				const distance = calculateDistance(placeCoordinates, coordinate);
+				if (distance < nearestRouteDistance) {
+					nearestRouteDistance = distance;
+					nearestRoute = route;
+				}
+			});
+
+			if (nearestRouteDistance <= minNearestDistance) {
+				nearestRoutes.push({
+					name: nearestRoute.name,
+					description: nearestRoute.description,
+					coordinates: nearestRoute.coordinates,
+					color: nearestRoute.color,
+					distance: nearestRouteDistance,
+				});
 			}
+
+			nearestDistance = Math.min(nearestDistance, nearestRouteDistance);
 		});
 
-		// If the nearest distance for this route is less than or equal to the minimum nearest distance threshold, add it to the nearestRoutes array
-		if (nearestRouteDistance <= minNearestDistance) {
-			nearestRoutes.push({
-				name: nearestRoute.name,
-				description: nearestRoute.description,
-				coordinates: nearestRoute.coordinates,
-				color: nearestRoute.color,
-				distance: nearestRouteDistance,
-			});
-		}
+		minNearestDistance *= 2;
+	}
 
-		// Update the overall nearest distance
-		nearestDistance = Math.min(nearestDistance, nearestRouteDistance);
-	});
-
-	// Check if nearest routes were found
 	if (nearestRoutes.length === 0) {
 		console.log('No routes found near the place.');
 	}
