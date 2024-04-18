@@ -19,15 +19,19 @@ const FindRoute = ({ onIntersectionChange }) => {
 	const [selectedIntersections, setSelectedIntersections] = useState([]);
 
 	const handleSearchFrom = (event) => {
-		const query = event.target.value;
-		setFromLocation(query);
-		handleSearch(query, setFilteredPlacesFrom, setSearchQueryFrom);
+		setSearchQueryFrom(event.target.value);
+		setFromLocation(event.target.value);
+		setFilteredPlacesFrom([]);
+		setSelectedIntersections([]); // Reset selected intersections when "From" textbox changes
+		handleSearch(event.target.value, setFilteredPlacesFrom, setSearchQueryFrom);
 	};
 
 	const handleSearchTo = (event) => {
-		const query = event.target.value;
-		setToLocation(query);
-		handleSearch(query, setFilteredPlacesTo, setSearchQueryTo);
+		setSearchQueryTo(event.target.value);
+		setToLocation(event.target.value);
+		setFilteredPlacesTo([]);
+		setSelectedIntersections([]); // Reset selected intersections when "To" textbox changes
+		handleSearch(event.target.value, setFilteredPlacesTo, setSearchQueryTo);
 	};
 
 	const handleSearch = (query, setFilteredPlaces, setSearchQuery) => {
