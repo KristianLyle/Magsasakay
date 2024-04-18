@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RouteDropdown from "./restoRouteDropdown";
-import MapComponent from "./Map";
+import MapComponent from "./restoMap";
 import restoRouteInfo from "./restoRoutes.json";
 import l_bg from "./img/l_bg.mp4";
 import viewRoute_req from "./img/viewRoute_req.png";
