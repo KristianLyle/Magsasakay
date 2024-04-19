@@ -11,6 +11,21 @@
 	},
 	{
 		"category": "ATMs",
+		"name": "PNB",
+		"location": [10.7262, 122.55695]
+	},
+	{
+		"category": "ATMs",
+		"name": "PNB",
+		"location": [10.7262, 122.55695]
+	},
+	{
+		"category": "ATMs",
+		"name": "PNB",
+		"location": [10.7262, 122.55695]
+	},
+	{
+		"category": "ATMs",
 		"name": "DBP",
 		"location": [10.69366, 122.57357]
 	},
@@ -6715,8 +6730,8 @@
 		"location": [10.71525, 122.55185]
 	},
 	{
-		"category": "Restaurants",
-		"name": "Choobi Choobi - SM City Iloilo",
+		"category": "Mall",
+		"name": "SM City Iloilo",
 		"location": [10.7152, 122.55177]
 	},
 	{
@@ -9468,5 +9483,10 @@
 		"category": "Weapons",
 		"name": "Nelson's Gun Store",
 		"location": [10.6973, 122.56276]
+	},
+	{
+		"category": "Restaurants",
+		"name": "Roberto's",
+		"location": [10.6936, 122.57122]
 	}
 ]
