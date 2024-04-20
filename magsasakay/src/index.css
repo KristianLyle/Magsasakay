@@ -170,3 +170,19 @@
   .flowbite-carousel-arrow {
     display: none !important;
 }
+
+.jeepney-routes {
+    font-size: 24px; /* Default font size */
+}
+
+@media screen and (max-width: 768px) {
+    .jeepney-routes {
+        font-size: 14px; /* Decrease font size for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .jeepney-routes {
+        font-size: 12px; /* Further decrease font size for even smaller screens */
+    }
+}

@@ -21,9 +21,9 @@ const Options = () => {
       </Router>
       <div
         style={backgroundStyle}
-        className="bg-cover bg-no-repeat bg-center bg-fixed min-h-screen"
+        className="bg-cover bg-no-repeat bg-center bg-fixed min-h-screen flex justify-center items-center"
       >
-        <div className="mx-auto h-screen ">
+        <div className="mx-auto">
           <div className="">
             <br />
             <h1 className="text-white font-Montserrat mt-4 font-extrabold text-[85px] text-center">
