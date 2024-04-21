@@ -1,80 +1,112 @@
-.jeepney-routes-container {
-	width: 25vw;
-	display: flex;
-	flex-direction: column;
-	/* display: none; */
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
 
-	background-color: #246271;
-	align-items: flex-start;
-	border-right: 2px solid #498998;
+/* Apply Montserrat font to body */
+body {
+    font-family: 'Montserrat', sans-serif;
 }
 
-.jeepney-routes-title {
-	color: #f4b55e;
-	background-color: #1f5360;
-	border-bottom: 2px solid #498998;
+/* Container for Jeepney Routes */
+.jeepney-routes-container {
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #246271;
+    align-items: flex-start;
+    border-right: 2px solid #498998;
+    overflow-y: auto; /* Add overflow scroll */
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
 
-	width: 100%;
+/* Title style */
+.jeepney-routes-title {
+    color: #f4b55e;
+    background-color: #1f5360;
+    border-bottom: 2px solid #498998;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .jeepney-routes-title h3 {
-	margin-left: 10px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	font-family: sans-serif;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px; /* Default font size */
+    font-weight: bold;
+    color: #f19412;
 }
 
+/* Contents style */
 .jeepney-routes-contents {
-	background-color: #246271;
-	color: white;
-
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-
-	overflow-y: scroll;
+    background-color: #246271;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* overflow-y: auto; */ /* Removed overflow auto from here */
 }
 
+/* Input checkbox style */
 .jeepney-routes-input {
-	display: flex;
-	flex-direction: row;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	align-items: center;
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    align-items: center;
 }
 
 .jeepney-routes-contents input[type='checkbox'] {
-	margin-left: 10px;
-	margin-right: 20px;
-}
-
-.jeepney-routes-contents input[type='checkbox'] {
-	appearance: none;
-	width: 20px;
-	height: 20px;
-	border: 2px solid white;
-	border-radius: 4px;
-	cursor: pointer;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .jeepney-routes-contents input[type='checkbox']:checked {
-	background-color: #f4b55e;
-	color: #f4b55e;
+    background-color: #f4b55e;
+    color: #f4b55e;
 }
 
 .jeepney-routes-contents input[type='checkbox']:checked + label {
-	color: #f4b55e;
+    color: #f4b55e;
 }
 
 .jeepney-routes-contents label {
-	display: inline-block;
-	cursor: pointer;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 10px; /* Add margin for spacing */
+    font-size: 16px; /* Default font size */
+    white-space: normal; /* Allow text to wrap onto multiple lines */
 }
 
 .jeepney-routes-contents label:hover {
-	color: #f4b55e;
+    color: #f4b55e;
 }
 
+/* Horizontal divider */
 .horizontal-divider {
-	border: 1px solid #1f5360;
+    border: 1px solid #1f5360;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .jeepney-routes-container {
+        font-size: 14px; /* Decrease font size for smaller screens */
+    }
+
+    .jeepney-routes-title h3 {
+        font-size: 18px; /* Decrease font size for smaller screens */
+    }
+
+    .jeepney-routes-contents label {
+        font-size: 9.5px; /* Decrease font size for smaller screens */
+    }
+}
+
+/* Checkbox hover effect */
+.jeepney-routes-contents input[type='checkbox']:hover {
+    background-color: #f4b55e;
 }
