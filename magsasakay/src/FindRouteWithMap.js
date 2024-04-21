@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Map from './Map';
 import RoutesData from './Routes.json';
 import FindRoute from './FindRoute';
+import NavBar from "./navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const FindRouteWithMap = () => {
 	const [selectedRoutes, setSelectedRoute] = useState([]);
@@ -17,6 +19,13 @@ const FindRouteWithMap = () => {
 	};
 
 	return (
+		<>
+		 <Router>
+            <NavBar />
+            <Switch>
+                <Route exact path="/" />
+            </Switch>
+        </Router>
 		<div className='App'>
 			<div className='app-body'>
 				{' '}
@@ -28,6 +37,7 @@ const FindRouteWithMap = () => {
 				/>
 			</div>
 		</div>
+	    </>
 	);
 };
 
