@@ -172,8 +172,7 @@ app.post("/fetch-recent-reviews", async (req, res) => {
     // Find all reviews for the specific restaurant
     const reviews = await reviewModel
       .find({ restaurant: restaurantName })
-      .sort({ createdAt: -1 })
-      .limit(5); // Limit the results to 5 reviews
+      .sort({ createdAt: -1 });
 
     res.json(reviews);
   } catch (error) {
