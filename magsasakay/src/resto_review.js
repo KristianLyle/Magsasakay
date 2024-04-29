@@ -26,6 +26,8 @@ const RestoReviews = () => {
   const [restaurantDetails, setRestaurantDetails] = useState({});
   const [selectedRating, setSelectedRating] = useState(0);
   const [showFullReview, setShowFullReview] = useState(false); // Define showFullReview state
+  const [currentPage, setCurrentPage] = useState(1);
+  const reviewsPerPage = 5;
   const history = useHistory();
 
   useEffect(() => {
@@ -208,6 +210,13 @@ const RestoReviews = () => {
     );
   };
 
+  // Logic for pagination
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+  const currentReviews = postedReviews.slice(indexOfFirstReview, indexOfLastReview);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <Router>
@@ -318,22 +327,30 @@ const RestoReviews = () => {
               </button>
             </div>
           </div>
-          {postedReviews.length > 0 && (
-            <div>
-              <ul>
-                {postedReviews
-                  .slice(0)
-                  .reverse()
-                  .map((review, index) => (
-                    <li key={index}>
-                      <Review review={review} />
-                      <br />
-                    </li>
-                  ))}
-              </ul>
-              <br />
-            </div>
-          )}
+          {currentReviews.length > 0 && (
+          <div>
+            <ul>
+              {currentReviews.map((review, index) => (
+                <li key={index}>
+                  <Review review={review} />
+                  <br />
+                </li>
+              ))}
+            </ul>
+            <br />
+            <nav className="flex justify-center mt-1">
+              <ul className="pagination flex flex-row">
+                {Array.from({ length: Math.ceil(postedReviews.length / reviewsPerPage) }).map((_, index) => (
+                  <li key={index} className="px-2 mb-[15px]">
+                    <a onClick={() => paginate(index + 1)} href="#" className={` font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${currentPage === index + 1 ? "bg-[#160E3D] text-white px-4 py-2 rounded-full" : "bg-[#EE7200] text-[#160E3D]"}`}>
+                      {index + 1}
+                    </a>
+                  </li>
+            ))}
+      </ul>
+    </nav>
+  </div>
+)}
         </div>
       </div>
     </>
