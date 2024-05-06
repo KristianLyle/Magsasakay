@@ -321,7 +321,7 @@ const RestoReviews = () => {
                 onClick={handleCancelButtonClick}
                 className="bg-[#BF2F00] text-[15px] py-2 rounded-full
                               font-bold text-white hover:bg-white hover:text-[#BF2F00] 
-                              drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px] hover:bg-[#FACA15]"
+                              drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
               >
                 Cancel
               </button>
