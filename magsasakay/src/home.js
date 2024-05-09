@@ -20,7 +20,7 @@ const Home = () => {
       </Router>
       <div className="relative bg-slide1bg bg-cover font-Montserrat">
         <div className="absolute inset-0 bg-sky-950 bg-opacity-80"></div>
-        <h1 className="font-extrabold text-white ml-[15px] text-left relative z-10 py-[5px] text-[40px]">
+        <h1 className="font-extrabold text-white ml-[15px] text-left relative z-10 py-[5px] md:text-[60px] text-[40px]">
           Welcome to Magsasakay
         </h1>
         <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto min-h-screen h-screen mt-[-100px] overflow-auto">
