@@ -27,7 +27,7 @@ const Home = () => {
           <Carousel className="w-full mx-auto rounded-2xl">
             {/* slide 1 */}
             <div className="slide-content my-14 md:my-8 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
-              <img src={home_req} alt="Home Picture" className="w-full md:w-1/2 md:max-w-md mx-auto" />
+              <img src={home_req} alt="Home Picture" className="w-1/2 md:w-full md:max-w-md mx-auto" />
               <div className="text-center md:text-left">
                 <h1 className="text-lg md:text-3xl font-semibold mb-2 md:mb-4 text-white">
                   Where to Go
@@ -43,7 +43,7 @@ const Home = () => {
             </div>
             {/* slide 2 */}
             <div className="slide-content my-14 md:my-8 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
-              <img src={wheretoeat} alt="Restaurants Picture" className="w-full md:w-1/2 md:max-w-md mx-auto" />
+              <img src={wheretoeat} alt="Restaurants Picture" className="w-1/2 md:w-full md:max-w-md mx-auto" />
               <div className="text-center md:text-left">
                 <h1 className="text-lg md:text-3xl font-semibold mb-2 md:mb-4 text-white">
                   Discover
@@ -59,7 +59,7 @@ const Home = () => {
             </div>
             {/* slide 3 */}
             <div className="slide-content my-14 md:my-8 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
-              <img src={viewRoute_req} alt="Home Picture" className="w-full md:w-1/3 md:max-w-xs mx-auto" />
+              <img src={viewRoute_req} alt="Home Picture" className="w-1/2 md:w-full md:max-w-xs mx-auto" />
               <div className="text-center md:text-left">
                 <h1 className="text-lg md:text-3xl font-semibold mb-2 md:mb-4 text-white">
                   View your
@@ -75,7 +75,7 @@ const Home = () => {
             </div>
             {/* slide 4 */}
             <div className="slide-content my-14 md:my-8 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
-              <img src={devs} alt="Home Picture" className="w-full md:w-1/3 md:max-w-xs mx-auto" />
+              <img src={devs} alt="Home Picture" className="w-1/2 md:w-full md:max-w-xs mx-auto" />
               <div className="text-center md:text-left">
                 <h1 className="text-lg md:text-3xl font-semibold mb-2 md:mb-4 text-white">
                   Meet the
