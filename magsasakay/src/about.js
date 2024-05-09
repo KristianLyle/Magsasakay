@@ -79,13 +79,13 @@ const About = () => {
         <div>
           <div
             id="missionContainer"
-            className="text-white font-Montserrat bg-cover min-w-screen h-[350px] py-2 mt-0"
+            className="text-white font-Montserrat bg-cover min-w-screen md:h-[350px] h-[530px] py-2 mt-0"
             style={{
               backgroundImage: `linear-gradient(to bottom, rgba(13, 112, 177, 1.7), rgba(0,0,0,0.75)), url(${cityImg})`,
             }}
           >
             <div className="absolute top-40 left-0 right-0">
-              <h1 className="mt-130 pt-100 pl-4 text-left font-extrabold text-[50px]">
+              <h1 className="mt-130 pt-100 pl-4 text-left font-extrabold md:text-[50px] text-[30px]">
                 Our Mission
               </h1>
               <div className="box-container p-2 text-left font-semibold text-[18px] whitespace-normal">
@@ -94,8 +94,8 @@ const About = () => {
                   className={`font-normal mx-[4px] ${
                     expanded ? "overflow-y-auto" : "overflow-y-hidden"
                   } max-h-[${
-                    expanded ? "none" : "125px"
-                  }] text-base md:text-lg lg:text-xl`}
+                    expanded ? "none" : "50px"
+                  }] text-base md:text-[5px] lg:text-xl`}
                 >
                   To empower individuals and communities by providing a seamless
                   and efficient route planning platform that simplifies their
@@ -107,21 +107,16 @@ const About = () => {
                   inspire exploration, foster connections, and pave the way for
                   a brighter, more accessible future.
                 </p>
-                <button
-                  onClick={toggleExpand}
-                  className="text-blue-400 ml-2 mt-2"
-                >
-                  {expanded ? "See Less" : "See More"}
-                </button>
+                
               </div>
             </div>
           </div>
 
           <hr />
-          <h1 className="text-white font-Montserrat font-bold mt-8 md:mt-4 ml-10 text-left text-[33px]">
+          <h1 className="text-white font-Montserrat font-bold mt-8 md:mt-4 ml-10 text-left md:text-[33px] text-[20px]">
             About Us
           </h1>
-          <p className="text-white font-Montserrat p-4 ml-6 text-left font-normal text-base md:text-lg lg:text-xl">
+          <p className="text-white font-Montserrat p-4 ml-6 text-left font-normal md:text-lg text-[15px]">
             At our commute app, you'll find a team of dedicated individuals
             driving innovation and excellence. Kristian Lyle Sencil excels as a
             Scrum Master, guiding teams through agile methodologies and
@@ -141,7 +136,7 @@ const About = () => {
           <div className="p-4"></div>
 
           {/* Developer Profile Containers */}
-          <div className="flex flex-wrap justify-center space-y-0 space-x-0 mt-8 md:mt-0">
+          <div className="flex flex-wrap justify-center space-y-5px space-x-0 md:mt-0]">
             <DeveloperProfile
               src={dev1}
               name="Kristian Lyle Sencil"
@@ -185,13 +180,13 @@ const DeveloperProfile = ({ src, name, role, email }) => (
   <div className="flex-container mb-4 md:mb-0 flex-grow">
     <div className="font-Montserrat font-bold text-[35px] text-center text-white mx-4 md:mx-8 rounded-3xl inline-block bg-cover w-full md:max-w-[400px] h-[200px] relative">
       <div className="flex justify-center">
-        <div className="w-40 h-40 overflow-hidden rounded-full border-[1px] mx-auto">
+        <div className="w-40 h-40 overflow-hidden rounded-full border-[1px] mt-6 mx-auto">
           <img className="w-full h-full object-cover" src={src} alt="" />
         </div>
       </div>
-      <span className="text-[20px] font-regular">{name}</span>
-      <p className="text-[15px] mt-2 text-white-500">{role}</p>
-      <p className="text-[15px] mb-2 text-white-500 font-normal">{email}</p>
+      <p className="md:text-[20px] text-[15px] mt-2 font-regular">{name}</p>
+      <p className="md:text-[15px] text-[10px] mt-2 text-white-500">{role}</p>
+      <p className="md:text-[15px] text-[10px] mb-2 text-white-500 font-normal">{email}</p>
     </div>
   </div>
 );
