@@ -111,6 +111,34 @@ app.get("/view-more-restaurants", async (req, res) => {
   }
 });
 
+// Define a new route for fetching all restaurant data sorted by ratings
+app.get("/view-more-restaurants-ratings", async (req, res) => {
+  try {
+    const restaurants = await restaurantModel
+      .find()
+      .sort({ averageRating: -1 });
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching restaurant data." });
+  }
+});
+
+// Define a new route for fetching all restaurant data sorted by alphabetical order
+app.get("/view-more-restaurants-alphabetical", async (req, res) => {
+  try {
+    const restaurants = await restaurantModel.find().sort({ name: 1 });
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching restaurant data." });
+  }
+});
+
 app.post("/fetch-restaurant-details", async (req, res) => {
   try {
     const { restaurantName } = req.body;
