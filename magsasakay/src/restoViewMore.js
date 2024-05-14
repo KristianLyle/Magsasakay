@@ -58,7 +58,11 @@ const ViewMore = () => {
   };
 
   const handleLocationClick = (restaurantName) => {
-    console.log("Location clicked:", restaurantName);
+    // Store the selected restaurant name in localStorage
+    localStorage.setItem("selectedRestaurantId", restaurantName);
+
+    // Redirect to Location page
+    history.push(`/location/${restaurantName}`);
   };
 
   return (
