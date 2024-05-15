@@ -23,6 +23,20 @@
 				"lon": 122.569591,
 				"lat": 10.695007,
 				"image": "img/muelle.jpg"
+			},
+			{
+				"name": "Buto't Balat",
+				"type": "Restaurant",
+				"lon": 122.56846,
+				"lat": 10.69905,
+				"image": "img/butot.jpg"
+			},
+			{
+				"name": "Kong Kee",
+				"type": "Restaurant",
+				"lon": 122.57094,
+				"lat": 10.69428,
+				"image": "img/kong.jpg"
 			}
 		]
 	},
@@ -103,6 +117,20 @@
 				"lon": 122.547,
 				"lat": 10.7178,
 				"image": "img/mamusa.png"
+			},
+			{
+				"name": "Calzada Grill",
+				"type": "Dining",
+				"lon": 122.55179,
+				"lat": 10.70813,
+				"image": "img/calzada.jpg"
+			},
+			{
+				"name": "Mojave Grill and Steak House",
+				"type": "Restaurant",
+				"lon": 122.5507,
+				"lat": 10.70446,
+				"image": "img/mojave.jpg"
 			}
 		]
 	},
@@ -138,11 +166,39 @@
 				"image": "img/carlos.png"
 			},
 			{
+				"name": "The Mellow Mangrove",
+				"type": "Bakeshop",
+				"lon": 122.558,
+				"lat": 10.70092,
+				"image": "img/mangrove.jpg"
+			},
+			{
 				"name": "Mamusa Art Bistro",
 				"type": "Dining",
 				"lon": 122.547,
 				"lat": 10.7178,
 				"image": "img/mamusa.png"
+			},
+			{
+				"name": "Jo's Inato",
+				"type": "Dining",
+				"lon": 122.5666,
+				"lat": 10.69717,
+				"image": "img/jos.jpg"
+			},
+			{
+				"name": "Samurai Talabahan",
+				"type": "Dining",
+				"lon": 122.55278,
+				"lat": 10.70681,
+				"image": "img/samurai.jpg"
+			},
+			{
+				"name": "Barrio Inasal",
+				"type": "Dining",
+				"lon": 122.56046,
+				"lat": 10.69935,
+				"image": "img/barrio.jpg"
 			}
 		]
 	},
