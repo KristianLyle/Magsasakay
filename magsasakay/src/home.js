@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -7,9 +7,29 @@ import home_req from "./img/home_req.png";
 import wheretoeat from "./img/wheretoeat.png";
 import viewRoute_req from "./img/viewRoute_req.png";
 import devs from "./img/devs.png";
+import home_bg from "./img/home_bg.png";
+import slide1bg from "./img/slide1bg.jpg";
+import food from "./img/food.png";
+import jaro from "./img/jaro.jpg";
+import festive from "./img/festive.jpg";
 import "./index.css";
 
 const Home = () => {
+  const [bgImage, setBgImage] = useState(slide1bg);
+
+   const handleSlideChange = (index) => {
+    console.log('Slide changed to index:', index);
+    if (index === 0) {
+      setBgImage(slide1bg); 
+    } else if (index == 1) {
+      setBgImage(food);
+    } else if (index == 2) {
+      setBgImage(jaro);
+    } else if (index == 3) {
+      setBgImage(festive);
+    }
+  };
+
   return (
     <>
       <Router>
@@ -18,13 +38,17 @@ const Home = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div className="relative bg-slide1bg bg-cover font-Montserrat">
-        <div className="absolute inset-0 bg-sky-950 bg-opacity-80"></div>
+      <div className="relative bg-cover font-Montserrat"
+           style={{backgroundImage: `url(${bgImage})`}} >
+
+        <div className="absolute inset-0 bg-sky-950 bg-opacity-75"></div>
         <h1 className="font-extrabold text-white ml-[15px] text-left relative z-10 py-[5px] md:text-[60px] text-[40px]">
-          Welcome to Magsasakay
+          Where to Go In Iloilo
         </h1>
         <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto min-h-screen h-screen mt-[-100px] overflow-auto">
-          <Carousel className="w-full mx-auto rounded-2xl">
+
+          <Carousel className="w-full mx-auto rounded-2xl" onSlideChange={handleSlideChange}>
+
             {/* slide 1 */}
             <div className="slide-content my-14 md:my-8 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
               <img src={home_req} alt="Home Picture" className="w-1/2 md:w-full md:max-w-md mx-auto" />
@@ -41,6 +65,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
             {/* slide 2 */}
             <div className="slide-content my-14 md:my-8 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
               <img src={wheretoeat} alt="Restaurants Picture" className="w-1/2 md:w-full md:max-w-md mx-auto" />
@@ -57,6 +82,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
             {/* slide 3 */}
             <div className="slide-content my-14 md:my-8 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
               <img src={viewRoute_req} alt="Home Picture" className="w-1/2 md:w-full md:max-w-xs mx-auto" />
@@ -73,6 +99,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
             {/* slide 4 */}
             <div className="slide-content my-14 md:my-8 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
               <img src={devs} alt="Home Picture" className="w-1/2 md:w-full md:max-w-xs mx-auto" />
@@ -89,7 +116,9 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
           </Carousel>
+
         </div>
       </div>
     </>

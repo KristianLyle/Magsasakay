@@ -7,8 +7,10 @@ import { useHistory } from "react-router-dom";
 
 const ViewMore = () => {
   const [restaurants, setRestaurants] = useState([]);
-  const history = useHistory();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [restaurantsPerPage] = useState(5); // Number of restaurants per page
   const [expandedRestaurants, setExpandedRestaurants] = useState({});
+  const history = useHistory();
 
   useEffect(() => {
     const status = window.localStorage.getItem("loggedIn");
@@ -58,12 +60,19 @@ const ViewMore = () => {
   };
 
   const handleLocationClick = (restaurantName) => {
-    // Store the selected restaurant name in localStorage
     localStorage.setItem("selectedRestaurantId", restaurantName);
-
-    // Redirect to Location page
     history.push(`/location/${restaurantName}`);
   };
+
+  // Logic for pagination
+  const indexOfLastRestaurant = currentPage * restaurantsPerPage;
+  const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
+  const currentRestaurants = restaurants.slice(
+    indexOfFirstRestaurant,
+    indexOfLastRestaurant
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -101,7 +110,7 @@ const ViewMore = () => {
             </div>
             <br />
             <div className="flex-col">
-              {restaurants.map((restaurant) => (
+              {currentRestaurants.map((restaurant) => (
                 <div key={restaurant.id} className="flex-container pb-4 ">
                   <div
                     className="font-Montserrat font-bold text-[35px] text-center text-white 
@@ -178,6 +187,27 @@ const ViewMore = () => {
               ))}
             </div>
             <br /> <br />
+            <nav className="flex justify-center mt-1">
+              <ul className="pagination flex flex-row">
+                {Array.from({
+                  length: Math.ceil(restaurants.length / restaurantsPerPage),
+                }).map((_, index) => (
+                  <li key={index} className="px-2 mb-[15px]">
+                    <a
+                      onClick={() => paginate(index + 1)}
+                      href="#"
+                      className={` font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
+                        currentPage === index + 1
+                          ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
+                          : "bg-[#EE7200] text-[#160E3D]"
+                      }`}
+                    >
+                      {index + 1}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
