@@ -2,14 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import landmark from "./img/location.jpg";
-import route from "./img/route.jpeg";
-import option_bg from "./img/option_bg.jpeg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faMap, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 
 const Options = () => {
-  const backgroundStyle = {
-    backgroundImage: `linear-gradient(to bottom, rgba(13, 112, 177, 0.7), rgba(140, 13, 240, 0.7)), url(${option_bg})`,
-  };
   return (
     <>
       <Router>
@@ -18,69 +15,55 @@ const Options = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div
-        style={backgroundStyle}
-        className="bg-cover bg-no-repeat bg-center bg-fixed min-h-screen flex justify-center"
-      >
+      <div className="bg-[#240750] bg-cover bg-no-repeat bg-center bg-fixed min-h-screen flex justify-center">
         <div className="mx-auto">
           <div className="">
             <br />
-            <h1 className="text-white font-Montserrat font-extrabold  mt-20 text-4xl md:text-8xl text-center">
+            <h1 className="text-white font-Montserrat font-extrabold text-4xl md:text-6xl text-center pt-20">
               Select Option
-            </h1>{" "}
+            </h1>
             <br />
-            <br /> <br />
+            <br />
+            <br />
             <div className="mx-auto mb-20 flex flex-col md:flex-row justify-center space-x-0 md:space-x-8 space-y-8 md:space-y-0">
               <div className="flex flex-col items-center">
                 <div
-                  className="font-Montserrat font-bold text-xl md:text-4xl text-center text-white 
-                                px-3 py-3 mx-8 md:mx-16 rounded-3xl inline-block border-white border-2
-                                bg-[#8C0DF0] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
-                                hover:border-[#5AF0D5]  hover:text-[#160E3D] glow transition-transform duration-300 delay-100"
+                  className="font-Montserrat font-bold text-xl md:text-2xl text-center text-white 
+                            mx-8 md:mx-16 rounded-3xl inline-block
+                            bg-[#344C64] bg-cover enlarge-on-hover hover:bg-[#57A6A1] hover:bg-opacity-100 transform hover:translate-y-[-10px]
+                            hover:text-[#160E3D] glow transition-transform duration-300 delay-200 flex items-center justify-center w-40 h-40 md:w-80 md:h-80"
                 >
-                  <Link to="/find-routes">
-                    <div className="flex justify-center">
-                      <div className="w-40 md:w-80 h-30 md:h-60 overflow-hidden">
-                        <img
-                        className="w-full h-full object-cover rounded-3xl"
-                        src={landmark}
-                        alt=""
-                      />
-                      </div>
-                      
+                  <Link to="/find-routes" className="w-full h-full flex items-center justify-center">
+                    <div className="flex flex-col items-center">
+                      <FontAwesomeIcon icon={faMapMarkerAlt} className="text-3xl md:text-5xl mb-4" />
+                      <span>Locate Destination</span>
                     </div>
-                    <span>
-                      Locate <br /> Destination
-                    </span>
                   </Link>
                 </div>
               </div>
               <div className="flex flex-col items-center">
                 <div
-                  className="font-Montserrat font-bold text-xl md:text-4xl text-center text-white 
-                                px-3 py-3 mx-16 rounded-3xl inline-block border-white border-2
-                                bg-[#0D70B1] bg-cover enlarge-on-hover hover:bg-opacity-100 transform hover:scale-110
-                                hover:border-[#5AF0D5]  hover:text-[#160E3D] glow transition-transform duration-300 delay-100"
+                  className="font-Montserrat font-bold text-xl md:text-2xl text-center text-white 
+                            mx-16 rounded-3xl inline-block 
+                            bg-[#344C64] bg-cover enlarge-on-hover hover:bg-[#57A6A1] hover:bg-opacity-100 transform hover:translate-y-[-10px]
+                            hover:text-[#160E3D] glow transition-transform duration-300 delay-200 flex items-center justify-center w-40 h-40 md:w-80 md:h-80"
                 >
-                  <Link to="/view-routes">
-                    <div className="flex justify-center">
-                      <div className="w-40 md:w-80 h-30 md:h-60">
-                        <img
-                        className="w-full h-full object-cover rounded-3xl"
-                        src={route}
-                        alt=""
-                      />
-                      </div>
-                      
+                  <Link to="/view-routes" className="w-full h-full flex items-center justify-center">
+                    <div className="flex flex-col items-center">
+                      <FontAwesomeIcon icon={faMap} className="text-3xl md:text-5xl mb-4" />
+                      <span>View PUV Routes</span>
                     </div>
-
-                    <span>
-                      View <br />
-                      PUV Routes
-                    </span>
                   </Link>
                 </div>
               </div>
+
+            </div>
+            {/* Back Button */}
+            <div className="flex justify-center">
+              <Link to="/home" className="text-white text-xl font-semibold hover:underline mt-4">
+                <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
+                Back
+              </Link>
             </div>
           </div>
           <div></div>
