@@ -56,8 +56,9 @@ const ViewMore = () => {
   };
 
   const backgroundStyle = {
-    backgroundImage: `linear-gradient(to bottom, rgba(123, 0, 255, 0.7), rgba(240, 143, 90, 0.7))`,
+    backgroundImage: `linear-gradient(to bottom, rgba(36, 7, 80, 0.9), rgba(36, 7, 80, 0.5))`,
   };
+  
 
   const handleLocationClick = (restaurantName) => {
     localStorage.setItem("selectedRestaurantId", restaurantName);
@@ -93,54 +94,58 @@ const ViewMore = () => {
               >
                 More Restaurants
               </h1>
-              <button
-                onClick={handleRatingsClick}
-                className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg ml-4 mb-4 whitespace-normal"
-                style={{ width: "200px" }}
-              >
-                View by Ratings
-              </button>
-              <button
-                onClick={handleAlphabeticalClick}
-                className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg ml-4 mb-4 whitespace-normal"
-                style={{ width: "200px" }}
-              >
-                View by Alphabetical Order
-              </button>
+              <div className="flex flex-wrap items-center justify-center space-x-2 pt-4">
+                <div className="flex flex-col md:flex-row items-center md:items-start">
+                <button
+                  onClick={handleRatingsClick}
+                  className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal w-[150px] md:w-[200px] h-[40px] md:h-[60px]"
+                >
+                  View by Ratings
+                </button>
+                <button
+                  onClick={handleAlphabeticalClick}
+                  className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal w-[150px] md:w-[200px] h-[40px] md:h-[60px]"
+                >
+                  View by Alphabetical Order
+                </button> 
+                </div>
+                
+              </div>
+              
             </div>
             <br />
-            <div className="flex-col">
+            <div className="flex-col justify-start md:justify-center md:pl-20">
               {currentRestaurants.map((restaurant) => (
-                <div key={restaurant.id} className="flex-container pb-4 ">
+                <div key={restaurant.id} className="flex-container py-4 ">
                   <div
-                    className="font-Montserrat font-bold text-[35px] text-center text-white 
-                    px-3 py-3 mx-16 mt-0 rounded-2xl inline-block shadow-slate-500 border-gray-200 border-[2px] 
-                    bg-[#FFF1F1] bg-cover hover:border-[#5AF0D5] max-w-none max-h-[550px] text-ellipsis ..."
+                    className="font-Montserrat font-bold text-[35px] text-center text-white justify-center
+                    px-3 py-3 mx-16 mt-0 rounded-2xl inline-block shadow-slate-500 border-[#577B8D] border-[2px] 
+                    bg-[#344C64] bg-cover hover:border-[#57A6A1] max-w-[1200px] md:min-w-[1200px] max-h-[550px] md:min-h-[250px] text-ellipsis ..."
                   >
-                    <div className="flex flex-col md:flex-row text-black">
-                      <div className="w-full md:w-1/3 flex justify-center md:justify-start pb-4 md:pb-0">
+                    <div className="flex flex-col md:flex-row text-white">
+                      <div className="w-full md:w-1/3 flex justify-center md:justify-start pb-4 md:pb-0 pt-6 pl-2">
                         <div className="w-full md:w-auto h-20 relative flex items-center justify-center pt-[15px] mt-10 mr-5 ml-5">
                           <img
                             className="object-cover rounded-2xl border-blue-950 border-[2px] bg-[2px] shadow-lg brightness-110"
                             src={restaurant.image}
                             alt={restaurant.name}
                             style={{
-                              width: "200px",
-                              height: "150px",
+                              width: "300px",
+                              height: "200px",
                               minWidth: "200px",
-                              minHeight: "150px",
+                              minHeight: "50px",
                             }}
                           />
                         </div>
                       </div>
-                      <div className="md:text-left mt-4 md:mt-0 md:pl-0">
-                        <span className="text-[15px] md:text-[25px] font-regular md:inline-block">
+                      <div className="md:w-2/3 text-center pt-10 md:pt-0 md:text-left mt-4 md:mt-0 md:pl-0">
+                        <div className="text-[15px] md:text-[25px] font-regular md:inline-block">
                           {restaurant.name}
-                        </span>
+                        </div>
 
                         <div className="box-container mt-0 md:mt-4">
                           <p
-                            className="text-[11px] md:text-[15px] font-normal text-center md:text-left"
+                            className="text-[11px] md:text-[15px] font-normal text-center md:text-start"
                             style={{
                               maxHeight: expandedRestaurants[restaurant.id]
                                 ? "none"
@@ -166,7 +171,7 @@ const ViewMore = () => {
                           <button
                             onClick={() => handleLocationClick(restaurant.name)}
                             className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal"
-                            style={{ width: "150px" }} // Set specific width here
+                            style={{ width: "150px" }} 
                           >
                             Location
                           </button>
@@ -175,7 +180,7 @@ const ViewMore = () => {
                               restaurant.name
                             )}`}
                             className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal"
-                            style={{ minWidth: "150px" }} // Set specific width here
+                            style={{ minWidth: "150px" }} 
                           >
                             View Reviews
                           </Link>

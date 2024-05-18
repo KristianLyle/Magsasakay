@@ -29,7 +29,7 @@ const Options = () => {
               <div className="flex flex-col items-center">
                 <div
                   className="font-Montserrat font-bold text-xl md:text-2xl text-center text-white 
-                            mx-8 md:mx-16 rounded-3xl inline-block
+                            mx-8 md:mx-16 rounded-3xl  
                             bg-[#344C64] bg-cover enlarge-on-hover hover:bg-[#57A6A1] hover:bg-opacity-100 transform hover:translate-y-[-10px]
                             hover:text-[#160E3D] glow transition-transform duration-300 delay-200 flex items-center justify-center w-40 h-40 md:w-80 md:h-80"
                 >
@@ -44,7 +44,7 @@ const Options = () => {
               <div className="flex flex-col items-center">
                 <div
                   className="font-Montserrat font-bold text-xl md:text-2xl text-center text-white 
-                            mx-16 rounded-3xl inline-block 
+                            mx-16 rounded-3xl  
                             bg-[#344C64] bg-cover enlarge-on-hover hover:bg-[#57A6A1] hover:bg-opacity-100 transform hover:translate-y-[-10px]
                             hover:text-[#160E3D] glow transition-transform duration-300 delay-200 flex items-center justify-center w-40 h-40 md:w-80 md:h-80"
                 >

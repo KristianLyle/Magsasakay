@@ -24,7 +24,7 @@ body {
 /* Title style */
 .jeepney-routes-title {
     color: #f4b55e;
-    background-color: #1d4b56;
+    background-color: #240750;
     border-bottom: 2px solid #13343c;
     width: 100%;
     font-family: 'Montserrat', sans-serif
@@ -41,7 +41,7 @@ body {
 
 /* Contents style */
 .jeepney-routes-contents {
-    background-color: #160E3D;
+    background-color: #344C64;
     color: white;
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@ body {
 
 /* Horizontal divider */
 .horizontal-divider {
-    border: 1px solid #4a077d;
+    border: 1px solid #577B8D;
 }
 
 /* Media query for smaller screens */
