@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./index.css";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 const ViewMore = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [restaurantsPerPage] = useState(5); // Number of restaurants per page
   const [expandedRestaurants, setExpandedRestaurants] = useState({});
+  const [dropdownRatingOpen, setDropdownRatingOpen] = useState(false);
+  const [dropdownAlphabeticalOpen, setDropdownAlphabeticalOpen] =
+    useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -40,12 +42,22 @@ const ViewMore = () => {
       );
   };
 
-  const handleRatingsClick = () => {
-    fetchData("http://localhost:3001/view-more-restaurants-ratings");
+  const handleRatingsClick = (order) => {
+    const url =
+      order === "highest"
+        ? "http://localhost:3001/view-more-restaurants-ratings-highest"
+        : "http://localhost:3001/view-more-restaurants-ratings-lowest";
+    fetchData(url);
+    setDropdownRatingOpen(false);
   };
 
-  const handleAlphabeticalClick = () => {
-    fetchData("http://localhost:3001/view-more-restaurants-alphabetical");
+  const handleAlphabeticalClick = (order) => {
+    const url =
+      order === "AZ"
+        ? "http://localhost:3001/view-more-restaurants-alphabetical-AZ"
+        : "http://localhost:3001/view-more-restaurants-alphabetical-ZA";
+    fetchData(url);
+    setDropdownAlphabeticalOpen(false);
   };
 
   const toggleDescription = (restaurantId) => {
@@ -58,7 +70,6 @@ const ViewMore = () => {
   const backgroundStyle = {
     backgroundImage: `linear-gradient(to bottom, rgba(36, 7, 80, 0.9), rgba(36, 7, 80, 0.5))`,
   };
-  
 
   const handleLocationClick = (restaurantName) => {
     localStorage.setItem("selectedRestaurantId", restaurantName);
@@ -74,6 +85,14 @@ const ViewMore = () => {
   );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const toggleDropdownRating = () => {
+    setDropdownRatingOpen(!dropdownRatingOpen);
+  };
+
+  const toggleDropdownAlphabetical = () => {
+    setDropdownAlphabeticalOpen(!dropdownAlphabeticalOpen);
+  };
 
   return (
     <>
@@ -96,30 +115,64 @@ const ViewMore = () => {
               </h1>
               <div className="flex flex-wrap items-center justify-center space-x-2 pt-4">
                 <div className="flex flex-col md:flex-row items-center md:items-start">
-                <button
-                  onClick={handleRatingsClick}
-                  className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal w-[150px] md:w-[200px] h-[40px] md:h-[60px]"
-                >
-                  View by Ratings
-                </button>
-                <button
-                  onClick={handleAlphabeticalClick}
-                  className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal w-[150px] md:w-[200px] h-[40px] md:h-[60px]"
-                >
-                  View by Alphabetical Order
-                </button> 
+                  <div className="relative inline-block text-left">
+                    <button
+                      onClick={toggleDropdownRating}
+                      className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg w-[150px] md:w-[200px] h-[40px] md:h-[60px]"
+                    >
+                      View by Ratings
+                    </button>
+                    {dropdownRatingOpen && (
+                      <div className="absolute right-0 mt-2 w-[150px] md:w-[200px] bg-white rounded-md shadow-lg">
+                        <button
+                          onClick={() => handleRatingsClick("highest")}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Highest to Lowest
+                        </button>
+                        <button
+                          onClick={() => handleRatingsClick("lowest")}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Lowest to Highest
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  <div className="relative inline-block text-left">
+                    <button
+                      onClick={toggleDropdownAlphabetical}
+                      className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg w-[150px] md:w-[200px] h-[40px] md:h-[60px]"
+                    >
+                      View by Alphabetical Order
+                    </button>
+                    {dropdownAlphabeticalOpen && (
+                      <div className="absolute right-0 mt-2 w-[150px] md:w-[200px] bg-white rounded-md shadow-lg">
+                        <button
+                          onClick={() => handleAlphabeticalClick("AZ")}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          A - Z
+                        </button>
+                        <button
+                          onClick={() => handleAlphabeticalClick("ZA")}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Z - A
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                
               </div>
-              
             </div>
             <br />
             <div className="flex-col justify-start md:justify-center md:pl-20">
               {currentRestaurants.map((restaurant) => (
-                <div key={restaurant.id} className="flex-container py-4 ">
+                <div key={restaurant.id} className="flex-container py-4">
                   <div
                     className="font-Montserrat font-bold text-[35px] text-center text-white justify-center
-                    px-3 py-3 mx-16 mt-0 rounded-2xl inline-block shadow-slate-500 border-[#577B8D] border-[2px] 
+                    px-3 py-3 mx-16 mt-0 rounded-2xl inline-block shadow-slate-500 border-[#577B8D] border-[2px]
                     bg-[#344C64] bg-cover hover:border-[#57A6A1] max-w-[1200px] md:min-w-[1200px] max-h-[550px] md:min-h-[250px] text-ellipsis ..."
                   >
                     <div className="flex flex-col md:flex-row text-white">
@@ -171,7 +224,7 @@ const ViewMore = () => {
                           <button
                             onClick={() => handleLocationClick(restaurant.name)}
                             className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal"
-                            style={{ width: "150px" }} 
+                            style={{ width: "150px" }}
                           >
                             Location
                           </button>
@@ -180,7 +233,7 @@ const ViewMore = () => {
                               restaurant.name
                             )}`}
                             className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal"
-                            style={{ minWidth: "150px" }} 
+                            style={{ minWidth: "150px" }}
                           >
                             View Reviews
                           </Link>
@@ -201,7 +254,7 @@ const ViewMore = () => {
                     <a
                       onClick={() => paginate(index + 1)}
                       href="#"
-                      className={` font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
+                      className={`font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
                         currentPage === index + 1
                           ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
                           : "bg-[#EE7200] text-[#160E3D]"
