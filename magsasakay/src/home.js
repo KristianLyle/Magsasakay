@@ -38,7 +38,7 @@ const Home = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div className="relative bg-cover font-Montserrat"
+      <div className="relative z-[0] bg-cover font-Montserrat"
            style={{backgroundImage: `url(${bgImage})`}} >
 
         <div className="absolute inset-0 bg-sky-950 bg-opacity-75"></div>
@@ -53,14 +53,14 @@ const Home = () => {
             <div className="slide-content my-14 md:my-8 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
               <img src={home_req} alt="Home Picture" className="w-1/2 md:w-full md:max-w-md mx-auto" />
               <div className="text-center md:text-left">
-                <h1 className="text-lg md:text-3xl font-semibold mb-2 md:mb-4 text-white">
+                <h1 className="text-lg md:text-3xl lg:text-[350%] font-semibold mb-2 md:mb-4 text-white">
                   Where to Go
                 </h1>
-                <div className="text-white leading-snug text-lg md:text-3xl font-semibold"> In Iloilo </div>
-                <p className="text-white text-sm md:text-base mt-2 md:mt-4">
+                <div className="text-white leading-snug text-lg md:text-3xl lg:text-[350%] font-semibold"> In Iloilo </div>
+                <p className="text-white text-sm md:text-base mt-2 md:mt-4 lg:text-[150%]">
                   Discover seamless public transportation options to your destination and explore top-rated traveler-recommended restaurants in the city. Plan your journey effortlessly, read honest reviews. Your guide to travel and dining adventures. Start exploring now!
                 </p>
-                <div className="text-white font-Montserrat font-semibold text-sm md:text-[24px] text-center mt-2 md:mt-4 bg-resto_but rounded-full inline-block border-white border-[2px] px-4 md:px-10 py-2 md:py-2 transform hover:scale-105 hover:font-semibold hover:text-[orange]">
+                <div className="text-white font-Montserrat font-semibold lg:text-[200%] text-sm md:text-[24px] text-center mt-2 md:mt-4 bg-resto_but rounded-full inline-block border-white border-[2px] px-4 md:px-10 py-2 md:py-2 transform hover:scale-105 hover:font-semibold hover:text-[orange]">
                   <Link to="/routes">Where to go in Iloilo</Link>
                 </div>
               </div>
@@ -73,11 +73,11 @@ const Home = () => {
                 <h1 className="text-lg md:text-3xl font-semibold mb-2 md:mb-4 text-white">
                   Discover
                 </h1>
-                <div className="text-white leading-snug text-lg md:text-3xl font-semibold"> Iloilo's Finest </div>
-                <p className="text-white text-sm md:text-base mt-2 md:mt-4">
+                <div className="text-white leading-snug text-lg md:text-3xl font-semibold lg:text-[350%]"> Iloilo's Finest </div>
+                <p className="text-white text-sm md:text-base mt-2 md:mt-4 lg:text-[150%]">
                   Explore Iloilo's diverse dining scene, ranging from traditional eateries to bistros, each offering a unique blend of flavors inspired by the city's rich heritage. Join us as we uncover the culinary gems of Iloilo, promising unforgettable dining experiences at every turn.
                 </p>
-                <div className="text-white font-Montserrat font-semibold text-sm md:text-[24px] text-center mt-2 md:mt-4 bg-wte_bg rounded-full inline-block border-white border-[2px] px-4 md:px-10 py-2 md:py-2 transform hover:scale-105 hover:font-semibold hover:text-[orange]">
+                <div className="text-white font-Montserrat lg:text-[200%] font-semibold text-sm md:text-[24px] text-center mt-2 md:mt-4 bg-wte_bg rounded-full inline-block border-white border-[2px] px-4 md:px-10 py-2 md:py-2 transform hover:scale-105 hover:font-semibold hover:text-[orange]">
                   <Link to="/restaurants">Explore Restaurants</Link>
                 </div>
               </div>
@@ -90,11 +90,11 @@ const Home = () => {
                 <h1 className="text-lg md:text-3xl font-semibold mb-2 md:mb-4 text-white">
                   View your
                 </h1>
-                <div className="text-white leading-snug text-lg md:text-3xl font-semibold"> Profile </div>
-                <p className="text-white text-sm md:text-base mt-2 md:mt-4">
+                <div className="text-white leading-snug text-lg md:text-3xl font-semibold lg:text-[350%]"> Profile </div>
+                <p className="text-white text-sm md:text-base mt-2 md:mt-4 lg:text-[150%]">
                   Welcome to your profile! This is your personal space where you can showcase your interests, and experiences. From sharing your latest adventures to expressing yourself freely. Explore, update, and make this space truly yours. Let your profile reflect the unique story of who you are.
                 </p>
-                <div className="text-white font-Montserrat font-semibold text-sm md:text-[24px] text-center mt-2 md:mt-4 bg-ilonight rounded-full inline-block border-white border-[2px] px-4 md:px-10 py-2 md:py-2 transform hover:scale-105 hover:font-semibold hover:text-[orange]">
+                <div className="text-white font-Montserrat font-semibold text-sm md:text-[24px] lg:text-[200%] text-center mt-2 md:mt-4 bg-ilonight rounded-full inline-block border-white border-[2px] px-4 md:px-10 py-2 md:py-2 transform hover:scale-105 hover:font-semibold hover:text-[orange]">
                   <Link to="/profile">Visit Profile</Link>
                 </div>
               </div>
@@ -107,11 +107,11 @@ const Home = () => {
                 <h1 className="text-lg md:text-3xl font-semibold mb-2 md:mb-4 text-white">
                   Meet the
                 </h1>
-                <div className="text-white leading-snug text-lg md:text-3xl font-semibold"> Developers </div>
-                <p className="text-white text-sm md:text-base mt-2 md:mt-4">
+                <div className="text-white leading-snug text-lg md:text-3xl font-semibold lg:text-[350%]"> Developers </div>
+                <p className="text-white text-sm md:text-base mt-2 md:mt-4 lg:text-[150%]">
                   Come and meet the team behind the project 'Magsasakay'! We're a group of passionate individuals dedicated to revolutionizing the way people commute. Together, we're shaping the future of transportation, one innovative idea at a time. Get to know us, our mission, and our journey as we pave the way for a smoother, smarter way to travel. Welcome aboard!
                 </p>
-                <div className="text-white font-Montserrat font-semibold text-sm md:text-[24px] text-center mt-2 md:mt-4 bg-iloilo1 rounded-full inline-block border-white border-[2px] px-4 md:px-10 py-2 md:py-2 transform hover:scale-105 hover:font-semibold hover:text-[orange]">
+                <div className="text-white font-Montserrat font-semibold text-sm lg:text-[200%] md:text-[24px] text-center mt-2 md:mt-4 bg-iloilo1 rounded-full inline-block border-white border-[2px] px-4 md:px-10 py-2 md:py-2 transform hover:scale-105 hover:font-semibold hover:text-[orange]">
                   <Link to="/about">About us</Link>
                 </div>
               </div>

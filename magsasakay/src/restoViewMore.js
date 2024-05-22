@@ -118,7 +118,7 @@ const ViewMore = () => {
                   <div className="relative inline-block text-left">
                     <button
                       onClick={toggleDropdownRating}
-                      className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg w-[150px] md:w-[200px] h-[40px] md:h-[60px]"
+                      className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full mr-[15px] font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg w-[150px] md:w-[200px] h-[40px] md:h-[60px]"
                     >
                       View by Ratings
                     </button>
@@ -173,7 +173,7 @@ const ViewMore = () => {
                   <div
                     className="font-Montserrat font-bold text-[35px] text-center text-white justify-center
                     px-3 py-3 mx-16 mt-0 rounded-2xl inline-block shadow-slate-500 border-[#577B8D] border-[2px]
-                    bg-[#344C64] bg-cover hover:border-[#57A6A1] max-w-[1200px] md:min-w-[1200px] max-h-[550px] md:min-h-[250px] text-ellipsis ..."
+                    bg-[#160E3D] bg-cover hover:border-[#57A6A1] max-w-[1200px] md:min-w-[1200px] max-h-[550px] md:min-h-[250px] text-ellipsis ..."
                   >
                     <div className="flex flex-col md:flex-row text-white">
                       <div className="w-full md:w-1/3 flex justify-center md:justify-start pb-4 md:pb-0 pt-6 pl-2">
