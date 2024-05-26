@@ -5666,7 +5666,7 @@
 	},
 	{
 		"category": "Restaurants",
-		"name": "Tatoys Manokan",
+		"name": "Tatoy's Manokan",
 		"location": [10.6801, 122.51077]
 	},
 	{
@@ -6031,6 +6031,11 @@
 	},
 	{
 		"category": "Restaurants",
+		"name": "Molo Mansion Cafe",
+		"location": [10.696544, 122.54342]
+	},
+	{
+		"category": "Restaurants",
 		"name": "Z Burger Iloilo",
 		"location": [10.70867, 122.54983]
 	},
@@ -6143,6 +6148,11 @@
 		"category": "Restaurants",
 		"name": "Minute Burger",
 		"location": [10.6994, 122.55178]
+	},
+	{
+		"category": "Restaurants",
+		"name": "Mamusa Art Bistro",
+		"location": [10.7178, 122.547]
 	},
 	{
 		"category": "Restaurants",
@@ -7391,6 +7401,11 @@
 	},
 	{
 		"category": "Restaurants",
+		"name": "Carlos Bakeshop",
+		"location": [10.7144, 122.551]
+	},
+	{
+		"category": "Restaurants",
 		"name": "Day Care Center 2",
 		"location": [10.73493, 122.54908]
 	},
@@ -7416,7 +7431,7 @@
 	},
 	{
 		"category": "Restaurants",
-		"name": "Muelle",
+		"name": "Muelle Deli and Restaurant",
 		"location": [10.703, 122.57071]
 	},
 	{
@@ -9486,7 +9501,7 @@
 	},
 	{
 		"category": "Restaurants",
-		"name": "Roberto's",
+		"name": "Roberto's Siopao",
 		"location": [10.6936, 122.57122]
 	}
 ]

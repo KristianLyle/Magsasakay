@@ -72,8 +72,8 @@ const ViewMore = () => {
   };
 
   const handleLocationClick = (restaurantName) => {
-    localStorage.setItem("selectedRestaurantId", restaurantName);
-    history.push(`/location/${restaurantName}`);
+    const encodedRestaurantName = encodeURIComponent(restaurantName);
+    history.push(`/find-routes?restaurant=${encodedRestaurantName}`);
   };
 
   // Logic for pagination
