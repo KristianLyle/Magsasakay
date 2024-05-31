@@ -3,6 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import "./index.css";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ViewMore = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -192,8 +194,39 @@ const ViewMore = () => {
                         </div>
                       </div>
                       <div className="md:w-2/3 text-center pt-10 md:pt-0 md:text-left mt-4 md:mt-0 md:pl-0">
-                        <div className="text-[15px] md:text-[25px] font-regular md:inline-block">
-                          {restaurant.name}
+                        <div className="text-[15px] md:text-[25px] font-regular flex items-center">
+                          <span>{restaurant.name}</span>
+                          <div className="flex items-center ml-[-2px] md:ml-[20px] mt-2 md:mt-0 mb-4 md:mb-0">
+                            {[...Array(5)].map((_, i) => (
+                              <FontAwesomeIcon
+                                key={i}
+                                icon={
+                                  i < restaurant.averageRating
+                                    ? faStar
+                                    : ["far", "star"]
+                                }
+                                className="star-icon"
+                                style={{
+                                  color:
+                                    i < restaurant.averageRating
+                                      ? "#FFD700"
+                                      : "#ccc",
+                                  fontSize: "20px",
+                                  marginRight: "4px",
+                                }}
+                                onMouseEnter={(e) =>
+                                  (e.target.style.color =
+                                    "#yourDesiredHoverColor")
+                                }
+                                onMouseLeave={(e) =>
+                                  (e.target.style.color =
+                                    i < restaurant.averageRating
+                                      ? "#FFD700"
+                                      : "#ccc")
+                                }
+                              />
+                            ))}
+                          </div>
                         </div>
 
                         <div className="box-container mt-0 md:mt-4">
