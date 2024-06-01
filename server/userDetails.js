@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
     username: String,
     password: String,
     userimage: String,
-    bio: String,
+    // bio: String,
   },
   { collection: "users" }
 );

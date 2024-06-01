@@ -279,7 +279,9 @@ app.post("/fetch-user-reviews", async (req, res) => {
     const { userName } = req.body;
 
     // Find all reviews for the specific user
-    const userReviews = await reviewModel.find({ username: userName });
+    const userReviews = await reviewModel
+      .find({ username: userName })
+      .sort({ createdAt: -1 });
     res.json(userReviews);
   } catch (error) {
     console.error(error);
@@ -387,13 +389,29 @@ app.post("/fetch-user-details", async (req, res) => {
 });
 
 // Add a new route for updating user profile
-app.post("/update-user-bio", async (req, res) => {
+app.post("/update-user-info", async (req, res) => {
   try {
-    const { email, bio } = req.body;
+    const { currentEmail, username, email, password } = req.body;
+
+    const updateData = {};
+
+    if (username) {
+      updateData.username = username;
+    }
+
+    if (email) {
+      updateData.email = email;
+    }
+
+    if (password) {
+      // Ensure to hash the password before saving it to the database
+      const hashedPassword = await bcrypt.hash(password, 10);
+      updateData.password = hashedPassword;
+    }
 
     const updatedProfile = await userModel.findOneAndUpdate(
-      { email },
-      { $set: { bio } },
+      { email: currentEmail },
+      { $set: updateData },
       { new: true }
     );
 

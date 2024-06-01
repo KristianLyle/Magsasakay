@@ -32,8 +32,8 @@ const ProfileReviews = () => {
   };
 
   const handleDeleteClick = (reviewId) => {
-    window.localStorage.setItem("reviewID", reviewId);
     setShowConfirmation(true);
+    window.localStorage.setItem("reviewId", reviewId);
   };
 
   const handleSaveClick = (index, reviewId) => {
@@ -58,7 +58,8 @@ const ProfileReviews = () => {
     setEditingIndex(null);
   };
 
-  const handleConfirmDelete = (reviewId) => {
+  const handleConfirmDelete = () => {
+    const reviewId = window.localStorage.getItem("reviewId");
     Axios.post("http://localhost:3001/delete-review", {
       reviewId,
     })
@@ -94,16 +95,19 @@ const ProfileReviews = () => {
   };
 
   return (
-    <div className="ml-[550px] font-Montserrat bg-[#7826D0] max-w-full text-white p-[5px] rounded-[30px]
+    <div
+      className="ml-[550px] font-Montserrat bg-[#7826D0] max-w-full text-white p-[5px] rounded-[30px]
                    phone:ml-[205px] phone:max-w-[190px] phone:p-[1px]
-                   md:ml-[550px] md:max-w-full md-p-[5px] md:mr-[20px]">
-
-      <h1 className="ml-[20px] font-extrabold text-[35px]
+                   md:ml-[550px] md:max-w-full md-p-[5px] md:mr-[20px]"
+    >
+      <h1
+        className="ml-[20px] font-extrabold text-[35px]
                     phone:ml-[15px] phone:text-[25px] phone:p-[1px] phone:text-center
-                    md:ml-[20px] md:text-[35px]">
+                    md:ml-[20px] md:text-[35px]"
+      >
         Restaurant Reviews
       </h1>
-      
+
       <ul className="ml-[15px] p-[5px]">
         {currentReviews.map((review, index) => (
           <li key={review._id} className="max-w-[500px] px-[2px]">
@@ -114,11 +118,17 @@ const ProfileReviews = () => {
             >
               {review.restaurant}
             </Link>
+            <p className="text-[12px] text-gray-1000 mt-1">
+              {new Date(review.createdAt).toLocaleDateString()}{" "}
+              {new Date(review.createdAt).toLocaleTimeString()}
+            </p>
 
             {editingIndex === index ? (
-              <div className="bg-white text-black px-1 py-5 text-[15px] w-[850px] max-w-[900px] max-h-[100px] rounded-[15px] overflow-y-auto
+              <div
+                className="bg-white text-black px-1 py-5 text-[15px] w-[850px] max-w-[900px] max-h-[100px] rounded-[15px] overflow-y-auto
                               phone:text-[7px] phone:w-[90%] phone:max-w-[90%] phone:min-h-[50%]
-                              md:text-[15px] md:w-[850px] md:max-w-[900px] ">
+                              md:text-[15px] md:w-[850px] md:max-w-[900px] "
+              >
                 <textarea
                   className="w-full h-full"
                   value={editedText}
@@ -144,10 +154,12 @@ const ProfileReviews = () => {
                 </button>
               </div>
             ) : (
-              <div className="bg-white text-black px-3 py-5 text-[15px] w-[850px] max-w-[900px] max-h-[100px] min-h-[100px] rounded-[15px] overflow-auto
+              <div
+                className="bg-white text-black px-3 py-5 text-[15px] w-[850px] max-w-[900px] max-h-[100px] min-h-[100px] rounded-[15px] overflow-auto
                              phone:text-[7px] phone:w-[90%] phone:max-w-[90%] phone:min-h-[50%]
                              md:text-[15px] md:w-[850px] md:max-w-[900px] md:min-h-[100px]
-                             ">
+                             "
+              >
                 {review.review}
               </div>
             )}
@@ -172,7 +184,7 @@ const ProfileReviews = () => {
               {showConfirmation && (
                 <DeleteConfirmation
                   message="Are you sure you want to delete?"
-                  onConfirm={() => handleConfirmDelete(review._id)}
+                  onConfirm={() => handleConfirmDelete()}
                   onCancel={handleCancelDelete}
                 />
               )}

@@ -42,11 +42,28 @@ const ProfileCard = () => {
       return;
     }
 
+    const updateData = {};
+
+    if (editedName && editedName !== currentUser.username) {
+      updateData.username = editedName;
+    }
+
+    if (editedEmail && editedEmail !== currentUser.email) {
+      updateData.email = editedEmail;
+    }
+
+    if (editedPassword) {
+      updateData.password = editedPassword;
+    }
+
+    if (Object.keys(updateData).length === 0) {
+      setEditingInfo(false);
+      return;
+    }
+
     Axios.post("http://localhost:3001/update-user-info", {
-      email: currentUser.email,
-      name: currentUser.username,
-      newEmail: editedEmail,
-      password: editedPassword,
+      currentEmail: currentUser.email,
+      ...updateData,
     })
       .then((response) => {
         if (response.status === 201) {
@@ -55,8 +72,7 @@ const ProfileCard = () => {
           // Update the user details in the state with the new info
           setCurrentUser((prevUser) => ({
             ...prevUser,
-            name: editedName,
-            email: editedEmail,
+            ...updateData,
           }));
           // Clear the password fields
           setEditedPassword("");
@@ -112,9 +128,11 @@ const ProfileCard = () => {
 
   return (
     <>
-      <div className="w-[505px] h-full rounded-[4px] pb-[20px] bg-gradient-to-t from-blue-400 to-orange-500 text-center font-Montserrat
+      <div
+        className="w-[505px] h-full rounded-[4px] pb-[20px] bg-gradient-to-t from-blue-400 to-orange-500 text-center font-Montserrat
                      phone:w-4/5 phone:h-1/2 phone:pb-0
-                     md:w-[505px] md:h-full md:pb-[20px]">
+                     md:w-[505px] md:h-full md:pb-[20px]"
+      >
         <div
           className="h-[350px] rounded-[4px_4px_0px_0px]"
           style={{ backgroundImage: `url(${city})` }}
@@ -128,7 +146,7 @@ const ProfileCard = () => {
               src={displayedPicture || user}
               className="h-[200px] w-[200px] rounded-[100px] mt-[-125px] p-[5px] bg-white ml-[150px]
                         phone:w-2/3 phone:h-2/3 phone:ml-7 phone:mt-[-75px]
-                        md:w-[200px] md:h-[200px] md:ml-[150px] md:mt-[-125px] md:rounded-full" 
+                        md:w-[200px] md:h-[200px] md:ml-[150px] md:mt-[-125px] md:rounded-full"
             />
             <input
               type="file"
@@ -155,22 +173,24 @@ const ProfileCard = () => {
               </>
             )}
           </label>
-          <div className="profile-title text-[26px] font-semibold text-white
+          <div
+            className="profile-title text-[26px] font-semibold text-white
                           phone:text-base
-                          md:text-[26px]">
+                          md:text-[26px]"
+          >
             {currentUser.username}
-          </div> 
-          <div className = "text-white font-thin"> 
-            {currentUser.email}
           </div>
-          
-          <br/>
+          <div className="text-white font-thin">{currentUser.email}</div>
+
+          <br />
 
           {editingInfo ? (
-            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] overflow-auto
+            <div
+              className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] overflow-auto
                             phone:text-[7.5px] phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px] 
                             md:text-[15px] md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg
-                            ">
+                            "
+            >
               <input
                 type="text"
                 value={editedName}
@@ -225,9 +245,11 @@ const ProfileCard = () => {
               </button>
             </div>
           ) : (
-            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center rounded-[15px] overflow-auto
+            <div
+              className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center rounded-[15px] overflow-auto
                             phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
-                            md:ml-[27px] md:mr-0 md:max-w-[450px]">
+                            md:ml-[27px] md:mr-0 md:max-w-[450px]"
+            >
               <button
                 onClick={handleEditInfoClick}
                 className=" bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]

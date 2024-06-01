@@ -178,6 +178,10 @@ const RestoReviews = () => {
                 />
               ))}
             </div>
+            <p className="text-[12px] text-gray-500 mt-1">
+              {new Date(review.createdAt).toLocaleDateString()}{" "}
+              {new Date(review.createdAt).toLocaleTimeString()}
+            </p>
             <p
               className={`ml-2 font-medium max-w-[1000px] py-5 ${
                 showFullReview || !isSmallScreen
@@ -213,7 +217,10 @@ const RestoReviews = () => {
   // Logic for pagination
   const indexOfLastReview = currentPage * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-  const currentReviews = postedReviews.slice(indexOfFirstReview, indexOfLastReview);
+  const currentReviews = postedReviews.slice(
+    indexOfFirstReview,
+    indexOfLastReview
+  );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -328,29 +335,39 @@ const RestoReviews = () => {
             </div>
           </div>
           {currentReviews.length > 0 && (
-          <div>
-            <ul>
-              {currentReviews.map((review, index) => (
-                <li key={index}>
-                  <Review review={review} />
-                  <br />
-                </li>
-              ))}
-            </ul>
-            <br />
-            <nav className="flex justify-center mt-1">
-              <ul className="pagination flex flex-row">
-                {Array.from({ length: Math.ceil(postedReviews.length / reviewsPerPage) }).map((_, index) => (
-                  <li key={index} className="px-2 mb-[15px]">
-                    <a onClick={() => paginate(index + 1)} href="#" className={` font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${currentPage === index + 1 ? "bg-[#160E3D] text-white px-4 py-2 rounded-full" : "bg-[#EE7200] text-[#160E3D]"}`}>
-                      {index + 1}
-                    </a>
+            <div>
+              <ul>
+                {currentReviews.map((review, index) => (
+                  <li key={index}>
+                    <Review review={review} />
+                    <br />
                   </li>
-            ))}
-      </ul>
-    </nav>
-  </div>
-)}
+                ))}
+              </ul>
+              <br />
+              <nav className="flex justify-center mt-1">
+                <ul className="pagination flex flex-row">
+                  {Array.from({
+                    length: Math.ceil(postedReviews.length / reviewsPerPage),
+                  }).map((_, index) => (
+                    <li key={index} className="px-2 mb-[15px]">
+                      <a
+                        onClick={() => paginate(index + 1)}
+                        href="#"
+                        className={` font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
+                          currentPage === index + 1
+                            ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
+                            : "bg-[#EE7200] text-[#160E3D]"
+                        }`}
+                      >
+                        {index + 1}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          )}
         </div>
       </div>
     </>
