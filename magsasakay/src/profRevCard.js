@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const ProfileReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const reviewsPerPage = 5;
+  const reviewsPerPage = 3;
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editedText, setEditedText] = useState("");
@@ -183,24 +183,27 @@ const ProfileReviews = () => {
       </ul>
 
       {/* Pagination */}
-      <div className="pagination">
-        {reviews.length > reviewsPerPage && (
-          <ul className="flex justify-center">
-            {Array.from({ length: Math.ceil(reviews.length / reviewsPerPage) }, (_, i) => (
-              <li key={i} className="px-3 py-1">
-                <button
-                  onClick={() => paginate(i + 1)}
-                  className={`bg-[#EE7200] text-white font-bold py-2 px-4 rounded-full hover:bg-[#160E3D] hover:text-white ${
-                    currentPage === i + 1 ? "bg-[#160E3D]" : ""
-                  }`}
-                >
-                  {i + 1}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <nav className="flex justify-center mt-1">
+        <ul className="pagination flex flex-row">
+          {Array.from({
+            length: Math.ceil(reviews.length / reviewsPerPage),
+          }).map((_, index) => (
+            <li key={index} className="px-2 mb-[15px]">
+              <a
+                onClick={() => paginate(index + 1)}
+                href="#"
+                className={`font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
+                  currentPage === index + 1
+                    ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
+                    : "bg-[#EE7200] text-[#160E3D]"
+                }`}
+              >
+                {index + 1}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 };

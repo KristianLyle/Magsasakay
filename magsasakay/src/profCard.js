@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode"; // Corrected import statement
 import user from "./img/default-user.jpg";
 import city from "./img/city.png";
 
 const ProfileCard = () => {
-  const [editingBio, setEditingBio] = useState(false);
-  const [editedBio, setEditedBio] = useState("");
+  const [editingInfo, setEditingInfo] = useState(false);
+  const [editedName, setEditedName] = useState("");
+  const [editedEmail, setEditedEmail] = useState("");
+  const [editedPassword, setEditedPassword] = useState("");
+  const [retypePassword, setRetypePassword] = useState("");
   const [editedPicture, setEditedPicture] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [showSaveButton, setShowSaveButton] = useState(false);
   const [displayedPicture, setDisplayedPicture] = useState(null);
 
   useEffect(() => {
-    // Fetch user details from the server on component mount
     const token = localStorage.getItem("token");
     const decodedToken = jwtDecode(token);
     const userName = decodedToken.username;
     Axios.post("http://localhost:3001/fetch-user-details", { userName })
       .then((response) => {
         setCurrentUser(response.data);
-        setEditedBio(response.data.bio); // Set initial bio value
+        setEditedName(response.data.name); // Set initial name value
+        setEditedEmail(response.data.email); // Set initial email value
         setEditedPicture(response.data.userimage); // Set initial picture value
         setDisplayedPicture(response.data.userimage); // Set initial displayed picture value
       })
@@ -29,36 +32,51 @@ const ProfileCard = () => {
       });
   }, []);
 
-  const backgroundStyle = {
-    backgroundImage: `url(${city})`,
+  const handleEditInfoClick = () => {
+    setEditingInfo(true);
   };
 
-  const handleEditBioClick = () => {
-    setEditingBio(true);
-  };
+  const handleSaveInfoClick = () => {
+    if (editedPassword && editedPassword !== retypePassword) {
+      alert("Passwords do not match");
+      return;
+    }
 
-  const handleSaveBioClick = () => {
-    // Send a request to the server to update the user bio in the database
-    Axios.post("http://localhost:3001/update-user-bio", {
+    Axios.post("http://localhost:3001/update-user-info", {
       email: currentUser.email,
-      bio: editedBio,
+      name: currentUser.username,
+      newEmail: editedEmail,
+      password: editedPassword,
     })
       .then((response) => {
         if (response.status === 201) {
           console.log(response.data);
-          setEditingBio(false);
-          // Update the user details in the state with the new bio
+          setEditingInfo(false);
+          // Update the user details in the state with the new info
           setCurrentUser((prevUser) => ({
             ...prevUser,
-            bio: editedBio,
+            name: editedName,
+            email: editedEmail,
           }));
+          // Clear the password fields
+          setEditedPassword("");
+          setRetypePassword("");
         } else {
-          console.error("Failed to update bio");
+          console.error("Failed to update user information");
         }
       })
       .catch((error) => {
-        console.error("Error while updating bio:", error);
+        console.error("Error while updating user information:", error);
       });
+  };
+
+  const handleCancelInfoClick = () => {
+    setEditingInfo(false);
+    // Reset the edited fields to the current user information
+    setEditedName(currentUser.name);
+    setEditedEmail(currentUser.email);
+    setEditedPassword("");
+    setRetypePassword("");
   };
 
   const submitImage = async (e) => {
@@ -83,12 +101,6 @@ const ProfileCard = () => {
 
   const handleCancelImageClick = () => {
     window.location.reload();
-  };
-
-  const handleCancelBioClick = () => {
-    setEditingBio(false);
-    // Reset the editedBio state to the current bio
-    setEditedBio(currentUser.bio);
   };
 
   const handlePictureChange = (e) => {
@@ -147,72 +159,85 @@ const ProfileCard = () => {
                           phone:text-base
                           md:text-[26px]">
             {currentUser.username}
+          </div> 
+          <div className = "text-white font-thin"> 
+            {currentUser.email}
           </div>
-          <div className="profile-button py-[10px] text-white
-                         phone:py-[2px]
-                         md:py-[10px]">
-            <a className= "phone:text-xs md:text-md"
-            href={`mailto: ${currentUser.email}`}>{currentUser.email}</a>
-          </div>
+          
+          <br/>
 
-          {editingBio ? (
-            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] rounded-[15px] overflow-auto
+          {editingInfo ? (
+            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] overflow-auto
                             phone:text-[7.5px] phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px] 
-                            md:text-[15px] md:ml-[27px] md:mr-0 md:max-w-[450px]
+                            md:text-[15px] md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg
                             ">
-              <textarea
-                value={editedBio}
-                onChange={(e) => setEditedBio(e.target.value)}
-                className="w-[400px] h-[150px] p-2
+              <input
+                type="text"
+                value={editedName}
+                onChange={(e) => setEditedName(e.target.value)}
+                className="w-[400px] p-2 mb-2
                            phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
-                           md:ml-[27px] md:mr-0 md:max-w-[450px]
-                           "
-                placeholder="Enter your bio here..."
+                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg"
+                placeholder="Enter your name"
+              />
+              <input
+                type="email"
+                value={editedEmail}
+                onChange={(e) => setEditedEmail(e.target.value)}
+                className="w-[400px] p-2 mb-2
+                           phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
+                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg"
+                placeholder="Enter your email"
+              />
+              <input
+                type="password"
+                value={editedPassword}
+                onChange={(e) => setEditedPassword(e.target.value)}
+                className="w-[400px] p-2 mb-2
+                           phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
+                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg"
+                placeholder="Enter new password"
+              />
+              <input
+                type="password"
+                value={retypePassword}
+                onChange={(e) => setRetypePassword(e.target.value)}
+                className="w-[400px] p-2 mb-2
+                           phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
+                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg"
+                placeholder="Retype new password"
               />
               <button
-                onClick={handleSaveBioClick}
+                onClick={handleSaveInfoClick}
                 className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
                           phone:text-xs phone:max-w-[125px]
-                          md:text-[15px] md:max-w-[200px]
-                          "
+                          md:text-[15px] md:max-w-[200px]"
               >
-                Save Bio
+                Save Info
               </button>
               <button
-                onClick={handleCancelBioClick}
+                onClick={handleCancelInfoClick}
                 className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
                           phone:text-xs phone:max-w-[125px]
-                          md:text-[15px] md:max-w-[200px]
-                          "
+                          md:text-[15px] md:max-w-[200px]"
               >
                 Cancel
               </button>
             </div>
           ) : (
-            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] rounded-[15px] overflow-auto
+            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center rounded-[15px] overflow-auto
                             phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
-                            md:ml-[27px] md:mr-0 md:max-w-[450px]
-                            ">
-              <p className="bg-orange
-                            phone:text-[7.5px]
-                            md:text-[15px] "
-                            >
-                              {currentUser.bio}</p>
+                            md:ml-[27px] md:mr-0 md:max-w-[450px]">
               <button
-                onClick={handleEditBioClick}
-                className="ml-[350px] underline hover:text-white
-                          phone:text-[7.5px] phone:ml-20
-                          md:text-[15px] md:ml-[350px]
-                          "
+                onClick={handleEditInfoClick}
+                className=" bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
+                          phone:text-xs phone:max-w-[125px]
+                          md:text-[15px] md:max-w-[200px]"
               >
-                Edit Bio
+                Edit Profile Info
               </button>
             </div>
           )}
-
-          <div className="profile-button">
-            <a href={`mailto: ${currentUser.email}`}></a>
-          </div>
         </div>
       </div>
     </>
