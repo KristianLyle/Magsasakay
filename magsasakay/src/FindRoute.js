@@ -139,26 +139,25 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
   }, [selectedIntersection, onIntersectionChange]);
 
   return (
-    <div className="find-route-container font-Montserrat bg-gradient-to-t from-orange-400 to-blue-600 border-[#160E3D] border-[1.5px]">
+    <div className="find-route-container font-Montserrat bg-[#461E96] border-[#160E3D] border-[1.5px] rounded-xl">
       <div className="find-route-title mt-[50px]">
-        <h1 className="font-extrabold text-center text-[400%] text-white">
+        <h1 className="font-extrabold text-center text-[200%] text-white">
           Find Route
         </h1>{" "}
         <br />
-        <div className="find-route-forms max-w-[600px] w-[600px] ">
-          <div className="ml-[10px] text-center">
-            <label className=" font-Montserrat font-medium text-white">
-              From:{" "}
-            </label>
+        <div className="find-route-forms max-w-[50%] w-[600px] ">
+
+          <div className=" ml-[10px] text-center">
             <input
-              className="rounded-xl w-[375px]"
+              className="rounded-lg w-[195%]"
               type="text"
               value={fromLocation}
               onChange={handleSearchFrom}
               placeholder="Enter a starting point"
             />
+
             {searchQueryFrom.trim() !== "" && (
-              <div className="place-suggestions font-Montserrat font-normal text-white bg-[#160E3D] rounded-xl text-left max-h-[500px] overflow-auto">
+              <div className="place-suggestions absolute font-Montserrat font-normal text-white bg-[#160E3D] rounded-md text-left max-h-[100%] max-w-[85%] overflow-auto overflow-x-hidden">
                 {filteredPlacesFrom.map((place, index) => (
                   <div
                     className="font-medium p-[5px] ml-[5px]"
@@ -171,23 +170,21 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
                 ))}
               </div>
             )}
+
           </div>
 
           <br />
 
           <div className="ml-[10px] text-center ">
-            <label className=" font-Montserrat font-medium text-white">
-              To:{" "}
-            </label>
             <input
-              className="rounded-xl w-[397px]"
+              className="rounded-lg w-[195%]"
               type="text"
               value={toLocation}
               onChange={handleSearchTo}
               placeholder="Enter a destination"
             />
             {searchQueryTo.trim() !== "" && (
-              <div className="place-suggestions font-Montserrat font-normal text-white bg-[#160E3D] rounded-xl text-left max-h-[500px] overflow-auto">
+              <div className="place-suggestions absolute font-Montserrat font-normal text-white bg-[#160E3D] rounded-md text-left max-h-[100%] max-w-[85%] overflow-auto overflow-x-hidden">
                 {filteredPlacesTo.map((place, index) => (
                   <div
                     className="font-medium p-[5px] ml-[5px]"
@@ -203,26 +200,30 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
           </div>
         </div>{" "}
         <br />
-        <div className="find-route-routes bg-[#160E3D] rounded-xl max-w-[600px] p-[5px]">
+
+        <div className="find-route-routes rounded-xl max-w-full max-h-[300px] overflow-auto overflow-x-hidden p-[5px]">
           {intersectionPoints &&
             intersectionPoints.map((intersection, index) => (
-              <div key={index} className="text-white p-[5px]">
-                <input
-                  type="radio"
-                  id={`intersection-${index}`}
-                  checked={
-                    selectedIntersection &&
-                    selectedIntersection.routeFrom === intersection.routeFrom &&
-                    selectedIntersection.routeTo === intersection.routeTo
-                  }
-                  onChange={() => handleRadioChange(intersection)}
-                />
-                <label className="ml-[5px]" htmlFor={`intersection-${index}`}>
-                  {`${intersection.routeFrom} to ${intersection.routeTo}`}
-                </label>
+              <div className= "bg-[#160E3D]">
+                <div key={index} className="text-white p-[5px] ">
+                  <input
+                    type="radio"
+                    id={`intersection-${index}`}
+                    checked={
+                      selectedIntersection &&
+                      selectedIntersection.routeFrom === intersection.routeFrom &&
+                      selectedIntersection.routeTo === intersection.routeTo
+                    }
+                    onChange={() => handleRadioChange(intersection)}
+                  />
+                  <label className="ml-[5px]" htmlFor={`intersection-${index}`}>
+                    {`${intersection.routeFrom} to ${intersection.routeTo}`}
+                  </label>
+                </div>
               </div>
             ))}
         </div>
+
       </div>
     </div>
   );
