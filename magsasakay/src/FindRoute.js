@@ -139,17 +139,18 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
   }, [selectedIntersection, onIntersectionChange]);
 
   return (
-    <div className="find-route-container font-Montserrat bg-[#461E96] border-[#160E3D] border-[1.5px] rounded-xl">
-      <div className="find-route-title mt-[50px]">
-        <h1 className="font-extrabold text-center text-[200%] text-white">
+    <div className="find-route-container font-Montserrat bg-[#461E96]
+     border-[#160E3D] border-[1.5px] rounded-xl w-[310px] md:w-[340px] h-[200px] md:h-[380px]">
+      <div className="find-route-title mt-[10px] md:mt-[50px]">
+        <h1 className="font-extrabold text-center text-[130%] md:text-[200%] text-white">
           Find Route
         </h1>{" "}
         <br />
         <div className="find-route-forms max-w-[50%] w-[600px] ">
 
-          <div className=" ml-[10px] text-center">
+          <div className=" ml-[10px] text-center ">
             <input
-              className="rounded-lg w-[195%]"
+              className="rounded-lg w-[195%] text-[80%] md:text-[100%]"
               type="text"
               value={fromLocation}
               onChange={handleSearchFrom}
@@ -157,10 +158,11 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
             />
 
             {searchQueryFrom.trim() !== "" && (
-              <div className="place-suggestions absolute font-Montserrat font-normal text-white bg-[#160E3D] rounded-md text-left max-h-[100%] max-w-[85%] overflow-auto overflow-x-hidden">
+              <div className="place-suggestions absolute font-Montserrat font-normal text-white text-[80%] md:text-[100%]
+               bg-[#160E3D] rounded-md text-left max-h-[50%] md:max-h-[400%] max-w-[200%] md:max-w-[85%] overflow-auto overflow-x-hidden">
                 {filteredPlacesFrom.map((place, index) => (
                   <div
-                    className="font-medium p-[5px] ml-[5px]"
+                    className="font-medium p-[2px] md:p-[5px] ml-[5px]"
                     key={index}
                     style={suggestionStyle}
                     onClick={() => handleSuggestionClickFrom(place)}
@@ -177,14 +179,15 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
 
           <div className="ml-[10px] text-center ">
             <input
-              className="rounded-lg w-[195%]"
+              className="rounded-lg w-[195%] text-[80%] md:text-[100%]"
               type="text"
               value={toLocation}
               onChange={handleSearchTo}
               placeholder="Enter a destination"
             />
             {searchQueryTo.trim() !== "" && (
-              <div className="place-suggestions absolute font-Montserrat font-normal text-white bg-[#160E3D] rounded-md text-left max-h-[100%] max-w-[85%] overflow-auto overflow-x-hidden">
+              <div className="place-suggestions absolute font-Montserrat font-normal text-white text-[80%] md:text-[100%]
+              bg-[#160E3D] rounded-md text-left max-h-[50%] md:max-h-[400%] max-w-[200%] md:max-w-[85%] overflow-auto overflow-x-hidden">
                 {filteredPlacesTo.map((place, index) => (
                   <div
                     className="font-medium p-[5px] ml-[5px]"

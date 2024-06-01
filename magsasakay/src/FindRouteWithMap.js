@@ -58,7 +58,7 @@ const FindRouteWithMap = () => {
           />
         </div>
 
-        <div className="absolute bottom-20 left-4 bg-[#461E96] bg-opacity-90 p-4 rounded-xl shadow-lg z-10 text-white"> 
+        <div className="absolute bottom-20 left-8 md:left-14 bg-[#461E96] bg-opacity-90 p-4 rounded-xl shadow-lg z-10 text-white"> 
           <div className="flex space-x-4">
             <label>
               <input
