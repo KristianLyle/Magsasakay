@@ -116,11 +116,13 @@ const ViewMore = () => {
                 More Restaurants
               </h1>
               <div className="flex flex-wrap items-center justify-center space-x-2 pt-4">
-                <div className="flex flex-col md:flex-row items-center md:items-start">
+                <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-4">
                   <div className="relative inline-block text-left">
                     <button
                       onClick={toggleDropdownRating}
-                      className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full mr-[15px] font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg w-[150px] md:w-[200px] h-[40px] md:h-[60px]"
+                      className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full 
+                      font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center
+                       shadow-lg w-[150px] md:w-[200px] h-[40px] md:h-[60px] pb-4 md:pb-0"
                     >
                       View by Ratings
                     </button>
@@ -197,7 +199,7 @@ const ViewMore = () => {
                         <div className="text-[15px] md:text-[25px] font-regular flex items-center">
                           <span>{restaurant.name}</span>
                           <div className="flex items-center ml-[-2px] md:ml-[20px] mt-2 md:mt-0 mb-4 md:mb-0">
-                            {[...Array(5)].map((_, i) => (
+                             {[...Array(5)].map((_, i) => (
                               <FontAwesomeIcon
                                 key={i}
                                 icon={
@@ -307,3 +309,4 @@ const ViewMore = () => {
 };
 
 export default ViewMore;
+
