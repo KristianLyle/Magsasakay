@@ -17,6 +17,7 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
   const [nearestRoutesTo, setNearestRoutesTo] = useState(null);
 
   const [selectedIntersection, setSelectedIntersection] = useState(null);
+  const [intersectionPoints, setIntersectionPoints] = useState(null);
 
   useEffect(() => {
     if (defaultLocation) {
@@ -42,6 +43,7 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
     setFromLocation(event.target.value);
     setFilteredPlacesFrom([]);
     setSelectedIntersection(null); // Reset selected intersection when "From" textbox changes
+    setIntersectionPoints(null); // Clear previous intersection points
     handleSearch(event.target.value, setFilteredPlacesFrom, setSearchQueryFrom);
   };
 
@@ -50,6 +52,7 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
     setToLocation(event.target.value);
     setFilteredPlacesTo([]);
     setSelectedIntersection(null); // Reset selected intersection when "To" textbox changes
+    setIntersectionPoints(null); // Clear previous intersection points
     handleSearch(event.target.value, setFilteredPlacesTo, setSearchQueryTo);
   };
 
@@ -119,19 +122,21 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
     }
   };
 
-  let intersectionPoints = null;
-  if (nearestRoutesFrom && nearestRoutesTo) {
-    intersectionPoints = calculateIntersection(
-      nearestRoutesFrom,
-      nearestRoutesTo
-    ).map((intersection) => ({
-      ...intersection,
-      fromLocation,
-      toLocation,
-      fromCoordinates,
-      toCoordinates,
-    }));
-  }
+  useEffect(() => {
+    if (nearestRoutesFrom && nearestRoutesTo) {
+      const intersections = calculateIntersection(
+        nearestRoutesFrom,
+        nearestRoutesTo
+      ).map((intersection) => ({
+        ...intersection,
+        fromLocation,
+        toLocation,
+        fromCoordinates,
+        toCoordinates,
+      }));
+      setIntersectionPoints(intersections);
+    }
+  }, [nearestRoutesFrom, nearestRoutesTo, fromLocation, toLocation, fromCoordinates, toCoordinates]);
 
   useEffect(() => {
     // Call the onIntersectionChange function with the updated selectedIntersection
@@ -197,33 +202,32 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
             )}
           </div>
         </div>{" "}
-        <br />
       </div>
-      <div className="find-route-routes rounded-xl max-w-full max-h-[120px]  md:max-h-[170px] 
-        overflow-y-hidden md:overflow-auto overflow-x-hidden p-[5px] absolute top-[120px] md:top-[200px]"> 
-        {/* Adjusted position of this component */}
-        {intersectionPoints &&
-          intersectionPoints.map((intersection, index) => (
-            <div className= "bg-[#160E3D]">
-              <div key={index} className="text-white p-[5px] text-[50%] md:text-[85%]">
-                <input
-                  type="radio"
-                  id={`intersection-${index}`}
-                  checked={
-                    selectedIntersection &&
-                    selectedIntersection.routeFrom === intersection.routeFrom &&
-                    selectedIntersection.routeTo === intersection.routeTo
-                  }
-                  onChange={() => handleRadioChange(intersection)}
-                  className="custom-radio"
-                />
-                <label className="ml-[5px]" htmlFor={`intersection-${index}`}>
-                  {`${intersection.routeFrom} to ${intersection.routeTo}`}
-                </label>
-              </div>
-            </div>
-          ))}
-      </div>
+      
+      <div className="find-route-routes rounded-xl max-w-full max-h-[300px] 
+  overflow-auto overflow-x-hidden p-[5px]">
+    {intersectionPoints &&
+      intersectionPoints.map((intersection, index) => (
+        <div className= "bg-[#160E3D]">
+          <div key={index} className="text-white p-[5px] text-[50%] md:text-[100%]">
+            <input
+              type="radio"
+              id={`intersection-${index}`}
+              checked={
+                selectedIntersection &&
+                selectedIntersection.routeFrom === intersection.routeFrom &&
+                selectedIntersection.routeTo === intersection.routeTo
+              }
+              onChange={() => handleRadioChange(intersection)}
+            />
+            <label className="ml-[5px]" htmlFor={`intersection-${index}`}>
+              {`${intersection.routeFrom} to ${intersection.routeTo}`}
+            </label>
+          </div>
+        </div>
+    ))}
+</div>
+
       <style jsx>{`
         .custom-radio {
           width: 20px;
