@@ -211,15 +211,7 @@ const RestoReviews = () => {
                   className="text-blue-500 cursor-pointer ml-2"
                   onClick={toggleShowFullReview}
                 >
-                  View More
-                </span>
-              )}
-              {showFullReview && (
-                <span
-                  className="text-blue-500 cursor-pointer ml-2"
-                  onClick={toggleShowFullReview}
-                >
-                  ... View Less
+                  ... View More
                 </span>
               )}
             </p>
@@ -333,8 +325,8 @@ const RestoReviews = () => {
                 style={{ marginTop: "10px", marginBottom: "10px" }}
                 onClick={handlePostText}
                 className="bg-[#EE7200] text-[15px] py-2 rounded-full 
-                                                            font-bold text-white hover:bg-white hover:text-[#160E3D] 
-                                                            drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
+                                                              font-bold text-white hover:bg-white hover:text-[#160E3D] 
+                                                              drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
               >
                 Post Review
               </button>
@@ -342,10 +334,10 @@ const RestoReviews = () => {
                 style={{ marginTop: "2px" }}
                 onClick={handleCancelButtonClick}
                 className="bg-[#BF2F00] text-[15px] py-2 rounded-full
-                              font-bold text-white hover:bg-white hover:text-[#BF2F00] 
-                              drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
+                                font-bold text-white hover:bg-white hover:text-[#BF2F00] 
+                                drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
               >
-                Cancel
+                Clear
               </button>
             </div>
           </div>

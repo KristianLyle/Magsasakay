@@ -38,7 +38,7 @@ const ProfileCard = () => {
     Axios.post("http://localhost:3001/fetch-user-details", { userEmail })
       .then((response) => {
         setCurrentUser(response.data);
-        setEditedName(response.data.name); // Set initial name value
+        setEditedName(response.data.username); // Set initial name value
         setEditedEmail(response.data.email); // Set initial email value
         setEditedPicture(response.data.userimage); // Set initial picture value
         setDisplayedPicture(response.data.userimage); // Set initial displayed picture value

@@ -94,6 +94,11 @@ const ProfileReviews = () => {
     setCurrentPage(pageNumber);
   };
 
+  // Calculate range of pagination buttons
+  const maxPage = Math.ceil(reviews.length / reviewsPerPage);
+  const startPage = Math.max(1, currentPage - 1);
+  const endPage = Math.min(startPage + 2, maxPage);
+
   return (
     <div
       className="ml-[550px] font-Montserrat bg-[#461E96] max-w-full text-white p-[5px] rounded-lg
@@ -164,7 +169,7 @@ const ProfileReviews = () => {
               </div>
             )}
             <div>
-              <button
+            <button
                 className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
                           phone:w-[75%] phone:text-[55%]
                           md:w-[100%] md:text-[15px]
@@ -197,20 +202,18 @@ const ProfileReviews = () => {
       {/* Pagination */}
       <nav className="flex justify-center mt-1">
         <ul className="pagination flex flex-row">
-          {Array.from({
-            length: Math.ceil(reviews.length / reviewsPerPage),
-          }).map((_, index) => (
-            <li key={index} className="px-2 mb-[15px]">
+          {Array.from({ length: endPage - startPage + 1 }).map((_, index) => (
+            <li key={startPage + index} className="px-2 mb-[15px]">
               <a
-                onClick={() => paginate(index + 1)}
+                onClick={() => paginate(startPage + index)}
                 href="#"
                 className={`font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
-                  currentPage === index + 1
+                  currentPage === startPage + index
                     ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
                     : "bg-[#EE7200] text-[#160E3D]"
                 }`}
               >
-                {index + 1}
+                {startPage + index}
               </a>
             </li>
           ))}
@@ -221,3 +224,4 @@ const ProfileReviews = () => {
 };
 
 export default ProfileReviews;
+

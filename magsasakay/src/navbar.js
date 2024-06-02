@@ -6,9 +6,13 @@ import { AiOutlineClose } from "react-icons/ai";
 import { sideBarData } from "./sideBarData";
 import logo from "./img/logo.png";
 import DeleteConfirmation from "./deleteConfirmation";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faMap, faArrowLeft,faSignOut} from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMapMarkerAlt,
+  faMap,
+  faArrowLeft,
+  faSignOut,
+} from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
   const history = useHistory();
@@ -26,7 +30,6 @@ const NavBar = () => {
 
   const handleCancelLogout = () => {
     setShowConfirmation(false);
-    window.location.reload();
   };
 
   const showSideBar = () => setSideBar(!sideBar);
@@ -51,15 +54,56 @@ const NavBar = () => {
         </Link>
 
         <div className="largeScreen text-white justify-center ml-[30px] hidden lg:flex font-semibold ">
-          <Link to="/home" onClick={() => handleClick("/home")} className="inline-block mr-4 hover:text-[#EE7200]"> Home </Link>
-          <Link to="/routes" onClick={() => handleClick("/routes")} className="inline-block mr-4 hover:text-[#EE7200]"> Routes </Link>
-          <Link to="/restaurants" onClick={() => handleClick("/restaurants")} className="inline-block mr-4 hover:text-[#EE7200]"> Restaurants </Link>
-          <Link to="/profile" onClick={() => handleClick("/profile")} className="inline-block mr-4 hover:text-[#EE7200]"> Profile </Link>
-          <Link to="/about" onClick={() => handleClick("/about")} className="inline-block mr-4 hover:text-[#EE7200]"> About </Link>
+          <Link
+            to="/home"
+            onClick={() => handleClick("/home")}
+            className="inline-block mr-4 hover:text-[#EE7200]"
+          >
+            {" "}
+            Home{" "}
+          </Link>
+          <Link
+            to="/routes"
+            onClick={() => handleClick("/routes")}
+            className="inline-block mr-4 hover:text-[#EE7200]"
+          >
+            {" "}
+            Routes{" "}
+          </Link>
+          <Link
+            to="/restaurants"
+            onClick={() => handleClick("/restaurants")}
+            className="inline-block mr-4 hover:text-[#EE7200]"
+          >
+            {" "}
+            Restaurants{" "}
+          </Link>
+          <Link
+            to="/profile"
+            onClick={() => handleClick("/profile")}
+            className="inline-block mr-4 hover:text-[#EE7200]"
+          >
+            {" "}
+            Profile{" "}
+          </Link>
+          <Link
+            to="/about"
+            onClick={() => handleClick("/about")}
+            className="inline-block mr-4 hover:text-[#EE7200]"
+          >
+            {" "}
+            About{" "}
+          </Link>
         </div>
-        
+
         <div className="flex text-white ml-auto hidden lg:flex font-semibold">
-          <button onClick={handleLogout} className="inline-block mr-4 hover:text-[#EE7200] hover:text-red-600"> Log Out <FontAwesomeIcon icon={faSignOut} className="mr-5" /> </button>
+          <button
+            onClick={handleLogout}
+            className="inline-block mr-4 hover:text-[#EE7200] hover:text-red-600"
+          >
+            {" "}
+            Log Out <FontAwesomeIcon icon={faSignOut} className="mr-5" />{" "}
+          </button>
         </div>
       </div>
 

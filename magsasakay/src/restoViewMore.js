@@ -69,9 +69,6 @@ const ViewMore = () => {
     }));
   };
 
-  const backgroundStyle = {
-    backgroundImage: `linear-gradient(to bottom, rgba(36, 7, 80, 0.9), rgba(36, 7, 80, 0.5))`,
-  };
 
   const handleLocationClick = (restaurantName) => {
     const encodedRestaurantName = encodeURIComponent(restaurantName);
@@ -96,6 +93,11 @@ const ViewMore = () => {
     setDropdownAlphabeticalOpen(!dropdownAlphabeticalOpen);
   };
 
+  // Calculate range of pagination buttons
+  const maxPage = Math.ceil(restaurants.length / restaurantsPerPage);
+  const startPage = Math.max(1, currentPage - 1);
+  const endPage = Math.min(startPage + 2, maxPage);
+
   return (
     <>
       <Router>
@@ -104,7 +106,7 @@ const ViewMore = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div style={backgroundStyle} className="bg-full">
+      <div className="bg-full bg-[#461E96]">
         <div className="mx-auto min-h-screen flex flex-col overflow-y-auto overflow-x-auto bg-no-repeat">
           <div className="">
             <br />

@@ -469,14 +469,6 @@ app.post("/update-user-info", async (req, res) => {
   try {
     const { currentEmail, username, email, password } = req.body;
 
-    // // Find the user by email
-    // const user = await userModel.findOne({ currentEmail });
-
-    // // Check if the user exists and if the provided password is correct
-    // if (!user || !(await bcrypt.compare(passwordConfirm, user.password))) {
-    //   return res.status(401).json({ error: "Invalid email or password" });
-    // }
-
     const updateData = {};
 
     if (username) {
@@ -501,6 +493,33 @@ app.post("/update-user-info", async (req, res) => {
 
     if (!updatedProfile) {
       return res.status(404).json({ error: "Profile not found" });
+    }
+
+    if (username) {
+      // Update the username in all reviews by the user
+      await reviewModel.updateMany(
+        { useremail: currentEmail },
+        { $set: { username: username } }
+      );
+    }
+
+    // Get all the restaurants where the user had reviews
+    const restaurantsWithUserReviews = await reviewModel
+      .find({ useremail: email })
+      .distinct("restaurant");
+
+    // Update the average ratings for each restaurant
+    for (const restaurantName of restaurantsWithUserReviews) {
+      const reviews = await reviewModel.find({ restaurant: restaurantName });
+      const totalRatings = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+      const numReviews = reviews.length;
+      const averageRating = numReviews ? totalRatings / numReviews : 0; // Check if numReviews is not zero before calculating average
+
+      // Update the averageRating of the specific restaurant
+      await restaurantModel.updateOne(
+        { name: restaurantName },
+        { averageRating }
+      );
     }
 
     res
@@ -548,6 +567,14 @@ app.post("/upload-image", upload.single("image"), async (req, res) => {
 
     if (!updatedProfile) {
       return res.status(404).json({ error: "User not found" });
+    }
+
+    if (email) {
+      // Update the userimage in all reviews by the user
+      await reviewModel.updateMany(
+        { useremail: email },
+        { $set: { userimage: imageName } }
+      );
     }
 
     res.json({ status: "ok" });
