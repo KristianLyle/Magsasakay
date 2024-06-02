@@ -18,8 +18,8 @@ const ProfileCard = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const decodedToken = jwtDecode(token);
-    const userName = decodedToken.username;
-    Axios.post("http://localhost:3001/fetch-user-details", { userName })
+    const userEmail = decodedToken.email;
+    Axios.post("http://localhost:3001/fetch-user-details", { userEmail })
       .then((response) => {
         setCurrentUser(response.data);
         setEditedName(response.data.name); // Set initial name value
@@ -208,6 +208,7 @@ const ProfileCard = () => {
                            phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
                            md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg"
                 placeholder="Enter your email"
+                readOnly
               />
               <input
                 type="password"

@@ -237,14 +237,21 @@ app.post("/fetch-recent-reviews", async (req, res) => {
 
 // Add a new route for submitting reviews
 app.post("/submit-review", async (req, res) => {
-  const { restaurantName, username, userimage, reviewText, starRating } =
-    req.body;
+  const {
+    restaurantName,
+    username,
+    useremail,
+    userimage,
+    reviewText,
+    starRating,
+  } = req.body;
 
   try {
     // Create a new review document
     const newReview = new reviewModel({
       restaurant: restaurantName,
       username: username,
+      useremail: useremail,
       userimage: userimage,
       review: reviewText,
       rating: starRating,
@@ -276,11 +283,11 @@ app.post("/submit-review", async (req, res) => {
 app.post("/fetch-user-reviews", async (req, res) => {
   try {
     // Extract username from the decoded token
-    const { userName } = req.body;
+    const { userEmail } = req.body;
 
     // Find all reviews for the specific user
     const userReviews = await reviewModel
-      .find({ username: userName })
+      .find({ useremail: userEmail })
       .sort({ createdAt: -1 });
     res.json(userReviews);
   } catch (error) {
@@ -364,9 +371,9 @@ app.post("/delete-review", async (req, res) => {
 // Add a new route for fetching user details
 app.post("/fetch-user-details", async (req, res) => {
   try {
-    const { userName } = req.body;
+    const { userEmail } = req.body;
 
-    const user = await userModel.findOne({ username: userName });
+    const user = await userModel.findOne({ email: userEmail });
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }

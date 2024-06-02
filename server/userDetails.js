@@ -54,6 +54,7 @@ const reviewSchema = new mongoose.Schema(
   {
     restaurant: String,
     username: String,
+    useremail: String,
     userimage: String,
     review: String,
     rating: Number,

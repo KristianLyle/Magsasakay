@@ -26,6 +26,7 @@ const RestoReviews = () => {
   const [restaurantDetails, setRestaurantDetails] = useState({});
   const [selectedRating, setSelectedRating] = useState(0);
   const [showFullReview, setShowFullReview] = useState(false); // Define showFullReview state
+  const [userName, setUserName] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const reviewsPerPage = 5;
   const history = useHistory();
@@ -62,7 +63,19 @@ const RestoReviews = () => {
 
   const token = localStorage.getItem("token");
   const decodedToken = jwtDecode(token);
-  const userName = decodedToken.username;
+  const userEmail = decodedToken.email;
+  useEffect(() => {
+    Axios.post("http://localhost:3001/fetch-user-details", {
+      userEmail: userEmail,
+    })
+      .then((response) => {
+        setUserName(response.data.username);
+        console.log(response.data.username);
+      })
+      .catch((error) => {
+        console.error("Error fetching user details:", error);
+      });
+  }, [userEmail]);
 
   const handlePostText = async () => {
     if (inputText.trim() !== "") {
@@ -70,15 +83,17 @@ const RestoReviews = () => {
         const userResponse = await Axios.post(
           "http://localhost:3001/fetch-user-details",
           {
-            userName: userName,
+            userEmail: userEmail,
           }
         );
 
         const userImage = userResponse.data.userimage;
+        const userName = userResponse.data.username;
 
         const reviewData = {
           restaurantName: restaurantName,
           username: userName,
+          useremail: userEmail,
           userimage: userImage,
           reviewText: inputText,
           starRating: selectedRating,

@@ -15,9 +15,9 @@ const ProfileReviews = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const decodedToken = jwtDecode(token);
-    const userName = decodedToken.username;
+    const userEmail = decodedToken.email;
 
-    Axios.post("http://localhost:3001/fetch-user-reviews", { userName })
+    Axios.post("http://localhost:3001/fetch-user-reviews", { userEmail })
       .then((response) => {
         setReviews(response.data);
       })
