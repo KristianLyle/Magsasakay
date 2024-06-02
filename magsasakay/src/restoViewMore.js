@@ -69,9 +69,6 @@ const ViewMore = () => {
     }));
   };
 
-  const backgroundStyle = {
-    backgroundImage: `linear-gradient(to bottom, rgba(36, 7, 80, 0.9), rgba(36, 7, 80, 0.5))`,
-  };
 
   const handleLocationClick = (restaurantName) => {
     const encodedRestaurantName = encodeURIComponent(restaurantName);
@@ -96,6 +93,11 @@ const ViewMore = () => {
     setDropdownAlphabeticalOpen(!dropdownAlphabeticalOpen);
   };
 
+  // Calculate range of pagination buttons
+  const maxPage = Math.ceil(restaurants.length / restaurantsPerPage);
+  const startPage = Math.max(1, currentPage - 1);
+  const endPage = Math.min(startPage + 2, maxPage);
+
   return (
     <>
       <Router>
@@ -104,7 +106,7 @@ const ViewMore = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div style={backgroundStyle} className="bg-full">
+      <div className="bg-full bg-[#461E96]">
         <div className="mx-auto min-h-screen flex flex-col overflow-y-auto overflow-x-auto bg-no-repeat">
           <div className="">
             <br />
@@ -151,159 +153,160 @@ const ViewMore = () => {
                     {dropdownAlphabeticalOpen && (
                       <div className="absolute right-0 mt-2 w-[150px] md:w-[200px] bg-white rounded-md shadow-lg">
                         <button
-                          onClick={() => handleAlphabeticalClick("AZ")}
-                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          A - Z
-                        </button>
-                        <button
-                          onClick={() => handleAlphabeticalClick("ZA")}
-                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          Z - A
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br />
-            <div className="flex-col justify-start md:justify-center md:pl-20">
-              {currentRestaurants.map((restaurant) => (
-                <div key={restaurant._id} className="flex-container py-4">
-                  <div
-                    className="font-Montserrat font-bold text-[35px] text-center text-white justify-center
-                    px-3 py-3 mx-16 mt-0 rounded-2xl inline-block shadow-slate-500 border-[#577B8D] border-[2px]
-                    bg-[#160E3D] bg-cover hover:border-[#57A6A1] max-w-[1200px] md:min-w-[1200px] max-h-[550px] md:min-h-[250px] text-ellipsis ..."
-                  >
-                    <div className="flex flex-col md:flex-row text-white">
-                      <div className="w-full md:w-1/3 flex justify-center md:justify-start pb-4 md:pb-0 pt-6 pl-2">
-                        <div className="w-full md:w-auto h-20 relative flex items-center justify-center pt-[15px] mt-10 mr-5 ml-5">
-                          <img
-                            className="object-cover rounded-2xl border-blue-950 border-[2px] bg-[2px] shadow-lg brightness-110"
-                            src={restaurant.image}
-                            alt={restaurant.name}
-                            style={{
-                              width: "300px",
-                              height: "200px",
-                              minWidth: "200px",
-                              minHeight: "50px",
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div className="md:w-2/3 text-center pt-10 md:pt-0 md:text-left mt-4 md:mt-0 md:pl-0">
-                        <div className="text-[15px] md:text-[25px] font-regular flex items-center">
-                          <span>{restaurant.name}</span>
-                          <div className="flex items-center ml-[-2px] md:ml-[20px] mt-2 md:mt-0 mb-4 md:mb-0">
-                            {[...Array(5)].map((_, i) => (
-                              <FontAwesomeIcon
-                                key={i}
-                                icon={
-                                  i < restaurant.averageRating
-                                    ? faStar
-                                    : ["far", "star"]
-                                }
-                                className="star-icon"
-                                style={{
-                                  color:
-                                    i < restaurant.averageRating
-                                      ? "#FFD700"
-                                      : "#ccc",
-                                  fontSize: "20px",
-                                  marginRight: "4px",
-                                }}
-                                onMouseEnter={(e) =>
-                                  (e.target.style.color =
-                                    "#yourDesiredHoverColor")
-                                }
-                                onMouseLeave={(e) =>
-                                  (e.target.style.color =
-                                    i < restaurant.averageRating
-                                      ? "#FFD700"
-                                      : "#ccc")
-                                }
-                              />
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="box-container mt-0 md:mt-4">
-                          <p
-                            className="text-[11px] md:text-[15px] font-normal text-center md:text-start"
-                            style={{
-                              maxHeight: expandedRestaurants[restaurant._id]
-                                ? "none"
-                                : "4.5rem",
-                              overflow: "hidden",
-                            }}
-                          >
-                            {restaurant.description}
-                          </p>
-                          {restaurant.description.length > 250 && (
-                            <button
-                              onClick={() => toggleDescription(restaurant._id)}
-                              className="underline font-Montserrat font-light text-[11px] md:text-[15px]"
-                            >
-                              {expandedRestaurants[restaurant._id]
-                                ? "Read Less"
-                                : "Read More"}
-                            </button>
-                          )}
-                        </div>
-
-                        <div className="flex justify-center md:justify-end mt-[8px] flex-wrap">
-                          <button
-                            onClick={() => handleLocationClick(restaurant.name)}
-                            className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal"
-                            style={{ width: "150px" }}
-                          >
-                            Location
-                          </button>
-                          <Link
-                            to={`/resto_review/${encodeURIComponent(
-                              restaurant.name
-                            )}`}
-                            className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal"
-                            style={{ minWidth: "150px" }}
-                          >
-                            View Reviews
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <br /> <br />
-            <nav className="flex justify-center mt-1">
-              <ul className="pagination flex flex-row">
-                {Array.from({
-                  length: Math.ceil(restaurants.length / restaurantsPerPage),
-                }).map((_, index) => (
-                  <li key={index} className="px-2 mb-[15px]">
-                    <a
-                      onClick={() => paginate(index + 1)}
-                      href="#"
-                      className={`font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
-                        currentPage === index + 1
-                          ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
-                          : "bg-[#EE7200] text-[#160E3D]"
-                      }`}
-                    >
-                      {index + 1}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default ViewMore;
+                                                  onClick={() => handleAlphabeticalClick("AZ")}
+                                                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                                >
+                                                  A - Z
+                                                </button>
+                                                <button
+                                                  onClick={() => handleAlphabeticalClick("ZA")}
+                                                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                                >
+                                                  Z - A
+                                                </button>
+                                              </div>
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <br />
+                                    <div className="flex-col justify-start md:justify-center md:pl-20">
+                                      {currentRestaurants.map((restaurant) => (
+                                        <div key={restaurant._id} className="flex-container py-4">
+                                          <div
+                                            className="font-Montserrat font-bold text-[35px] text-center text-white justify-center
+                                            px-3 py-3 mx-16 mt-0 rounded-2xl inline-block shadow-slate-500 border-[#577B8D] border-[2px]
+                                            bg-[#160E3D] bg-cover hover:border-[#57A6A1] max-w-[1200px] md:min-w-[1200px] max-h-[550px] md:min-h-[250px] text-ellipsis ..."
+                                          >
+                                            <div className="flex flex-col md:flex-row text-white">
+                                              <div className="w-full md:w-1/3 flex justify-center md:justify-start pb-4 md:pb-0 pt-6 pl-2">
+                                                <div className="w-full md:w-auto h-20 relative flex items-center justify-center pt-[15px] mt-10 mr-5 ml-5">
+                                                  <img
+                                                    className="object-cover rounded-2xl border-blue-950 border-[2px] bg-[2px] shadow-lg brightness-110"
+                                                    src={restaurant.image}
+                                                    alt={restaurant.name}
+                                                    style={{
+                                                      width: "300px",
+                                                      height: "200px",
+                                                      minWidth: "200px",
+                                                      minHeight: "50px",
+                                                    }}
+                                                  />
+                                                </div>
+                                              </div>
+                                              <div className="md:w-2/3 text-center pt-10 md:pt-0 md:text-left mt-4 md:mt-0 md:pl-0">
+                                                <div className="text-[15px] md:text-[25px] font-regular flex items-center">
+                                                  <span>{restaurant.name}</span>
+                                                  <div className="flex items-center ml-[-2px] md:ml-[20px] mt-2 md:mt-0 mb-4 md:mb-0">
+                                                    {[...Array(5)].map((_, i) => (
+                                                      <FontAwesomeIcon
+                                                        key={i}
+                                                        icon={
+                                                          i < restaurant.averageRating
+                                                            ? faStar
+                                                            : ["far", "star"]
+                                                        }
+                                                        className="star-icon"
+                                                        style={{
+                                                          color:
+                                                            i < restaurant.averageRating
+                                                              ? "#FFD700"
+                                                              : "#ccc",
+                                                          fontSize: "20px",
+                                                          marginRight: "4px",
+                                                        }}
+                                                        onMouseEnter={(e) =>
+                                                          (e.target.style.color =
+                                                            "#yourDesiredHoverColor")
+                                                        }
+                                                        onMouseLeave={(e) =>
+                                                          (e.target.style.color =
+                                                            i < restaurant.averageRating
+                                                              ? "#FFD700"
+                                                              : "#ccc")
+                                                        }
+                                                      />
+                                                    ))}
+                                                  </div>
+                                                </div>
+                        
+                                                <div className="box-container mt-0 md:mt-4">
+                                                  <p
+                                                    className="text-[11px] md:text-[15px] font-normal text-center md:text-start"
+                                                    style={{
+                                                      maxHeight: expandedRestaurants[restaurant._id]
+                                                        ? "none"
+                                                        : "4.5rem",
+                                                      overflow: "hidden",
+                                                    }}
+                                                  >
+                                                    {restaurant.description}
+                                                  </p>
+                                                  {restaurant.description.length > 250 && (
+                                                    <button
+                                                      onClick={() => toggleDescription(restaurant._id)}
+                                                      className="underline font-Montserrat font-light text-[11px] md:text-[15px]"
+                                                    >
+                                                      {expandedRestaurants[restaurant._id]
+                                                        ? "Read Less"
+                                                        : "Read More"}
+                                                    </button>
+                                                  )}
+                                                </div>
+                        
+                                                <div className="flex justify-center md:justify-end mt-[8px] flex-wrap">
+                                                  <button
+                                                    onClick={() => handleLocationClick(restaurant.name)}
+                                                    className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal"
+                                                    style={{ width: "150px" }}
+                                                  >
+                                                    Location
+                                                  </button>
+                                                  <Link
+                                                    to={`/resto_review/${encodeURIComponent(
+                                                      restaurant.name
+                                                    )}`}
+                                                    className="bg-[#EE7200] text-[10px] md:text-[15px] px-6 py-2 rounded-full font-semibold text-white hover:bg-white hover:text-[#160E3D] text-center shadow-lg mr-[5px] mb-2 md:mb-0 md:mr-2 whitespace-normal"
+                                                    style={{ minWidth: "150px" }}
+                                                  >
+                                                    View Reviews
+                                                  </Link>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                    <br /> <br />
+                                    <nav className="flex justify-center mt-1">
+                                      <ul className="pagination flex flex-row">
+                                        {Array.from({
+                                          length: endPage - startPage + 1
+                                        }).map((_, index) => (
+                                          <li key={startPage + index} className="px-2 mb-[15px]">
+                                            <a
+                                              onClick={() => paginate(startPage + index)}
+                                              href="#"
+                                              className={`font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
+                                                currentPage === startPage + index
+                                                  ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
+                                                  : "bg-[#EE7200] text-[#160E3D]"
+                                              }`}
+                                            >
+                                              {startPage + index}
+                                            </a>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </nav>
+                                  </div>
+                                </div>
+                              </div>
+                            </>
+                          );
+                        };
+                        
+                        export default ViewMore;
+                        
