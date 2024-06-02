@@ -96,7 +96,7 @@ const ProfileReviews = () => {
 
   return (
     <div
-      className="ml-[550px] font-Montserrat bg-[#7826D0] max-w-full text-white p-[5px] rounded-[30px]
+      className="ml-[550px] font-Montserrat bg-[#461E96] max-w-full text-white p-[5px] rounded-lg
                    phone:ml-[205px] phone:max-w-[190px] phone:p-[1px]
                    md:ml-[550px] md:max-w-full md-p-[5px] md:mr-[20px]"
     >

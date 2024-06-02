@@ -239,7 +239,7 @@ const ProfileCard = () => {
   return (
     <>
       <div
-        className="w-[505px] h-full rounded-[4px] pb-[20px] bg-gradient-to-t from-blue-400 to-orange-500 text-center font-Montserrat
+        className="w-[505px] h-full rounded-[4px] pb-[20px] bg-[#461E96] text-center font-Montserrat
                      phone:w-4/5 phone:h-1/2 phone:pb-0
                      md:w-[505px] md:h-full md:pb-[20px] "
       >
@@ -296,7 +296,7 @@ const ProfileCard = () => {
 
           {editingInfo ? (
             <div
-              className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] overflow-auto
+              className="profile-description px-1 py-5 text-[15px] bg-[#160E3D] max-w-[450px] max-h-[450px] text-center ml-[27px] overflow-auto
                             phone:text-[7.5px] phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px] 
                             md:text-[15px] md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg absolute z-1
                             "
@@ -365,7 +365,7 @@ const ProfileCard = () => {
             </div>
           ) : (
             <div
-              className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center rounded-[15px] overflow-auto
+              className="profile-description px-1 py-5 text-[15px] bg-[#160E3D] max-w-[450px] max-h-[450px] text-center rounded-[15px] overflow-auto
                             phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
                             md:ml-[27px] md:mr-0 md:max-w-[450px]"
             >

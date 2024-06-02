@@ -174,7 +174,7 @@ const RestoReviews = () => {
                 src={`/${review.userimage}`}
                 width="100px"
                 height="96px"
-                className="border-[3px] rounded-full border-black"
+                className="border-[3px] rounded-full border-black h-[100px] w-[100px]"
               />
               <div className="ml-2 md:ml-0">
                 <p className="text-[14px] font-bold mt-2">{review.username}</p>

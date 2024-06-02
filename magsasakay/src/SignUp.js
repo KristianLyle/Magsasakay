@@ -42,8 +42,8 @@ const SignUp = () => {
   return (
     <div className="bg-cover min-h-screen relative flex font-Montserrat sm:flex">
       <div className="flex-1 flex items-center justify-center relative sm:w-3/4">
-        <div className="absolute w-[100%] h-screen bg-image1 bg-cover opacity-100"></div>
-        <div className="absolute w-[100%] h-screen bg-gradient-to-t from-orange-500 to-cyan-500 opacity-60"></div>
+        <div className="absolute w-[100%] h-[100%] bg-image1 bg-cover opacity-100"></div>
+        <div className="absolute w-[100%] h-[100%] bg-gradient-to-t from-orange-500 to-cyan-500 opacity-60"></div>
         <div className="w-full max-w-md p-8 rounded-[37px] drop-shadow-2xl text-black">
         <form
           className="max-w-[400px] w-full mx-auto bg-[#7826D0] p-8 px-8 rounded-[37px] relative drop-shadow-2xl"

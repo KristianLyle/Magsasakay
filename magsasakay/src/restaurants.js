@@ -10,8 +10,6 @@ const Restaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const history = useHistory();
 
-  const [isOpen, setIsOpen] = useState(false);
-
   useEffect(() => {
     const status = window.localStorage.getItem("loggedIn");
     if (status === "false") {
@@ -114,26 +112,14 @@ const Restaurants = () => {
                     </div>
                     <div className="box-container text-left">
                       <p
-                        style={isOpen ? null : descStyle}
+                        style={descStyle}
                         ref={ref}
-                        className="text-[12px] font-normal ml-[0px] text-left 
+                        className="text-[12px] font-normal ml-[0px] text-left overflow-x-hidden overflow-auto
                                   phone:text-[6px]
                                   md:text-[12px]"
                       >
                         {restaurant.description}
                       </p>
-                      {showReadMore && (
-                        <button
-                          onClick={() => setIsOpen(!isOpen)}
-                          className=" underline font-Montserrat font-light text-[12px]
-                                    phone:text-[6px]   
-                                    md:text-[12px]       
-                          "
-                        >
-                          {" "}
-                          {isOpen ? "Read Less" : "Read More"}
-                        </button>
-                      )}
                       <br className="phone:hidden" />
                     </div>
                     <div>
