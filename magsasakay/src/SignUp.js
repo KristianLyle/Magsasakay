@@ -49,7 +49,7 @@ const SignUp = () => {
           className="max-w-[400px] w-full mx-auto bg-[#7826D0] p-8 px-8 rounded-[37px] relative drop-shadow-2xl"
           onSubmit={HandleSignUp}
         >
-          <h2 className="mb-10 text-[35px] dark:text-white font-semibold font-montserrat text-center
+          <h2 className="mb-10 text-[35px] text-white dark:text-white font-semibold font-montserrat text-center
                         phone:text-2xl phone:mb-[10px]
                         md:text-4xl md:mb-10"
             >
