@@ -5,11 +5,14 @@ import { jwtDecode } from "jwt-decode";
 import user from "./img/default-user.jpg";
 import city from "./img/city.png";
 import DeleteConfirmation from "./deleteConfirmation";
+import PasswordConfirmation from "./passwordConfirmation";
+import PasswordSaveConfirmation from "./passwordSaveConfirmation";
 
 const ProfileCard = () => {
   const [editingInfo, setEditingInfo] = useState(false);
   const [editedName, setEditedName] = useState("");
   const [editedEmail, setEditedEmail] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
   const [editedPassword, setEditedPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
   const [editedPicture, setEditedPicture] = useState(null);
@@ -22,6 +25,8 @@ const ProfileCard = () => {
   const [passwordInput, setPasswordInput] = useState("");
   const [deleteButtonState, setDeleteButtonState] = useState(true);
   const [confirmationDeleteButtonState, setConfirmationDeleteButtonState] =
+    useState(false);
+  const [showSavePasswordConfirmation, setShowSavePasswordConfirmation] =
     useState(false);
 
   const history = useHistory();
@@ -49,6 +54,36 @@ const ProfileCard = () => {
     setConfirmationDeleteButtonState(false);
   };
 
+  const handleInitialSaveInfoClick = () => {
+    if (editedPassword && editedPassword !== retypePassword) {
+      alert("New passwords do not match.");
+      setDeleteButtonState(false);
+      return;
+    }
+    setShowSavePasswordConfirmation(true);
+  };
+
+  const handleCheckPassword = () => {
+    Axios.post("http://localhost:3001/check-password", {
+      email: currentUser.email,
+      password: passwordInput,
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          console.log("Password confirmed");
+          setShowSavePasswordConfirmation(false);
+          handleSaveInfoClick();
+        } else {
+          console.error("Failed to confirm password");
+          alert("Incorrect password. Please try again.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error while confirming password:", error);
+        alert("Incorrect password. Please try again.");
+      });
+  };
+
   const handleSaveInfoClick = () => {
     setDeleteButtonState(true);
 
@@ -58,7 +93,8 @@ const ProfileCard = () => {
     }
 
     if (editedPassword && editedPassword !== retypePassword) {
-      alert("Passwords do not match");
+      alert("New passwords do not match.");
+      setDeleteButtonState(false);
       return;
     }
 
@@ -189,7 +225,15 @@ const ProfileCard = () => {
 
   const handleCancelDelete = () => {
     setShowConfirmation(false);
-    window.location.reload();
+  };
+
+  const handleCancelDeletePassword = () => {
+    setShowPasswordConfirmation(false);
+    setDeleteButtonState(true);
+  };
+
+  const handleCancelDeleteSave = () => {
+    setShowSavePasswordConfirmation(false);
   };
 
   return (
@@ -295,13 +339,21 @@ const ProfileCard = () => {
                 placeholder="Retype new password"
               />
               <button
-                onClick={handleSaveInfoClick}
+                onClick={handleInitialSaveInfoClick}
                 className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
                           phone:text-xs phone:max-w-[125px]
                           md:text-[15px] md:max-w-[200px]"
               >
                 Save Info
               </button>
+              {showSavePasswordConfirmation && (
+                <PasswordSaveConfirmation
+                  message="Enter your password to confirm"
+                  onConfirm={handleCheckPassword}
+                  onCancel={handleCancelDeleteSave}
+                  setPasswordInput={setPasswordInput}
+                />
+              )}
               <button
                 onClick={handleCancelInfoClick}
                 className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
@@ -344,28 +396,12 @@ const ProfileCard = () => {
           />
         )}
         {showPasswordConfirmation && (
-          <div className="mt-[5%]">
-            <input
-              type="password"
-              className="w-[400px] p-2 mb-2
-                          phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
-                          md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg "
-              placeholder="Enter your password to confirm"
-              onChange={(e) => setPasswordInput(e.target.value)}
-            />
-            <button
-              onClick={handleConfirmDelete}
-              className="bg-red-600 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]"
-            >
-              Delete Account
-            </button>
-            <button
-              onClick={handleCancelDelete}
-              className="bg-[#EE7200] font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]"
-            >
-              Cancel
-            </button>
-          </div>
+          <PasswordConfirmation
+            message="Enter your password to confirm"
+            onConfirm={handleConfirmDelete}
+            onCancel={handleCancelDeletePassword}
+            setPasswordInput={setPasswordInput}
+          />
         )}
       </div>
     </>

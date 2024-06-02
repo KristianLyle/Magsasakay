@@ -443,10 +443,39 @@ app.post("/fetch-user-details", async (req, res) => {
   }
 });
 
+app.post("/check-password", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Find the user by email
+    const user = await userModel.findOne({ email });
+
+    // Check if the user exists and if the provided password is correct
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    } else {
+      return res.status(201).json({ message: "Password is correct." });
+    }
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while checking password." });
+  }
+});
+
 // Add a new route for updating user profile
 app.post("/update-user-info", async (req, res) => {
   try {
     const { currentEmail, username, email, password } = req.body;
+
+    // // Find the user by email
+    // const user = await userModel.findOne({ currentEmail });
+
+    // // Check if the user exists and if the provided password is correct
+    // if (!user || !(await bcrypt.compare(passwordConfirm, user.password))) {
+    //   return res.status(401).json({ error: "Invalid email or password" });
+    // }
 
     const updateData = {};
 
@@ -487,6 +516,7 @@ app.post("/update-user-info", async (req, res) => {
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 const multer = require("multer");
+const e = require("express");
 
 // ... (other code remains unchanged)
 
