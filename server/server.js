@@ -469,14 +469,6 @@ app.post("/update-user-info", async (req, res) => {
   try {
     const { currentEmail, username, email, password } = req.body;
 
-    // // Find the user by email
-    // const user = await userModel.findOne({ currentEmail });
-
-    // // Check if the user exists and if the provided password is correct
-    // if (!user || !(await bcrypt.compare(passwordConfirm, user.password))) {
-    //   return res.status(401).json({ error: "Invalid email or password" });
-    // }
-
     const updateData = {};
 
     if (username) {
