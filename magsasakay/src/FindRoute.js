@@ -1,49 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import placesData from './Places.json';
-import NearestRouteComponent from './NearestRoute';
-import calculateIntersection from './RouteIntersection';
+import React, { useState, useEffect } from "react";
+import placesData from "./Places.json";
+import NearestRouteComponent from "./NearestRoute";
+import calculateIntersection from "./RouteIntersection";
 
 const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
-	const [searchQueryFrom, setSearchQueryFrom] = useState('');
-	const [filteredPlacesFrom, setFilteredPlacesFrom] = useState([]);
-	const [fromLocation, setFromLocation] = useState('');
-	const [fromCoordinates, setFromCoordinates] = useState(null);
-	const [nearestRoutesFrom, setNearestRoutesFrom] = useState(null);
+  const [searchQueryFrom, setSearchQueryFrom] = useState("");
+  const [filteredPlacesFrom, setFilteredPlacesFrom] = useState([]);
+  const [fromLocation, setFromLocation] = useState("");
+  const [fromCoordinates, setFromCoordinates] = useState(null);
+  const [nearestRoutesFrom, setNearestRoutesFrom] = useState(null);
 
-	const [searchQueryTo, setSearchQueryTo] = useState('');
-	const [filteredPlacesTo, setFilteredPlacesTo] = useState([]);
-	const [toLocation, setToLocation] = useState('');
-	const [toCoordinates, setToCoordinates] = useState(null);
-	const [nearestRoutesTo, setNearestRoutesTo] = useState(null);
+  const [searchQueryTo, setSearchQueryTo] = useState("");
+  const [filteredPlacesTo, setFilteredPlacesTo] = useState([]);
+  const [toLocation, setToLocation] = useState("");
+  const [toCoordinates, setToCoordinates] = useState(null);
+  const [nearestRoutesTo, setNearestRoutesTo] = useState(null);
 
   const [selectedIntersection, setSelectedIntersection] = useState(null);
-  const [intersectionPoints, setIntersectionPoints] = useState(null);
 
-	useEffect(() => {
-		if (defaultLocation) {
-			setFromLocation(defaultLocation);
-			setToLocation(defaultLocation);
+  useEffect(() => {
+    if (defaultLocation) {
+      setFromLocation(defaultLocation);
+      setToLocation(defaultLocation);
 
-			const defaultPlace = placesData.find(
-				(place) => place.name === defaultLocation
-			);
-			if (defaultPlace) {
-				setFromCoordinates(defaultPlace.location);
-				setToCoordinates(defaultPlace.location);
+      const defaultPlace = placesData.find(
+        (place) => place.name === defaultLocation
+      );
+      if (defaultPlace) {
+        setFromCoordinates(defaultPlace.location);
+        setToCoordinates(defaultPlace.location);
 
-				const nearestRoutes = NearestRouteComponent(defaultPlace.location);
-				setNearestRoutesFrom(nearestRoutes);
-				setNearestRoutesTo(nearestRoutes);
-			}
-		}
-	}, [defaultLocation]);
+        const nearestRoutes = NearestRouteComponent(defaultPlace.location);
+        setNearestRoutesFrom(nearestRoutes);
+        setNearestRoutesTo(nearestRoutes);
+      }
+    }
+  }, [defaultLocation]);
 
   const handleSearchFrom = (event) => {
     setSearchQueryFrom(event.target.value);
     setFromLocation(event.target.value);
     setFilteredPlacesFrom([]);
     setSelectedIntersection(null); // Reset selected intersection when "From" textbox changes
-    setIntersectionPoints(null); // Clear previous intersection points
     handleSearch(event.target.value, setFilteredPlacesFrom, setSearchQueryFrom);
   };
 
@@ -52,96 +50,93 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
     setToLocation(event.target.value);
     setFilteredPlacesTo([]);
     setSelectedIntersection(null); // Reset selected intersection when "To" textbox changes
-    setIntersectionPoints(null); // Clear previous intersection points
     handleSearch(event.target.value, setFilteredPlacesTo, setSearchQueryTo);
   };
 
-	const handleSearch = (query, setFilteredPlaces, setSearchQuery) => {
-		setSearchQuery(query);
-		if (query.trim() === '') {
-			setFilteredPlaces([]);
-		} else {
-			const startsWithNameQuery = [];
-			const containsNameQuery = [];
-			const startsWithCategoryQuery = [];
-			const containsCategoryQuery = [];
-			const lowercaseQuery = query.toLowerCase();
-			for (const place of placesData) {
-				const lowercaseName = place.name.toLowerCase();
-				const lowercaseCategory = place.category.toLowerCase();
-				if (lowercaseName.startsWith(lowercaseQuery)) {
-					startsWithNameQuery.push(place);
-				} else if (lowercaseName.includes(lowercaseQuery)) {
-					containsNameQuery.push(place);
-				} else if (lowercaseCategory.startsWith(lowercaseQuery)) {
-					startsWithCategoryQuery.push(place);
-				} else if (lowercaseCategory.includes(lowercaseQuery)) {
-					containsCategoryQuery.push(place);
-				}
-			}
-			const filtered = startsWithNameQuery.concat(
-				containsNameQuery,
-				startsWithCategoryQuery,
-				containsCategoryQuery
-			);
-			setFilteredPlaces(filtered);
-		}
-	};
+  const handleSearch = (query, setFilteredPlaces, setSearchQuery) => {
+    setSearchQuery(query);
+    if (query.trim() === "") {
+      setFilteredPlaces([]);
+    } else {
+      const startsWithNameQuery = [];
+      const containsNameQuery = [];
+      const startsWithCategoryQuery = [];
+      const containsCategoryQuery = [];
+      const lowercaseQuery = query.toLowerCase();
+      for (const place of placesData) {
+        const lowercaseName = place.name.toLowerCase();
+        const lowercaseCategory = place.category.toLowerCase();
+        if (lowercaseName.startsWith(lowercaseQuery)) {
+          startsWithNameQuery.push(place);
+        } else if (lowercaseName.includes(lowercaseQuery)) {
+          containsNameQuery.push(place);
+        } else if (lowercaseCategory.startsWith(lowercaseQuery)) {
+          startsWithCategoryQuery.push(place);
+        } else if (lowercaseCategory.includes(lowercaseQuery)) {
+          containsCategoryQuery.push(place);
+        }
+      }
+      const filtered = startsWithNameQuery.concat(
+        containsNameQuery,
+        startsWithCategoryQuery,
+        containsCategoryQuery
+      );
+      setFilteredPlaces(filtered);
+    }
+  };
 
-	const handleSuggestionClickFrom = (place) => {
-		setSearchQueryFrom(place.name);
-		setFromLocation(place.name);
-		setFromCoordinates(place.location); // Set the coordinates for 'from' location
-		setFilteredPlacesFrom([]);
-		const nearestRoutes = NearestRouteComponent(place.location);
-		setNearestRoutesFrom(nearestRoutes);
-	};
+  const handleSuggestionClickFrom = (place) => {
+    setSearchQueryFrom(place.name);
+    setFromLocation(place.name);
+    setFromCoordinates(place.location); // Set the coordinates for 'from' location
+    setFilteredPlacesFrom([]);
+    const nearestRoutes = NearestRouteComponent(place.location);
+    setNearestRoutesFrom(nearestRoutes);
+  };
 
-	const handleSuggestionClickTo = (place) => {
-		setSearchQueryTo(place.name);
-		setToLocation(place.name);
-		setToCoordinates(place.location); // Set the coordinates for 'to' location
-		setFilteredPlacesTo([]);
-		const nearestRoutes = NearestRouteComponent(place.location);
-		setNearestRoutesTo(nearestRoutes);
-	};
+  const handleSuggestionClickTo = (place) => {
+    setSearchQueryTo(place.name);
+    setToLocation(place.name);
+    setToCoordinates(place.location); // Set the coordinates for 'to' location
+    setFilteredPlacesTo([]);
+    const nearestRoutes = NearestRouteComponent(place.location);
+    setNearestRoutesTo(nearestRoutes);
+  };
 
-	const suggestionStyle = { cursor: 'pointer' };
+  const suggestionStyle = { cursor: "pointer" };
 
-	const handleRadioChange = (intersection) => {
-		if (
-			selectedIntersection &&
-			selectedIntersection.routeFrom === intersection.routeFrom &&
-			selectedIntersection.routeTo === intersection.routeTo
-		) {
-			// If the same intersection is clicked again, deselect it
-			setSelectedIntersection(null);
-		} else {
-			// Otherwise, select the new intersection
-			setSelectedIntersection(intersection);
-		}
-	};
+  const handleRadioChange = (intersection) => {
+    if (
+      selectedIntersection &&
+      selectedIntersection.routeFrom === intersection.routeFrom &&
+      selectedIntersection.routeTo === intersection.routeTo
+    ) {
+      // If the same intersection is clicked again, deselect it
+      setSelectedIntersection(null);
+    } else {
+      // Otherwise, select the new intersection
+      setSelectedIntersection(intersection);
+    }
+  };
+
+  let intersectionPoints = null;
+  if (nearestRoutesFrom && nearestRoutesTo) {
+    intersectionPoints = calculateIntersection(
+      nearestRoutesFrom,
+      nearestRoutesTo
+    )?.map((intersection) => ({
+      ...intersection,
+      fromLocation,
+      toLocation,
+      fromCoordinates,
+      toCoordinates,
+    }));
+  }
 
   useEffect(() => {
-    if (nearestRoutesFrom && nearestRoutesTo) {
-      const intersections = calculateIntersection(
-        nearestRoutesFrom,
-        nearestRoutesTo
-      ).map((intersection) => ({
-        ...intersection,
-        fromLocation,
-        toLocation,
-        fromCoordinates,
-        toCoordinates,
-      }));
-      setIntersectionPoints(intersections);
-    }
-  }, [nearestRoutesFrom, nearestRoutesTo, fromLocation, toLocation, fromCoordinates, toCoordinates]);
-
-	useEffect(() => {
-		// Call the onIntersectionChange function with the updated selectedIntersection
-		onIntersectionChange(selectedIntersection ? [selectedIntersection] : []);
-	}, [selectedIntersection, onIntersectionChange]);
+    // Call the onIntersectionChange function with the updated selectedIntersection
+    onIntersectionChange(selectedIntersection ? [selectedIntersection] : []);
+  }, [selectedIntersection, onIntersectionChange]);
 
   return (
     <div className="find-route-container font-Montserrat bg-[#461E96] left-3 md:left-0
@@ -202,31 +197,34 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
             )}
           </div>
         </div>{" "}
+        <br />
       </div>
-      
-      <div className="find-route-routes rounded-xl max-w-full max-h-[180px] 
-  overflow-auto overflow-x-hidden p-[5px] mt-[-120px] md:mt-[-110px]">
-    {intersectionPoints &&
-      intersectionPoints.map((intersection, index) => (
-        <div className= "bg-[#160E3D]">
-          <div key={index} className="text-white p-[5px] text-[50%] md:text-[80%]">
-            <input
-              type="radio"
-              id={`intersection-${index}`}
-              checked={
-                selectedIntersection &&
-                selectedIntersection.routeFrom === intersection.routeFrom &&
-                selectedIntersection.routeTo === intersection.routeTo
-              }
-              onChange={() => handleRadioChange(intersection)}
-            />
-            <label className="ml-[5px]" htmlFor={`intersection-${index}`}>
-              {`${intersection.routeFrom} to ${intersection.routeTo}`}
-            </label>
-          </div>
-        </div>
-    ))}
-</div>
+      <div className="find-route-routes rounded-xl max-w-full max-h-[120px] md:max-h-[170px] overflow-y-hidden md:overflow-auto overflow-x-hidden p-[5px] absolute top-[120px] md:top-[200px]">
+        {/* Adjusted position of this component */}
+        {intersectionPoints && intersectionPoints.length > 0
+          ? intersectionPoints.map((intersection, index) => (
+              <div className="bg-[#160E3D]" key={index}>
+                <div className="text-white p-[5px] text-[50%] md:text-[85%]">
+                  <input
+                    type="radio"
+                    id={`intersection-${index}`}
+                    checked={
+                      selectedIntersection &&
+                      selectedIntersection.routeFrom ===
+                        intersection.routeFrom &&
+                      selectedIntersection.routeTo === intersection.routeTo
+                    }
+                    onChange={() => handleRadioChange(intersection)}
+                    className="custom-radio"
+                  />
+                  <label className="ml-[5px]" htmlFor={`intersection-${index}`}>
+                    {`${intersection.routeFrom} to ${intersection.routeTo}`}
+                  </label>
+                </div>
+              </div>
+            ))
+          : intersectionPoints !== null && <div>No route available</div>}
+      </div>
 
       <style jsx>{`
         .custom-radio {
