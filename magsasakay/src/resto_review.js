@@ -210,176 +210,175 @@ const RestoReviews = () => {
                 <span
                   className="text-blue-500 cursor-pointer ml-2"
                   onClick={toggleShowFullReview}
-                  >
-                    ... View Less
-                  </span>
-                )}
-              </p>
-            </div>
+                >
+                  ... View More
+                </span>
+              )}
+            </p>
           </div>
         </div>
-      );
-    };
-  
-    // Logic for pagination
-    const indexOfLastReview = currentPage * reviewsPerPage;
-    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-    const currentReviews = postedReviews.slice(
-      indexOfFirstReview,
-      indexOfLastReview
+      </div>
     );
-  
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  
-    return (
-      <>
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route exact path="/" />
-          </Switch>
-        </Router>
-        <div
-          style={backgroundStyle}
-          className="bg-cover bg-full bg-center min-h-screen overflow-x-hidden"
-        >
-          <div className="mx-auto min-h-screen flex flex-col overflow-y-auto overflow-x-auto bg-no-repeat ml-[60px] mr-[50px]">
-            <br />
-            <div className=" flex flex-col md:flex-row items-justify">
-              <h1
-                className="text-white font-Montserrat mt-4 text-left font-extrabold text-[40px]"
-                style={{ margin: 0 }}
-              >
-                {restaurantDetails.name}
-              </h1>{" "}
-              <div className="flex items-center ml-[-2px] md:ml-[20px] mt-2 md:mt-0 mb-4 md:mb-0">
-                {[...Array(5)].map((_, i) => (
-                  <FontAwesomeIcon
-                    key={i}
-                    icon={
-                      i < restaurantDetails.averageRating
-                        ? faStar
-                        : ["far", "star"]
-                    }
-                    className="star-icon"
-                    style={{
-                      color:
-                        i < restaurantDetails.averageRating ? "#FFD700" : "#ccc",
-                      fontSize: "30px",
-                      marginRight: "4px",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.target.style.color = "#yourDesiredHoverColor")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.target.style.color =
-                        i < restaurantDetails.averageRating ? "#FFD700" : "#ccc")
-                    }
-                  />
-                ))}{" "}
-              </div>
-            </div>{" "}
+  };
+
+  // Logic for pagination
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+  const currentReviews = postedReviews.slice(
+    indexOfFirstReview,
+    indexOfLastReview
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  return (
+    <>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" />
+        </Switch>
+      </Router>
+      <div
+        style={backgroundStyle}
+        className="bg-cover bg-full bg-center min-h-screen overflow-x-hidden"
+      >
+        <div className="mx-auto min-h-screen flex flex-col overflow-y-auto overflow-x-auto bg-no-repeat ml-[60px] mr-[50px]">
+          <br />
+          <div className=" flex flex-col md:flex-row items-justify">
             <h1
-              className="text-white font-Montserrat mt-4 text-left font-extrabold text-[20px]"
+              className="text-white font-Montserrat mt-4 text-left font-extrabold text-[40px]"
               style={{ margin: 0 }}
             >
-              {restaurantDetails.location}
+              {restaurantDetails.name}
             </h1>{" "}
-            <br />
-            <div className="flex flex-col md:flex-row py-2 font-Montserrat bg-gray-200 rounded-3xl overflow-hidden items-center">
-              <img
-                style={{ width: "200px", height: "150px" }}
-                src={`/${restaurantDetails.image}`}
-                alt={restaurantDetails.name}
-                className="object-cover rounded-3xl border-[2px] border-[#160E3D]  mt-[10px] mb-[10px] md:ml-[10px] md:mt-[10px] md:mb-[10px]"
-              />
-              <p className="mt-[0px] p-[10px] ml-3 overflow-ellipsis overflow-wrap break-words text-center md:text-justify">
-                {restaurantDetails.description}
-              </p>
-            </div>
-            <br />
-            <br />
-            <div className="flex flex-col ">
-              <div className="ml-[40px] mb-[5px]">
-                <StarRating
-                  onRatingChange={setSelectedRating}
-                  selectedRating={selectedRating}
+            <div className="flex items-center ml-[-2px] md:ml-[20px] mt-2 md:mt-0 mb-4 md:mb-0">
+              {[...Array(5)].map((_, i) => (
+                <FontAwesomeIcon
+                  key={i}
+                  icon={
+                    i < restaurantDetails.averageRating
+                      ? faStar
+                      : ["far", "star"]
+                  }
+                  className="star-icon"
+                  style={{
+                    color:
+                      i < restaurantDetails.averageRating ? "#FFD700" : "#ccc",
+                    fontSize: "30px",
+                    marginRight: "4px",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.target.style.color = "#yourDesiredHoverColor")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.target.style.color =
+                      i < restaurantDetails.averageRating ? "#FFD700" : "#ccc")
+                  }
                 />
-                <h1
-                  className="text-white font-Montserrat mt-4 text-left font-extrabold text-[20px]"
-                  style={{ margin: 0 }}
-                >
-                  {userName}
-                </h1>{" "}
-              </div>
-              <textarea
-                type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                placeholder="Write your review here..."
-                className="h-[100px] max-w-[100%] w-[1200px] border border-gray-300 rounded-lg p-4 ml-[40px] focus:outline-one focus:ring-2 focus:ring-blue-500 overflow-y-auto"
-                style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}
+              ))}{" "}
+            </div>
+          </div>{" "}
+          <h1
+            className="text-white font-Montserrat mt-4 text-left font-extrabold text-[20px]"
+            style={{ margin: 0 }}
+          >
+            {restaurantDetails.location}
+          </h1>{" "}
+          <br />
+          <div className="flex flex-col md:flex-row py-2 font-Montserrat bg-gray-200 rounded-3xl overflow-hidden items-center">
+            <img
+              style={{ width: "200px", height: "150px" }}
+              src={`/${restaurantDetails.image}`}
+              alt={restaurantDetails.name}
+              className="object-cover rounded-3xl border-[2px] border-[#160E3D]  mt-[10px] mb-[10px] md:ml-[10px] md:mt-[10px] md:mb-[10px]"
+            />
+            <p className="mt-[0px] p-[10px] ml-3 overflow-ellipsis overflow-wrap break-words text-center md:text-justify">
+              {restaurantDetails.description}
+            </p>
+          </div>
+          <br />
+          <br />
+          <div className="flex flex-col ">
+            <div className="ml-[40px] mb-[5px]">
+              <StarRating
+                onRatingChange={setSelectedRating}
+                selectedRating={selectedRating}
               />
-              <div className="flex flex-col ml-[40px] ">
-                <button
-                  style={{ marginTop: "10px", marginBottom: "10px" }}
-                  onClick={handlePostText}
-                  className="bg-[#EE7200] text-[15px] py-2 rounded-full 
+              <h1
+                className="text-white font-Montserrat mt-4 text-left font-extrabold text-[20px]"
+                style={{ margin: 0 }}
+              >
+                {userName}
+              </h1>{" "}
+            </div>
+            <textarea
+              type="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder="Write your review here..."
+              className="h-[100px] max-w-[100%] w-[1200px] border border-gray-300 rounded-lg p-4 ml-[40px] focus:outline-one focus:ring-2 focus:ring-blue-500 overflow-y-auto"
+              style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}
+            />
+            <div className="flex flex-col ml-[40px] ">
+              <button
+                style={{ marginTop: "10px", marginBottom: "10px" }}
+                onClick={handlePostText}
+                className="bg-[#EE7200] text-[15px] py-2 rounded-full 
                                                               font-bold text-white hover:bg-white hover:text-[#160E3D] 
                                                               drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
-                >
-                  Post Review
-                </button>
-                <button
-                  style={{ marginTop: "2px" }}
-                  onClick={handleCancelButtonClick}
-                  className="bg-[#BF2F00] text-[15px] py-2 rounded-full
+              >
+                Post Review
+              </button>
+              <button
+                style={{ marginTop: "2px" }}
+                onClick={handleCancelButtonClick}
+                className="bg-[#BF2F00] text-[15px] py-2 rounded-full
                                 font-bold text-white hover:bg-white hover:text-[#BF2F00] 
                                 drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
-                >
-                  Cancel
-                </button>
-              </div>
+              >
+                Clear
+              </button>
             </div>
-            {currentReviews.length > 0 && (
-              <div>
-                <ul>
-                  {currentReviews.map((review, index) => (
-                    <li key={index}>
-                      <Review review={review} />
-                      <br />
+          </div>
+          {currentReviews.length > 0 && (
+            <div>
+              <ul>
+                {currentReviews.map((review, index) => (
+                  <li key={index}>
+                    <Review review={review} />
+                    <br />
+                  </li>
+                ))}
+              </ul>
+              <br />
+              <nav className="flex justify-center mt-1">
+                <ul className="pagination flex flex-row">
+                  {Array.from({
+                    length: Math.ceil(postedReviews.length / reviewsPerPage),
+                  }).map((_, index) => (
+                    <li key={index} className="px-2 mb-[15px]">
+                      <a
+                        onClick={() => paginate(index + 1)}
+                        href="#"
+                        className={` font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
+                          currentPage === index + 1
+                            ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
+                            : "bg-[#EE7200] text-[#160E3D]"
+                        }`}
+                      >
+                        {index + 1}
+                      </a>
                     </li>
                   ))}
                 </ul>
-                <br />
-                <nav className="flex justify-center mt-1">
-                  <ul className="pagination flex flex-row">
-                    {Array.from({
-                      length: Math.ceil(postedReviews.length / reviewsPerPage),
-                    }).map((_, index) => (
-                      <li key={index} className="px-2 mb-[15px]">
-                        <a
-                          onClick={() => paginate(index + 1)}
-                          href="#"
-                          className={` font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
-                            currentPage === index + 1
-                              ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
-                              : "bg-[#EE7200] text-[#160E3D]"
-                          }`}
-                        >
-                          {index + 1}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
-            )}
-          </div>
+              </nav>
+            </div>
+          )}
         </div>
-      </>
-    );
-  };
-  
-  export default RestoReviews;
-                  
+      </div>
+    </>
+  );
+};
+
+export default RestoReviews;
