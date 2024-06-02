@@ -41,7 +41,7 @@ const FindRouteWithMap = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div className="relative h-screen w-screen">
+      <div className="relative h-screen w-screen bg-blue">
         <div className="absolute inset-0 z-0">
           <Map
             routesData={RoutesData}
@@ -58,42 +58,59 @@ const FindRouteWithMap = () => {
           />
         </div>
 
-        <div className="absolute bottom-20 left-16 md:left-14 bg-[#461E96] w-[62%] md:w-[20%] h-[5%] md:h-[7%]
-         bg-opacity-90 p-2 md:p-4 rounded-xl shadow-lg z-10  text-white mt-[20%]"> 
-          <div className="flex space-x-4 text-center text-[70%] md:text-[100%]">
-            <label>
+        <div className="absolute bottom-[90px] md:bottom-[90px] left-16 md:left-14 bg-[#461E96] min-w-[30%] md:min-w-[20%] max-w-[57%]
+         md:max-w-[10%] w-[55%] md:w-[20%] h-[5%] md:h-[7%]
+         bg-opacity-90 p-2 md:p-4 rounded-xl shadow-lg z-10 text-white mt-[20%]"> 
+          <div className="flex space-x-4 text-center text-[50%] md:text-[85%]">
+            <label className="custom-radio-label">
               <input
                 type="radio"
                 name="tileLayer"
                 value="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                 checked={tileLayerUrl === 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'}
                 onChange={handleTileLayerChange}
+                className="custom-radio"
               />
               Light
             </label>
-            <label>
+            <label className="custom-radio-label">
               <input
                 type="radio"
                 name="tileLayer"
                 value="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
                 checked={tileLayerUrl === 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'}
                 onChange={handleTileLayerChange}
+                className="custom-radio"
               />
               Standard
             </label>
-            <label>
+            <label className="custom-radio-label">
               <input
                 type="radio"
                 name="tileLayer"
                 value="https://tile.openstreetmap.de/{z}/{x}/{y}.png"
                 checked={tileLayerUrl === 'https://tile.openstreetmap.de/{z}/{x}/{y}.png'}
                 onChange={handleTileLayerChange}
+                className="custom-radio"
               />
               Detailed
             </label>
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .custom-radio-label {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+        .custom-radio {
+          width: 15px; /* Adjust the size of the radio button */
+          height: 15px; /* Adjust the size of the radio button */
+          color: #f4b55e; /* Change the color of the radio button */
+          margin-right: 5px;
+        }
+      `}</style>
     </>
   );
 };
