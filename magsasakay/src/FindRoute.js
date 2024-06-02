@@ -209,7 +209,7 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
 				{intersectionPoints && intersectionPoints.length > 0
 					? intersectionPoints.map((intersection, index) => (
 							<div
-								className='bg-[#160E3D]'
+								className='bg-[#240750]'
 								key={index}>
 								<div className='text-white p-[5px] text-[50%] md:text-[85%]'>
 									<input

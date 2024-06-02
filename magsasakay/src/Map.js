@@ -30,10 +30,10 @@ const Map = ({
 			center={[10.7202, 122.5621]}
 			zoom={13}
 			zoomControl={false}
-			//maxBounds={[
-			// [10.6602, 122.4393],
-			//[10.7992, 122.6955],
-			//]}
+			maxBounds={[
+			 [10.6602, 122.4393],
+			[10.7992, 122.6955],
+			]}
 			maxBoundsViscosity={1.0}>
 			<TileLayer
 				url={tileLayerUrl}
