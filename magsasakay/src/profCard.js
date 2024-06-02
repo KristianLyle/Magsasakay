@@ -178,10 +178,12 @@ const ProfileCard = () => {
           setShowConfirmation(false);
         } else {
           console.error("Failed to delete user account");
+          alert("Incorrect password. Please try again.");
         }
       })
       .catch((error) => {
         console.error("Error while deleting user account:", error);
+        alert("Incorrect password. Please try again.");
       });
   };
 
@@ -356,6 +358,12 @@ const ProfileCard = () => {
               className="bg-red-600 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]"
             >
               Delete Account
+            </button>
+            <button
+              onClick={handleCancelDelete}
+              className="bg-[#EE7200] font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]"
+            >
+              Cancel
             </button>
           </div>
         )}
