@@ -140,17 +140,17 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
 
   return (
     <div className="find-route-container font-Montserrat bg-[#461E96]
-     border-[#160E3D] border-[1.5px] rounded-xl w-[310px] md:w-[340px] h-[200px] md:h-[380px]">
+     border-[#160E3D] border-[1.5px] rounded-xl w-[290px] md:w-[340px] h-[140px] md:h-[380px]">
       <div className="find-route-title mt-[10px] md:mt-[50px]">
-        <h1 className="font-extrabold text-center text-[130%] md:text-[200%] text-white">
+        <h1 className="font-extrabold text-center text-[130%] md:text-[200%] text-white mb-[-14px]">
           Find Route
         </h1>{" "}
         <br />
-        <div className="find-route-forms max-w-[50%] w-[600px] ">
+        <div className="find-route-forms max-w-[50%] w-[600px] h-[200px]">
 
-          <div className=" ml-[10px] text-center ">
+          <div className=" ml-[10px] text-center mb-[-14px]">
             <input
-              className="rounded-lg w-[195%] text-[80%] md:text-[100%]"
+              className="rounded-lg w-[195%] md:w-[195%] h-[10%] md:h-[35%] text-[80%] md:text-[100%]"
               type="text"
               value={fromLocation}
               onChange={handleSearchFrom}
@@ -179,7 +179,7 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
 
           <div className="ml-[10px] text-center ">
             <input
-              className="rounded-lg w-[195%] text-[80%] md:text-[100%]"
+              className="rounded-lg w-[195%] md:w-[195%] h-[10%] md:h-[35%] text-[80%] md:text-[100%]"
               type="text"
               value={toLocation}
               onChange={handleSearchTo}
@@ -204,11 +204,12 @@ const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
         </div>{" "}
         <br />
 
-        <div className="find-route-routes rounded-xl max-w-full max-h-[300px] overflow-auto overflow-x-hidden p-[5px]">
+        <div className="find-route-routes rounded-xl max-w-full max-h-[300px] 
+        overflow-auto overflow-x-hidden p-[5px] pt-[190px] md:pt-[0px]">
           {intersectionPoints &&
             intersectionPoints.map((intersection, index) => (
               <div className= "bg-[#160E3D]">
-                <div key={index} className="text-white p-[5px] ">
+                <div key={index} className="text-white p-[5px] text-[50%] md:text-[100%]">
                   <input
                     type="radio"
                     id={`intersection-${index}`}
