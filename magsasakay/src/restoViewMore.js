@@ -35,7 +35,7 @@ const ViewMore = () => {
         setRestaurants(data);
         const initialExpandedState = {};
         data.forEach((restaurant) => {
-          initialExpandedState[restaurant.id] = false;
+          initialExpandedState[restaurant._id] = false;
         });
         setExpandedRestaurants(initialExpandedState);
       })
@@ -171,7 +171,7 @@ const ViewMore = () => {
             <br />
             <div className="flex-col justify-start md:justify-center md:pl-20">
               {currentRestaurants.map((restaurant) => (
-                <div key={restaurant.id} className="flex-container py-4">
+                <div key={restaurant._id} className="flex-container py-4">
                   <div
                     className="font-Montserrat font-bold text-[35px] text-center text-white justify-center
                     px-3 py-3 mx-16 mt-0 rounded-2xl inline-block shadow-slate-500 border-[#577B8D] border-[2px]
@@ -233,7 +233,7 @@ const ViewMore = () => {
                           <p
                             className="text-[11px] md:text-[15px] font-normal text-center md:text-start"
                             style={{
-                              maxHeight: expandedRestaurants[restaurant.id]
+                              maxHeight: expandedRestaurants[restaurant._id]
                                 ? "none"
                                 : "4.5rem",
                               overflow: "hidden",
@@ -243,10 +243,10 @@ const ViewMore = () => {
                           </p>
                           {restaurant.description.length > 250 && (
                             <button
-                              onClick={() => toggleDescription(restaurant.id)}
+                              onClick={() => toggleDescription(restaurant._id)}
                               className="underline font-Montserrat font-light text-[11px] md:text-[15px]"
                             >
-                              {expandedRestaurants[restaurant.id]
+                              {expandedRestaurants[restaurant._id]
                                 ? "Read Less"
                                 : "Read More"}
                             </button>
