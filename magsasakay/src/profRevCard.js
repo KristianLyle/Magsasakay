@@ -100,11 +100,10 @@ const ProfileReviews = () => {
   const endPage = Math.min(startPage + 2, maxPage);
 
   return (
-    <div
-      className="ml-[550px] font-Montserrat bg-[#461E96] max-w-full text-white p-[5px] rounded-lg
-                   phone:ml-[205px] phone:max-w-[190px] phone:p-[1px]
-                   md:ml-[550px] md:max-w-full md-p-[5px] md:mr-[20px]"
-    >
+    <div className="font-Montserrat bg-[#461E96] text-white p-5 rounded-lg
+             w-full md:w-full md:max-w-[1000px] md:ml-auto md:mr-auto">
+
+
       <h1
         className="ml-[20px] font-extrabold text-[35px]
                     phone:ml-[15px] phone:text-[25px] phone:p-[1px] phone:text-center
@@ -170,8 +169,9 @@ const ProfileReviews = () => {
             )}
             <div>
             <button
-                className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
-                          phone:w-[75%] phone:text-[55%]
+                className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white
+                 hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[210px]
+                          phone:w-[40%] phone:text-[55%]
                           md:w-[100%] md:text-[15px]
                           "
                 onClick={() => handleEditClick(index, review.review)}
@@ -179,8 +179,9 @@ const ProfileReviews = () => {
                 Edit Review
               </button>
               <button
-                className="ml-[5px] bg-[#BF2F00] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
-                          phone:w-[85%] phone:text-[55%]
+                className="ml-[5px] bg-[#BF2F00] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white
+                 hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[210px] max-h-8
+                          phone:w-[40%] phone:text-[55%]
                           md:w-[100%] md:text-[15px]"
                 onClick={() => handleDeleteClick(review._id)}
               >

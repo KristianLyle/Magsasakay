@@ -239,12 +239,11 @@ const ProfileCard = () => {
   return (
     <>
       <div
-        className="w-[505px] h-full rounded-[4px] pb-[20px] bg-[#461E96] text-center font-Montserrat
-                     phone:w-4/5 phone:h-1/2 phone:pb-0
-                     md:w-[505px] md:h-full md:pb-[20px] "
+        className="w-[700px] rounded-[4px] pb-[20px] bg-[#461E96] text-center font-Montserrat
+                    min-h-[100px] md:w-[505px] h-[250px] md:h-full md:pb-[20px] "
       >
         <div
-          className="h-[350px] rounded-[4px_4px_0px_0px]"
+          className="h-[150px] md:h-[350px] rounded-[4px_4px_0px_0px]"
           style={{ backgroundImage: `url(${city})` }}
         ></div>
         <div className="profile-down items-center">
@@ -254,8 +253,8 @@ const ProfileCard = () => {
           >
             <img
               src={displayedPicture || user}
-              className="h-[200px] w-[200px] rounded-[100px] mt-[-125px] p-[5px] bg-white ml-[150px]
-                        phone:w-2/3 phone:h-2/3 phone:ml-7 phone:mt-[-75px]
+              className="h-[100px] w-[100px] rounded-[100px] mt-[-125px] p-[5px] bg-white ml-[10px] 
+                        phone:mt-[-75px]
                         md:w-[200px] md:h-[200px] md:ml-[150px] md:mt-[-125px] md:rounded-full"
             />
             <input
@@ -284,13 +283,16 @@ const ProfileCard = () => {
             )}
           </label>
           <div
-            className="profile-title text-[26px] font-semibold text-white
-                          phone:text-base mt-[2%]
-                          md:text-[26px] "
+            className="profile-title text-[26px] font-semibold text-white text-left md:text-center w-full
+                      phone:text-base mt-[2%] ml-4 md:ml-0
+                      md:text-[26px]"
           >
             {currentUser.username}
           </div>
-          <div className="text-white font-thin">{currentUser.email}</div>
+          <div className="text-white font-thin text-left md:text-center w-full ml-4 md:ml-0">
+            {currentUser.email}
+          </div>
+
 
           <br />
 
@@ -356,7 +358,8 @@ const ProfileCard = () => {
               )}
               <button
                 onClick={handleCancelInfoClick}
-                className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
+                className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] 
+                drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
                           phone:text-xs phone:max-w-[125px]
                           md:text-[15px] md:max-w-[200px]"
               >
@@ -364,26 +367,26 @@ const ProfileCard = () => {
               </button>
             </div>
           ) : (
-            <div
-              className="profile-description px-1 py-5 text-[15px] bg-[#160E3D] max-w-[450px] max-h-[450px] text-center rounded-[15px] overflow-auto
-                            phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
-                            md:ml-[27px] md:mr-0 md:max-w-[450px]"
-            >
+            
               <button
                 onClick={handleEditInfoClick}
-                className=" bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
-                          phone:text-xs phone:max-w-[125px]
-                          md:text-[15px] md:max-w-[200px]"
+                className=" bg-[#EE7200] relative z-0 font-Montserrat rounded-full py-2 font-bold text-white text-[8px] md:text-[14px]
+                hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] min-w-[100px] max-w-[200px] mt-[-130px] md:mt-0 bottom-[85px] md:bottom-[10px]
+                justify-end ml-[230px] md:ml-[10px] 
+                
+                " //bg-[#EE7200] 
               >
                 Edit Profile Info
               </button>
-            </div>
+        
           )}
         </div>
         {deleteButtonState && (
           <button
             onClick={handleDeleteAccount}
-            className="bg-red-600  relative z-0 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]"
+            className="bg-red-600  relative z-0 font-Montserrat rounded-full py-2 font-bold text-white text-[8px] md:text-[14px]
+             hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] min-w-[100px] max-w-[200px] mt-[-130px] md:mt-0 bottom-[80px] md:bottom-[0]
+             justify-end ml-[230px] md:ml-[10px]"
           >
             Delete Account
           </button>

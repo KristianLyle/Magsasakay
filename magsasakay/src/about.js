@@ -33,7 +33,7 @@ const About = () => {
     missionIndex = (missionIndex + 1) % missionImages.length;
     const missionContainer = document.getElementById("missionImage");
     if (missionContainer) {
-      missionContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(170, 132, 255, 0), rgba(0,0,0,0)), url(${missionImages[missionIndex]})`;
+      missionContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(70, 30, 150, 0), rgba(0,0,0,0)), url(${missionImages[missionIndex]})`;
     }
   };
 
@@ -70,21 +70,23 @@ const About = () => {
       <div
         ref={backgroundRef}
         style={{
-          backgroundColor: "#160E3D",
+          backgroundColor: "#461E96",
           backgroundSize: "cover",
           backgroundPosition: "center",
           minHeight: "100vh", // Ensure background covers the viewport height
+          maxWidth: "230vh"
         }}
         className="bg-contain bg-full bg-center min-h-screen flex flex-col"
       >
         <div>
         <div
-          id="missionContainer"
-          className="text-white font-Montserrat bg-cover min-w-screen md:h-[300px] h-[400px] py-2 mt-0 flex flex-col md:flex-row"
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(170, 132, 255, 0), rgba(0,0,0,0))`,
-          }}
-        >
+            id="missionContainer"
+            className="text-white font-Montserrat bg-cover min-w-screen md:h-[300px] h-[400px] py-2 mt-0 flex flex-col md:flex-row rounded-xl"
+            style={{
+              backgroundImage: `linear-gradient(to bottom, rgba(70, 30, 150, 0), rgba(0,0,0,0))`,
+            }}
+          >
+
           <div className="md:w-1/2 p-4 md:p-10 md:pl-10 flex flex-col justify-center">
             <h1 className="pt-10 text-left font-extrabold md:text-[50px] text-[30px]">
                   Our Mission
@@ -102,7 +104,7 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="md:w-1/2 bg-[#240750] flex justify-end">
+          <div className="md:w-1/2 flex justify-end">
             <div
               id="missionImage"
               className="w-full h-full bg-cover bg-center mr-8"
