@@ -98,6 +98,7 @@ body {
 @media screen and (max-width: 768px) {
     .jeepney-routes-container {
         font-size: 14px; /* Decrease font size for smaller screens */
+        width: 33vw;
     }
 
     .jeepney-routes-title h3 {
@@ -106,7 +107,18 @@ body {
 
     .jeepney-routes-contents label {
         font-size: 9.5px; /* Decrease font size for smaller screens */
+        width: 70%;
     }
+
+    .jeepney-routes-contents input[type='checkbox'] {
+        appearance: none;
+        width: 12px;
+        height: 12px;
+        border: 2px solid white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
 }
 
 /* Checkbox hover effect */
