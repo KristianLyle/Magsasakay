@@ -84,6 +84,53 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+// Add a new route for deleting a user account and their reviews
+app.post("/delete-user", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Find the user by email
+    const user = await userModel.findOne({ email });
+
+    // Check if the user exists and if the provided password is correct
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    // Get all the restaurants where the user had reviews
+    const restaurantsWithUserReviews = await reviewModel
+      .find({ useremail: email })
+      .distinct("restaurant");
+
+    // Delete the user's reviews from all restaurants
+    await reviewModel.deleteMany({ useremail: email });
+
+    // Update the average ratings for each restaurant
+    for (const restaurantName of restaurantsWithUserReviews) {
+      const reviews = await reviewModel.find({ restaurant: restaurantName });
+      const totalRatings = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+      const numReviews = reviews.length;
+      const averageRating = numReviews ? totalRatings / numReviews : 0; // Check if numReviews is not zero before calculating average
+
+      // Update the averageRating of the specific restaurant
+      await restaurantModel.updateOne(
+        { name: restaurantName },
+        { averageRating }
+      );
+    }
+
+    // Delete the user from the userModel
+    await userModel.deleteOne({ email });
+
+    res.status(200).json({ message: "User account deleted successfully." });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while deleting the user account." });
+  }
+});
+
 // Define a new route for fetching restaurant data
 app.get("/restaurants", async (req, res) => {
   try {

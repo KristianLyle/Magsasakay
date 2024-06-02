@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import user from "./img/default-user.jpg";
@@ -16,9 +17,14 @@ const ProfileCard = () => {
   const [showSaveButton, setShowSaveButton] = useState(false);
   const [displayedPicture, setDisplayedPicture] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] =
+    useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
   const [deleteButtonState, setDeleteButtonState] = useState(true);
-  const [confirmationDeleteButtonState, setConfirmationDeleteButtonState] = useState(false);
+  const [confirmationDeleteButtonState, setConfirmationDeleteButtonState] =
+    useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -41,13 +47,12 @@ const ProfileCard = () => {
     setEditingInfo(true);
     setDeleteButtonState(false);
     setConfirmationDeleteButtonState(false);
-    
   };
 
   const handleSaveInfoClick = () => {
     setDeleteButtonState(true);
 
-    if(showPasswordConfirmation && confirmationDeleteButtonState == false){
+    if (showPasswordConfirmation && confirmationDeleteButtonState == false) {
       setConfirmationDeleteButtonState(true);
       setDeleteButtonState(false);
     }
@@ -110,11 +115,10 @@ const ProfileCard = () => {
     setRetypePassword("");
     setDeleteButtonState(true);
 
-    if(showPasswordConfirmation && confirmationDeleteButtonState == false){
+    if (showPasswordConfirmation && confirmationDeleteButtonState == false) {
       setConfirmationDeleteButtonState(true);
       setDeleteButtonState(false);
     }
-    
   };
 
   const submitImage = async (e) => {
@@ -148,17 +152,37 @@ const ProfileCard = () => {
     setShowSaveButton(true); // Show the "Save Picture" button when an image is selected
   };
 
-
   //Delete acc functions
   const handleDeleteAccount = () => {
     setShowConfirmation(true);
   };
 
-  const handleConfirmDelete = () => {
+  const handleInitialConfirmation = () => {
     setShowPasswordConfirmation(true);
     setShowConfirmation(false);
     setDeleteButtonState(false);
-    setConfirmationDeleteButtonState(true);
+  };
+
+  const handleConfirmDelete = () => {
+    Axios.post("http://localhost:3001/delete-user", {
+      email: currentUser.email,
+      password: passwordInput,
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Account deleted successfully");
+          window.localStorage.removeItem("token");
+          window.localStorage.setItem("loggedIn", false);
+          history.push("/");
+          window.location.reload();
+          setShowConfirmation(false);
+        } else {
+          console.error("Failed to delete user account");
+        }
+      })
+      .catch((error) => {
+        console.error("Error while deleting user account:", error);
+      });
   };
 
   const handleCancelDelete = () => {
@@ -302,36 +326,39 @@ const ProfileCard = () => {
             </div>
           )}
         </div>
-        {deleteButtonState &&(
-            <button
-                onClick={handleDeleteAccount}
-                className="bg-red-600  relative z-0 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]"
-              >
-                Delete Account
-            </button>
+        {deleteButtonState && (
+          <button
+            onClick={handleDeleteAccount}
+            className="bg-red-600  relative z-0 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]"
+          >
+            Delete Account
+          </button>
         )}
-         {showConfirmation && (
-              <DeleteConfirmation
-                message="Are you sure you want to delete your account?"
-                onConfirm={handleConfirmDelete}
-                onCancel={handleCancelDelete}
-              />
-            )}
-        {showPasswordConfirmation &&(
-          <div className = "mt-[5%]">
-             <input
+        {showConfirmation && (
+          <DeleteConfirmation
+            message="Are you sure you want to delete your account?"
+            onConfirm={handleInitialConfirmation}
+            onCancel={handleCancelDelete}
+          />
+        )}
+        {showPasswordConfirmation && (
+          <div className="mt-[5%]">
+            <input
               type="password"
               className="w-[400px] p-2 mb-2
                           phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg "
               placeholder="Enter your password to confirm"
+              onChange={(e) => setPasswordInput(e.target.value)}
             />
-            <button className={`bg-red-600 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%] ${!confirmationDeleteButtonState ? 'hidden' : ''}`}>
-                Delete Account
+            <button
+              onClick={handleConfirmDelete}
+              className="bg-red-600 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]"
+            >
+              Delete Account
             </button>
           </div>
         )}
-
       </div>
     </>
   );
