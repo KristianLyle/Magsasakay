@@ -58,8 +58,9 @@ const FindRouteWithMap = () => {
           />
         </div>
 
-        <div className="absolute bottom-20 left-8 md:left-14 bg-[#461E96] bg-opacity-90 p-4 rounded-xl shadow-lg z-10 text-white"> 
-          <div className="flex space-x-4">
+        <div className="absolute bottom-20 left-16 md:left-14 bg-[#461E96] w-[62%] md:w-[20%] h-[5%] md:h-[7%]
+         bg-opacity-90 p-2 md:p-4 rounded-xl shadow-lg z-10  text-white mt-[20%]"> 
+          <div className="flex space-x-4 text-center text-[70%] md:text-[100%]">
             <label>
               <input
                 type="radio"
