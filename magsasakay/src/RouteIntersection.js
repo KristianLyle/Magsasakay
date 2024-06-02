@@ -67,7 +67,6 @@ function calculateIntersection(nearestRoutesFrom, nearestRoutesTo) {
 			}
 		}
 	}
-
 	// Return the intersection results
 	return intersections.length > 0 ? intersections : null;
 }
