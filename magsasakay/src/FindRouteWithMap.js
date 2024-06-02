@@ -41,7 +41,7 @@ const FindRouteWithMap = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div className="relative h-screen w-screen bg-blue">
+      <div className="relative h-screen w-screen">
         <div className="absolute inset-0 z-0">
           <Map
             routesData={RoutesData}
@@ -58,8 +58,8 @@ const FindRouteWithMap = () => {
           />
         </div>
 
-        <div className="absolute bottom-[90px] md:bottom-[90px] left-16 md:left-14 bg-[#461E96] min-w-[30%] md:min-w-[20%] max-w-[57%]
-         md:max-w-[10%] w-[55%] md:w-[20%] h-[5%] md:h-[7%]
+        <div className="absolute bottom-[90px] md:bottom-[90px] left-20 md:left-14 bg-[#461E96] min-w-[30%] md:min-w-[20%] max-w-[55%]
+         md:max-w-[10%] w-[55%] md:w-[20%] h-[5%] md:h-[7%] md:mt-0 mt:40 
          bg-opacity-90 p-2 md:p-4 rounded-xl shadow-lg z-10 text-white mt-[20%]"> 
           <div className="flex space-x-4 text-center text-[50%] md:text-[85%]">
             <label className="custom-radio-label">
