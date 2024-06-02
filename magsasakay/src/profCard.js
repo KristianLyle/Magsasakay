@@ -18,6 +18,7 @@ const ProfileCard = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
   const [deleteButtonState, setDeleteButtonState] = useState(true);
+  const [confirmationDeleteButtonState, setConfirmationDeleteButtonState] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -39,10 +40,18 @@ const ProfileCard = () => {
   const handleEditInfoClick = () => {
     setEditingInfo(true);
     setDeleteButtonState(false);
+    setConfirmationDeleteButtonState(false);
+    
   };
 
   const handleSaveInfoClick = () => {
     setDeleteButtonState(true);
+
+    if(showPasswordConfirmation && confirmationDeleteButtonState == false){
+      setConfirmationDeleteButtonState(true);
+      setDeleteButtonState(false);
+    }
+
     if (editedPassword && editedPassword !== retypePassword) {
       alert("Passwords do not match");
       return;
@@ -100,6 +109,12 @@ const ProfileCard = () => {
     setEditedPassword("");
     setRetypePassword("");
     setDeleteButtonState(true);
+
+    if(showPasswordConfirmation && confirmationDeleteButtonState == false){
+      setConfirmationDeleteButtonState(true);
+      setDeleteButtonState(false);
+    }
+    
   };
 
   const submitImage = async (e) => {
@@ -143,6 +158,7 @@ const ProfileCard = () => {
     setShowPasswordConfirmation(true);
     setShowConfirmation(false);
     setDeleteButtonState(false);
+    setConfirmationDeleteButtonState(true);
   };
 
   const handleCancelDelete = () => {
@@ -310,7 +326,7 @@ const ProfileCard = () => {
                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg "
               placeholder="Enter your password to confirm"
             />
-            <button className="bg-red-600 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]">
+            <button className={`bg-red-600 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%] ${!confirmationDeleteButtonState ? 'hidden' : ''}`}>
                 Delete Account
             </button>
           </div>
