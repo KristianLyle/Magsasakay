@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Map from './Map';
+import Map from './ViewRouteMap';
 import RoutesData from './Routes.json';
 import JeepneyRoutes from './JeepneyRoutes';
 import NavBar from './navbar';
