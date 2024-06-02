@@ -43,7 +43,7 @@ const Home = () => {
 
         <div className="absolute inset-0 bg-sky-950 bg-opacity-75"></div>
         <h1 className="font-extrabold text-white ml-[15px] text-left relative z-10 py-[40px] md:text-[1px] text-[1px]">
-          .
+          FUCKKKKKK
         </h1>
         <div className="px-4 lg:px-14 max-w-screen-2xl mx-auto min-h-screen h-screen mt-[-100px] overflow-auto">
 

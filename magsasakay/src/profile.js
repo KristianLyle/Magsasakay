@@ -21,10 +21,6 @@ const Profile = () => {
       window.location.reload();
     }
   }, [history]);
-  const backgroundStyle = {
-    backgroundImage: `url(${prof_bg})`,
-  };
-
    const leftPanelStyle = {
     position: "absolute",
     //top: 0,
@@ -43,7 +39,8 @@ const Profile = () => {
           <Route exact path="/" />
         </Switch>
       </Router>
-      <div className="relative bg-cover">
+
+      <div className="relative bg-cover ">
         <div style={leftPanelStyle}
         className="relative z-11 top-0 left-0 h-full
                    phone:w-3/5
@@ -52,8 +49,7 @@ const Profile = () => {
           className="relative z-12" />
         </div>
         <div
-          style={backgroundStyle}
-          className=" bg-cover bg-full bg-center min-h-screen relative z-12">      
+          className=" bg-cover bg-[#240750] bg-full bg-center min-h-screen relative z-12">      
           <br />
           <ProfileReviews
           className= ' '/>

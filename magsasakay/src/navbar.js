@@ -42,7 +42,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar bg-[#160E3D] h-[55px] flex items-center sm:justify-start lg:justify-center z-50">
+      <div className="navbar bg-[#160E3D] h-[55px] flex items-center sm:justify-start lg:justify-center z-50 ">
         <Link
           to="#"
           className="menuBars ml-[10px] text-[25px] bg-[#7B00FF] rounded-[12px] px-[15px] py-[3px] hover:bg-[#1a83ff] lg:hidden"
@@ -50,7 +50,7 @@ const NavBar = () => {
           <FaBars className="w-[30px]" onClick={showSideBar} />
         </Link>
 
-        <div className="largeScreen text-white justify-center ml-[30px] hidden lg:flex font-semibold">
+        <div className="largeScreen text-white justify-center ml-[30px] hidden lg:flex font-semibold ">
           <Link to="/home" onClick={() => handleClick("/home")} className="inline-block mr-4 hover:text-[#EE7200]"> Home </Link>
           <Link to="/routes" onClick={() => handleClick("/routes")} className="inline-block mr-4 hover:text-[#EE7200]"> Routes </Link>
           <Link to="/restaurants" onClick={() => handleClick("/restaurants")} className="inline-block mr-4 hover:text-[#EE7200]"> Restaurants </Link>
