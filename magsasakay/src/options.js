@@ -1,12 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import NavBar from "./navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faMap, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMapMarkerAlt,
+  faMap,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Options = () => {
+  const history = useHistory();
+  useEffect(() => {
+    const status = window.localStorage.getItem("loggedIn");
+    if (status === "false") {
+      history.push("/");
+      window.location.reload();
+    }
+  }, [history]);
   return (
     <>
       <Router>
@@ -33,9 +44,15 @@ const Options = () => {
                             bg-[#344C64] bg-cover enlarge-on-hover hover:bg-[#57A6A1] hover:bg-opacity-100 transform hover:translate-y-[-10px]
                             hover:text-[#160E3D] glow transition-transform duration-300 delay-200 flex items-center justify-center w-40 h-40 md:w-80 md:h-80"
                 >
-                  <Link to="/find-routes" className="w-full h-full flex items-center justify-center">
+                  <Link
+                    to="/find-routes"
+                    className="w-full h-full flex items-center justify-center"
+                  >
                     <div className="flex flex-col items-center">
-                      <FontAwesomeIcon icon={faMapMarkerAlt} className="text-3xl md:text-5xl mb-4" />
+                      <FontAwesomeIcon
+                        icon={faMapMarkerAlt}
+                        className="text-3xl md:text-5xl mb-4"
+                      />
                       <span>Locate Destination</span>
                     </div>
                   </Link>
@@ -48,19 +65,27 @@ const Options = () => {
                             bg-[#344C64] bg-cover enlarge-on-hover hover:bg-[#57A6A1] hover:bg-opacity-100 transform hover:translate-y-[-10px]
                             hover:text-[#160E3D] glow transition-transform duration-300 delay-200 flex items-center justify-center w-40 h-40 md:w-80 md:h-80"
                 >
-                  <Link to="/view-routes" className="w-full h-full flex items-center justify-center">
+                  <Link
+                    to="/view-routes"
+                    className="w-full h-full flex items-center justify-center"
+                  >
                     <div className="flex flex-col items-center">
-                      <FontAwesomeIcon icon={faMap} className="text-3xl md:text-5xl mb-4" />
+                      <FontAwesomeIcon
+                        icon={faMap}
+                        className="text-3xl md:text-5xl mb-4"
+                      />
                       <span>View PUV Routes</span>
                     </div>
                   </Link>
                 </div>
               </div>
-
             </div>
             {/* Back Button */}
             <div className="flex justify-center">
-              <Link to="/home" className="text-white text-xl font-semibold hover:underline mt-4">
+              <Link
+                to="/home"
+                className="text-white text-xl font-semibold hover:underline mt-4"
+              >
                 <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
                 Back
               </Link>
