@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { jwtDecode } from "jwt-decode"; // Corrected import statement
+import { jwtDecode } from "jwt-decode";
 import user from "./img/default-user.jpg";
 import city from "./img/city.png";
+import DeleteConfirmation from "./deleteConfirmation";
 
 const ProfileCard = () => {
   const [editingInfo, setEditingInfo] = useState(false);
@@ -14,6 +15,9 @@ const ProfileCard = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [showSaveButton, setShowSaveButton] = useState(false);
   const [displayedPicture, setDisplayedPicture] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
+  const [deleteButtonState, setDeleteButtonState] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -34,9 +38,11 @@ const ProfileCard = () => {
 
   const handleEditInfoClick = () => {
     setEditingInfo(true);
+    setDeleteButtonState(false);
   };
 
   const handleSaveInfoClick = () => {
+    setDeleteButtonState(true);
     if (editedPassword && editedPassword !== retypePassword) {
       alert("Passwords do not match");
       return;
@@ -93,6 +99,7 @@ const ProfileCard = () => {
     setEditedEmail(currentUser.email);
     setEditedPassword("");
     setRetypePassword("");
+    setDeleteButtonState(true);
   };
 
   const submitImage = async (e) => {
@@ -126,12 +133,29 @@ const ProfileCard = () => {
     setShowSaveButton(true); // Show the "Save Picture" button when an image is selected
   };
 
+
+  //Delete acc functions
+  const handleDeleteAccount = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmDelete = () => {
+    setShowPasswordConfirmation(true);
+    setShowConfirmation(false);
+    setDeleteButtonState(false);
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
+    window.location.reload();
+  };
+
   return (
     <>
       <div
         className="w-[505px] h-full rounded-[4px] pb-[20px] bg-gradient-to-t from-blue-400 to-orange-500 text-center font-Montserrat
                      phone:w-4/5 phone:h-1/2 phone:pb-0
-                     md:w-[505px] md:h-full md:pb-[20px]"
+                     md:w-[505px] md:h-full md:pb-[20px] "
       >
         <div
           className="h-[350px] rounded-[4px_4px_0px_0px]"
@@ -175,8 +199,8 @@ const ProfileCard = () => {
           </label>
           <div
             className="profile-title text-[26px] font-semibold text-white
-                          phone:text-base
-                          md:text-[26px]"
+                          phone:text-base mt-[2%]
+                          md:text-[26px] "
           >
             {currentUser.username}
           </div>
@@ -188,7 +212,7 @@ const ProfileCard = () => {
             <div
               className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] overflow-auto
                             phone:text-[7.5px] phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px] 
-                            md:text-[15px] md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg
+                            md:text-[15px] md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg absolute z-1
                             "
             >
               <input
@@ -262,6 +286,36 @@ const ProfileCard = () => {
             </div>
           )}
         </div>
+        {deleteButtonState &&(
+            <button
+                onClick={handleDeleteAccount}
+                className="bg-red-600  relative z-0 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]"
+              >
+                Delete Account
+            </button>
+        )}
+         {showConfirmation && (
+              <DeleteConfirmation
+                message="Are you sure you want to delete your account?"
+                onConfirm={handleConfirmDelete}
+                onCancel={handleCancelDelete}
+              />
+            )}
+        {showPasswordConfirmation &&(
+          <div className = "mt-[5%]">
+             <input
+              type="password"
+              className="w-[400px] p-2 mb-2
+                          phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
+                          md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg "
+              placeholder="Enter your password to confirm"
+            />
+            <button className="bg-red-600 font-Montserrat rounded-full py-2 font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] max-w-[200px] mt-[5%] justify-end ml-[50%]">
+                Delete Account
+            </button>
+          </div>
+        )}
+
       </div>
     </>
   );
