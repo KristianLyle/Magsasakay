@@ -129,17 +129,17 @@ const ProfileReviews = () => {
 
             {editingIndex === index ? (
               <div
-                className="bg-white text-black px-1 py-5 text-[15px] w-[850px] max-w-[900px] max-h-[100px] rounded-[15px] overflow-y-auto
-                              phone:text-[7px] phone:w-[90%] phone:max-w-[90%] phone:min-h-[50%]
+                className="bg-white text-black px-1 py-5 text-[15px] w-[850px] max-w-[900px] max-h-[90px] rounded-[15px] overflow-y-auto
+                              phone:text-[10px] phone:w-[90%] phone:max-w-[90%] phone:min-h-[50%]
                               md:text-[15px] md:w-[850px] md:max-w-[900px] "
               >
                 <textarea
-                  className="w-full h-full"
+                  className="w-full h-full phone:h-[30px] text-[15px] phone:text-[10px]"
                   value={editedText}
                   onChange={(e) => setEditedText(e.target.value)}
                 />
                 <button
-                  className="bg-[#EE7200] text-[14px] py-2 rounded-full font-bold text-white 
+                  className="bg-[#EE7200] text-[6px] py-2 rounded-full font-bold text-white 
                   hover:bg-[#160E3D] hover:text-white drop-shadow-2xl mt-[1px] font-Montserrat  max-w-[100px] w-[90px]
                   phone:w-[65%] phone:text-[75%]
                   md:w-[90px] md:text-[14px]"
@@ -148,7 +148,7 @@ const ProfileReviews = () => {
                   Save
                 </button>
                 <button
-                  className="ml-[5px] bg-[#EE7200] text-[14px] py-2 rounded-full font-bold text-white hover:bg-[#160E3D] hover:text-white drop-shadow-2xl mt-[1px] font-Montserrat  
+                  className="ml-[5px] bg-[#EE7200] text-[6px] py-2 rounded-full font-bold text-white hover:bg-[#160E3D] hover:text-white drop-shadow-2xl mt-[1px] font-Montserrat  
                   max-w-[100px] w-[90px]
                   phone:w-[65%] phone:text-[75%]
                   md:w-[90px] md:text-[14px]"
@@ -171,7 +171,7 @@ const ProfileReviews = () => {
             <button
                 className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white
                  hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[210px]
-                          phone:w-[40%] phone:text-[55%]
+                          phone:w-[40%] phone:text-[50%]
                           md:w-[100%] md:text-[15px]
                           "
                 onClick={() => handleEditClick(index, review.review)}
@@ -181,7 +181,7 @@ const ProfileReviews = () => {
               <button
                 className="ml-[5px] bg-[#BF2F00] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white
                  hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[210px] max-h-8
-                          phone:w-[40%] phone:text-[55%]
+                          phone:w-[40%] phone:text-[50%]
                           md:w-[100%] md:text-[15px]"
                 onClick={() => handleDeleteClick(review._id)}
               >

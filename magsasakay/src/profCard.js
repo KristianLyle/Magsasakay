@@ -298,9 +298,9 @@ const ProfileCard = () => {
 
           {editingInfo ? (
             <div
-              className="profile-description px-1 py-5 text-[15px] bg-[#160E3D] max-w-[450px] max-h-[450px] text-center ml-[27px] overflow-auto
-                            phone:text-[7.5px] phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px] 
-                            md:text-[15px] md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg absolute z-1
+              className="profile-description px-1 py-5 text-[8px] bg-[#160E3D] max-w-[450px] max-h-[400px] text-center ml-[27px] overflow-auto
+                            phone:text-[6px] phone:ml-1/3 phone:mr-4/5 phone:max-w-[300px]  h-[200px]
+                            md:text-[10px] md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg absolute z-1
                             "
             >
               <input
@@ -337,7 +337,7 @@ const ProfileCard = () => {
                 onChange={(e) => setRetypePassword(e.target.value)}
                 className="w-[400px] p-2 mb-2
                            phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
-                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg"
+                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg phone:mx-[50px]"
                 placeholder="Retype new password"
               />
               <button
@@ -371,7 +371,7 @@ const ProfileCard = () => {
               <button
                 onClick={handleEditInfoClick}
                 className=" bg-[#EE7200] relative z-0 font-Montserrat rounded-full py-2 font-bold text-white text-[8px] md:text-[14px]
-                hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] min-w-[100px] max-w-[200px] mt-[-130px] md:mt-0 bottom-[85px] md:bottom-[10px]
+                hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] min-w-[100px] max-w-[200px] max-h-[35px] mt-[-130px] md:mt-0 bottom-[85px] md:bottom-[10px]
                 justify-end ml-[230px] md:ml-[10px] 
                 
                 " //bg-[#EE7200] 
@@ -385,7 +385,7 @@ const ProfileCard = () => {
           <button
             onClick={handleDeleteAccount}
             className="bg-red-600  relative z-0 font-Montserrat rounded-full py-2 font-bold text-white text-[8px] md:text-[14px]
-             hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] min-w-[100px] max-w-[200px] mt-[-130px] md:mt-0 bottom-[80px] md:bottom-[0]
+             hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] min-w-[100px] max-w-[200px] max-h-[35px] mt-[-130px] md:mt-0 bottom-[80px] md:bottom-[0]
              justify-end ml-[230px] md:ml-[10px]"
           >
             Delete Account
