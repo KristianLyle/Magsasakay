@@ -186,3 +186,17 @@
         font-size: 12px; /* Further decrease font size for even smaller screens */
     }
 }
+
+/*For the email text in signup*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #000 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+  box-shadow: 0 0 0px 1000px #fff inset !important;
+}
+
+
+

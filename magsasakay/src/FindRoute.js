@@ -3,7 +3,7 @@ import placesData from './Places.json';
 import NearestRouteComponent from './NearestRoute';
 import calculateIntersection from './RouteIntersection';
 
-const FindRoute = ({ onIntersectionChange }) => {
+const FindRoute = ({ onIntersectionChange, defaultLocation }) => {
 	const [searchQueryFrom, setSearchQueryFrom] = useState('');
 	const [filteredPlacesFrom, setFilteredPlacesFrom] = useState([]);
 	const [fromLocation, setFromLocation] = useState('');
@@ -16,13 +16,32 @@ const FindRoute = ({ onIntersectionChange }) => {
 	const [toCoordinates, setToCoordinates] = useState(null);
 	const [nearestRoutesTo, setNearestRoutesTo] = useState(null);
 
-	const [selectedIntersections, setSelectedIntersections] = useState([]);
+	const [selectedIntersection, setSelectedIntersection] = useState(null);
+
+	useEffect(() => {
+		if (defaultLocation) {
+			setFromLocation(defaultLocation);
+			setToLocation(defaultLocation);
+
+			const defaultPlace = placesData.find(
+				(place) => place.name === defaultLocation
+			);
+			if (defaultPlace) {
+				setFromCoordinates(defaultPlace.location);
+				setToCoordinates(defaultPlace.location);
+
+				const nearestRoutes = NearestRouteComponent(defaultPlace.location);
+				setNearestRoutesFrom(nearestRoutes);
+				setNearestRoutesTo(nearestRoutes);
+			}
+		}
+	}, [defaultLocation]);
 
 	const handleSearchFrom = (event) => {
 		setSearchQueryFrom(event.target.value);
 		setFromLocation(event.target.value);
 		setFilteredPlacesFrom([]);
-		setSelectedIntersections([]); // Reset selected intersections when "From" textbox changes
+		setSelectedIntersection(null); // Reset selected intersection when "From" textbox changes
 		handleSearch(event.target.value, setFilteredPlacesFrom, setSearchQueryFrom);
 	};
 
@@ -30,7 +49,7 @@ const FindRoute = ({ onIntersectionChange }) => {
 		setSearchQueryTo(event.target.value);
 		setToLocation(event.target.value);
 		setFilteredPlacesTo([]);
-		setSelectedIntersections([]); // Reset selected intersections when "To" textbox changes
+		setSelectedIntersection(null); // Reset selected intersection when "To" textbox changes
 		handleSearch(event.target.value, setFilteredPlacesTo, setSearchQueryTo);
 	};
 
@@ -86,32 +105,18 @@ const FindRoute = ({ onIntersectionChange }) => {
 
 	const suggestionStyle = { cursor: 'pointer' };
 
-	const handleCheckboxChange = (intersection) => {
-		// Check if the intersection is already selected
-		const index = selectedIntersections.findIndex(
-			(item) =>
-				item.routeFrom === intersection.routeFrom &&
-				item.routeTo === intersection.routeTo
-		);
-
-		// If the intersection is already selected, remove it
-		if (index !== -1) {
-			setSelectedIntersections((prevSelectedIntersections) =>
-				prevSelectedIntersections.filter((_, idx) => idx !== index)
-			);
+	const handleRadioChange = (intersection) => {
+		if (
+			selectedIntersection &&
+			selectedIntersection.routeFrom === intersection.routeFrom &&
+			selectedIntersection.routeTo === intersection.routeTo
+		) {
+			// If the same intersection is clicked again, deselect it
+			setSelectedIntersection(null);
 		} else {
-			// If the intersection is not selected, add it
-			setSelectedIntersections((prevSelectedIntersections) => [
-				...prevSelectedIntersections,
-				intersection,
-			]);
+			// Otherwise, select the new intersection
+			setSelectedIntersection(intersection);
 		}
-
-		// Log the updated selected intersections after the state update
-		setSelectedIntersections((updatedSelectedIntersections) => {
-			// console.log('Selected Intersections:', updatedSelectedIntersections);
-			return updatedSelectedIntersections;
-		});
 	};
 
 	let intersectionPoints = null;
@@ -119,7 +124,7 @@ const FindRoute = ({ onIntersectionChange }) => {
 		intersectionPoints = calculateIntersection(
 			nearestRoutesFrom,
 			nearestRoutesTo
-		).map((intersection) => ({
+		)?.map((intersection) => ({
 			...intersection,
 			fromLocation,
 			toLocation,
@@ -129,54 +134,62 @@ const FindRoute = ({ onIntersectionChange }) => {
 	}
 
 	useEffect(() => {
-		// Call the onIntersectionChange function with the updated selectedIntersections array
-		onIntersectionChange(selectedIntersections);
-	}, [selectedIntersections, onIntersectionChange]);
+		// Call the onIntersectionChange function with the updated selectedIntersection
+		onIntersectionChange(selectedIntersection ? [selectedIntersection] : []);
+	}, [selectedIntersection, onIntersectionChange]);
 
 	return (
-		<div className='find-route-container font-Montserrat bg-gradient-to-t from-orange-400 to-blue-600 border-[#160E3D] border-[1.5px]'>
-			<div className='find-route-title mt-[50px]'>
-				<h1 className= "font-extrabold text-center text-[400%] text-white">Find Route</h1> <br/>
-				<div className='find-route-forms max-w-[600px] w-[600px] '>
-
-				<div className= "ml-[10px] text-center">
-					<label className=" font-Montserrat font-medium text-white"
-						>From: </label>
-					<input className="rounded-xl w-[375px]"
-						type='text'
-						value={fromLocation}
-						onChange={handleSearchFrom}
-						placeholder='Enter a starting point'
-					/>
-					{searchQueryFrom.trim() !== '' && (
-						<div className='place-suggestions font-Montserrat font-normal text-white bg-[#160E3D] rounded-xl text-left max-h-[500px] overflow-auto'>
-							{filteredPlacesFrom.map((place, index) => (
-								<div className='font-medium p-[5px] ml-[5px]'
-									key={index}
-									style={suggestionStyle}
-									onClick={() => handleSuggestionClickFrom(place)}>
-									{place.name}
-								</div>
-							))}
-						</div> 
-					)} 
+		<div
+			className='find-route-container font-Montserrat bg-[#461E96] left-3 md:left-0
+     border-[#160E3D] border-[1.5px] rounded-xl w-[290px] md:w-[340px] h-[140px] md:h-[380px] relative'>
+			<div className='find-route-title mt-[10px] md:mt-[50px]'>
+				<h1 className='font-extrabold text-center text-[130%] md:text-[200%] text-white mb-[-14px]'>
+					Find Route
+				</h1>{' '}
+				<br />
+				<div className='find-route-forms max-w-[50%] w-[600px] h-[200px]'>
+					<div className=' ml-[10px] text-center mb-[-14px]'>
+						<input
+							className='rounded-lg w-[195%] md:w-[195%] h-[10%] md:h-[35%] text-[80%] md:text-[100%]'
+							type='text'
+							value={fromLocation}
+							onChange={handleSearchFrom}
+							placeholder='Enter a starting point'
+						/>
+						{searchQueryFrom.trim() !== '' && (
+							<div
+								className='place-suggestions absolute font-Montserrat font-normal text-white text-[80%] md:text-[100%]
+               bg-[#160E3D] rounded-md text-left max-h-[50%] md:max-h-[40%] max-w-[200%] md:max-w-[85%] overflow-auto overflow-x-hidden'
+								style={{ zIndex: 1 }}>
+								{filteredPlacesFrom.map((place, index) => (
+									<div
+										className='font-medium p-[2px] md:p-[5px] ml-[5px]'
+										key={index}
+										style={suggestionStyle}
+										onClick={() => handleSuggestionClickFrom(place)}>
+										{place.name}
+									</div>
+								))}
+							</div>
+						)}
 					</div>
-
-					<br/>
-
-					<div className= "ml-[10px] text-center ">
-						<label className=" font-Montserrat font-medium text-white"
-							>To: </label>
-						<input className="rounded-xl w-[397px]"
+					<br />
+					<div className='ml-[10px] text-center '>
+						<input
+							className='rounded-lg w-[195%] md:w-[195%] h-[10%] md:h-[35%] text-[80%] md:text-[100%]'
 							type='text'
 							value={toLocation}
 							onChange={handleSearchTo}
 							placeholder='Enter a destination'
 						/>
 						{searchQueryTo.trim() !== '' && (
-							<div className='place-suggestions font-Montserrat font-normal text-white bg-[#160E3D] rounded-xl text-left max-h-[500px] overflow-auto'>
+							<div
+								className='place-suggestions absolute font-Montserrat font-normal text-white text-[80%] md:text-[100%] 
+              bg-[#160E3D] rounded-md text-left max-h-[50%] md:max-h-[40%] max-w-[200%] md:max-w-[85%] overflow-auto overflow-x-hidden'
+								style={{ zIndex: 1 }}>
 								{filteredPlacesTo.map((place, index) => (
-									<div className= "font-medium p-[5px] ml-[5px]"
+									<div
+										className='font-medium p-[5px] ml-[5px] font-Montserrat'
 										key={index}
 										style={suggestionStyle}
 										onClick={() => handleSuggestionClickTo(place)}>
@@ -186,29 +199,50 @@ const FindRoute = ({ onIntersectionChange }) => {
 							</div>
 						)}
 					</div>
-				</div> <br/>
-				<div className='find-route-routes bg-[#160E3D] rounded-xl max-w-[600px] p-[5px]'>
-					{intersectionPoints &&
-						intersectionPoints.map((intersection, index) => (
-							<div key={index} className="text-white p-[5px]">
-								<input 
-									type='checkbox'
-									id={`intersection-${index}`}
-									checked={selectedIntersections.some(
-										(item) =>
-											item.routeFrom === intersection.routeFrom &&
-											item.routeTo === intersection.routeTo
-									)}
-									onChange={() => handleCheckboxChange(intersection)}
-								/>
-								<label className="ml-[5px]"
-									htmlFor={`intersection-${index}`}>
-									{`${intersection.routeFrom} to ${intersection.routeTo}`}
-								</label>
-							</div>
-						))}
-				</div>
+				</div>{' '}
+				<br />
 			</div>
+			<div
+				className='find-route-routes rounded-xl max-w-full max-h-[120px] md:max-h-[170px] overflow-y-hidden md:overflow-auto overflow-x-hidden p-[5px] absolute top-[120px] md:top-[200px]'
+				style={{ zIndex: 0 }}>
+				{/* Adjusted position of this component */}
+				{intersectionPoints && intersectionPoints.length > 0
+					? intersectionPoints.map((intersection, index) => (
+							<div
+								className='bg-[#240750]'
+								key={index}>
+								<div className='text-white p-[5px] text-[50%] md:text-[85%]'>
+									<input
+										type='radio'
+										id={`intersection-${index}`}
+										checked={
+											selectedIntersection &&
+											selectedIntersection.routeFrom ===
+												intersection.routeFrom &&
+											selectedIntersection.routeTo === intersection.routeTo
+										}
+										onChange={() => handleRadioChange(intersection)}
+										className='custom-radio'
+									/>
+									<label
+										className='ml-[5px]'
+										htmlFor={`intersection-${index}`}>
+										{`${intersection.routeFrom} to ${intersection.routeTo}`}
+									</label>
+								</div>
+							</div>
+					  ))
+					: intersectionPoints !== null && <div>No route available</div>}
+			</div>
+
+			<style jsx>{`
+				.custom-radio {
+					width: 15px;
+					height: 15px;
+					color: orange;
+					margin-right: 5px;
+				}
+			`}</style>
 		</div>
 	);
 };

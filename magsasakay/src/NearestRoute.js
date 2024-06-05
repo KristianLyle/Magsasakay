@@ -41,7 +41,10 @@ function findNearestRoute(placeCoordinates) {
 			nearestDistance = Math.min(nearestDistance, nearestRouteDistance);
 		});
 
-		minNearestDistance *= 2;
+		if (nearestRoutes.length === 0) {
+			console.log(`No routes found within a distance of ${minNearestDistance}`);
+			minNearestDistance *= 2;
+		}
 	}
 
 	if (nearestRoutes.length === 0) {

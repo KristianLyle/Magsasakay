@@ -26,6 +26,7 @@ const RestoReviews = () => {
   const [restaurantDetails, setRestaurantDetails] = useState({});
   const [selectedRating, setSelectedRating] = useState(0);
   const [showFullReview, setShowFullReview] = useState(false); // Define showFullReview state
+  const [userName, setUserName] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const reviewsPerPage = 5;
   const history = useHistory();
@@ -62,7 +63,19 @@ const RestoReviews = () => {
 
   const token = localStorage.getItem("token");
   const decodedToken = jwtDecode(token);
-  const userName = decodedToken.username;
+  const userEmail = decodedToken.email;
+  useEffect(() => {
+    Axios.post("http://localhost:3001/fetch-user-details", {
+      userEmail: userEmail,
+    })
+      .then((response) => {
+        setUserName(response.data.username);
+        console.log(response.data.username);
+      })
+      .catch((error) => {
+        console.error("Error fetching user details:", error);
+      });
+  }, [userEmail]);
 
   const handlePostText = async () => {
     if (inputText.trim() !== "") {
@@ -70,15 +83,17 @@ const RestoReviews = () => {
         const userResponse = await Axios.post(
           "http://localhost:3001/fetch-user-details",
           {
-            userName: userName,
+            userEmail: userEmail,
           }
         );
 
         const userImage = userResponse.data.userimage;
+        const userName = userResponse.data.username;
 
         const reviewData = {
           restaurantName: restaurantName,
           username: userName,
+          useremail: userEmail,
           userimage: userImage,
           reviewText: inputText,
           starRating: selectedRating,
@@ -159,7 +174,7 @@ const RestoReviews = () => {
                 src={`/${review.userimage}`}
                 width="100px"
                 height="96px"
-                className="border-[3px] rounded-full border-black"
+                className="border-[3px] rounded-full border-black h-[100px] w-[100px]"
               />
               <div className="ml-2 md:ml-0">
                 <p className="text-[14px] font-bold mt-2">{review.username}</p>
@@ -178,6 +193,10 @@ const RestoReviews = () => {
                 />
               ))}
             </div>
+            <p className="text-[12px] text-gray-500 mt-1">
+              {new Date(review.createdAt).toLocaleDateString()}{" "}
+              {new Date(review.createdAt).toLocaleTimeString()}
+            </p>
             <p
               className={`ml-2 font-medium max-w-[1000px] py-5 ${
                 showFullReview || !isSmallScreen
@@ -192,15 +211,7 @@ const RestoReviews = () => {
                   className="text-blue-500 cursor-pointer ml-2"
                   onClick={toggleShowFullReview}
                 >
-                  View More
-                </span>
-              )}
-              {showFullReview && (
-                <span
-                  className="text-blue-500 cursor-pointer ml-2"
-                  onClick={toggleShowFullReview}
-                >
-                  ... View Less
+                  ... View More
                 </span>
               )}
             </p>
@@ -213,7 +224,10 @@ const RestoReviews = () => {
   // Logic for pagination
   const indexOfLastReview = currentPage * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-  const currentReviews = postedReviews.slice(indexOfFirstReview, indexOfLastReview);
+  const currentReviews = postedReviews.slice(
+    indexOfFirstReview,
+    indexOfLastReview
+  );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -311,8 +325,8 @@ const RestoReviews = () => {
                 style={{ marginTop: "10px", marginBottom: "10px" }}
                 onClick={handlePostText}
                 className="bg-[#EE7200] text-[15px] py-2 rounded-full 
-                                                            font-bold text-white hover:bg-white hover:text-[#160E3D] 
-                                                            drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
+                                                              font-bold text-white hover:bg-white hover:text-[#160E3D] 
+                                                              drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
               >
                 Post Review
               </button>
@@ -320,37 +334,47 @@ const RestoReviews = () => {
                 style={{ marginTop: "2px" }}
                 onClick={handleCancelButtonClick}
                 className="bg-[#BF2F00] text-[15px] py-2 rounded-full
-                              font-bold text-white hover:bg-white hover:text-[#BF2F00] 
-                              drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px] hover:bg-[#FACA15]"
+                                font-bold text-white hover:bg-white hover:text-[#BF2F00] 
+                                drop-shadow-2xl font-Montserrat px-[25px] max-w-[200px] mb-[60px]"
               >
-                Cancel
+                Clear
               </button>
             </div>
           </div>
           {currentReviews.length > 0 && (
-          <div>
-            <ul>
-              {currentReviews.map((review, index) => (
-                <li key={index}>
-                  <Review review={review} />
-                  <br />
-                </li>
-              ))}
-            </ul>
-            <br />
-            <nav className="flex justify-center mt-1">
-              <ul className="pagination flex flex-row">
-                {Array.from({ length: Math.ceil(postedReviews.length / reviewsPerPage) }).map((_, index) => (
-                  <li key={index} className="px-2 mb-[15px]">
-                    <a onClick={() => paginate(index + 1)} href="#" className={` font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${currentPage === index + 1 ? "bg-[#160E3D] text-white px-4 py-2 rounded-full" : "bg-[#EE7200] text-[#160E3D]"}`}>
-                      {index + 1}
-                    </a>
+            <div>
+              <ul>
+                {currentReviews.map((review, index) => (
+                  <li key={index}>
+                    <Review review={review} />
+                    <br />
                   </li>
-            ))}
-      </ul>
-    </nav>
-  </div>
-)}
+                ))}
+              </ul>
+              <br />
+              <nav className="flex justify-center mt-1">
+                <ul className="pagination flex flex-row">
+                  {Array.from({
+                    length: Math.ceil(postedReviews.length / reviewsPerPage),
+                  }).map((_, index) => (
+                    <li key={index} className="px-2 mb-[15px]">
+                      <a
+                        onClick={() => paginate(index + 1)}
+                        href="#"
+                        className={` font-Montserrat font-extrabold px-4 py-2 rounded-full hover:bg-[#160E3D] hover:text-white ${
+                          currentPage === index + 1
+                            ? "bg-[#160E3D] text-white px-4 py-2 rounded-full"
+                            : "bg-[#EE7200] text-[#160E3D]"
+                        }`}
+                      >
+                        {index + 1}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          )}
         </div>
       </div>
     </>

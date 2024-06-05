@@ -1,26 +1,45 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import user from "./img/default-user.jpg";
 import city from "./img/city.png";
+import DeleteConfirmation from "./deleteConfirmation";
+import PasswordConfirmation from "./passwordConfirmation";
+import PasswordSaveConfirmation from "./passwordSaveConfirmation";
 
 const ProfileCard = () => {
-  const [editingBio, setEditingBio] = useState(false);
-  const [editedBio, setEditedBio] = useState("");
+  const [editingInfo, setEditingInfo] = useState(false);
+  const [editedName, setEditedName] = useState("");
+  const [editedEmail, setEditedEmail] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [editedPassword, setEditedPassword] = useState("");
+  const [retypePassword, setRetypePassword] = useState("");
   const [editedPicture, setEditedPicture] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [showSaveButton, setShowSaveButton] = useState(false);
   const [displayedPicture, setDisplayedPicture] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] =
+    useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+  const [deleteButtonState, setDeleteButtonState] = useState(true);
+  const [confirmationDeleteButtonState, setConfirmationDeleteButtonState] =
+    useState(false);
+  const [showSavePasswordConfirmation, setShowSavePasswordConfirmation] =
+    useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
-    // Fetch user details from the server on component mount
     const token = localStorage.getItem("token");
     const decodedToken = jwtDecode(token);
-    const userName = decodedToken.username;
-    Axios.post("http://localhost:3001/fetch-user-details", { userName })
+    const userEmail = decodedToken.email;
+    Axios.post("http://localhost:3001/fetch-user-details", { userEmail })
       .then((response) => {
         setCurrentUser(response.data);
-        setEditedBio(response.data.bio); // Set initial bio value
+        setEditedName(response.data.username); // Set initial name value
+        setEditedEmail(response.data.email); // Set initial email value
         setEditedPicture(response.data.userimage); // Set initial picture value
         setDisplayedPicture(response.data.userimage); // Set initial displayed picture value
       })
@@ -29,36 +48,113 @@ const ProfileCard = () => {
       });
   }, []);
 
-  const backgroundStyle = {
-    backgroundImage: `url(${city})`,
+  const handleEditInfoClick = () => {
+    setEditingInfo(true);
+    setDeleteButtonState(false);
+    setConfirmationDeleteButtonState(false);
   };
 
-  const handleEditBioClick = () => {
-    setEditingBio(true);
+  const handleInitialSaveInfoClick = () => {
+    if (editedPassword && editedPassword !== retypePassword) {
+      alert("New passwords do not match.");
+      setDeleteButtonState(false);
+      return;
+    }
+    setShowSavePasswordConfirmation(true);
   };
 
-  const handleSaveBioClick = () => {
-    // Send a request to the server to update the user bio in the database
-    Axios.post("http://localhost:3001/update-user-bio", {
+  const handleCheckPassword = () => {
+    Axios.post("http://localhost:3001/check-password", {
       email: currentUser.email,
-      bio: editedBio,
+      password: passwordInput,
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          console.log("Password confirmed");
+          setShowSavePasswordConfirmation(false);
+          handleSaveInfoClick();
+        } else {
+          console.error("Failed to confirm password");
+          alert("Incorrect password. Please try again.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error while confirming password:", error);
+        alert("Incorrect password. Please try again.");
+      });
+  };
+
+  const handleSaveInfoClick = () => {
+    setDeleteButtonState(true);
+
+    if (showPasswordConfirmation && confirmationDeleteButtonState == false) {
+      setConfirmationDeleteButtonState(true);
+      setDeleteButtonState(false);
+    }
+
+    if (editedPassword && editedPassword !== retypePassword) {
+      alert("New passwords do not match.");
+      setDeleteButtonState(false);
+      return;
+    }
+
+    const updateData = {};
+
+    if (editedName && editedName !== currentUser.username) {
+      updateData.username = editedName;
+    }
+
+    if (editedEmail && editedEmail !== currentUser.email) {
+      updateData.email = editedEmail;
+    }
+
+    if (editedPassword) {
+      updateData.password = editedPassword;
+    }
+
+    if (Object.keys(updateData).length === 0) {
+      setEditingInfo(false);
+      return;
+    }
+
+    Axios.post("http://localhost:3001/update-user-info", {
+      currentEmail: currentUser.email,
+      ...updateData,
     })
       .then((response) => {
         if (response.status === 201) {
           console.log(response.data);
-          setEditingBio(false);
-          // Update the user details in the state with the new bio
+          setEditingInfo(false);
+          // Update the user details in the state with the new info
           setCurrentUser((prevUser) => ({
             ...prevUser,
-            bio: editedBio,
+            ...updateData,
           }));
+          // Clear the password fields
+          setEditedPassword("");
+          setRetypePassword("");
         } else {
-          console.error("Failed to update bio");
+          console.error("Failed to update user information");
         }
       })
       .catch((error) => {
-        console.error("Error while updating bio:", error);
+        console.error("Error while updating user information:", error);
       });
+  };
+
+  const handleCancelInfoClick = () => {
+    setEditingInfo(false);
+    // Reset the edited fields to the current user information
+    setEditedName(currentUser.name);
+    setEditedEmail(currentUser.email);
+    setEditedPassword("");
+    setRetypePassword("");
+    setDeleteButtonState(true);
+
+    if (showPasswordConfirmation && confirmationDeleteButtonState == false) {
+      setConfirmationDeleteButtonState(true);
+      setDeleteButtonState(false);
+    }
   };
 
   const submitImage = async (e) => {
@@ -85,12 +181,6 @@ const ProfileCard = () => {
     window.location.reload();
   };
 
-  const handleCancelBioClick = () => {
-    setEditingBio(false);
-    // Reset the editedBio state to the current bio
-    setEditedBio(currentUser.bio);
-  };
-
   const handlePictureChange = (e) => {
     const file = e.target.files[0];
     setDisplayedPicture(URL.createObjectURL(file));
@@ -98,13 +188,62 @@ const ProfileCard = () => {
     setShowSaveButton(true); // Show the "Save Picture" button when an image is selected
   };
 
+  //Delete acc functions
+  const handleDeleteAccount = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleInitialConfirmation = () => {
+    setShowPasswordConfirmation(true);
+    setShowConfirmation(false);
+    setDeleteButtonState(false);
+  };
+
+  const handleConfirmDelete = () => {
+    Axios.post("http://localhost:3001/delete-user", {
+      email: currentUser.email,
+      password: passwordInput,
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Account deleted successfully");
+          window.localStorage.removeItem("token");
+          window.localStorage.setItem("loggedIn", false);
+          history.push("/");
+          window.location.reload();
+          setShowConfirmation(false);
+        } else {
+          console.error("Failed to delete user account");
+          alert("Incorrect password. Please try again.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error while deleting user account:", error);
+        alert("Incorrect password. Please try again.");
+      });
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
+  };
+
+  const handleCancelDeletePassword = () => {
+    setShowPasswordConfirmation(false);
+    setDeleteButtonState(true);
+  };
+
+  const handleCancelDeleteSave = () => {
+    setShowSavePasswordConfirmation(false);
+  };
+
   return (
     <>
-      <div className="w-[505px] h-full rounded-[4px] pb-[20px] bg-gradient-to-t from-blue-400 to-orange-500 text-center font-Montserrat
-                     phone:w-4/5 phone:h-1/2 phone:pb-0
-                     md:w-[505px] md:h-full md:pb-[20px]">
+      <div
+        className="w-[700px] rounded-[4px] pb-[20px] bg-[#461E96] text-center font-Montserrat
+                    min-h-[100px] md:w-[505px] h-[250px] md:h-full md:pb-[20px] "
+      >
         <div
-          className="h-[350px] rounded-[4px_4px_0px_0px]"
+          className="h-[150px] md:h-[350px] rounded-[4px_4px_0px_0px]"
           style={{ backgroundImage: `url(${city})` }}
         ></div>
         <div className="profile-down items-center">
@@ -114,9 +253,9 @@ const ProfileCard = () => {
           >
             <img
               src={displayedPicture || user}
-              className="h-[200px] w-[200px] rounded-[100px] mt-[-125px] p-[5px] bg-white ml-[150px]
-                        phone:w-2/3 phone:h-2/3 phone:ml-7 phone:mt-[-75px]
-                        md:w-[200px] md:h-[200px] md:ml-[150px] md:mt-[-125px] md:rounded-full" 
+              className="h-[100px] w-[100px] rounded-[100px] mt-[-125px] p-[5px] bg-white ml-[10px] 
+                        phone:mt-[-75px]
+                        md:w-[200px] md:h-[200px] md:ml-[150px] md:mt-[-125px] md:rounded-full"
             />
             <input
               type="file"
@@ -143,77 +282,130 @@ const ProfileCard = () => {
               </>
             )}
           </label>
-          <div className="profile-title text-[26px] font-semibold text-white
-                          phone:text-base
-                          md:text-[26px]">
+          <div
+            className="profile-title text-[26px] font-semibold text-white text-left md:text-center w-full
+                      phone:text-base mt-[2%] ml-4 md:ml-0
+                      md:text-[26px]"
+          >
             {currentUser.username}
           </div>
-          <div className="profile-button py-[10px] text-white
-                         phone:py-[2px]
-                         md:py-[10px]">
-            <a className= "phone:text-xs md:text-md"
-            href={`mailto: ${currentUser.email}`}>{currentUser.email}</a>
+          <div className="text-white font-thin text-left md:text-center w-full ml-4 md:ml-0">
+            {currentUser.email}
           </div>
 
-          {editingBio ? (
-            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] rounded-[15px] overflow-auto
-                            phone:text-[7.5px] phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px] 
-                            md:text-[15px] md:ml-[27px] md:mr-0 md:max-w-[450px]
-                            ">
-              <textarea
-                value={editedBio}
-                onChange={(e) => setEditedBio(e.target.value)}
-                className="w-[400px] h-[150px] p-2
+
+          <br />
+
+          {editingInfo ? (
+            <div
+              className="profile-description px-1 py-5 text-[8px] bg-[#160E3D] max-w-[450px] max-h-[400px] text-center ml-[27px] overflow-auto
+                            phone:text-[6px] phone:ml-1/3 phone:mr-4/5 phone:max-w-[300px]  h-[200px]
+                            md:text-[10px] md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg absolute z-1
+                            "
+            >
+              <input
+                type="text"
+                value={editedName}
+                onChange={(e) => setEditedName(e.target.value)}
+                className="w-[400px] p-2 mb-2
                            phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
-                           md:ml-[27px] md:mr-0 md:max-w-[450px]
-                           "
-                placeholder="Enter your bio here..."
+                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg"
+                placeholder="Enter your name"
+              />
+              <input
+                type="email"
+                value={editedEmail}
+                onChange={(e) => setEditedEmail(e.target.value)}
+                className="w-[400px] p-2 mb-2
+                           phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
+                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg"
+                placeholder="Enter your email"
+                readOnly
+              />
+              <input
+                type="password"
+                value={editedPassword}
+                onChange={(e) => setEditedPassword(e.target.value)}
+                className="w-[400px] p-2 mb-2
+                           phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
+                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg"
+                placeholder="Enter new password"
+              />
+              <input
+                type="password"
+                value={retypePassword}
+                onChange={(e) => setRetypePassword(e.target.value)}
+                className="w-[400px] p-2 mb-2
+                           phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
+                           md:ml-[27px] md:mr-0 md:max-w-[450px] rounded-lg phone:mx-[50px]"
+                placeholder="Retype new password"
               />
               <button
-                onClick={handleSaveBioClick}
+                onClick={handleInitialSaveInfoClick}
                 className="bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
                           phone:text-xs phone:max-w-[125px]
-                          md:text-[15px] md:max-w-[200px]
-                          "
+                          md:text-[15px] md:max-w-[200px]"
               >
-                Save Bio
+                Save Info
               </button>
+              {showSavePasswordConfirmation && (
+                <PasswordSaveConfirmation
+                  message="Enter your password to confirm"
+                  onConfirm={handleCheckPassword}
+                  onCancel={handleCancelDeleteSave}
+                  setPasswordInput={setPasswordInput}
+                />
+              )}
               <button
-                onClick={handleCancelBioClick}
-                className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
+                onClick={handleCancelInfoClick}
+                className="ml-[5px] bg-[#EE7200] text-[15px] py-2 rounded-full font-bold text-white hover:bg-white hover:text-[#160E3D] 
+                drop-shadow-2xl mt-[10px] font-Montserrat px-[25px] max-w-[200px]
                           phone:text-xs phone:max-w-[125px]
-                          md:text-[15px] md:max-w-[200px]
-                          "
+                          md:text-[15px] md:max-w-[200px]"
               >
                 Cancel
               </button>
             </div>
           ) : (
-            <div className="profile-description px-1 py-5 text-[15px] bg-orange-100 max-w-[450px] max-h-[450px] text-center ml-[27px] rounded-[15px] overflow-auto
-                            phone:ml-1/3 phone:mr-4/5 phone:max-w-[150px]
-                            md:ml-[27px] md:mr-0 md:max-w-[450px]
-                            ">
-              <p className="bg-orange
-                            phone:text-[7.5px]
-                            md:text-[15px] "
-                            >
-                              {currentUser.bio}</p>
+            
               <button
-                onClick={handleEditBioClick}
-                className="ml-[350px] underline hover:text-white
-                          phone:text-[7.5px] phone:ml-20
-                          md:text-[15px] md:ml-[350px]
-                          "
+                onClick={handleEditInfoClick}
+                className=" bg-[#EE7200] relative z-0 font-Montserrat rounded-full py-2 font-bold text-white text-[8px] md:text-[14px]
+                hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] min-w-[100px] max-w-[200px] max-h-[35px] mt-[-130px] md:mt-0 bottom-[85px] md:bottom-[10px]
+                justify-end ml-[230px] md:ml-[10px] 
+                
+                " //bg-[#EE7200] 
               >
-                Edit Bio
+                Edit Profile Info
               </button>
-            </div>
+        
           )}
-
-          <div className="profile-button">
-            <a href={`mailto: ${currentUser.email}`}></a>
-          </div>
         </div>
+        {deleteButtonState && (
+          <button
+            onClick={handleDeleteAccount}
+            className="bg-red-600  relative z-0 font-Montserrat rounded-full py-2 font-bold text-white text-[8px] md:text-[14px]
+             hover:bg-white hover:text-[#160E3D] drop-shadow-2xl px-[25px] min-w-[100px] max-w-[200px] max-h-[35px] mt-[-130px] md:mt-0 bottom-[80px] md:bottom-[0]
+             justify-end ml-[230px] md:ml-[10px]"
+          >
+            Delete Account
+          </button>
+        )}
+        {showConfirmation && (
+          <DeleteConfirmation
+            message="Are you sure you want to delete your account?"
+            onConfirm={handleInitialConfirmation}
+            onCancel={handleCancelDelete}
+          />
+        )}
+        {showPasswordConfirmation && (
+          <PasswordConfirmation
+            message="Enter your password to confirm"
+            onConfirm={handleConfirmDelete}
+            onCancel={handleCancelDeletePassword}
+            setPasswordInput={setPasswordInput}
+          />
+        )}
       </div>
     </>
   );

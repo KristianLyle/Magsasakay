@@ -1,4 +1,3 @@
-// Map.js
 import React from 'react';
 import {
 	MapContainer,
@@ -12,31 +11,25 @@ import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import marker from './marker-dark.png';
 
-const Map = ({
-	routesData,
-	selectedRoutes,
-	intersectionPoints,
-	tileLayerUrl,
-}) => {
+const Map = ({ routesData, selectedRoutes, intersectionPoints }) => {
 	const customIcon = new L.icon({
 		iconUrl: marker,
 		iconSize: [25, 35],
 		iconAnchor: [16, 32],
 		popupAnchor: [0, -32],
 	});
-
-	return (
+    return (
 		<MapContainer
 			center={[10.7202, 122.5621]}
 			zoom={13}
 			zoomControl={false}
 			maxBounds={[
-			 [10.6602, 122.4393],
-			[10.7992, 122.6955],
+				[10.6602, 122.4393],
+				[10.7992, 122.6955],
 			]}
 			maxBoundsViscosity={1.0}>
 			<TileLayer
-				url={tileLayerUrl}
+				url='https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 				subdomains='abcd'
 				minZoom={13}

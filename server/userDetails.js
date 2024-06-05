@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
     username: String,
     password: String,
     userimage: String,
-    bio: String,
+    // bio: String,
   },
   { collection: "users" }
 );
@@ -54,6 +54,7 @@ const reviewSchema = new mongoose.Schema(
   {
     restaurant: String,
     username: String,
+    useremail: String,
     userimage: String,
     review: String,
     rating: Number,

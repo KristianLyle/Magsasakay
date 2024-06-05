@@ -72,6 +72,7 @@ app.post("/signup", async (req, res) => {
       email,
       username,
       password: encryptedPassword,
+      userimage: "./uploads/default-user-image.png",
     });
     await newUser.save();
     res.status(201).json({ message: "User created successfully." });
@@ -80,6 +81,53 @@ app.post("/signup", async (req, res) => {
     res
       .status(500)
       .json({ error: "An error occurred while creating the user." });
+  }
+});
+
+// Add a new route for deleting a user account and their reviews
+app.post("/delete-user", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Find the user by email
+    const user = await userModel.findOne({ email });
+
+    // Check if the user exists and if the provided password is correct
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    // Get all the restaurants where the user had reviews
+    const restaurantsWithUserReviews = await reviewModel
+      .find({ useremail: email })
+      .distinct("restaurant");
+
+    // Delete the user's reviews from all restaurants
+    await reviewModel.deleteMany({ useremail: email });
+
+    // Update the average ratings for each restaurant
+    for (const restaurantName of restaurantsWithUserReviews) {
+      const reviews = await reviewModel.find({ restaurant: restaurantName });
+      const totalRatings = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+      const numReviews = reviews.length;
+      const averageRating = numReviews ? totalRatings / numReviews : 0; // Check if numReviews is not zero before calculating average
+
+      // Update the averageRating of the specific restaurant
+      await restaurantModel.updateOne(
+        { name: restaurantName },
+        { averageRating }
+      );
+    }
+
+    // Delete the user from the userModel
+    await userModel.deleteOne({ email });
+
+    res.status(200).json({ message: "User account deleted successfully." });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while deleting the user account." });
   }
 });
 
@@ -102,6 +150,58 @@ app.get("/restaurants", async (req, res) => {
 app.get("/view-more-restaurants", async (req, res) => {
   try {
     const restaurants = await restaurantModel.find();
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching restaurant data." });
+  }
+});
+
+// Define a new route for fetching all restaurant data sorted by ratings
+app.get("/view-more-restaurants-ratings-highest", async (req, res) => {
+  try {
+    const restaurants = await restaurantModel
+      .find()
+      .sort({ averageRating: -1 });
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching restaurant data." });
+  }
+});
+
+app.get("/view-more-restaurants-ratings-lowest", async (req, res) => {
+  try {
+    const restaurants = await restaurantModel.find().sort({ averageRating: 1 });
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching restaurant data." });
+  }
+});
+
+// Define a new route for fetching all restaurant data sorted by alphabetical order
+app.get("/view-more-restaurants-alphabetical-AZ", async (req, res) => {
+  try {
+    const restaurants = await restaurantModel.find().sort({ name: 1 });
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching restaurant data." });
+  }
+});
+
+app.get("/view-more-restaurants-alphabetical-ZA", async (req, res) => {
+  try {
+    const restaurants = await restaurantModel.find().sort({ name: -1 });
     res.json(restaurants);
   } catch (error) {
     console.error(error);
@@ -185,14 +285,21 @@ app.post("/fetch-recent-reviews", async (req, res) => {
 
 // Add a new route for submitting reviews
 app.post("/submit-review", async (req, res) => {
-  const { restaurantName, username, userimage, reviewText, starRating } =
-    req.body;
+  const {
+    restaurantName,
+    username,
+    useremail,
+    userimage,
+    reviewText,
+    starRating,
+  } = req.body;
 
   try {
     // Create a new review document
     const newReview = new reviewModel({
       restaurant: restaurantName,
       username: username,
+      useremail: useremail,
       userimage: userimage,
       review: reviewText,
       rating: starRating,
@@ -224,10 +331,12 @@ app.post("/submit-review", async (req, res) => {
 app.post("/fetch-user-reviews", async (req, res) => {
   try {
     // Extract username from the decoded token
-    const { userName } = req.body;
+    const { userEmail } = req.body;
 
     // Find all reviews for the specific user
-    const userReviews = await reviewModel.find({ username: userName });
+    const userReviews = await reviewModel
+      .find({ useremail: userEmail })
+      .sort({ createdAt: -1 });
     res.json(userReviews);
   } catch (error) {
     console.error(error);
@@ -310,9 +419,9 @@ app.post("/delete-review", async (req, res) => {
 // Add a new route for fetching user details
 app.post("/fetch-user-details", async (req, res) => {
   try {
-    const { userName } = req.body;
+    const { userEmail } = req.body;
 
-    const user = await userModel.findOne({ username: userName });
+    const user = await userModel.findOne({ email: userEmail });
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
@@ -334,19 +443,83 @@ app.post("/fetch-user-details", async (req, res) => {
   }
 });
 
-// Add a new route for updating user profile
-app.post("/update-user-bio", async (req, res) => {
+app.post("/check-password", async (req, res) => {
   try {
-    const { email, bio } = req.body;
+    const { email, password } = req.body;
+
+    // Find the user by email
+    const user = await userModel.findOne({ email });
+
+    // Check if the user exists and if the provided password is correct
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    } else {
+      return res.status(201).json({ message: "Password is correct." });
+    }
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while checking password." });
+  }
+});
+
+// Add a new route for updating user profile
+app.post("/update-user-info", async (req, res) => {
+  try {
+    const { currentEmail, username, email, password } = req.body;
+
+    const updateData = {};
+
+    if (username) {
+      updateData.username = username;
+    }
+
+    if (email) {
+      updateData.email = email;
+    }
+
+    if (password) {
+      // Ensure to hash the password before saving it to the database
+      const hashedPassword = await bcrypt.hash(password, 10);
+      updateData.password = hashedPassword;
+    }
 
     const updatedProfile = await userModel.findOneAndUpdate(
-      { email },
-      { $set: { bio } },
+      { email: currentEmail },
+      { $set: updateData },
       { new: true }
     );
 
     if (!updatedProfile) {
       return res.status(404).json({ error: "Profile not found" });
+    }
+
+    if (username) {
+      // Update the username in all reviews by the user
+      await reviewModel.updateMany(
+        { useremail: currentEmail },
+        { $set: { username: username } }
+      );
+    }
+
+    // Get all the restaurants where the user had reviews
+    const restaurantsWithUserReviews = await reviewModel
+      .find({ useremail: email })
+      .distinct("restaurant");
+
+    // Update the average ratings for each restaurant
+    for (const restaurantName of restaurantsWithUserReviews) {
+      const reviews = await reviewModel.find({ restaurant: restaurantName });
+      const totalRatings = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+      const numReviews = reviews.length;
+      const averageRating = numReviews ? totalRatings / numReviews : 0; // Check if numReviews is not zero before calculating average
+
+      // Update the averageRating of the specific restaurant
+      await restaurantModel.updateOne(
+        { name: restaurantName },
+        { averageRating }
+      );
     }
 
     res
@@ -362,6 +535,7 @@ app.post("/update-user-bio", async (req, res) => {
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 const multer = require("multer");
+const e = require("express");
 
 // ... (other code remains unchanged)
 
@@ -393,6 +567,14 @@ app.post("/upload-image", upload.single("image"), async (req, res) => {
 
     if (!updatedProfile) {
       return res.status(404).json({ error: "User not found" });
+    }
+
+    if (email) {
+      // Update the userimage in all reviews by the user
+      await reviewModel.updateMany(
+        { useremail: email },
+        { $set: { userimage: imageName } }
+      );
     }
 
     res.json({ status: "ok" });

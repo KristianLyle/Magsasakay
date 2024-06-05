@@ -24,7 +24,7 @@ body {
 /* Title style */
 .jeepney-routes-title {
     color: #f4b55e;
-    background-color: #1d4b56;
+    background-color: #240750;
     border-bottom: 2px solid #13343c;
     width: 100%;
     font-family: 'Montserrat', sans-serif
@@ -41,7 +41,7 @@ body {
 
 /* Contents style */
 .jeepney-routes-contents {
-    background-color: #160E3D;
+    background-color: #344C64;
     color: white;
     display: flex;
     flex-direction: column;
@@ -91,13 +91,14 @@ body {
 
 /* Horizontal divider */
 .horizontal-divider {
-    border: 1px solid #4a077d;
+    border: 1px solid #577B8D;
 }
 
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
     .jeepney-routes-container {
         font-size: 14px; /* Decrease font size for smaller screens */
+        width: 33vw;
     }
 
     .jeepney-routes-title h3 {
@@ -106,7 +107,18 @@ body {
 
     .jeepney-routes-contents label {
         font-size: 9.5px; /* Decrease font size for smaller screens */
+        width: 70%;
     }
+
+    .jeepney-routes-contents input[type='checkbox'] {
+        appearance: none;
+        width: 12px;
+        height: 12px;
+        border: 2px solid white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
 }
 
 /* Checkbox hover effect */

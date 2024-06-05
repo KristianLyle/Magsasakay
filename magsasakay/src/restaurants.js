@@ -10,8 +10,6 @@ const Restaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const history = useHistory();
 
-  const [isOpen, setIsOpen] = useState(false);
-
   useEffect(() => {
     const status = window.localStorage.getItem("loggedIn");
     if (status === "false") {
@@ -49,11 +47,8 @@ const Restaurants = () => {
   }, []);
 
   const handleLocationClick = (restaurantName) => {
-    // Store the selected restaurant name in localStorage
-    localStorage.setItem("selectedRestaurantId", restaurantName);
-
-    // Redirect to Location page
-    history.push(`/location/${restaurantName}`);
+    const encodedRestaurantName = encodeURIComponent(restaurantName);
+    history.push(`/find-routes?restaurant=${encodedRestaurantName}`);
   };
 
   //const backgroundStyle = {
@@ -61,7 +56,7 @@ const Restaurants = () => {
   //};
 
   return (
-    <div className='overflow-x-hidden bg-resto_bg bg-cover bg-center'>
+    <div className="overflow-x-hidden bg-resto_bg bg-cover bg-center">
       <Router>
         <NavBar />
         <Switch>
@@ -84,9 +79,11 @@ const Restaurants = () => {
               You Might Like
             </h1>
             <br />
-            <div className="mx-auto flex justify-center items-center space-x-35
+            <div
+              className="mx-auto flex justify-center items-center space-x-35
                             phone:space-x-[1000px] lg:space-x-10
-                          ">
+                          "
+            >
               {restaurants.map((restaurant, index) => (
                 <div className="flex-container" key={index}>
                   <div
@@ -106,33 +103,23 @@ const Restaurants = () => {
                         alt={restaurant.name}
                       />
                     </div>
-                    <div className="text-[20px] font-regular
+                    <div
+                      className="text-[20px] font-regular
                                     phone:text-[10px] phone:leading-tight phone:mt-[10px] phone:mb-[10px]
-                                    md:text-[20px]">
+                                    md:text-[20px]"
+                    >
                       {restaurant.name}
                     </div>
                     <div className="box-container text-left">
                       <p
-                        style={isOpen ? null : descStyle}
+                        style={descStyle}
                         ref={ref}
-                        className="text-[12px] font-normal ml-[0px] text-left 
+                        className="text-[12px] font-normal ml-[0px] text-left overflow-x-hidden overflow-auto
                                   phone:text-[6px]
                                   md:text-[12px]"
                       >
                         {restaurant.description}
                       </p>
-                      {showReadMore && (
-                        <button
-                          onClick={() => setIsOpen(!isOpen)}
-                          className=" underline font-Montserrat font-light text-[12px]
-                                    phone:text-[6px]   
-                                    md:text-[12px]       
-                          "
-                        >
-                          {" "}
-                          {isOpen ? "Read Less" : "Read More"}
-                        </button>
-                      )}
                       <br className="phone:hidden" />
                     </div>
                     <div>
@@ -172,7 +159,6 @@ const Restaurants = () => {
                 View More
               </Link>
             </div>
-            
           </div>
         </div>
       </div>
